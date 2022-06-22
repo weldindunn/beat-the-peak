@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.hub {
+  display: flex;
+}
+
+.upgrades-and-events {
+  width: 33%;
+}
+
+.center {
+  width: 33%;
+  align-items: center;
+}
+
+.generators-and-transporters {
+  width: 33%;
+}
+
+.bolt {
+  
+}

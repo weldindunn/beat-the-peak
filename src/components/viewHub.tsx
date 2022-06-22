@@ -10,39 +10,38 @@ export function ViewHub({
     setWatts: (watts: number) => void;
 }): JSX.Element {
     return (
-        <>
+        <div className="hub">
             {/* Upgrades and Events */}
-            <Col>
-
+            <Col className="upgrades-and-events">
                 {/* Upgrades */}
                 <Row>
-
+                    <span>Upgrades</span>
                 </Row>
 
                 {/* Events */}
                 <Row>
-
+                    <span>Events</span>
                 </Row>
             </Col>
 
             {/* Center */}
-            <Col>
+            <Col className="center">
                 <ViewCenter watts={watts} setWatts={setWatts}></ViewCenter>
             </Col>
 
             {/* Generators and Transporters */}
-            <Col>
+            <Col className="generators-and-transporters">
 
                 {/* Generators */}
                 <Row>
-
+                    <span>Generators</span>
                 </Row>
 
                 {/* Transporters */}
                 <Row>
-
+                    <span>Transporters</span>
                 </Row>
             </Col>
-        </>
+        </div>
     )
 }
