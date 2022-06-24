@@ -4,16 +4,15 @@ import bolt from "../img/bolt.png";
 
 export function ViewCenter ({
     watts, 
-    setWatts
+    wattsPerSec,
+    setWatts,
+    setWattsPerSec
 } : {
     watts: number; 
+    wattsPerSec: number;
     setWatts: (watts: number) => void;
+    setWattsPerSec: (wattsPerSec: number) => void;
 }): JSX.Element {
-
-    /*
-    const bolt = new Image();
-    bolt.src = "../img/bolt.png";
-    */
 
     function increaseWatts(theseWatts: number): void {
         setWatts(watts + theseWatts);
@@ -24,21 +23,35 @@ export function ViewCenter ({
     }
 
     return (
-        <div style={{display:"flex"}}>
-
+        <div className="center">
             {/* Power Button */}
-            <span>Weldin's Electric Cooperative</span>
+            <div className="center-text-box">
+                <span className="center-header">
+                    Weldin's Electric Cooperative
+                </span>
+            </div>
             {/* <span>{name}{"'s Electric Cooperative"}</span> */}
 
             {/* Power Button */}
             <div className="bolt">
-                <button>
-                    <img src={bolt} alt="Bolt" onClick={clickPowerButton} width="200" height="200" />
+                <button onClick={clickPowerButton} >
+                    <img src={bolt} alt="Bolt"/>
                 </button>
             </div>
             
             {/* # of Watts */}
-            <span>{watts}{" watts"}</span>
+            <div className="center-text-box">
+                <span className="center-header">
+                    {watts}{" watts"}
+                </span>
+            </div>
+
+            {/* # of Watts per second */}
+            <div className="center-text-box">
+                <span className="center-text">
+                    {"per second: "}{wattsPerSec}
+                </span>
+            </div>
         </div>
     )
 }

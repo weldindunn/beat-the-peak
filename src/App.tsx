@@ -4,10 +4,11 @@ import { ViewHub } from './components/viewHub';
 
 function App() {
   const [watts, setWatts] = useState<number>(0);
+  const [wattsPerSec, setWattsPerSec] = useState<number>(0);
 
   return (
     <div className="App">
-      <ViewHub watts={watts} setWatts={setWatts}></ViewHub>
+      <ViewHub watts={watts} wattsPerSec={wattsPerSec} setWatts={setWatts} setWattsPerSec={setWattsPerSec}></ViewHub>
     </div>
   );
 }

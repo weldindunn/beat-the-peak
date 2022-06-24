@@ -1,47 +1,51 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
 import { ViewCenter } from "./viewCenter";
+import { ViewGenerators } from "./viewGenerators";
 
 export function ViewHub({
     watts, 
-    setWatts
+    wattsPerSec,
+    setWatts,
+    setWattsPerSec
 } : {
     watts: number; 
+    wattsPerSec: number;
     setWatts: (watts: number) => void;
+    setWattsPerSec: (wattsPerSec: number) => void;
 }): JSX.Element {
     return (
         <div className="hub">
             {/* Upgrades and Events */}
-            <Col className="upgrades-and-events">
+            <div className="column">
                 {/* Upgrades */}
-                <Row>
+                <div>
                     <span>Upgrades</span>
-                </Row>
+                </div>
 
                 {/* Events */}
-                <Row>
+                <div>
                     <span>Events</span>
-                </Row>
-            </Col>
+                </div>
+            </div>
 
             {/* Center */}
-            <Col className="center">
-                <ViewCenter watts={watts} setWatts={setWatts}></ViewCenter>
-            </Col>
+            <div className="column">
+                <ViewCenter watts={watts} wattsPerSec={wattsPerSec} setWatts={setWatts} setWattsPerSec={setWattsPerSec}></ViewCenter>
+            </div>
 
             {/* Generators and Transporters */}
-            <Col className="generators-and-transporters">
+            <div className="column">
 
                 {/* Generators */}
-                <Row>
-                    <span>Generators</span>
-                </Row>
+                <div>
+                    <ViewGenerators></ViewGenerators>
+                </div>
 
                 {/* Transporters */}
-                <Row>
+                <div>
                     <span>Transporters</span>
-                </Row>
-            </Col>
+                </div>
+            </div>
         </div>
     )
 }
