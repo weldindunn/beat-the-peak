@@ -3,12 +3,16 @@ import './App.css';
 import { ViewHub } from './components/viewHub';
 
 function App() {  
+
+  //The number of watts and watts generated per second
   const [watts, setWatts] = useState<number>(0);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
 
-  const [linemen, setLinemen] = useState<number>(0);
+  //The number of each type of generator
+  const [linemen, setLinemen] = useState<number>(0); 
   const [coalPlants, setCoalPlants] = useState<number>(0);
 
+  /*
   let secondsPassed: number;
   let oldTimeStamp: number;
   let fps: number;
@@ -26,13 +30,22 @@ function App() {
 
     fps = Math.round(1 / secondsPassed);
     //console.log(fps);
+    //console.log(secondsPassed);
 
     window.requestAnimationFrame(gameLoop);
   }
+  */
 
-  function gimmeWatts(): void {
-    setWattsPerSec(wattsPerSec + 1);
-  }
+  /*
+  const [time, setTime] = useState(Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  */
 
   return (
     <div className="App">
@@ -46,9 +59,6 @@ function App() {
         coalPlants={coalPlants}
         setCoalPlants={setCoalPlants}
       ></ViewHub>
-      <div>
-        <button onClick={gimmeWatts}>Increase WPS</button>
-      </div>
     </div>
   );
 }

@@ -28,7 +28,7 @@ export function ViewGenerators({
     const [coalProduction, setCoalProduction] = useState<number>(10);
 
     return (
-        <div>
+        <div className="generators">
             <span>Generators</span>
             <Generator
                 name="Lineman"

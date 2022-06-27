@@ -32,18 +32,18 @@
   }
 }
 
-/*======================
+/*====================
   Upgrade column style
-  ====================== */
+  ==================== */
 .upgrades {
   background: rgb(216, 112, 15);
   color: #FFFFE0;
   height: 50vh;
 }
   
-/*======================
+/*==================
   Event column style
-  ====================== */
+  ================== */
 .events {
   background: #ffd24b;
   color: #FFFFFF;
@@ -61,7 +61,7 @@
   #F9B900 30px,
   #F9B900 60px
   );
-  height: 100%;
+  height: 100vh;
 }
 
 div.center-text-box {
@@ -109,6 +109,11 @@ div.center-text-box {
   background: rgb(216, 112, 15);
   color: #FFFFE0;
   height: 50vh;
+}
+
+.generator button{
+  display: block;
+  margin-left: 5%;
 }
 
 /*======================

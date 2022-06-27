@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 export function Generator({
     name,
@@ -30,20 +30,28 @@ export function Generator({
 }): JSX.Element {
 
     function buyGenerator() {
+        //Adds another generator
         setGenerators(generators + 1);
+
+        //Increases watts per second by how much the generator produces
         setWattsPerSec(wattsPerSec + generatorProduction);
+
+        //Subtracts the cost of the generator from the total watts
         setWatts(watts - Math.round(generatorCost));
+
+        //Increases the cost of the generator
         setGeneratorCost((costBase * Math.pow(1.15, generators)));
     }
 
     return (
-        <div>
-            <Button onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
+        <div className="generator">
+            <button onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
                 <Card>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Subtitle>{Math.round(generatorCost)}</Card.Subtitle>
+                    <Card.Subtitle>Cost: {Math.round(generatorCost)}</Card.Subtitle>
+                    <Card.Body>{generators}</Card.Body>
                 </Card>
-            </Button>
+            </button>
         </div>
     )
 }
