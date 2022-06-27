@@ -4,14 +4,22 @@ import { ViewGenerators } from "./viewGenerators";
 
 export function ViewHub({
     watts, 
-    wattsPerSec,
     setWatts,
-    setWattsPerSec
+    wattsPerSec,
+    setWattsPerSec,
+    linemen,
+    setLinemen,
+    coalPlants,
+    setCoalPlants
 } : {
     watts: number; 
     wattsPerSec: number;
     setWatts: (watts: number) => void;
     setWattsPerSec: (wattsPerSec: number) => void;
+    linemen: number;
+    setLinemen: (linemen: number) => void;
+    coalPlants: number;
+    setCoalPlants: (coalPlants: number) => void;
 }): JSX.Element {
     return (
         <div className="hub">
@@ -30,7 +38,12 @@ export function ViewHub({
 
             {/* Center */}
             <div className="column">
-                <ViewCenter watts={watts} wattsPerSec={wattsPerSec} setWatts={setWatts} setWattsPerSec={setWattsPerSec}></ViewCenter>
+                <ViewCenter
+                    watts={watts}
+                    setWatts={setWatts}
+                    wattsPerSec={wattsPerSec}
+                    setWattsPerSec={setWattsPerSec}
+                ></ViewCenter>
             </div>
 
             {/* Generators and Transporters */}
@@ -38,7 +51,16 @@ export function ViewHub({
 
                 {/* Generators */}
                 <div>
-                    <ViewGenerators></ViewGenerators>
+                    <ViewGenerators
+                        watts={watts}
+                        setWatts={setWatts}
+                        wattsPerSec={wattsPerSec}
+                        setWattsPerSec={setWattsPerSec}
+                        linemen={linemen}
+                        setLinemen={setLinemen}
+                        coalPlants={coalPlants}
+                        setCoalPlants={setCoalPlants}
+                    ></ViewGenerators>
                 </div>
 
                 {/* Transporters */}
