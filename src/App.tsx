@@ -27,8 +27,6 @@ function App() {
     fps = Math.round(1 / secondsPassed);
     //console.log(fps);
 
-    setWatts(watts + wattsPerSec);
-
     window.requestAnimationFrame(gameLoop);
   }
 
