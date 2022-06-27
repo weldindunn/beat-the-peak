@@ -26,12 +26,12 @@ export function ViewHub({
             {/* Upgrades and Events */}
             <div className="column">
                 {/* Upgrades */}
-                <div>
+                <div className="upgrades">
                     <span>Upgrades</span>
                 </div>
 
                 {/* Events */}
-                <div>
+                <div className="events">
                     <span>Events</span>
                 </div>
             </div>
@@ -48,7 +48,6 @@ export function ViewHub({
 
             {/* Generators and Transporters */}
             <div className="column">
-
                 {/* Generators */}
                 <div>
                     <ViewGenerators
@@ -64,7 +63,7 @@ export function ViewHub({
                 </div>
 
                 {/* Transporters */}
-                <div>
+                <div className="transporters">
                     <span>Transporters</span>
                 </div>
             </div>

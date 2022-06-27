@@ -20,6 +20,8 @@
 /* Creates general column layour */
 .column {
   float: left;
+  font-size: 3vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 33.33%;
 }
 
@@ -30,9 +32,27 @@
   }
 }
 
+/*======================
+  Upgrade column style
+  ====================== */
+.upgrades {
+  background: rgb(216, 112, 15);
+  color: #FFFFE0;
+  height: 50vh;
+}
+  
+/*======================
+  Event column style
+  ====================== */
+.events {
+  background: #ffd24b;
+  color: #FFFFFF;
+  height: 50vh;
+}
 
-
-/* Center column style */
+/*=================== 
+  Center column style 
+  =================== */
 .center {
   background: repeating-linear-gradient(
     to right,
@@ -48,7 +68,6 @@ div.center-text-box {
   background-color: black;
   opacity: 0.4;
   color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .center-header {
@@ -83,4 +102,21 @@ div.center-text-box {
   opacity: 0.85;
 }
 
+/*======================
+  Generator column style
+  ====================== */
+.generators {
+  background: rgb(216, 112, 15);
+  color: #FFFFE0;
+  height: 50vh;
+}
+
+/*======================
+  Transporter column style
+  ====================== */
+.transporters {
+  background: #ffd24b;
+  color: #FFFFFF;
+  height: 50vh;
+}
 
