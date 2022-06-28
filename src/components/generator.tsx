@@ -12,8 +12,7 @@ export function Generator({
     costBase,
     generatorCost,
     setGeneratorCost,
-    generatorProduction,
-    setGeneratorProduction
+    generatorProduction
 } : {
     name: string,
     watts: number; 
@@ -26,7 +25,6 @@ export function Generator({
     generatorCost: number;
     setGeneratorCost: (generatorCost: number) => void;
     generatorProduction: number;
-    setGeneratorProduction: (generatorProduction: number) => void;
 }): JSX.Element {
 
     function buyGenerator() {

@@ -21,11 +21,13 @@ export function ViewGenerators({
     setCoalPlants: (coalPlants: number) => void;
 }): JSX.Element {
 
+    const linemenBaseCost = 15;
+    const linemenProduction = 1;
     const [linemenCost, setLinemenCost] = useState<number>((15 * Math.pow(1.15, linemen)));
-    const [linemenProduction, setLinemenProduction] = useState<number>(1);
 
+    const coalBaseCost = 100;
+    const coalProduction = 10;
     const [coalCost, setCoalCost] = useState<number>((100 * Math.pow(1.15, coalPlants)));
-    const [coalProduction, setCoalProduction] = useState<number>(10);
 
     return (
         <div className="generators">
@@ -38,11 +40,10 @@ export function ViewGenerators({
                 setWattsPerSec={setWattsPerSec}
                 generators={linemen}
                 setGenerators={setLinemen}
-                costBase={15}
+                costBase={linemenBaseCost}
                 generatorCost={linemenCost}
                 setGeneratorCost={setLinemenCost}
                 generatorProduction={linemenProduction}
-                setGeneratorProduction={setLinemenProduction}
             ></Generator>
             <Generator
                 name="Coal Plant"
@@ -52,11 +53,10 @@ export function ViewGenerators({
                 setWattsPerSec={setWattsPerSec}
                 generators={coalPlants}
                 setGenerators={setCoalPlants}
-                costBase={100}
+                costBase={coalBaseCost}
                 generatorCost={coalCost}
                 setGeneratorCost={setCoalCost}
                 generatorProduction={coalProduction}
-                setGeneratorProduction={setCoalProduction}
             ></Generator>
         </div>
     )
