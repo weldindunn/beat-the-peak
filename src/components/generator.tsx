@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Card } from "react-bootstrap";
 
 export function Generator({
     name,
@@ -47,13 +46,21 @@ export function Generator({
     }
 
     return (
-        <div className="generator">
-            <button onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
-                <Card>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Subtitle>Cost: {Math.round(generatorCost)}</Card.Subtitle>
-                    <Card.Body>{generators}</Card.Body>
-                </Card>
+        <div>
+            <button className="generator" onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
+                <div className="generator-group">
+                    <div className="generator-title-cost">
+                        <div className="generator-title">
+                            {name}
+                        </div>
+                        <div className="generator-cost">
+                            {"Cost: "}{Math.round(generatorCost)}
+                        </div>
+                    </div>
+                    <div className="generator-count">
+                        {generators}
+                    </div>
+                </div>
             </button>
         </div>
     )
