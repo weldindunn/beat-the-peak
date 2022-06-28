@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 
 export function Generator({
@@ -26,6 +26,11 @@ export function Generator({
     setGeneratorCost: (generatorCost: number) => void;
     generatorProduction: number;
 }): JSX.Element {
+
+    useEffect(() => {
+        setGeneratorCost((costBase * Math.pow(1.15, generators)));
+        }, [generators, setGeneratorCost, costBase]
+    );
 
     function buyGenerator() {
         //Adds another generator
