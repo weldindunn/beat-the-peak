@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { numberConvertor } from "./utilities/numberConvertor";
 
 export function Generator({
     name,
@@ -54,7 +55,7 @@ export function Generator({
                             {name}
                         </div>
                         <div className="generator-cost">
-                            {"Cost: "}{Math.round(generatorCost)}
+                            {"Cost: "}{numberConvertor(Math.round(generatorCost))}
                         </div>
                     </div>
                     <div className="generator-count">

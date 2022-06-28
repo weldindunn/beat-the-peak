@@ -109,6 +109,7 @@ div.center-text-box {
   background: rgb(216, 112, 15);
   color: #FFFFE0;
   height: 50vh;
+  overflow-y: auto;
 }
 
 .generator {

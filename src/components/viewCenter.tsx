@@ -1,5 +1,6 @@
 import React from "react";
 //import { Button } from "react-bootstrap";
+import { numberConvertor } from "./utilities/numberConvertor";
 import bolt from "../img/bolt.png";
 
 export function ViewCenter ({
@@ -42,14 +43,14 @@ export function ViewCenter ({
             {/* # of Watts */}
             <div className="center-text-box">
                 <span className="center-header">
-                    {watts}{" watts"}
+                    {numberConvertor(watts)}{" watts"}
                 </span>
             </div>
 
             {/* # of Watts per second */}
             <div className="center-text-box">
                 <span className="center-text">
-                    {"per second: "}{wattsPerSec}
+                    {"per second: "}{numberConvertor(wattsPerSec)}
                 </span>
             </div>
         </div>

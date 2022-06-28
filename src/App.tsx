@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { ViewHub } from './components/viewHub';
-import { useFrameLoop } from './components/frameLoop';
+import { useFrameLoop } from './components/utilities/frameLoop';
 
 function App() {  
 
@@ -12,6 +12,13 @@ function App() {
   //The number of each type of generator
   const [linemen, setLinemen] = useState<number>(0); 
   const [coalPlants, setCoalPlants] = useState<number>(0);
+  const [gasPlants, setGasPlants] = useState<number>(0);
+  const [solarFarms, setSolarFarms] = useState<number>(0);
+  const [oilWells, setOilWells] = useState<number>(0);
+  const [windTurbines, setWindTurbines] = useState<number>(0);
+  const [biomassGassifiers, setBiomassGassifiers] = useState<number>(0);
+  const [hydroPlants, setHydroPlants] = useState<number>(0);
+  const [nuclearPlants, setNuclearPlants] = useState<number>(0);
 
   const [time, setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
@@ -39,6 +46,20 @@ function App() {
         setLinemen={setLinemen}
         coalPlants={coalPlants}
         setCoalPlants={setCoalPlants}
+        gasPlants={gasPlants}
+        setGasPlants={setGasPlants}
+        solarFarms={solarFarms}
+        setSolarFarms={setSolarFarms}
+        oilWells={oilWells}
+        setOilWells={setOilWells}
+        windTurbines={windTurbines}
+        setWindTurbines={setWindTurbines}
+        biomassGassifiers={biomassGassifiers}
+        setBiomassGassifiers={setBiomassGassifiers}
+        hydroPlants={hydroPlants}
+        setHydroPlants={setHydroPlants}
+        nuclearPlants={nuclearPlants}
+        setNuclearPlants={setNuclearPlants}
       ></ViewHub>
     </div>
   );

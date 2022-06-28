@@ -10,7 +10,21 @@ export function ViewHub({
     linemen,
     setLinemen,
     coalPlants,
-    setCoalPlants
+    setCoalPlants,
+    gasPlants,
+    setGasPlants,
+    solarFarms,
+    setSolarFarms,
+    oilWells,
+    setOilWells,
+    windTurbines,
+    setWindTurbines,
+    biomassGassifiers,
+    setBiomassGassifiers,
+    hydroPlants,
+    setHydroPlants,
+    nuclearPlants,
+    setNuclearPlants
 } : {
     watts: number; 
     wattsPerSec: number;
@@ -20,6 +34,20 @@ export function ViewHub({
     setLinemen: (linemen: number) => void;
     coalPlants: number;
     setCoalPlants: (coalPlants: number) => void;
+    gasPlants: number;
+    setGasPlants: (gasPlants: number) => void;
+    solarFarms: number;
+    setSolarFarms: (solarFarms: number) => void;
+    oilWells: number;
+    setOilWells: (oilWells: number) => void;
+    windTurbines: number;
+    setWindTurbines: (windTurbines: number) => void;
+    biomassGassifiers: number;
+    setBiomassGassifiers: (biomassGassifiers: number) => void;
+    hydroPlants: number;
+    setHydroPlants: (hydroPlants: number) => void;
+    nuclearPlants: number;
+    setNuclearPlants: (nuclearPlants: number) => void;
 }): JSX.Element {
     return (
         <div className="hub">
@@ -59,6 +87,20 @@ export function ViewHub({
                         setLinemen={setLinemen}
                         coalPlants={coalPlants}
                         setCoalPlants={setCoalPlants}
+                        gasPlants={gasPlants}
+                        setGasPlants={setGasPlants}
+                        solarFarms={solarFarms}
+                        setSolarFarms={setSolarFarms}
+                        oilWells={oilWells}
+                        setOilWells={setOilWells}
+                        windTurbines={windTurbines}
+                        setWindTurbines={setWindTurbines}
+                        biomassGassifiers={biomassGassifiers}
+                        setBiomassGassifiers={setBiomassGassifiers}
+                        hydroPlants={hydroPlants}
+                        setHydroPlants={setHydroPlants}
+                        nuclearPlants={nuclearPlants}
+                        setNuclearPlants={setNuclearPlants}
                     ></ViewGenerators>
                 </div>
 
