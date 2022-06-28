@@ -25,7 +25,7 @@ export function ViewGenerators({
     const linemenProduction = 1;
     const [linemenCost, setLinemenCost] = useState<number>((15 * Math.pow(1.15, linemen)));
 
-    const coalBaseCost = 100;
+    const coalBaseCost = 250;
     const coalProduction = 10;
     const [coalCost, setCoalCost] = useState<number>((100 * Math.pow(1.15, coalPlants)));
 

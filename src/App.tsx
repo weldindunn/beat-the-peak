@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { ViewHub } from './components/viewHub';
+import { useFrameLoop } from './components/frameLoop';
 
 function App() {  
 
@@ -12,40 +13,20 @@ function App() {
   const [linemen, setLinemen] = useState<number>(0); 
   const [coalPlants, setCoalPlants] = useState<number>(0);
 
-  /*
-  let secondsPassed: number;
-  let oldTimeStamp: number;
-  let fps: number;
+  const [time, setTime] = useState(0);
+  const [deltaTime, setDeltaTime] = useState(0);
 
-  //Starts the game loop
-  window.onload = init;
-  function init() {
-    window.requestAnimationFrame(gameLoop);
-  }
+  const [newWatts, setNewWatts] = useState(-1);
+  useFrameLoop((time: number, deltaTime: number) => {
 
-  //Runs about 60 times per second
-  function gameLoop(timeStamp: number){
-    secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-    oldTimeStamp = timeStamp;
+    if (time > newWatts) {
+      setNewWatts(time + 1000);
 
-    fps = Math.round(1 / secondsPassed);
-    //console.log(fps);
-    //console.log(secondsPassed);
-
-    window.requestAnimationFrame(gameLoop);
-  }
-  */
-
-  /*
-  const [time, setTime] = useState(Date.now());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(Date.now()), 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-  */
+      setWatts(watts + wattsPerSec);
+    }
+    setTime(time);
+    setDeltaTime(deltaTime);
+  });
 
   return (
     <div className="App">
