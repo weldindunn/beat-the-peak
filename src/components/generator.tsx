@@ -1,5 +1,4 @@
-import React from "react";
-import { Card } from "react-bootstrap";
+import React, { useEffect } from "react";
 
 export function Generator({
     name,
@@ -27,6 +26,11 @@ export function Generator({
     generatorProduction: number;
 }): JSX.Element {
 
+    useEffect(() => {
+        setGeneratorCost((costBase * Math.pow(1.15, generators)));
+        }, [generators, setGeneratorCost, costBase]
+    );
+
     function buyGenerator() {
         //Adds another generator
         setGenerators(generators + 1);
@@ -42,13 +46,21 @@ export function Generator({
     }
 
     return (
-        <div className="generator">
-            <button onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
-                <Card>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Subtitle>Cost: {Math.round(generatorCost)}</Card.Subtitle>
-                    <Card.Body>{generators}</Card.Body>
-                </Card>
+        <div>
+            <button className="generator" onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
+                <div className="generator-group">
+                    <div className="generator-title-cost">
+                        <div className="generator-title">
+                            {name}
+                        </div>
+                        <div className="generator-cost">
+                            {"Cost: "}{Math.round(generatorCost)}
+                        </div>
+                    </div>
+                    <div className="generator-count">
+                        {generators}
+                    </div>
+                </div>
             </button>
         </div>
     )

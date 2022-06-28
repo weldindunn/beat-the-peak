@@ -111,9 +111,40 @@ div.center-text-box {
   height: 50vh;
 }
 
-.generator button{
-  display: block;
-  margin-left: 5%;
+.generator {
+  background: #707070;
+  width: 100%;
+  border: none;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.generator:hover {
+  background: #909090;
+}
+
+.generator:disabled {
+  background: #505050;
+}
+
+.generator-title-cost {
+  float: left;
+  text-align: left;
+}
+
+.generator-title {
+  font-size: 3.5vw;
+  color: white;
+}
+
+.generator-cost {
+  font-size: 2.2vw;
+  color:#F9B900
+}
+
+.generator-count {
+  float: right;
+  font-size: 5vw;
+  color: #e2e2e2;
 }
 
 /*======================
