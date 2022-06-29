@@ -20,6 +20,9 @@ function App() {
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
 
+  /* ==========
+     Game Loop!
+     ========== */
   const [time, setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
 
@@ -35,6 +38,9 @@ function App() {
     setDeltaTime(deltaTime);
   });
 
+  /* ===========
+     Display Hub
+     =========== */
   return (
     <div className="App">
       <ViewHub

@@ -47,22 +47,20 @@ export function Generator({
     }
 
     return (
-        <div>
+        <>
             <button className="generator" onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
-                <div className="generator-group">
-                    <div className="generator-title-cost">
-                        <div className="generator-title">
-                            {name}
-                        </div>
-                        <div className="generator-cost">
-                            {"Cost: "}{numberConvertor(Math.round(generatorCost))}
-                        </div>
+                <div className="generator-title-cost">
+                    <div className="generator-title">
+                        {name}
                     </div>
-                    <div className="generator-count">
-                        {generators}
+                    <div className="generator-cost">
+                        {"Cost: "}{numberConvertor(Math.round(generatorCost))}
                     </div>
                 </div>
+                <div className="generator-count">
+                    {generators}
+                </div>
             </button>
-        </div>
+        </>
     )
 }
