@@ -1,12 +1,15 @@
 import React from "react";
 import { ViewCenter } from "./viewCenter";
 import { ViewGenerators } from "./viewGenerators";
+import { ViewUpgrades } from "./viewUpgrades";
+import { Upgrade } from "../interfaces/upgrade";
 
 export function ViewHub({
     watts, 
     setWatts,
     wattsPerSec,
     setWattsPerSec,
+
     linemen,
     setLinemen,
     coalPlants,
@@ -24,12 +27,16 @@ export function ViewHub({
     hydroPlants,
     setHydroPlants,
     nuclearPlants,
-    setNuclearPlants
+    setNuclearPlants,
+
+    upgrades,
+    setUpgrades
 } : {
     watts: number; 
     wattsPerSec: number;
     setWatts: (watts: number) => void;
     setWattsPerSec: (wattsPerSec: number) => void;
+
     linemen: number;
     setLinemen: (linemen: number) => void;
     coalPlants: number;
@@ -48,6 +55,9 @@ export function ViewHub({
     setHydroPlants: (hydroPlants: number) => void;
     nuclearPlants: number;
     setNuclearPlants: (nuclearPlants: number) => void;
+
+    upgrades: Upgrade[];
+    setUpgrades: (upgrades: Upgrade[]) => void;
 }): JSX.Element {
     return (
         <div className="hub">
@@ -55,7 +65,12 @@ export function ViewHub({
             <div className="column">
                 {/* Upgrades */}
                 <div className="upgrades">
-                    <span>Upgrades</span>
+                    <ViewUpgrades
+                        watts={watts}
+                        setWatts={setWatts}
+                        upgrades={upgrades}
+                        setUpgrades={setUpgrades}
+                    ></ViewUpgrades>
                 </div>
 
                 {/* Events */}
@@ -83,6 +98,7 @@ export function ViewHub({
                         setWatts={setWatts}
                         wattsPerSec={wattsPerSec}
                         setWattsPerSec={setWattsPerSec}
+
                         linemen={linemen}
                         setLinemen={setLinemen}
                         coalPlants={coalPlants}

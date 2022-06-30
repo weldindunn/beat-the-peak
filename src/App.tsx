@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import './App.css';
 import { ViewHub } from './components/viewHub';
 import { useFrameLoop } from './components/utilities/frameLoop';
+import { Upgrade } from "./interfaces/upgrade";
+import upgrades from "./data/upgrades.json";
+
+const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
 function App() {  
 
   //The number of watts and watts generated per second
-  const [watts, setWatts] = useState<number>(0);
+  const [watts, setWatts] = useState<number>(5000);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
 
   //The number of each type of generator
@@ -19,6 +23,9 @@ function App() {
   const [biomassGassifiers, setBiomassGassifiers] = useState<number>(0);
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
+
+  //Array of upgrades
+  const [upgrades, setUpgrades] = useState<Upgrade[]>(UPGRADES);
 
   /* ==========
      Game Loop!
@@ -48,6 +55,7 @@ function App() {
         setWatts={setWatts}
         wattsPerSec={wattsPerSec}
         setWattsPerSec={setWattsPerSec}
+
         linemen={linemen}
         setLinemen={setLinemen}
         coalPlants={coalPlants}
@@ -66,6 +74,9 @@ function App() {
         setHydroPlants={setHydroPlants}
         nuclearPlants={nuclearPlants}
         setNuclearPlants={setNuclearPlants}
+
+        upgrades={upgrades}
+        setUpgrades={setUpgrades}
       ></ViewHub>
     </div>
   );
