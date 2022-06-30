@@ -10,7 +10,7 @@ const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 function App() {  
 
   //The number of watts and watts generated per second
-  const [watts, setWatts] = useState<number>(5000);
+  const [watts, setWatts] = useState<number>(0);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
 
   //The number of each type of generator
