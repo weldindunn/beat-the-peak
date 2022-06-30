@@ -6,23 +6,12 @@ import bolt from "../img/bolt.png";
 export function ViewCenter ({
     watts, 
     wattsPerSec,
-    setWatts,
-    setWattsPerSec
+    clickBolt
 } : {
     watts: number; 
     wattsPerSec: number;
-    setWatts: (watts: number) => void;
-    setWattsPerSec: (wattsPerSec: number) => void;
+    clickBolt: () => void;
 }): JSX.Element {
-
-    function increaseWatts(theseWatts: number): void {
-        setWatts(watts + theseWatts);
-    }
-
-    function clickPowerButton(): void {
-        increaseWatts(1);
-    }
-
     return (
         <div className="center">
             {/* Power Button */}
@@ -35,7 +24,7 @@ export function ViewCenter ({
 
             {/* Power Button */}
             <div className="bolt">
-                <button onClick={clickPowerButton} >
+                <button onClick={clickBolt} >
                     <img src={bolt} alt="Bolt"/>
                 </button>
             </div>

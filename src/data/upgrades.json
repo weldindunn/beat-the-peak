@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Super-click",
+        "description": "Clicking is twice as efficient",
+        "generator": "click",
+        "type": "multiplier",
+        "cost": 100,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 2,
+        "name": "Super-duper-click",
+        "description": "Clicking is twice as efficient",
+        "generator": "click",
+        "type": "multiplier",
+        "cost": 500,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 3,
+        "name": "Uber-click",
+        "description": "Clicking is twice as efficient",
+        "generator": "click",
+        "type": "multiplier",
+        "cost": 10000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 4,
+        "name": "Ultra-pliers",
+        "description": "Linemen are twice as efficient",
+        "generator": "lineman",
+        "type": "multiplier",
+        "cost": 1000,
+        "unlocked": true,
+        "purchased": false
+    }
+]

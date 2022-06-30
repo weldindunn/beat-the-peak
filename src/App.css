@@ -39,6 +39,27 @@
   background: rgb(216, 112, 15);
   color: #FFFFE0;
   height: 50vh;
+  margin-top: 15px;
+}
+
+.upgrade {
+  width: 100%;
+  border-width: 0.8vw;
+  background: #707070;
+  border-color: #909090;
+  color: #FFFFFF;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  float: left;
+}
+
+.upgrade:hover {
+  background: #909090;
+  border-color: #909090;
+}
+
+.upgrade:disabled {
+  background: #505050;
+  border-color: #676767;
 }
   
 /*==================
@@ -62,6 +83,12 @@
   #F9B900 60px
   );
   height: 100vh;
+  overflow-y:auto;
+}
+
+/* Hides scrollbar for chrome/safari/opera/edge */
+.center::-webkit-scrollbar {
+  display: none;
 }
 
 div.center-text-box {
@@ -112,29 +139,38 @@ div.center-text-box {
   overflow-y: auto;
 }
 
+/* Hides scrollbar for chrome/safari/opera/edge */
+.generators::-webkit-scrollbar {
+  display: none;
+}
+
 .generator {
-  background: #707070;
   width: 100%;
-  border: none;
+  border-width: 0.8vw;
+  background: #707070;
+  border-color: #909090;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .generator:hover {
   background: #909090;
+  border-color: #909090;
 }
 
 .generator:disabled {
   background: #505050;
+  border-color: #676767;
 }
 
 .generator-title-cost {
   float: left;
   text-align: left;
+  width: 80%;
 }
 
 .generator-title {
-  font-size: 3.5vw;
-  color: white;
+  font-size: 3.2vw;
+  color: #FFFFFF;
 }
 
 .generator-cost {
@@ -143,6 +179,7 @@ div.center-text-box {
 }
 
 .generator-count {
+  width: 20%;
   float: right;
   font-size: 5vw;
   color: #e2e2e2;
