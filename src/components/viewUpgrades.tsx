@@ -81,13 +81,12 @@ export function ViewUpgrades({
             {
                 upgrades.map((upgrade: Upgrade) => (
                     upgrade.unlocked && !upgrade.purchased ? (
-                        <div key={upgrade.id}>
-                            <UpgradeSquare
-                                watts={watts}
-                                upgrade={upgrade}
-                                buyUpgrade={buyUpgrade}
-                            ></UpgradeSquare>
-                        </div>
+                        <UpgradeSquare
+                            key={upgrade.id}
+                            watts={watts}
+                            upgrade={upgrade}
+                            buyUpgrade={buyUpgrade}
+                        ></UpgradeSquare>
                     ) : (<div></div>)
                 ))
             }

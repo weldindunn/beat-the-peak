@@ -141,6 +141,8 @@ function App() {
     
   //Update costs
   useEffect(() => {
+    setClickPower(clickBaseProduction * clickProductionBonus);
+
     setLinemenCost((linemenBaseCost * Math.pow(1.15, linemen)) * linemenCostBonus);
     setLinemenProduction(linemenBaseProduction * linemenProductionBonus * linemen);
 
@@ -167,7 +169,8 @@ function App() {
 
     setNuclearCost((nuclearBaseCost * Math.pow(1.15, nuclearPlants)) * nuclearCostBonus);
     setNuclearProduction(nuclearBaseProduction * nuclearProductionBonus * nuclearPlants);
-    }, [linemen, linemenCostBonus, linemenProductionBonus,
+    }, [clickProductionBonus,
+        linemen, linemenCostBonus, linemenProductionBonus,
         coalPlants, coalCostBonus, coalProductionBonus,
         gasPlants, gasCostBonus, gasProductionBonus,
         solarFarms, solarCostBonus, solarProductionBonus,
@@ -214,19 +217,26 @@ function App() {
      Buy Upgrade
      ============= */
   
-  function buyUpgrade(upgrade: Upgrade): void {
-    setUpgrades(upgrades.map((upgrade: Upgrade): Upgrade => ({...upgrade, purchased: true})));
-    setWatts(watts - upgrade.cost);
+  function buyUpgrade(purchasedUpgrade: Upgrade): void {
+    setUpgrades(upgrades.map((upgrade: Upgrade): Upgrade => (
+      purchasedUpgrade.id === upgrade.id ? 
+      {...upgrade, purchased: true} :
+      {...upgrade}
+    )));
+    setWatts(watts - purchasedUpgrade.cost);
 
-    if (upgrade.type === "multiplier") {
-        multiply(upgrade.generator);
+    if (purchasedUpgrade.type === "multiplier") {
+        multiply(purchasedUpgrade.generator);
     }
   }
 
   //Helper function, multiplies production by a generator
   function multiply(generator: string): void {
-    if (generator === "lineman") {
-        setLinemenProductionBonus(linemenProductionBonus * 2);
+    if (generator === "click") {
+        setClickProductionBonus(clickProductionBonus * 2);
+        console.log(generator);
+    } else if (generator === "lineman") {
+      setLinemenProductionBonus(linemenProductionBonus * 2);
     }
   }
 
