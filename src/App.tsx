@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ViewHub } from './components/viewHub';
 import { useFrameLoop } from './components/utilities/frameLoop';
@@ -27,64 +27,85 @@ function App() {
   /* ============================
      Production of each generator
      ============================ */
+  const clickBaseProduction = 1;
+  const [clickProductionBonus, setClickProductionBonus] = useState<number>(1);
+  const [clickPower, setClickPower] = useState<number>(clickBaseProduction * clickProductionBonus);
+  
   const linemenBaseProduction = 1;
-  const [linemenProduction, setLinemenProduction] = useState<number>(linemenBaseProduction);
+  const [linemenProductionBonus, setLinemenProductionBonus] = useState<number>(1);
+  const [linemenProduction, setLinemenProduction] = useState<number>(linemenBaseProduction * linemenProductionBonus * linemen);
 
   const coalBaseProduction = 10;
-  const [coalProduction, setCoalProduction] = useState<number>(coalBaseProduction);
+  const [coalProductionBonus, setCoalProductionBonus] = useState<number>(1);
+  const [coalProduction, setCoalProduction] = useState<number>(coalBaseProduction * coalProductionBonus * coalPlants);
 
   const gasBaseProduction = 80;
-  const [gasProduction, setGasProduction] = useState<number>(gasBaseProduction);
+  const [gasProductionBonus, setGasProductionBonus] = useState<number>(1);
+  const [gasProduction, setGasProduction] = useState<number>(gasBaseProduction * gasProductionBonus * gasPlants);
 
   const solarBaseProduction = 470;
-  const [solarProduction, setSolarProduction] = useState<number>(solarBaseProduction);
+  const [solarProductionBonus, setSolarProductionBonus] = useState<number>(1);
+  const [solarProduction, setSolarProduction] = useState<number>(solarBaseProduction * solarProductionBonus * solarFarms);
 
   const oilBaseProduction = 2600;
-  const [oilProduction, setOilProduction] = useState<number>(oilBaseProduction);
+  const [oilProductionBonus, setOilProductionBonus] = useState<number>(1);
+  const [oilProduction, setOilProduction] = useState<number>(oilBaseProduction * oilProductionBonus * oilWells);
 
   const windBaseProduction = 14000;
-  const [windProduction, setWindProduction] = useState<number>(windBaseProduction);
+  const [windProductionBonus, setWindProductionBonus] = useState<number>(1);
+  const [windProduction, setWindProduction] = useState<number>(windBaseProduction * windProductionBonus * windTurbines);
 
   const biomassBaseProduction = 78000;
-  const [biomassProduction, setBiomassProduction] = useState<number>(biomassBaseProduction);
+  const [biomassProductionBonus, setBiomassProductionBonus] = useState<number>(1);
+  const [biomassProduction, setBiomassProduction] = useState<number>(biomassBaseProduction * biomassProductionBonus * biomassGassifiers);
 
   const hydroBaseProduction = 440000;
-  const [hydroProduction, setHydroProduction] = useState<number>(hydroBaseProduction);
+  const [hydroProductionBonus, setHydroProductionBonus] = useState<number>(1);
+  const [hydroProduction, setHydroProduction] = useState<number>(hydroBaseProduction * hydroProductionBonus * hydroPlants);
 
   const nuclearBaseProduction = 2600000;
-  const [nuclearProduction, setNuclearProduction] = useState<number>(nuclearBaseProduction);
+  const [nuclearProductionBonus, setNuclearProductionBonus] = useState<number>(1);
+  const [nuclearProduction, setNuclearProduction] = useState<number>(nuclearBaseProduction * nuclearProductionBonus * nuclearPlants);
 
 
   /* ======================
      Cost of each generator
      ====================== */
   const linemenBaseCost = 15;
-  const [linemenCost, setLinemenCost] = useState<number>((linemenBaseCost * Math.pow(1.15, linemen)));
+  const linemenCostBonus = 1;
+  const [linemenCost, setLinemenCost] = useState<number>((linemenBaseCost * Math.pow(1.15, linemen)) * linemenCostBonus);
 
   const coalBaseCost = 250;
-  const [coalCost, setCoalCost] = useState<number>((coalBaseCost * Math.pow(1.15, coalPlants)));
+  const coalCostBonus = 1;
+  const [coalCost, setCoalCost] = useState<number>((coalBaseCost * Math.pow(1.15, coalPlants)) * coalCostBonus);
 
   const gasBaseCost = 2600;
-  const [gasCost, setGasCost] = useState<number>((gasBaseCost * Math.pow(1.15, gasPlants)));
+  const gasCostBonus = 1;
+  const [gasCost, setGasCost] = useState<number>((gasBaseCost * Math.pow(1.15, gasPlants)) * gasCostBonus);
 
   const solarBaseCost = 28000;
-  const [solarCost, setSolarCost] = useState<number>((solarBaseCost * Math.pow(1.15, solarFarms)));
+  const solarCostBonus = 1;
+  const [solarCost, setSolarCost] = useState<number>((solarBaseCost * Math.pow(1.15, solarFarms)) * solarCostBonus);
 
   const oilBaseCost = 300000;
-  const [oilCost, setOilCost] = useState<number>((oilBaseCost * Math.pow(1.15, oilWells)));
+  const oilCostBonus = 1;
+  const [oilCost, setOilCost] = useState<number>((oilBaseCost * Math.pow(1.15, oilWells)) * oilCostBonus);
 
   const windBaseCost = 3200000;
-  const [windCost, setWindCost] = useState<number>((windBaseCost * Math.pow(1.15, windTurbines)));
+  const windCostBonus = 1;
+  const [windCost, setWindCost] = useState<number>((windBaseCost * Math.pow(1.15, windTurbines)) * windCostBonus);
 
   const biomassBaseCost = 46000000;
-  const [biomassCost, setBiomassCost] = useState<number>((biomassBaseCost * Math.pow(1.15, biomassGassifiers)));
+  const biomassCostBonus = 1;
+  const [biomassCost, setBiomassCost] = useState<number>((biomassBaseCost * Math.pow(1.15, biomassGassifiers)) * biomassCostBonus);
 
   const hydroBaseCost = 759000000;
-  const [hydroCost, setHydroCost] = useState<number>((hydroBaseCost * Math.pow(1.15, hydroPlants)));
+  const hydroCostBonus = 1;
+  const [hydroCost, setHydroCost] = useState<number>((hydroBaseCost * Math.pow(1.15, hydroPlants)) * hydroCostBonus);
 
   const nuclearBaseCost = 12000000000;
-  const [nuclearCost, setNuclearCost] = useState<number>((nuclearBaseCost * Math.pow(1.15, nuclearPlants)));
-
+  const nuclearCostBonus = 1;
+  const [nuclearCost, setNuclearCost] = useState<number>((nuclearBaseCost * Math.pow(1.15, nuclearPlants)) * nuclearCostBonus);
 
 
   //Array of upgrades
@@ -104,9 +125,110 @@ function App() {
 
       setWatts(watts + wattsPerSec);
     }
+    setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
     setTime(time);
     setDeltaTime(deltaTime);
   });
+
+  //Click Bolt
+  function clickBolt(): void {
+    setWatts(watts + clickPower);
+  }
+
+  /* =============
+     Buy Generator
+     ============= */
+    
+  //Update costs
+  useEffect(() => {
+    setLinemenCost((linemenBaseCost * Math.pow(1.15, linemen)) * linemenCostBonus);
+    setLinemenProduction(linemenBaseProduction * linemenProductionBonus * linemen);
+
+    setCoalCost((coalBaseCost * Math.pow(1.15, coalPlants)) * coalCostBonus);
+    setCoalProduction(coalBaseProduction * coalProductionBonus * coalPlants);
+
+    setGasCost((gasBaseCost * Math.pow(1.15, gasPlants)) * gasCostBonus);
+    setGasProduction(gasBaseProduction * gasProductionBonus * gasPlants);
+
+    setSolarCost((solarBaseCost * Math.pow(1.15, solarFarms)) * solarCostBonus);
+    setSolarProduction(solarBaseProduction * solarProductionBonus * solarFarms);
+
+    setOilCost((oilBaseCost * Math.pow(1.15, oilWells)) * oilCostBonus);
+    setOilProduction(oilBaseProduction * oilProductionBonus * oilWells);
+
+    setWindCost((windBaseCost * Math.pow(1.15, windTurbines)) * windCostBonus);
+    setWindProduction(windBaseProduction * windProductionBonus * windTurbines);
+
+    setBiomassCost((biomassBaseCost * Math.pow(1.15, biomassGassifiers)) * biomassCostBonus);
+    setBiomassProduction(biomassBaseProduction * biomassProductionBonus * biomassGassifiers);
+
+    setHydroCost((hydroBaseCost * Math.pow(1.15, hydroPlants)) * hydroCostBonus);
+    setHydroProduction(hydroBaseProduction * hydroProductionBonus * hydroPlants);
+
+    setNuclearCost((nuclearBaseCost * Math.pow(1.15, nuclearPlants)) * nuclearCostBonus);
+    setNuclearProduction(nuclearBaseProduction * nuclearProductionBonus * nuclearPlants);
+    }, [linemen, linemenCostBonus, linemenProductionBonus,
+        coalPlants, coalCostBonus, coalProductionBonus,
+        gasPlants, gasCostBonus, gasProductionBonus,
+        solarFarms, solarCostBonus, solarProductionBonus,
+        oilWells, oilCostBonus, oilProductionBonus,
+        windTurbines, windCostBonus, windProductionBonus,
+        biomassGassifiers, biomassCostBonus, biomassProductionBonus,
+        hydroPlants, hydroCostBonus, hydroProductionBonus,
+        nuclearPlants, nuclearCostBonus, nuclearProductionBonus]
+  );
+
+  function buyGenerator(generator: string) {
+
+    if (generator === "Lineman") {
+      setLinemen(linemen + 1);
+      setWatts(watts - Math.round(linemenCost));
+    } else if (generator === "Coal Plant") {
+      setCoalPlants(coalPlants + 1);
+      setWatts(watts - Math.round(coalCost));
+    } else if (generator === "Gas Plant") {
+      setGasPlants(gasPlants + 1);
+      setWatts(watts - Math.round(gasCost));
+    } else if (generator === "Solar Farm") {
+      setSolarFarms(solarFarms + 1);
+      setWatts(watts - Math.round(solarCost));
+    } else if (generator === "Oil Well") {
+      setOilWells(oilWells + 1);
+      setWatts(watts - Math.round(oilCost));
+    } else if (generator === "Wind Turbine") {
+      setWindTurbines(windTurbines + 1);
+      setWatts(watts - Math.round(linemenCost));
+    } else if (generator === "Biomass Gassifier") {
+      setBiomassGassifiers(biomassGassifiers + 1);
+      setWatts(watts - Math.round(biomassCost));
+    } else if (generator === "Hydro Plant") {
+      setHydroPlants(hydroPlants + 1);
+      setWatts(watts - Math.round(hydroCost));
+    } else if (generator === "Nuclear Plant") {
+      setNuclearPlants(nuclearPlants + 1);
+      setWatts(watts - Math.round(nuclearCost));
+    }
+  }
+
+  /* =============
+     Buy Upgrade
+     ============= */
+  
+  function buyUpgrade(upgrade: Upgrade): void {
+    setUpgrades(upgrades.map((upgrade: Upgrade): Upgrade => ({...upgrade, purchased: true})));
+    setWatts(watts - upgrade.cost);
+
+    if (upgrade.type === "multiplier") {
+        multiply(upgrade.generator);
+    }
+  }
+
+  //Helper function, multiplies production by a generator
+  function multiply(generator: string): void {
+    if (generator === "lineman") {
+        setLinemenProductionBonus(linemenProductionBonus * 2);
+    }
+  }
 
   /* ===========
      Display Hub
@@ -115,87 +237,44 @@ function App() {
     <div className="App">
       <ViewHub
         watts={watts}
-        setWatts={setWatts}
         wattsPerSec={wattsPerSec}
-        setWattsPerSec={setWattsPerSec}
 
         linemen={linemen}
-        setLinemen={setLinemen}
         coalPlants={coalPlants}
-        setCoalPlants={setCoalPlants}
         gasPlants={gasPlants}
-        setGasPlants={setGasPlants}
         solarFarms={solarFarms}
-        setSolarFarms={setSolarFarms}
         oilWells={oilWells}
-        setOilWells={setOilWells}
         windTurbines={windTurbines}
-        setWindTurbines={setWindTurbines}
         biomassGassifiers={biomassGassifiers}
-        setBiomassGassifiers={setBiomassGassifiers}
         hydroPlants={hydroPlants}
-        setHydroPlants={setHydroPlants}
         nuclearPlants={nuclearPlants}
-        setNuclearPlants={setNuclearPlants}
 
-        linemenBaseProduction={linemenBaseProduction}
         linemenProduction={linemenProduction}
-        setLinemenProduction={setLinemenProduction}
-        coalBaseProduction={coalBaseProduction}
         coalProduction={coalProduction}
-        setCoalProduction={setCoalProduction}
-        gasBaseProduction={gasBaseProduction}
         gasProduction={gasProduction}
-        setGasProduction={setGasProduction}
-        solarBaseProduction={solarBaseProduction}
         solarProduction={solarProduction}
-        setSolarProduction={setSolarProduction}
-        oilBaseProduction={oilBaseProduction}
         oilProduction={oilProduction}
-        setOilProduction={setOilProduction}
-        windBaseProduction={windBaseProduction}
         windProduction={windProduction}
-        setWindProduction={setWindProduction}
-        biomassBaseProduction={biomassBaseProduction}
         biomassProduction={biomassProduction}
-        setBiomassProduction={setBiomassProduction}
-        hydroBaseProduction={hydroBaseProduction}
         hydroProduction={hydroProduction}
-        setHydroProduction={setHydroProduction}
-        nuclearBaseProduction={nuclearBaseProduction}
         nuclearProduction={nuclearProduction}
-        setNuclearProduction={setNuclearProduction}
     
-        linemenBaseCost={linemenBaseCost}
         linemenCost={linemenCost}
-        setLinemenCost={setLinemenCost}
-        coalBaseCost={coalBaseCost}
         coalCost={coalCost}
-        setCoalCost={setCoalCost}
-        gasBaseCost={gasBaseCost}
         gasCost={gasCost}
-        setGasCost={setGasCost}
-        solarBaseCost={solarBaseCost}
         solarCost={solarCost}
-        setSolarCost={setSolarCost}
-        oilBaseCost={oilBaseCost}
         oilCost={oilCost}
-        setOilCost={setOilCost}
-        windBaseCost={windBaseCost}
         windCost={windCost}
-        setWindCost={setWindCost}
-        biomassBaseCost={biomassBaseCost}
         biomassCost={biomassCost}
-        setBiomassCost={setBiomassCost}
-        hydroBaseCost={hydroBaseCost}
         hydroCost={hydroCost}
-        setHydroCost={setHydroCost}
-        nuclearBaseCost={nuclearBaseCost}
         nuclearCost={nuclearCost}
-        setNuclearCost={setNuclearCost}
 
         upgrades={upgrades}
         setUpgrades={setUpgrades}
+
+        clickBolt={clickBolt}
+        buyGenerator={buyGenerator}
+        buyUpgrade={buyUpgrade}
       ></ViewHub>
     </div>
   );

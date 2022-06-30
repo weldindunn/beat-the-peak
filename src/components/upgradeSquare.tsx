@@ -2,27 +2,17 @@ import React from "react";
 import { Upgrade } from "../interfaces/upgrade";
 
 export function UpgradeSquare({
+    watts, 
     upgrade,
-    upgrades,
-    setUpgrades,
-    watts,
-    setWatts
-}: {
-    upgrade: Upgrade;
-    upgrades: Upgrade[];
-    setUpgrades: (upgrades: Upgrade[]) => void;
+    buyUpgrade
+} : {
     watts: number;
-    setWatts: (watts: number) => void;
+    upgrade: Upgrade;
+    buyUpgrade: (upgrade: Upgrade) => void;
 }): JSX.Element {
-
-    function buyUpgrade(): void {
-        setUpgrades(upgrades.map((upgrade: Upgrade): Upgrade => ({...upgrade, purchased: true})));
-        setWatts(watts - upgrade.cost);
-    }
-
     return (
         <>
-            <button className="upgrade" onClick={buyUpgrade} disabled={watts < Math.round(upgrade.cost)}>
+            <button className="upgrade" onClick={() => buyUpgrade(upgrade)} disabled={watts < Math.round(upgrade.cost)}>
                 {upgrade.name}
             </button>
         </>

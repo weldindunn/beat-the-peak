@@ -4,14 +4,76 @@ import { UpgradeSquare } from "./upgradeSquare";
 
 export function ViewUpgrades({
     watts,
-    setWatts,
+    wattsPerSec,
+
+    linemen,
+    coalPlants,
+    gasPlants,
+    solarFarms,
+    oilWells,
+    windTurbines,
+    biomassGassifiers,
+    hydroPlants,
+    nuclearPlants,
+
+    linemenProduction,
+    coalProduction,
+    gasProduction,
+    solarProduction,
+    oilProduction,
+    windProduction,
+    biomassProduction,
+    hydroProduction,
+    nuclearProduction,
+
+    linemenCost,
+    coalCost,
+    gasCost,
+    solarCost,
+    oilCost,
+    windCost,
+    biomassCost,
+    hydroCost,
+    nuclearCost,
+
     upgrades,
-    setUpgrades
-}: {
-    watts: number;
-    setWatts: (watts: number) => void;
+    buyUpgrade
+} : {
+    watts: number; 
+    wattsPerSec: number;
+
+    linemen: number;
+    coalPlants: number;
+    gasPlants: number;
+    solarFarms: number;
+    oilWells: number;
+    windTurbines: number;
+    biomassGassifiers: number;
+    hydroPlants: number;
+    nuclearPlants: number;
+
+    linemenProduction: number;
+    coalProduction: number;
+    gasProduction: number;
+    solarProduction: number;
+    oilProduction: number;
+    windProduction: number;
+    biomassProduction: number;
+    hydroProduction: number;
+    nuclearProduction: number;
+
+    linemenCost: number;
+    coalCost: number;
+    gasCost: number;
+    solarCost: number;
+    oilCost: number;
+    windCost: number;
+    biomassCost: number;
+    hydroCost: number;
+    nuclearCost: number;
+
     upgrades: Upgrade[];
-    setUpgrades: (upgrades: Upgrade[]) => void;
+    buyUpgrade: (upgrade: Upgrade) => void;
 }): JSX.Element {
     return (
         <>
@@ -21,11 +83,9 @@ export function ViewUpgrades({
                     upgrade.unlocked && !upgrade.purchased ? (
                         <div key={upgrade.id}>
                             <UpgradeSquare
-                                upgrade={upgrade}
-                                upgrades={upgrades}
-                                setUpgrades={setUpgrades}
                                 watts={watts}
-                                setWatts={setWatts}
+                                upgrade={upgrade}
+                                buyUpgrade={buyUpgrade}
                             ></UpgradeSquare>
                         </div>
                     ) : (<div></div>)

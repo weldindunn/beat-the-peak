@@ -1,35 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { numberConvertor } from "./utilities/numberConvertor";
 
 export function Generator({
     name,
     watts, 
-    setWatts,
     wattsPerSec,
-    setWattsPerSec,
     generators,
-    setGenerators,
-    costBase,
     generatorCost,
-    setGeneratorCost,
-    generatorProduction
+    generatorProduction,
+    buyGenerator
 } : {
     name: string,
     watts: number; 
     wattsPerSec: number;
-    setWatts: (watts: number) => void;
-    setWattsPerSec: (wattsPerSec: number) => void;
     generators: number;
-    setGenerators: (generators: number) => void;
-    costBase: number;
     generatorCost: number;
-    setGeneratorCost: (generatorCost: number) => void;
     generatorProduction: number;
+    buyGenerator: (generator: string) => void;
 }): JSX.Element {
 
+    /*
     useEffect(() => {
         setGeneratorCost((costBase * Math.pow(1.15, generators)));
-        }, [generators, setGeneratorCost, costBase]
+        }, [generators, setGeneratorCost]
     );
 
     function buyGenerator() {
@@ -45,10 +38,11 @@ export function Generator({
         //Increases the cost of the generator
         setGeneratorCost((costBase * Math.pow(1.15, generators)));
     }
+    */
 
     return (
         <>
-            <button className="generator" onClick={buyGenerator} disabled={watts < Math.round(generatorCost)}>
+            <button className="generator" onClick={() => buyGenerator(name)} disabled={watts < Math.round(generatorCost)}>
                 <div className="generator-title-cost">
                     <div className="generator-title">
                         {name}
