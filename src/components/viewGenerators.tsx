@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Generator } from "./generator";
 
 export function ViewGenerators({
@@ -6,6 +6,7 @@ export function ViewGenerators({
     setWatts,
     wattsPerSec,
     setWattsPerSec,
+
     linemen,
     setLinemen,
     coalPlants,
@@ -23,12 +24,69 @@ export function ViewGenerators({
     hydroPlants,
     setHydroPlants,
     nuclearPlants,
-    setNuclearPlants
+    setNuclearPlants,
+
+    linemenBaseProduction,
+    linemenProduction,
+    setLinemenProduction,
+    coalBaseProduction,
+    coalProduction,
+    setCoalProduction,
+    gasBaseProduction,
+    gasProduction,
+    setGasProduction,
+    solarBaseProduction,
+    solarProduction,
+    setSolarProduction,
+    oilBaseProduction,
+    oilProduction,
+    setOilProduction,
+    windBaseProduction,
+    windProduction,
+    setWindProduction,
+    biomassBaseProduction,
+    biomassProduction,
+    setBiomassProduction,
+    hydroBaseProduction,
+    hydroProduction,
+    setHydroProduction,
+    nuclearBaseProduction,
+    nuclearProduction,
+    setNuclearProduction,
+
+    linemenBaseCost,
+    linemenCost,
+    setLinemenCost,
+    coalBaseCost,
+    coalCost,
+    setCoalCost,
+    gasBaseCost,
+    gasCost,
+    setGasCost,
+    solarBaseCost,
+    solarCost,
+    setSolarCost,
+    oilBaseCost,
+    oilCost,
+    setOilCost,
+    windBaseCost,
+    windCost,
+    setWindCost,
+    biomassBaseCost,
+    biomassCost,
+    setBiomassCost,
+    hydroBaseCost,
+    hydroCost,
+    setHydroCost,
+    nuclearBaseCost,
+    nuclearCost,
+    setNuclearCost
 } : {
     watts: number; 
     wattsPerSec: number;
     setWatts: (watts: number) => void;
     setWattsPerSec: (wattsPerSec: number) => void;
+
     linemen: number;
     setLinemen: (linemen: number) => void;
     coalPlants: number;
@@ -47,47 +105,63 @@ export function ViewGenerators({
     setHydroPlants: (hydroPlants: number) => void;
     nuclearPlants: number;
     setNuclearPlants: (nuclearPlants: number) => void;
+
+    linemenBaseProduction: number;
+    linemenProduction: number;
+    setLinemenProduction: (production: number) => void;
+    coalBaseProduction: number;
+    coalProduction: number;
+    setCoalProduction: (production: number) => void;
+    gasBaseProduction: number;
+    gasProduction: number;
+    setGasProduction: (production: number) => void;
+    solarBaseProduction: number;
+    solarProduction: number;
+    setSolarProduction: (production: number) => void;
+    oilBaseProduction: number;
+    oilProduction: number;
+    setOilProduction: (production: number) => void;
+    windBaseProduction: number;
+    windProduction: number;
+    setWindProduction: (production: number) => void;
+    biomassBaseProduction: number;
+    biomassProduction: number;
+    setBiomassProduction: (production: number) => void;
+    hydroBaseProduction: number;
+    hydroProduction: number;
+    setHydroProduction: (production: number) => void;
+    nuclearBaseProduction: number;
+    nuclearProduction: number;
+    setNuclearProduction: (production: number) => void;
+
+    linemenBaseCost: number;
+    linemenCost: number;
+    setLinemenCost: (cost: number) => void;
+    coalBaseCost: number;
+    coalCost: number;
+    setCoalCost: (cost: number) => void;
+    gasBaseCost: number;
+    gasCost: number;
+    setGasCost: (cost: number) => void;
+    solarBaseCost: number;
+    solarCost: number;
+    setSolarCost: (cost: number) => void;
+    oilBaseCost: number;
+    oilCost: number;
+    setOilCost: (cost: number) => void;
+    windBaseCost: number;
+    windCost: number;
+    setWindCost: (cost: number) => void;
+    biomassBaseCost: number;
+    biomassCost: number;
+    setBiomassCost: (cost: number) => void;
+    hydroBaseCost: number;
+    hydroCost: number;
+    setHydroCost: (cost: number) => void;
+    nuclearBaseCost: number;
+    nuclearCost: number;
+    setNuclearCost: (cost: number) => void;
 }): JSX.Element {
-
-    /*  ===============
-        Generator Stats
-        =============== */
-    const linemenBaseCost = 15;
-    const linemenProduction = 1;
-    const [linemenCost, setLinemenCost] = useState<number>((linemenBaseCost * Math.pow(1.15, linemen)));
-
-    const coalBaseCost = 250;
-    const coalProduction = 10;
-    const [coalCost, setCoalCost] = useState<number>((coalBaseCost * Math.pow(1.15, coalPlants)));
-
-    const gasBaseCost = 2600;
-    const gasProduction = 80;
-    const [gasCost, setGasCost] = useState<number>((gasBaseCost * Math.pow(1.15, gasPlants)));
-
-    const solarBaseCost = 28000;
-    const solarProduction = 470;
-    const [solarCost, setSolarCost] = useState<number>((solarBaseCost * Math.pow(1.15, solarFarms)));
-
-    const oilBaseCost = 300000;
-    const oilProduction = 2600;
-    const [oilCost, setOilCost] = useState<number>((oilBaseCost * Math.pow(1.15, oilWells)));
-
-    const windBaseCost = 3200000;
-    const windProduction = 14000;
-    const [windCost, setWindCost] = useState<number>((windBaseCost * Math.pow(1.15, windTurbines)));
-
-    const biomassBaseCost = 46000000;
-    const biomassProduction = 78000;
-    const [biomassCost, setBiomassCost] = useState<number>((biomassBaseCost * Math.pow(1.15, biomassGassifiers)));
-
-    const hydroBaseCost = 759000000;
-    const hydroProduction = 440000;
-    const [hydroCost, setHydroCost] = useState<number>((hydroBaseCost * Math.pow(1.15, hydroPlants)));
-
-    const nuclearBaseCost = 12000000000;
-    const nuclearProduction = 2600000;
-    const [nuclearCost, setNuclearCost] = useState<number>((nuclearBaseCost * Math.pow(1.15, nuclearPlants)));
-
     return (
         <div className="generators">
             <span>Generators</span>
