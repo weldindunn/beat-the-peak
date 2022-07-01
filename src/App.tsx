@@ -9,6 +9,11 @@ const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
 function App() {  
 
+  //Loads up local storage when page is loaded
+  window.onload = function() {
+    load();
+  }
+
   //The number of watts and watts generated per second
   const [watts, setWatts] = useState<number>(0);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
@@ -118,6 +123,7 @@ function App() {
   const [deltaTime, setDeltaTime] = useState(0);
 
   const [newWatts, setNewWatts] = useState(-1);
+  const [newSave, setNewSave] = useState(10000);
   useFrameLoop((time: number, deltaTime: number) => {
 
     if (time > newWatts) {
@@ -125,6 +131,12 @@ function App() {
 
       setWatts(watts + wattsPerSec);
     }
+    if (time > newSave) {
+      setNewSave(time + 10000);
+
+      save();
+    }
+
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
     setTime(time);
     setDeltaTime(deltaTime);
@@ -255,6 +267,139 @@ function App() {
       setNuclearProductionBonus(nuclearProductionBonus * 2);
     }
   }
+
+  /* =========
+     Save Game
+     ========= */
+
+  function save(): void {
+    //Saves # of watts
+    localStorage.setItem('watts', JSON.stringify(watts));
+
+    //Saves upgrades
+    localStorage.setItem('upgrades', JSON.stringify(upgrades));
+
+    //Saves generators
+    localStorage.setItem('linemen', JSON.stringify(linemen));
+    localStorage.setItem('coalPlants', JSON.stringify(coalPlants));
+    localStorage.setItem('gasPlants', JSON.stringify(gasPlants));
+    localStorage.setItem('solarFarms', JSON.stringify(solarFarms));
+    localStorage.setItem('oilWells', JSON.stringify(oilWells));
+    localStorage.setItem('windTurbines', JSON.stringify(windTurbines));
+    localStorage.setItem('biomassGassifiers', JSON.stringify(biomassGassifiers));
+    localStorage.setItem('hydroPlants', JSON.stringify(hydroPlants));
+    localStorage.setItem('nuclearPlants', JSON.stringify(nuclearPlants));
+
+    //Saves production bonuses
+    localStorage.setItem('linemenProductionBonus', JSON.stringify(linemenProductionBonus));
+    localStorage.setItem('coalProductionBonus', JSON.stringify(coalProductionBonus));
+    localStorage.setItem('gasProductionBonus', JSON.stringify(gasProductionBonus));
+    localStorage.setItem('solarProductionBonus', JSON.stringify(solarProductionBonus));
+    localStorage.setItem('oilProductionBonus', JSON.stringify(oilProductionBonus));
+    localStorage.setItem('windProductionBonus', JSON.stringify(windProductionBonus));
+    localStorage.setItem('biomassProductionBonus', JSON.stringify(biomassProductionBonus));
+    localStorage.setItem('hydroProductionBonus', JSON.stringify(hydroProductionBonus));
+    localStorage.setItem('nuclearProductionBonus', JSON.stringify(nuclearProductionBonus));
+
+    console.log("Saved");
+  }
+
+  /* =========
+     Load Game
+     ========= */
+
+    function load(): void {
+
+      //Loads watts
+      const localWatts = localStorage.getItem('watts');
+      if (localWatts) {
+        setWatts(JSON.parse(localWatts));
+      }
+
+      //Loads upgrades
+      const localUpgrades = localStorage.getItem('upgrades');
+      if (localUpgrades) {
+        setUpgrades(JSON.parse(localUpgrades));
+      }
+
+      //Loads generators
+      const localLinemen = localStorage.getItem('linemen');
+      if (localLinemen) {
+        setLinemen(JSON.parse(localLinemen));
+      }
+      const localCoalPlants = localStorage.getItem('coalPlants');
+      if (localCoalPlants) {
+        setCoalPlants(JSON.parse(localCoalPlants));
+      }
+      const localGasPlants = localStorage.getItem('gasPlants');
+      if (localGasPlants) {
+        setGasPlants(JSON.parse(localGasPlants));
+      }
+      const localSolarFarms = localStorage.getItem('solarFarms');
+      if (localSolarFarms) {
+        setSolarFarms(JSON.parse(localSolarFarms));
+      }
+      const localOilWells = localStorage.getItem('oilWells');
+      if (localOilWells) {
+        setOilWells(JSON.parse(localOilWells));
+      }
+      const localWindTurbines = localStorage.getItem('windTurbines');
+      if (localWindTurbines) {
+        setWindTurbines(JSON.parse(localWindTurbines));
+      }
+      const localBiomassGassifiers = localStorage.getItem('biomassGassifiers');
+      if (localBiomassGassifiers) {
+        setBiomassGassifiers(JSON.parse(localBiomassGassifiers));
+      }
+      const localHydroPlants = localStorage.getItem('hydroPlants');
+      if (localHydroPlants) {
+        setHydroPlants(JSON.parse(localHydroPlants));
+      }
+      const localNuclearPlants = localStorage.getItem('nuclearPlants');
+      if (localNuclearPlants) {
+        setNuclearPlants(JSON.parse(localNuclearPlants));
+      }
+
+      //Loads production bonuses
+      const localLinemenProductionBonus = localStorage.getItem('linemenProductionBonus');
+      if (localLinemenProductionBonus) {
+        setLinemenProductionBonus(JSON.parse(localLinemenProductionBonus));
+      }
+      const localCoalProductionBonus = localStorage.getItem('coalProductionBonus');
+      if (localCoalProductionBonus) {
+        setCoalProductionBonus(JSON.parse(localCoalProductionBonus));
+      }
+      const localGasProductionBonus = localStorage.getItem('gasProductionBonus');
+      if (localGasProductionBonus) {
+        setGasProductionBonus(JSON.parse(localGasProductionBonus));
+      }
+      const localSolarProductionBonus = localStorage.getItem('solarProductionBonus');
+      if (localSolarProductionBonus) {
+        setSolarProductionBonus(JSON.parse(localSolarProductionBonus));
+      }
+      const localOilProductionBonus = localStorage.getItem('oilProductionBonus');
+      if (localOilProductionBonus) {
+        setOilProductionBonus(JSON.parse(localOilProductionBonus));
+      }
+      const localWindProductionBonus = localStorage.getItem('windProductionBonus');
+      if (localWindProductionBonus) {
+        setWindProductionBonus(JSON.parse(localWindProductionBonus));
+      }
+      const localBiomassProductionBonus = localStorage.getItem('biomassProductionBonus');
+      if (localBiomassProductionBonus) {
+        setBiomassProductionBonus(JSON.parse(localBiomassProductionBonus));
+      }
+      const localHydroProductionBonus = localStorage.getItem('hydroProductionBonus');
+      if (localHydroProductionBonus) {
+        setHydroProductionBonus(JSON.parse(localHydroProductionBonus));
+      }
+      const localNuclearProductionBonus = localStorage.getItem('nuclearProductionBonus');
+      if (localNuclearProductionBonus) {
+        setNuclearProductionBonus(JSON.parse(localNuclearProductionBonus));
+      }
+
+      console.log("Loaded");
+    }
 
   /* ===========
      Display Hub
