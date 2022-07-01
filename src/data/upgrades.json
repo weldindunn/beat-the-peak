@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Super-click",
+        "name": "Super-Click",
         "description": "Clicking is twice as efficient",
         "generator": "Click",
         "type": "multiplier",
@@ -11,7 +11,7 @@
     },
     {
         "id": 2,
-        "name": "Super-duper-click",
+        "name": "Super-Duper-Click",
         "description": "Clicking is twice as efficient",
         "generator": "Click",
         "type": "multiplier",
@@ -21,7 +21,7 @@
     },
     {
         "id": 3,
-        "name": "Uber-click",
+        "name": "Uber-Click",
         "description": "Clicking is twice as efficient",
         "generator": "Click",
         "type": "multiplier",
@@ -31,12 +31,63 @@
     },
     {
         "id": 4,
-        "name": "Ultra-pliers",
+        "name": "Ultra-Pliers",
         "description": "Linemen are twice as efficient",
         "generator": "Lineman",
         "type": "multiplier",
         "cost": 1000,
         "unlocked": true,
         "purchased": false
+    },
+    {
+        "id": 5,
+        "name": "Wrench Monkeys",
+        "description": "Linemen are twice as efficient",
+        "generator": "Lineman",
+        "type": "multiplier",
+        "cost": 10000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 6,
+        "name": "Hammer Time!",
+        "description": "Linemen are twice as efficient",
+        "generator": "Lineman",
+        "type": "multiplier",
+        "cost": 50000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 7,
+        "name": "Harder Hats",
+        "description": "Coal Plants are twice as efficient",
+        "generator": "Coal Plant",
+        "type": "multiplier",
+        "cost": 5000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 8,
+        "name": "Robot Canaries",
+        "description": "Coal Plants are twice as efficient",
+        "generator": "Coal Plant",
+        "type": "multiplier",
+        "cost": 50000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 9,
+        "name": "Diamond Pickaxes",
+        "description": "Coal Plants are twice as efficient",
+        "generator": "Coal Plant",
+        "type": "multiplier",
+        "cost": 120000,
+        "unlocked": true,
+        "purchased": false
     }
+
 ]
