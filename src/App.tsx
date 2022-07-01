@@ -132,7 +132,7 @@ function App() {
       setWatts(watts + wattsPerSec);
     }
     if (time > newSave) {
-      setNewSave(time + 10000);
+      setNewSave(time + 4000);
 
       save();
     }
@@ -246,7 +246,6 @@ function App() {
   function multiply(generator: string): void {
     if (generator === "Click") {
         setClickProductionBonus(clickProductionBonus * 2);
-        console.log(generator);
     } else if (generator === "Lineman") {
       setLinemenProductionBonus(linemenProductionBonus * 2);
     } else if (generator === "Coal Plant") {
