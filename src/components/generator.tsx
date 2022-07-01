@@ -18,28 +18,6 @@ export function Generator({
     generatorProduction: number;
     buyGenerator: (generator: string) => void;
 }): JSX.Element {
-
-    /*
-    useEffect(() => {
-        setGeneratorCost((costBase * Math.pow(1.15, generators)));
-        }, [generators, setGeneratorCost]
-    );
-
-    function buyGenerator() {
-        //Adds another generator
-        setGenerators(generators + 1);
-
-        //Increases watts per second by how much the generator produces
-        setWattsPerSec(wattsPerSec + generatorProduction);
-
-        //Subtracts the cost of the generator from the total watts
-        setWatts(watts - Math.round(generatorCost));
-
-        //Increases the cost of the generator
-        setGeneratorCost((costBase * Math.pow(1.15, generators)));
-    }
-    */
-
     return (
         <>
             <button className="generator" onClick={() => buyGenerator(name)} disabled={watts < Math.round(generatorCost)}>
