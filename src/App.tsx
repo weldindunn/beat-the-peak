@@ -230,13 +230,29 @@ function App() {
     }
   }
 
-  //Helper function, multiplies production by a generator
+  //Helper function, multiplies production of a generator
   function multiply(generator: string): void {
-    if (generator === "click") {
+    if (generator === "Click") {
         setClickProductionBonus(clickProductionBonus * 2);
         console.log(generator);
-    } else if (generator === "lineman") {
+    } else if (generator === "Lineman") {
       setLinemenProductionBonus(linemenProductionBonus * 2);
+    } else if (generator === "Coal Plant") {
+      setCoalProductionBonus(coalProductionBonus * 2);
+    } else if (generator === "Gas Plant") {
+      setGasProductionBonus(gasProductionBonus * 2);
+    } else if (generator === "Solar Farm") {
+      setSolarProductionBonus(solarProductionBonus * 2);
+    } else if (generator === "Oil Well") {
+      setOilProductionBonus(oilProductionBonus * 2);
+    } else if (generator === "Wind Turbine") {
+      setWindProductionBonus(windProductionBonus * 2);
+    } else if (generator === "Biomass Gassifier") {
+      setBiomassProductionBonus(biomassProductionBonus * 2);
+    } else if (generator === "Hydro Plant") {
+      setHydroProductionBonus(hydroProductionBonus * 2);
+    } else if (generator === "Nuclear Plant") {
+      setNuclearProductionBonus(nuclearProductionBonus * 2);
     }
   }
 
