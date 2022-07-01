@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/beat-the-peak/static/css/main.77d862e9.css",
-    "main.js": "/beat-the-peak/static/js/main.190e079e.js",
+    "main.css": "/beat-the-peak/static/css/main.0dd2256b.css",
+    "main.js": "/beat-the-peak/static/js/main.8f021181.js",
     "static/js/787.76056a0d.chunk.js": "/beat-the-peak/static/js/787.76056a0d.chunk.js",
     "static/media/bolt.png": "/beat-the-peak/static/media/bolt.9bc9b88a596c2e80fafa.png",
     "index.html": "/beat-the-peak/index.html",
-    "main.77d862e9.css.map": "/beat-the-peak/static/css/main.77d862e9.css.map",
-    "main.190e079e.js.map": "/beat-the-peak/static/js/main.190e079e.js.map",
+    "main.0dd2256b.css.map": "/beat-the-peak/static/css/main.0dd2256b.css.map",
+    "main.8f021181.js.map": "/beat-the-peak/static/js/main.8f021181.js.map",
     "787.76056a0d.chunk.js.map": "/beat-the-peak/static/js/787.76056a0d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.77d862e9.css",
-    "static/js/main.190e079e.js"
+    "static/css/main.0dd2256b.css",
+    "static/js/main.8f021181.js"
   ]
 }
