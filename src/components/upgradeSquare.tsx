@@ -1,5 +1,8 @@
 import React from "react";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Upgrade } from "../interfaces/upgrade";
+import { UpgradeHoverBox } from "./upgradeHoverBox";
+import cursor from "../img/cursor.png";
 
 export function UpgradeSquare({
     watts, 
@@ -12,9 +15,24 @@ export function UpgradeSquare({
 }): JSX.Element {
     return (
         <>
-            <button className="upgrade" onClick={() => buyUpgrade(upgrade)} disabled={watts < Math.round(upgrade.cost)}>
-                {upgrade.name}
-            </button>
+            <OverlayTrigger
+                placement={"right"}
+                overlay={
+                    <Tooltip>
+                        <UpgradeHoverBox upgrade={upgrade}></UpgradeHoverBox>
+                    </Tooltip>
+                }
+            >
+                <button className="upgrade" onClick={() => buyUpgrade(upgrade)} disabled={watts < Math.round(upgrade.cost)}>
+                    {
+                        upgrade.generator === "Click" ? (
+                            <img src={cursor} alt={upgrade.generator}/>
+                        ) : (
+                            <span>{upgrade.generator.charAt(0)}</span>
+                        )
+                    }
+                </button>
+            </OverlayTrigger>
         </>
     )
 }

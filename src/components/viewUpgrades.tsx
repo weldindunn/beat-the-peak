@@ -77,7 +77,9 @@ export function ViewUpgrades({
 }): JSX.Element {
     return (
         <>
-            <span>Upgrades</span>
+            <div>
+                <span>Upgrades</span>
+            </div>
             {
                 upgrades.map((upgrade: Upgrade) => (
                     upgrade.unlocked && !upgrade.purchased ? (
