@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { ViewHub } from './components/viewHub';
 import { useFrameLoop } from './components/utilities/frameLoop';
 import { Upgrade } from "./interfaces/upgrade";
@@ -477,7 +478,6 @@ function App() {
         buyUpgrade={buyUpgrade}
 
         eraseGame={eraseGame}
-        save={save}
       ></ViewHub>
     </div>
   );

@@ -1,16 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { WarningModal } from './warningModal';
 
 export function MenuBar({
-    eraseGame,
-    save
+    eraseGame
 } : {
     eraseGame: () => void;
-    save: () => void;
 }): JSX.Element {
-
-    function eraseProgress(): void {
-
-    }
+    const [isWarning, setWarning] = useState<boolean>(false);
 
     return (
         <div className="menuBar">
@@ -21,7 +17,8 @@ export function MenuBar({
                 <a href="https://www.delaware.coop/" target="_blank" rel="noreferrer">Delaware Electric Coop</a>
             </div>
             <div className="menuBarItem">
-                <button onClick={eraseGame}>Erase Progress</button>
+                <button onClick={() => {setWarning(true); console.log("click!");}}>Erase Progress</button>
+                <WarningModal action={eraseGame} setWarning={setWarning} isWarning={isWarning}></WarningModal>
             </div>
         </div>
     )

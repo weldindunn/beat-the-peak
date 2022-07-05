@@ -46,8 +46,7 @@ export function ViewHub({
     buyGenerator,
     buyUpgrade,
 
-    eraseGame, 
-    save
+    eraseGame
 } : {
     watts: number; 
     wattsPerSec: number;
@@ -90,11 +89,10 @@ export function ViewHub({
     buyUpgrade: (upgrade: Upgrade) => void;
 
     eraseGame: () => void;
-    save: () => void;
 }): JSX.Element {
     return (
         <>
-            <MenuBar eraseGame={eraseGame} save={save}></MenuBar>
+            <MenuBar eraseGame={eraseGame}></MenuBar>
             <div className="hub">
                 {/* Upgrades and Events */}
                 <div className="column">
