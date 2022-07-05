@@ -3,6 +3,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Upgrade } from "../interfaces/upgrade";
 import { UpgradeHoverBox } from "./upgradeHoverBox";
 import cursor from "../img/cursor.png";
+import coal_lump from "../img/coal_lump_alt.png";
 
 export function UpgradeSquare({
     watts, 
@@ -27,6 +28,8 @@ export function UpgradeSquare({
                     {
                         upgrade.generator === "Click" ? (
                             <img src={cursor} alt={upgrade.generator}/>
+                        ) : upgrade.generator === "Coal Plant" ? (
+                            <img src={coal_lump} alt={upgrade.generator}/>
                         ) : (
                             <span>{upgrade.generator.charAt(0)}</span>
                         )

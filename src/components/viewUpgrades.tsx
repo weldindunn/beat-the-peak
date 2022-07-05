@@ -77,7 +77,7 @@ export function ViewUpgrades({
 }): JSX.Element {
     return (
         <>
-            <div>
+            <div className="title">
                 <span>Upgrades</span>
             </div>
             {

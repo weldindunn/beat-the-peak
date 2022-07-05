@@ -42,6 +42,10 @@
   overflow-y: auto;
 }
 
+.title {
+  margin-bottom: 2.5vh;
+}
+
 /* Hides scrollbar for chrome/safari/opera/edge */
 .upgrades::-webkit-scrollbar {
   display: none;
@@ -51,8 +55,16 @@
   width: 6.66vw;
   height: 6.66vw;
   border-width: 0.8vw;
+
+  /*
+  background: #FFD966;
+  border-color: #F9B900;
+  */
+  
   background: #707070;
   border-color: #909090;
+  
+
   color: #FFFFFF;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 2.2vw;
@@ -60,19 +72,33 @@
 }
 
 .upgrade img {
-  max-width: 100%;
-  align-items: center;
-  align-content: center;
+  width: 4vw;
+  height: auto;
 }
 
 .upgrade:hover {
+
+  /*
+  background: #FFE070;
+  border-color: #FFC006;
+  */
+
+  
   background: #909090;
   border-color: #909090;
+  
 }
 
 .upgrade:disabled {
+  /*
+  background: #EFC050;
+  border-color: #E9A900;
+  */
+
+  
   background: #505050;
   border-color: #676767;
+  
 }
 
 .upgrade-tooltip {
@@ -111,9 +137,9 @@
   background: repeating-linear-gradient(
     to right,
   #FFD966,
-  #FFD966 30px,
-  #F9B900 30px,
-  #F9B900 60px
+  #FFD966 3vw,
+  #F9B900 3vw,
+  #F9B900 6vw
   );
   height: 100vh;
   overflow-y:auto;
@@ -140,13 +166,11 @@ div.center-text-box {
 }
 
 /* Style of bolt button */
-.bolt  {
+.bolt button {
   margin-left: auto;
   margin-top: 5vh;
   margin-bottom: 5vh;
-}
 
-.bolt button {
   background: none;
   border-radius: 100%;
   border-width: 0;
@@ -158,7 +182,6 @@ div.center-text-box {
 }
 
 .bolt img:hover {
-  max-width: 80%;
   opacity: 0.85;
 }
 
