@@ -12,18 +12,12 @@ export function ViewCenter ({
     wattsPerSec: number;
     clickBolt: () => void;
 }): JSX.Element {
-
-    function clearStorage(): void {
-        localStorage.clear();
-    }
-
     return (
         <div className="center">
             {/* Power Button */}
             <div className="center-text-box">
                 <span className="center-header">
                     Weldin's Electric Cooperative
-                    <button onClick={clearStorage}>🛈</button>
                 </span>
             </div>
             {/* <span>{name}{"'s Electric Cooperative"}</span> */}
