@@ -2,11 +2,47 @@
   text-align: center;
 }
 
+/* Hides scrollbar for chrome/safari/opera/edge */
+.App::-webkit-scrollbar {
+  display: none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/*==============
+  Menu Bar style
+  ============== */
+.menuBar {
+  background: #5e0606;
+  display: flex;
+}
+
+.menuBarItem {
+  color: #FFFFFF;
+  background: #4b0505;
+  font-size: 1.3vw;
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: #680606;
+
+  margin-left: 2px;
+  padding: 0.8vh;
+
+}
+
+.menuBarItem a {
+  color: #EE6227;
+}
+
+.menuBarItem button {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+}
 
 
 /*  Settings for whole page */
@@ -14,7 +50,6 @@
   display: flex;
   height: 100vh;
 }
-
 
 
 /* Creates general column layour */

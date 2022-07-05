@@ -1,4 +1,5 @@
 import React from "react";
+import { MenuBar } from "./menuBar";
 import { ViewCenter } from "./viewCenter";
 import { ViewGenerators } from "./viewGenerators";
 import { ViewUpgrades } from "./viewUpgrades";
@@ -43,7 +44,9 @@ export function ViewHub({
 
     clickBolt,
     buyGenerator,
-    buyUpgrade
+    buyUpgrade,
+
+    eraseGame
 } : {
     watts: number; 
     wattsPerSec: number;
@@ -84,114 +87,119 @@ export function ViewHub({
     clickBolt: () => void;
     buyGenerator: (generator: string) => void;
     buyUpgrade: (upgrade: Upgrade) => void;
+
+    eraseGame: () => void;
 }): JSX.Element {
     return (
-        <div className="hub">
-            {/* Upgrades and Events */}
-            <div className="column">
-                {/* Upgrades */}
-                <div className="upgrades">
-                    <ViewUpgrades
+        <>
+            <MenuBar eraseGame={eraseGame}></MenuBar>
+            <div className="hub">
+                {/* Upgrades and Events */}
+                <div className="column">
+                    {/* Upgrades */}
+                    <div className="upgrades">
+                        <ViewUpgrades
+                            watts={watts}
+                            wattsPerSec={wattsPerSec}
+
+                            linemen={linemen}
+                            coalPlants={coalPlants}
+                            gasPlants={gasPlants}
+                            solarFarms={solarFarms}
+                            oilWells={oilWells}
+                            windTurbines={windTurbines}
+                            biomassGassifiers={biomassGassifiers}
+                            hydroPlants={hydroPlants}
+                            nuclearPlants={nuclearPlants}
+
+                            linemenProduction={linemenProduction}
+                            coalProduction={coalProduction}
+                            gasProduction={gasProduction}
+                            solarProduction={solarProduction}
+                            oilProduction={oilProduction}
+                            windProduction={windProduction}
+                            biomassProduction={biomassProduction}
+                            hydroProduction={hydroProduction}
+                            nuclearProduction={nuclearProduction}
+                        
+                            linemenCost={linemenCost}
+                            coalCost={coalCost}
+                            gasCost={gasCost}
+                            solarCost={solarCost}
+                            oilCost={oilCost}
+                            windCost={windCost}
+                            biomassCost={biomassCost}
+                            hydroCost={hydroCost}
+                            nuclearCost={nuclearCost}
+
+                            upgrades={upgrades}
+                            buyUpgrade={buyUpgrade}
+                        ></ViewUpgrades>
+                    </div>
+
+                    {/* Events */}
+                    <div className="events">
+                        <span>Events</span>
+                    </div>
+                </div>
+
+                {/* Center */}
+                <div className="column">
+                    <ViewCenter
                         watts={watts}
                         wattsPerSec={wattsPerSec}
-
-                        linemen={linemen}
-                        coalPlants={coalPlants}
-                        gasPlants={gasPlants}
-                        solarFarms={solarFarms}
-                        oilWells={oilWells}
-                        windTurbines={windTurbines}
-                        biomassGassifiers={biomassGassifiers}
-                        hydroPlants={hydroPlants}
-                        nuclearPlants={nuclearPlants}
-
-                        linemenProduction={linemenProduction}
-                        coalProduction={coalProduction}
-                        gasProduction={gasProduction}
-                        solarProduction={solarProduction}
-                        oilProduction={oilProduction}
-                        windProduction={windProduction}
-                        biomassProduction={biomassProduction}
-                        hydroProduction={hydroProduction}
-                        nuclearProduction={nuclearProduction}
-                    
-                        linemenCost={linemenCost}
-                        coalCost={coalCost}
-                        gasCost={gasCost}
-                        solarCost={solarCost}
-                        oilCost={oilCost}
-                        windCost={windCost}
-                        biomassCost={biomassCost}
-                        hydroCost={hydroCost}
-                        nuclearCost={nuclearCost}
-
-                        upgrades={upgrades}
-                        buyUpgrade={buyUpgrade}
-                    ></ViewUpgrades>
+                        clickBolt={clickBolt}
+                    ></ViewCenter>
                 </div>
 
-                {/* Events */}
-                <div className="events">
-                    <span>Events</span>
-                </div>
-            </div>
+                {/* Generators and Transporters */}
+                <div className="column">
+                    {/* Generators */}
+                    <div>
+                        <ViewGenerators
+                            watts={watts}
+                            wattsPerSec={wattsPerSec}
 
-            {/* Center */}
-            <div className="column">
-                <ViewCenter
-                    watts={watts}
-                    wattsPerSec={wattsPerSec}
-                    clickBolt={clickBolt}
-                ></ViewCenter>
-            </div>
+                            linemen={linemen}
+                            coalPlants={coalPlants}
+                            gasPlants={gasPlants}
+                            solarFarms={solarFarms}
+                            oilWells={oilWells}
+                            windTurbines={windTurbines}
+                            biomassGassifiers={biomassGassifiers}
+                            hydroPlants={hydroPlants}
+                            nuclearPlants={nuclearPlants}
 
-            {/* Generators and Transporters */}
-            <div className="column">
-                {/* Generators */}
-                <div>
-                    <ViewGenerators
-                        watts={watts}
-                        wattsPerSec={wattsPerSec}
+                            linemenProduction={linemenProduction}
+                            coalProduction={coalProduction}
+                            gasProduction={gasProduction}
+                            solarProduction={solarProduction}
+                            oilProduction={oilProduction}
+                            windProduction={windProduction}
+                            biomassProduction={biomassProduction}
+                            hydroProduction={hydroProduction}
+                            nuclearProduction={nuclearProduction}
+                        
+                            linemenCost={linemenCost}
+                            coalCost={coalCost}
+                            gasCost={gasCost}
+                            solarCost={solarCost}
+                            oilCost={oilCost}
+                            windCost={windCost}
+                            biomassCost={biomassCost}
+                            hydroCost={hydroCost}
+                            nuclearCost={nuclearCost}
 
-                        linemen={linemen}
-                        coalPlants={coalPlants}
-                        gasPlants={gasPlants}
-                        solarFarms={solarFarms}
-                        oilWells={oilWells}
-                        windTurbines={windTurbines}
-                        biomassGassifiers={biomassGassifiers}
-                        hydroPlants={hydroPlants}
-                        nuclearPlants={nuclearPlants}
+                            buyGenerator={buyGenerator}
+                        ></ViewGenerators>
+                    </div>
 
-                        linemenProduction={linemenProduction}
-                        coalProduction={coalProduction}
-                        gasProduction={gasProduction}
-                        solarProduction={solarProduction}
-                        oilProduction={oilProduction}
-                        windProduction={windProduction}
-                        biomassProduction={biomassProduction}
-                        hydroProduction={hydroProduction}
-                        nuclearProduction={nuclearProduction}
-                    
-                        linemenCost={linemenCost}
-                        coalCost={coalCost}
-                        gasCost={gasCost}
-                        solarCost={solarCost}
-                        oilCost={oilCost}
-                        windCost={windCost}
-                        biomassCost={biomassCost}
-                        hydroCost={hydroCost}
-                        nuclearCost={nuclearCost}
-
-                        buyGenerator={buyGenerator}
-                    ></ViewGenerators>
-                </div>
-
-                {/* Transporters */}
-                <div className="transporters">
-                    <span>Transporters</span>
+                    {/* Transporters */}
+                    <div className="transporters">
+                        <span>Transporters</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

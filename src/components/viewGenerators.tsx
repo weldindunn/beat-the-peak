@@ -74,7 +74,9 @@ export function ViewGenerators({
 }): JSX.Element {
     return (
         <div className="generators">
-            <span>Generators</span>
+            <div className="title">
+                <span>Generators</span>
+            </div>
             <Generator
                 name="Lineman"
                 watts={watts}
