@@ -160,11 +160,10 @@ body {
 
 .center-column {
   position: absolute;
-  padding-left: 16px;
-  padding-right: 16px;
   top: 0px;
-  left: 616px;
-  right: 300px;
+  bottom: 0px;
+  left: 632px;
+  right: 316px;
   min-width: 100px;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -275,7 +274,8 @@ body {
   #F9B900 3vw,
   #F9B900 6vw
   );
-  height: 100vh;
+
+  height: 100%;
   overflow-y:auto;
 }
 
@@ -284,39 +284,58 @@ body {
   display: none;
 }
 
-div.center-text-box {
+div.name-text-box {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  right: 0px;
   background-color: black;
   opacity: 0.4;
   color: white;
-}
 
-.center-header {
-  font-size: 36px;
+  line-height: 32px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
-.center-text {
-  font-size: 36vpx;
+div.watts-text-box {
+  position: absolute;
+  bottom: 10%;
+  left: 0px;
+  right: 0px;
+  background-color: black;
+  opacity: 0.4;
+  color: white;
+
+  line-height: 28px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.num-wps {
+  font-size: 24px;
 }
 
 /* Style of bolt button */
 .bolt button {
-  margin-left: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  position: absolute;
 
+  top: 23%;
+  left: 10%;
+  right: 10%;
   background: none;
-  border-radius: 100%;
+  border-radius: 90%;
   border-width: 0;
 }
 
 .bolt img {
-  max-width: 80%;
+  width: 100%;
   border-radius: 100%;
 }
 
 .bolt img:hover {
   opacity: 0.85;
+  transform: scale(1.05);
 }
 
 /*======================

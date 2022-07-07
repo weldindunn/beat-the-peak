@@ -15,12 +15,11 @@ export function ViewCenter ({
     return (
         <div className="center">
             {/* Power Button */}
-            <div className="center-text-box">
-                <span className="center-header">
+            <div className="name-text-box">
+                <span className="coop-name">
                     Weldin's Electric Cooperative
                 </span>
             </div>
-            {/* <span>{name}{"'s Electric Cooperative"}</span> */}
 
             {/* Power Button */}
             <div className="bolt">
@@ -30,15 +29,12 @@ export function ViewCenter ({
             </div>
             
             {/* # of Watts */}
-            <div className="center-text-box">
-                <span className="center-header">
+            <div className="watts-text-box">
+                <span className="num-watts">
                     {numberConvertor(watts)}{" watts"}
                 </span>
-            </div>
-
-            {/* # of Watts per second */}
-            <div className="center-text-box">
-                <span className="center-text">
+                <br/>
+                <span className="num-wps">
                     {"per second: "}{numberConvertor(wattsPerSec)}
                 </span>
             </div>
