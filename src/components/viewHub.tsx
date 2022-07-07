@@ -94,8 +94,17 @@ export function ViewHub({
         <>
             <MenuBar eraseGame={eraseGame}></MenuBar>
             <div className="hub">
-                {/* Upgrades and Events */}
-                <div className="column">
+                {/* Events */}
+                <div className="events-column">
+                    <div className="events">
+                        <span>Events</span>
+                    </div>
+                </div>
+
+                {/* Barrier */}
+                <div className="left-barrier"/>
+
+                <div className="upgrades-structures-column">
                     {/* Upgrades */}
                     <div className="upgrades">
                         <ViewUpgrades
@@ -137,14 +146,17 @@ export function ViewHub({
                         ></ViewUpgrades>
                     </div>
 
-                    {/* Events */}
-                    <div className="events">
-                        <span>Events</span>
+                    {/* Structures */}
+                    <div className="structures">
+                        <span>Structures</span>
                     </div>
                 </div>
 
+                {/* Barrier */}
+                <div className="middle-barrier"/>
+
                 {/* Center */}
-                <div className="column">
+                <div className="center-column">
                     <ViewCenter
                         watts={watts}
                         wattsPerSec={wattsPerSec}
@@ -152,8 +164,11 @@ export function ViewHub({
                     ></ViewCenter>
                 </div>
 
+                {/* Barrier */}
+                <div className="right-barrier"/>
+
                 {/* Generators and Transporters */}
-                <div className="column">
+                <div className="right-column">
                     {/* Generators */}
                     <div>
                         <ViewGenerators
