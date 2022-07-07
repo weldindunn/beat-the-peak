@@ -213,7 +213,7 @@ function App() {
       setWatts(watts - Math.round(oilCost));
     } else if (generator === "Wind Turbine") {
       setWindTurbines(windTurbines + 1);
-      setWatts(watts - Math.round(linemenCost));
+      setWatts(watts - Math.round(windCost));
     } else if (generator === "Biomass Gassifier") {
       setBiomassGassifiers(biomassGassifiers + 1);
       setWatts(watts - Math.round(biomassCost));
