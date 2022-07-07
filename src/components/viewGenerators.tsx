@@ -1,5 +1,7 @@
 import React from "react";
 import { Generator } from "./generator";
+import lineman from "../img/lineman_icon.png";
+import coal_plant from "../img/Coal_Plant_Icon.png";
 
 export function ViewGenerators({
     watts,
@@ -79,6 +81,7 @@ export function ViewGenerators({
             </div>
             <Generator
                 name="Lineman"
+                icon={lineman}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={linemen}
@@ -88,6 +91,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Coal Plant"
+                icon={coal_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={coalPlants}
@@ -97,6 +101,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Gas Plant"
+                icon={coal_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={gasPlants}
@@ -106,6 +111,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Solar Farm"
+                icon={lineman}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={solarFarms}
@@ -115,6 +121,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Oil Well"
+                icon={coal_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={oilWells}
@@ -124,6 +131,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Wind Turbine"
+                icon={lineman}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={windTurbines}
@@ -133,6 +141,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Biomass Gassifier"
+                icon={lineman}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={biomassGassifiers}
@@ -142,6 +151,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Hydro Plant"
+                icon={lineman}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={hydroPlants}
@@ -151,6 +161,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Nuclear Plant"
+                icon={coal_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={nuclearPlants}

@@ -1,9 +1,9 @@
 import React from "react";
 import { numberConvertor } from "./utilities/numberConvertor";
-import lineman from "../img/lineman_icon.png";
 
 export function Generator({
     name,
+    icon,
     watts, 
     wattsPerSec,
     generators,
@@ -12,6 +12,7 @@ export function Generator({
     buyGenerator
 } : {
     name: string,
+    icon: string,
     watts: number; 
     wattsPerSec: number;
     generators: number;
@@ -23,7 +24,7 @@ export function Generator({
         <>
             <button className="generator" onClick={() => buyGenerator(name)} disabled={watts < Math.round(generatorCost)}>
                 <div className="generator-icon">
-                    <img src={lineman} alt="L"></img>
+                    <img src={icon} alt={name.charAt(0)}></img>
                 </div>
                 <div className="generator-content">
                     <div className="generator-title">
