@@ -84,7 +84,7 @@ body {
   bottom: 0px;
   left: 300px;
   width: 16px;
-  height: 100;
+  height: 100%;
 
 }
 
@@ -93,9 +93,9 @@ body {
   background: #5f0606;
   top: 0px;
   bottom: 0px;
-  left: 600px;
+  left: 616px;
   width: 16px;
-  height: 100;
+  height: 100%;
 
 }
 
@@ -106,32 +106,56 @@ body {
   bottom: 0px;
   right: 300px;
   width: 16px;
-  height: 100;
+  height: 100%;
 
 }
 
-.events-column {
+.left-column {
   position: absolute;
   top: 0px;
   left: 0px;
   bottom: 0px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  width: 300px;
-  min-width: 100px;
+  right: 616px;
 }
 
-.upgrades-structures-column {
+.top-row {
   position: absolute;
-  padding-left: 16px;
-  margin-right: 16px;
   top: 0px;
-  left: 300px;
+  left: 0px;
+  right: 616px;
+}
+
+.events-column {
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin-right: 16px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  
+  width: 300px;
+}
+
+.upgrades-column {
+  position: absolute;
+  top: 0px;
+  left: 316px;
   min-width: 100px;
   overflow-x: hidden;
   overflow-y: hidden;
 
   width: 300px;
+}
+
+.structures-column {
+  position: absolute;
+  top: 50vh;
+  left: 0px;
+  bottom: 0px;
+  margin-right: 16px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 616px;
 }
 
 .center-column {
@@ -139,7 +163,7 @@ body {
   padding-left: 16px;
   padding-right: 16px;
   top: 0px;
-  left: 600px;
+  left: 616px;
   right: 300px;
   min-width: 100px;
   overflow-x: hidden;
@@ -165,7 +189,7 @@ body {
 .events {
   background: #ffd24b;
   color: #FFFFFF;
-  height: 100vh;
+  height: 50vh;
 }
 
 /*====================
@@ -235,7 +259,7 @@ body {
   Structure column style
   ====================== */
 .structures {
-  background: #ffd24b;
+  background: #2b862b;
   color: #FFFFFF;
   height: 50vh;
 }
