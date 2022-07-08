@@ -1,6 +1,7 @@
 import React from "react";
 import { Upgrade } from "../interfaces/upgrade";
 import { UpgradeSquare } from "./upgradeSquare";
+import "./style/upgrades.css";
 
 export function ViewUpgrades({
     watts,

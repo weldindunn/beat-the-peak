@@ -1,6 +1,7 @@
 import React from "react";
 //import { Button } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
+import "./style/center.css";
 import bolt from "../img/bolt.png";
 
 export function ViewCenter ({

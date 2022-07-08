@@ -1,5 +1,6 @@
 import React from "react";
 import { Generator } from "./generator";
+import "./style/generators.css";
 import lineman from "../img/lineman_icon.png";
 import coal_plant from "../img/Coal_Plant_Icon.png";
 import gas_plant from "../img/Gas_Plant_Icon.png";
