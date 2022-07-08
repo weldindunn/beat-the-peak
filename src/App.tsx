@@ -130,7 +130,7 @@ function App() {
     if (time > newWatts) {
       setNewWatts(time + 1000);
 
-      setWatts(watts + wattsPerSec);
+      //setWatts(watts + wattsPerSec);
     }
     if (time > newSave) {
       setNewSave(time + 4000);
@@ -139,6 +139,8 @@ function App() {
     }
 
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
+    setWatts(watts + (wattsPerSec)/(1000/deltaTime))
+
     setTime(time);
     setDeltaTime(deltaTime);
   });
