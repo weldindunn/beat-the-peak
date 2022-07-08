@@ -83,7 +83,7 @@ body {
   background: #5f0606;
   top: 0px;
   bottom: 0px;
-  left: 300px;
+  left: 319px;
   width: 16px;
   height: 100%;
 
@@ -134,18 +134,18 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   
-  width: 300px;
+  width: 319px;
 }
 
 .upgrades-column {
   position: absolute;
   top: 0px;
-  left: 316px;
+  left: 335px;
   min-width: 100px;
   overflow-x: hidden;
   overflow-y: hidden;
 
-  width: 300px;
+  width: 281px;
 }
 
 .structures-column {

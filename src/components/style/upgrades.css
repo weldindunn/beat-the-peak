@@ -13,30 +13,19 @@
   .upgrade {
     width: 64px;
     height: 64px;
-    border-width: 6px;
-    
-    background: #707070;
-    border-color: #909090;
-  
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border: none;
+    background: url("../../img/Upgrade_Background.png");
     color: #FFFFFF;
     font-size: 28px;
-    float: left;
   }
   
   .upgrade img {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     padding: 6px;
-  }
-  
-  .upgrade:hover {
-    background: #909090;
-    border-color: #909090;
-  }
-  
-  .upgrade:disabled {
-    background: #505050;
-    border-color: #676767;
   }
   
   .upgrade-tooltip {
