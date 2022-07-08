@@ -124,7 +124,7 @@ function App() {
   const [deltaTime, setDeltaTime] = useState(0);
 
   const [newWatts, setNewWatts] = useState(-1);
-  const [newSave, setNewSave] = useState(10000);
+  const [newSave, setNewSave] = useState(5000);
   useFrameLoop((time: number, deltaTime: number) => {
 
     if (time > newWatts) {
@@ -133,7 +133,7 @@ function App() {
       //setWatts(watts + wattsPerSec);
     }
     if (time > newSave) {
-      setNewSave(time + 4000);
+      setNewSave(time + 2000);
 
       save();
     }
