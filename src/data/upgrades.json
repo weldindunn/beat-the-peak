@@ -88,6 +88,66 @@
         "cost": 120000,
         "unlocked": true,
         "purchased": false
+    },
+    {
+        "id": 10,
+        "name": "Frack-a-lackin'",
+        "description": "Gas Plants are twice as efficient",
+        "generator": "Gas Plant",
+        "type": "multiplier",
+        "cost": 150000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 11,
+        "name": "XL Pipelines",
+        "description": "Gas Plants are twice as efficient",
+        "generator": "Gas Plant",
+        "type": "multiplier",
+        "cost": 360000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 12,
+        "name": "REALLY big drills",
+        "description": "Gas Plants are twice as efficient",
+        "generator": "Gas Plant",
+        "type": "multiplier",
+        "cost": 1250000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 13,
+        "name": "Fancier Mirrors",
+        "description": "Solar Farms are twice as efficient",
+        "generator": "Solar Farm",
+        "type": "multiplier",
+        "cost": 2800000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 14,
+        "name": "Tesla Magic",
+        "description": "Solar Farms are twice as efficient",
+        "generator": "Solar Farm",
+        "type": "multiplier",
+        "cost": 8000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 15,
+        "name": "Perovskite Cells",
+        "description": "Solar Farms are twice as efficient",
+        "generator": "Solar Farm",
+        "type": "multiplier",
+        "cost": 15000000,
+        "unlocked": true,
+        "purchased": false
     }
 
 ]
