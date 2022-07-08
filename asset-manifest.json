@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/beat-the-peak/static/css/main.c621090a.css",
-    "main.js": "/beat-the-peak/static/js/main.320afcb2.js",
+    "main.js": "/beat-the-peak/static/js/main.d1c0a867.js",
     "static/js/787.76056a0d.chunk.js": "/beat-the-peak/static/js/787.76056a0d.chunk.js",
     "static/media/bolt.png": "/beat-the-peak/static/media/bolt.9bc9b88a596c2e80fafa.png",
     "index.html": "/beat-the-peak/index.html",
     "main.c621090a.css.map": "/beat-the-peak/static/css/main.c621090a.css.map",
-    "main.320afcb2.js.map": "/beat-the-peak/static/js/main.320afcb2.js.map",
+    "main.d1c0a867.js.map": "/beat-the-peak/static/js/main.d1c0a867.js.map",
     "787.76056a0d.chunk.js.map": "/beat-the-peak/static/js/787.76056a0d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c621090a.css",
-    "static/js/main.320afcb2.js"
+    "static/js/main.d1c0a867.js"
   ]
 }
