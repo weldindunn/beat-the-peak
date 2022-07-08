@@ -20,6 +20,18 @@
     background: url("../../img/Upgrade_Background.png");
     color: #FFFFFF;
     font-size: 28px;
+    opacity: 0.8;
+    transition-property: opacity, margin-bottom;
+    transition-duration: 0.25s, 0.1s;
+    transition-timing-function: ease-out, ease-out;
+  }
+
+  .upgrade:hover {
+    opacity: 1;
+  }
+
+  .upgrade:disabled {
+    opacity: 0.65;
   }
   
   .upgrade img {

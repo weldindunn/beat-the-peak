@@ -22,9 +22,21 @@
   position: relative;
   border: none;
   text-align: left;
+  opacity: 0.85;
   transition-property: opacity, margin-bottom;
   transition-duration: 0.25s, 0.1s;
   transition-timing-function: ease-out, ease-out;
+}
+
+.generator:hover {
+  opacity: 1;
+}
+
+.generator:disabled {
+  opacity: 0.6;
+}
+.generator:disabled:hover {
+  opacity: 0.85;
 }
 
 .generator-icon {
