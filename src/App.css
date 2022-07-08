@@ -9,6 +9,7 @@
 
 div {
   display: block;
+  line-height: 1;
 }
 
 body {
@@ -179,7 +180,8 @@ body {
 }
 
 .title {
-  margin-bottom: 6px;
+  margin-top: 6px;
+  margin-bottom: 10px;
 }
   
 /*==================
