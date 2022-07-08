@@ -33,6 +33,10 @@
   .upgrade:disabled {
     opacity: 0.65;
   }
+
+  .upgrade:disabled:hover {
+    opacity: 0.8;
+  }
   
   .upgrade img {
     width: 48px;
