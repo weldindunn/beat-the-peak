@@ -2,6 +2,8 @@ import React from "react";
 import { Generator } from "./generator";
 import lineman from "../img/lineman_icon.png";
 import coal_plant from "../img/Coal_Plant_Icon.png";
+import gas_plant from "../img/Gas_Plant_Icon.png";
+import solar_farm from "../img/Solar_Farm_Icon.png";
 
 export function ViewGenerators({
     watts,
@@ -101,7 +103,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Gas Plant"
-                icon={coal_plant}
+                icon={gas_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={gasPlants}
@@ -111,7 +113,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Solar Farm"
-                icon={lineman}
+                icon={solar_farm}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={solarFarms}
@@ -121,7 +123,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Oil Well"
-                icon={coal_plant}
+                icon={gas_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={oilWells}
@@ -141,7 +143,7 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Biomass Gassifier"
-                icon={lineman}
+                icon={gas_plant}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={biomassGassifiers}
