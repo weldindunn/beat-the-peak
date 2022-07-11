@@ -23,7 +23,7 @@ export function UpgradeSquare({
                 placement={"right"}
                 overlay={
                     <div className="tooltip">
-                        <div className="top">
+                        <div>
                             { //Image
                                 upgrade.generator === "Click" ? (
                                     <img src={cursor} alt={upgrade.generator}/>

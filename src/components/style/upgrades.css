@@ -45,9 +45,9 @@
 }
 
 .tooltip {
-  background: #404040;
+  background: url(../../img/Upgrade_Tooltip_Background.png);
   color: #FFFFFF;
-  width: 400px;
+  width: 412px;
   height: 88px;
   padding-top: 1vh;
   padding-bottom: 1vh;
@@ -57,14 +57,10 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.top {
-  
-}
-
 .tooltip img {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 12px;
   width: 36px;
   height: 36px;
 }
@@ -72,14 +68,14 @@
 .name {
   position: absolute;
   left: 54px;
-  top: 12px;
+  top: 14px;
   font-size: 28px;
 }
 
 .cost {
   position: absolute;
-  top: 12px;
-  right: 10px;
+  top: 14px;
+  right: 12px;
   color:#FC0;
   font-size: 20px;
   padding-left: 18px;
@@ -98,6 +94,6 @@
 
 .description {
   position: absolute;
-  bottom: 6px;
+  bottom: 8px;
   font-size: 18px;
 }
