@@ -8,6 +8,7 @@ import coal_plant from "../img/Coal_Plant_Icon.png";
 import gas_plant from "../img/Gas_Plant_Icon.png";
 import solar_farm from "../img/Solar_Farm_Icon.png";
 import oil_well from "../img/Oil_Well_Icon.png";
+import wind_turbine from "../img/Wind_Turbine_Icon.png";
 
 //Tooltip Icons
 import hard_hat from "../img/Hard_Hat.png";
@@ -15,6 +16,7 @@ import coal_lump from "../img/coal_lump_alt.png";
 import gas_symbol from "../img/Gas_Symbol.png";
 import sun from "../img/Sun.png";
 import oil_drop from "../img/Oil_Drop.png";
+import wind_symbol from "../img/Wind_Symbol.png";
 
 export function ViewGenerators({
     watts,
@@ -154,8 +156,8 @@ export function ViewGenerators({
             ></Generator>
             <Generator
                 name="Wind Turbine"
-                icon={lineman}
-                tooltip_icon={hard_hat}
+                icon={wind_turbine}
+                tooltip_icon={wind_symbol}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={windTurbines}
@@ -179,7 +181,7 @@ export function ViewGenerators({
             <Generator
                 name="Hydro Plant"
                 icon={lineman}
-                tooltip_icon={hard_hat}
+                tooltip_icon={wind_symbol}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 generators={hydroPlants}

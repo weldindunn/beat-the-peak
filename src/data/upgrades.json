@@ -178,6 +178,36 @@
         "cost": 140000000,
         "unlocked": true,
         "purchased": false
+    },
+    {
+        "id": 19,
+        "name": "Vertical Turbines",
+        "description": "Wind Turbines are twice as efficient",
+        "generator": "Wind Turbine",
+        "type": "multiplier",
+        "cost": 40000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 20,
+        "name": "Dutch Engineering",
+        "description": "Wind Turbines are twice as efficient",
+        "generator": "Wind Turbine",
+        "type": "multiplier",
+        "cost": 100000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 21,
+        "name": "Don Quixote's Cryptonite",
+        "description": "Wind Turbines are twice as efficient",
+        "generator": "Wind Turbine",
+        "type": "multiplier",
+        "cost": 800000000,
+        "unlocked": true,
+        "purchased": false
     }
 
 ]

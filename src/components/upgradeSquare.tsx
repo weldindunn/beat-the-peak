@@ -8,6 +8,7 @@ import coal_lump from "../img/coal_lump_alt.png";
 import gas_symbol from "../img/Gas_Symbol.png";
 import sun from "../img/Sun.png";
 import oil_drop from "../img/Oil_Drop.png";
+import wind_symbol from "../img/Wind_Symbol.png";
 
 export function UpgradeSquare({
     watts, 
@@ -38,6 +39,8 @@ export function UpgradeSquare({
                                     <img src={sun} alt={upgrade.generator}/>
                                 ) : upgrade.generator === "Oil Well" ? (
                                     <img src={oil_drop} alt={upgrade.generator}/>
+                                ) : upgrade.generator === "Wind Turbine" ? (
+                                    <img src={wind_symbol} alt={upgrade.generator}/>
                                 ) : (
                                     <span>{upgrade.generator.charAt(0)}</span>
                                 )
@@ -63,6 +66,8 @@ export function UpgradeSquare({
                             <img src={sun} alt={upgrade.generator}/>
                         ) : upgrade.generator === "Oil Well" ? (
                             <img src={oil_drop} alt={upgrade.generator}/>
+                        ) : upgrade.generator === "Wind Turbine" ? (
+                            <img src={wind_symbol} alt={upgrade.generator}/>
                         ) : (
                             <span>{upgrade.generator.charAt(0)}</span>
                         )
