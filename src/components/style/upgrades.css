@@ -1,63 +1,103 @@
 .upgrades {
-    background: rgb(216, 112, 15);
-    color: #FFFFE0;
-    height: 50vh;
-    overflow-y: auto;
-  }
-  
-  /* Hides scrollbar for chrome/safari/opera/edge */
-  .upgrades::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .upgrade {
-    width: 64px;
-    height: 64px;
-    float: left;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    border: none;
-    background: url("../../img/Upgrade_Background.png");
-    color: #FFFFFF;
-    font-size: 28px;
-    opacity: 0.8;
-    transition-property: opacity, margin-bottom;
-    transition-duration: 0.25s, 0.1s;
-    transition-timing-function: ease-out, ease-out;
-  }
+  background: rgb(216, 112, 15);
+  color: #FFFFE0;
+  height: 50vh;
+  overflow-y: auto;
+}
 
-  .upgrade:hover {
-    opacity: 1;
-  }
+/* Hides scrollbar for chrome/safari/opera/edge */
+.upgrades::-webkit-scrollbar {
+  display: none;
+}
 
-  .upgrade:disabled {
-    opacity: 0.65;
-  }
+.upgrade {
+  width: 64px;
+  height: 64px;
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border: none;
+  background: url("../../img/Upgrade_Background.png");
+  color: #FFFFFF;
+  font-size: 28px;
+  opacity: 0.8;
+  transition-property: opacity, margin-bottom;
+  transition-duration: 0.25s, 0.1s;
+  transition-timing-function: ease-out, ease-out;
+}
 
-  .upgrade:disabled:hover {
-    opacity: 0.8;
-  }
+.upgrade:hover {
+  opacity: 1;
+}
+
+.upgrade:disabled {
+  opacity: 0.65;
+}
+
+.upgrade:disabled:hover {
+  opacity: 0.8;
+}
+
+.upgrade img {
+  width: 48px;
+  height: 48px;
+  padding: 6px;
+}
+
+.tooltip {
+  background: #404040;
+  color: #FFFFFF;
+  width: 400px;
+  height: 88px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: 2vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.top {
   
-  .upgrade img {
-    width: 48px;
-    height: 48px;
-    padding: 6px;
-  }
-  
-  .upgrade-tooltip {
-    background: #404040;
-    color: #FFFFFF;
-    width: 40vw;
-    padding: 0.6vw;
-    font-size: 2vw;
-  }
-  
-  .upgrade-name {
-    float: left;
-  }
-  .upgrade-cost {
-    float: right;
-  }
-  .upgrade-description {
-    display: inline-block;
-  }
+}
+
+.tooltip img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 36px;
+  height: 36px;
+}
+
+.name {
+  position: absolute;
+  left: 54px;
+  top: 12px;
+  font-size: 28px;
+}
+
+.cost {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  color:#FC0;
+  font-size: 20px;
+  padding-left: 18px;
+}
+
+.cost:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  background: url(../../img/bolt_money.png);
+  width: 16px;
+  height: 16px;
+}
+
+.description {
+  position: absolute;
+  bottom: 6px;
+  font-size: 18px;
+}
