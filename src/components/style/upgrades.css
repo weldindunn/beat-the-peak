@@ -55,6 +55,10 @@
   padding-right: 1vw;
   font-size: 2vw;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  transition-property: opacity, margin-bottom;
+  transition-duration: 0.25s, 0.1s;
+  transition-timing-function: ease-out, ease-out;
 }
 
 .tooltip img {
