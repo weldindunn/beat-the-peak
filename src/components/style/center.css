@@ -1,71 +1,83 @@
 .center {
-    background: repeating-linear-gradient(
-      to right,
-    #FFD966,
-    #FFD966 3vw,
-    #F9B900 3vw,
-    #F9B900 6vw
-    );
+  background: repeating-linear-gradient(
+    to right,
+  #FFD966,
+  #FFD966 3vw,
+  #F9B900 3vw,
+  #F9B900 6vw
+  );
+
+  height: 100%;
+  overflow-y:auto;
+}
+
+.center span {
+  opacity: 1;
+  color: white;
   
-    height: 100%;
-    overflow-y:auto;
-  }
-  
-  /* Hides scrollbar for chrome/safari/opera/edge */
-  .center::-webkit-scrollbar {
-    display: none;
-  }
-  
-  div.name-text-box {
-    position: absolute;
-    top: 20px;
-    left: 0px;
-    right: 0px;
-    background-color: black;
-    opacity: 0.4;
-    color: white;
-  
-    line-height: 32px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  
-  div.watts-text-box {
-    position: absolute;
-    bottom: 10%;
-    left: 0px;
-    right: 0px;
-    background-color: black;
-    opacity: 0.4;
-    color: white;
-  
-    line-height: 28px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  
-  .num-wps {
-    font-size: 24px;
-  }
-  
-  /* Style of bolt button */
-  .bolt button {
-    position: absolute;
-  
-    top: 23%;
-    left: 10%;
-    right: 10%;
-    background: none;
-    border-radius: 90%;
-    border-width: 0;
-  }
-  
-  .bolt img {
-    width: 100%;
-    border-radius: 100%;
-  }
-  
-  .bolt img:hover {
-    opacity: 0.85;
-    transform: scale(1.05);
-  }
+}
+
+/* Hides scrollbar for chrome/safari/opera/edge */
+.center::-webkit-scrollbar {
+  display: none;
+}
+
+.top-text {
+  position: relative;
+  top: 5%;
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.name-text-box {
+  display: inline-block;
+  border-radius: 4vh;
+  background-color: black;
+  line-height: 4vh;
+  margin-bottom: 1vh;
+}
+
+.watts-text-box {
+  background-color: black;
+  line-height: 3vh;
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+}
+
+.coop-name {
+  font-size: 3.5vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.num-watts {
+  font-size: 5vh;
+}
+
+.num-wps {
+  font-size: 3vh;
+}
+
+/* Style of bolt button */
+.bolt button {
+  position: absolute;
+
+  top: 25%;
+  left: 10%;
+  right: 10%;
+  background: none;
+  border-radius: 80%;
+  border-width: 0;
+}
+
+.bolt img {
+  width: 100%;
+  border-radius: 100%;
+}
+
+.bolt img:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}

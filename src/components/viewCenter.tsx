@@ -15,11 +15,28 @@ export function ViewCenter ({
 }): JSX.Element {
     return (
         <div className="center">
-            {/* Power Button */}
-            <div className="name-text-box">
-                <span className="coop-name">
-                    Weldin's Electric Cooperative
-                </span>
+            <div className="top-text">
+                {/* Power Button */}
+                <div className="name-text-box">
+                    <span className="coop-name">
+                        Weldin's Electric Cooperative
+                    </span>
+                </div>
+
+                {/* # of Watts */}
+                <div className="watts-text-box">
+                    <span className="num-watts">
+                        {numberConvertor(watts)}
+                        {
+                            watts > 999999 ? (<br/>) : (<></>)
+                        }
+                        {" watts"}
+                    </span>
+                    <br/>
+                    <span className="num-wps">
+                        {"per second: "}{numberConvertor(wattsPerSec)}
+                    </span>
+                </div>
             </div>
 
             {/* Power Button */}
@@ -27,21 +44,6 @@ export function ViewCenter ({
                 <button onClick={clickBolt} >
                     <img src={bolt} alt="Bolt"/>
                 </button>
-            </div>
-            
-            {/* # of Watts */}
-            <div className="watts-text-box">
-                <span className="num-watts">
-                    {numberConvertor(watts)}
-                    {
-                        watts > 999999 ? (<br/>) : (<></>)
-                    }
-                    {" watts"}
-                </span>
-                <br/>
-                <span className="num-wps">
-                    {"per second: "}{numberConvertor(wattsPerSec)}
-                </span>
             </div>
         </div>
     )
