@@ -171,7 +171,7 @@
     },
     {
         "id": 18,
-        "name": "Even BIGGER Drills",
+        "name": "Houston Waterfalls",
         "description": "Oil Wells are twice as efficient",
         "generator": "Oil Well",
         "type": "multiplier",
@@ -181,6 +181,16 @@
     },
     {
         "id": 19,
+        "name": "Even BIGGER Drills",
+        "description": "Oil Wells are twice as efficient",
+        "generator": "Oil Well",
+        "type": "multiplier",
+        "cost": 1500000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 20,
         "name": "Vertical Turbines",
         "description": "Wind Turbines are twice as efficient",
         "generator": "Wind Turbine",
@@ -190,7 +200,7 @@
         "purchased": false
     },
     {
-        "id": 20,
+        "id": 21,
         "name": "Dutch Engineering",
         "description": "Wind Turbines are twice as efficient",
         "generator": "Wind Turbine",
@@ -200,7 +210,7 @@
         "purchased": false
     },
     {
-        "id": 21,
+        "id": 22,
         "name": "Don Quixote's Cryptonite",
         "description": "Wind Turbines are twice as efficient",
         "generator": "Wind Turbine",
