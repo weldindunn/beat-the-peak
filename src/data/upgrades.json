@@ -148,6 +148,36 @@
         "cost": 15000000,
         "unlocked": true,
         "purchased": false
+    },
+    {
+        "id": 16,
+        "name": "Getty Geysers",
+        "description": "Oil Wells are twice as efficient",
+        "generator": "Oil Well",
+        "type": "multiplier",
+        "cost": 7000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 17,
+        "name": "Rockefeller's Revenge",
+        "description": "Oil Wells are twice as efficient",
+        "generator": "Oil Well",
+        "type": "multiplier",
+        "cost": 16000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 18,
+        "name": "Even BIGGER Drills",
+        "description": "Oil Wells are twice as efficient",
+        "generator": "Oil Well",
+        "type": "multiplier",
+        "cost": 140000000,
+        "unlocked": true,
+        "purchased": false
     }
 
 ]
