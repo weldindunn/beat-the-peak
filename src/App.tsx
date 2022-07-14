@@ -29,7 +29,7 @@ function App() {
   const [solarFarms, setSolarFarms] = useState<number>(0);
   const [oilWells, setOilWells] = useState<number>(0);
   const [windTurbines, setWindTurbines] = useState<number>(0);
-  const [biomassGassifiers, setBiomassGassifiers] = useState<number>(0);
+  const [biomassGasifiers, setBiomassGasifiers] = useState<number>(0);
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
 
@@ -66,7 +66,7 @@ function App() {
 
   const biomassBaseProduction = 78000;
   const [biomassProductionBonus, setBiomassProductionBonus] = useState<number>(1);
-  const [biomassProduction, setBiomassProduction] = useState<number>(biomassBaseProduction * biomassProductionBonus * biomassGassifiers);
+  const [biomassProduction, setBiomassProduction] = useState<number>(biomassBaseProduction * biomassProductionBonus * biomassGasifiers);
 
   const hydroBaseProduction = 440000;
   const [hydroProductionBonus, setHydroProductionBonus] = useState<number>(1);
@@ -106,7 +106,7 @@ function App() {
 
   const biomassBaseCost = 46000000;
   const biomassCostBonus = 1;
-  const [biomassCost, setBiomassCost] = useState<number>((biomassBaseCost * Math.pow(1.15, biomassGassifiers)) * biomassCostBonus);
+  const [biomassCost, setBiomassCost] = useState<number>((biomassBaseCost * Math.pow(1.15, biomassGasifiers)) * biomassCostBonus);
 
   const hydroBaseCost = 759000000;
   const hydroCostBonus = 1;
@@ -126,17 +126,10 @@ function App() {
   const [time, setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
 
-  const [newWatts, setNewWatts] = useState(-1);
   const [newSave, setNewSave] = useState(5000);
   useFrameLoop((time: number, deltaTime: number) => {
-
-    if (time > newWatts) {
-      setNewWatts(time + 1000);
-
-      //setWatts(watts + wattsPerSec);
-    }
     if (time > newSave) {
-      setNewSave(time + 2000);
+      setNewSave(time + 1000);
 
       save();
     }
@@ -179,8 +172,8 @@ function App() {
     setWindCost((windBaseCost * Math.pow(1.15, windTurbines)) * windCostBonus);
     setWindProduction(windBaseProduction * windProductionBonus * windTurbines);
 
-    setBiomassCost((biomassBaseCost * Math.pow(1.15, biomassGassifiers)) * biomassCostBonus);
-    setBiomassProduction(biomassBaseProduction * biomassProductionBonus * biomassGassifiers);
+    setBiomassCost((biomassBaseCost * Math.pow(1.15, biomassGasifiers)) * biomassCostBonus);
+    setBiomassProduction(biomassBaseProduction * biomassProductionBonus * biomassGasifiers);
 
     setHydroCost((hydroBaseCost * Math.pow(1.15, hydroPlants)) * hydroCostBonus);
     setHydroProduction(hydroBaseProduction * hydroProductionBonus * hydroPlants);
@@ -194,7 +187,7 @@ function App() {
         solarFarms, solarCostBonus, solarProductionBonus,
         oilWells, oilCostBonus, oilProductionBonus,
         windTurbines, windCostBonus, windProductionBonus,
-        biomassGassifiers, biomassCostBonus, biomassProductionBonus,
+        biomassGasifiers, biomassCostBonus, biomassProductionBonus,
         hydroPlants, hydroCostBonus, hydroProductionBonus,
         nuclearPlants, nuclearCostBonus, nuclearProductionBonus]
   );
@@ -220,7 +213,7 @@ function App() {
       setWindTurbines(windTurbines + 1);
       setWatts(watts - Math.round(windCost));
     } else if (generator === "Biomass Gassifier") {
-      setBiomassGassifiers(biomassGassifiers + 1);
+      setBiomassGasifiers(biomassGasifiers + 1);
       setWatts(watts - Math.round(biomassCost));
     } else if (generator === "Hydro Plant") {
       setHydroPlants(hydroPlants + 1);
@@ -294,7 +287,7 @@ function App() {
     localStorage.setItem('solarFarms', JSON.stringify(solarFarms));
     localStorage.setItem('oilWells', JSON.stringify(oilWells));
     localStorage.setItem('windTurbines', JSON.stringify(windTurbines));
-    localStorage.setItem('biomassGassifiers', JSON.stringify(biomassGassifiers));
+    localStorage.setItem('biomassGasifiers', JSON.stringify(biomassGasifiers));
     localStorage.setItem('hydroPlants', JSON.stringify(hydroPlants));
     localStorage.setItem('nuclearPlants', JSON.stringify(nuclearPlants));
 
@@ -361,9 +354,9 @@ function App() {
     if (localWindTurbines) {
       setWindTurbines(JSON.parse(localWindTurbines));
     }
-    const localBiomassGassifiers = localStorage.getItem('biomassGassifiers');
-    if (localBiomassGassifiers) {
-      setBiomassGassifiers(JSON.parse(localBiomassGassifiers));
+    const localBiomassGasifiers = localStorage.getItem('biomassGasifiers');
+    if (localBiomassGasifiers) {
+      setBiomassGasifiers(JSON.parse(localBiomassGasifiers));
     }
     const localHydroPlants = localStorage.getItem('hydroPlants');
     if (localHydroPlants) {
@@ -429,7 +422,7 @@ function App() {
     setSolarFarms(0);
     setOilWells(0);
     setWindTurbines(0);
-    setBiomassGassifiers(0);
+    setBiomassGasifiers(0);
     setHydroPlants(0);
     setNuclearPlants(0);
 
@@ -462,7 +455,7 @@ function App() {
         solarFarms={solarFarms}
         oilWells={oilWells}
         windTurbines={windTurbines}
-        biomassGassifiers={biomassGassifiers}
+        biomassGasifiers={biomassGasifiers}
         hydroPlants={hydroPlants}
         nuclearPlants={nuclearPlants}
 

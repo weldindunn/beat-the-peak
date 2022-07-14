@@ -13,7 +13,7 @@ export function ViewUpgrades({
     solarFarms,
     oilWells,
     windTurbines,
-    biomassGassifiers,
+    biomassGasifiers,
     hydroPlants,
     nuclearPlants,
 
@@ -49,7 +49,7 @@ export function ViewUpgrades({
     solarFarms: number;
     oilWells: number;
     windTurbines: number;
-    biomassGassifiers: number;
+    biomassGasifiers: number;
     hydroPlants: number;
     nuclearPlants: number;
 

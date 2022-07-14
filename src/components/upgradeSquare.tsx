@@ -9,6 +9,7 @@ import gas_symbol from "../img/Gas_Symbol.png";
 import sun from "../img/Sun.png";
 import oil_drop from "../img/Oil_Drop.png";
 import wind_symbol from "../img/Wind_Symbol.png";
+import wood_chips from "../img/Wood_Chips.png";
 import water_wheel from "../img/Water_Wheel.png";
 import atom from "../img/Atom.png";
 
@@ -43,6 +44,8 @@ export function UpgradeSquare({
                                     <img src={oil_drop} alt={upgrade.generator}/>
                                 ) : upgrade.generator === "Wind Turbine" ? (
                                     <img src={wind_symbol} alt={upgrade.generator}/>
+                                ) : upgrade.generator === "Biomass Gasifier" ? (
+                                    <img src={wood_chips} alt={upgrade.generator}/>
                                 ) : upgrade.generator === "Hydro Plant" ? (
                                     <img src={water_wheel} alt={upgrade.generator}/>
                                 ) : upgrade.generator === "Nuclear Plant" ? (
@@ -74,6 +77,8 @@ export function UpgradeSquare({
                             <img src={oil_drop} alt={upgrade.generator}/>
                         ) : upgrade.generator === "Wind Turbine" ? (
                             <img src={wind_symbol} alt={upgrade.generator}/>
+                        ) : upgrade.generator === "Biomass Gasifier" ? (
+                            <img src={wood_chips} alt={upgrade.generator}/>
                         ) : upgrade.generator === "Hydro Plant" ? (
                             <img src={water_wheel} alt={upgrade.generator}/>
                         ) : upgrade.generator === "Nuclear Plant" ? (

@@ -9,6 +9,7 @@ import gas_plant from "../img/Gas_Plant_Icon.png";
 import solar_farm from "../img/Solar_Farm_Icon.png";
 import oil_well from "../img/Oil_Well_Icon.png";
 import wind_turbine from "../img/Wind_Turbine_Icon.png";
+import biomass_gasifier from "../img/Biomass_Gasifier_Icon.png";
 import dam from "../img/Hydro_Plant_Icon.png";
 import nuclear_plant from "../img/Nuclear_Plant_Icon.png";
 
@@ -19,6 +20,7 @@ import gas_symbol from "../img/Gas_Symbol.png";
 import sun from "../img/Sun.png";
 import oil_drop from "../img/Oil_Drop.png";
 import wind_symbol from "../img/Wind_Symbol.png";
+import wood_chips from "../img/Wood_Chips.png";
 import water_wheel from "../img/Water_Wheel.png";
 import atom from "../img/Atom.png";
 
@@ -32,7 +34,7 @@ export function ViewGenerators({
     solarFarms,
     oilWells,
     windTurbines,
-    biomassGassifiers,
+    biomassGasifiers,
     hydroPlants,
     nuclearPlants,
 
@@ -67,7 +69,7 @@ export function ViewGenerators({
     solarFarms: number;
     oilWells: number;
     windTurbines: number;
-    biomassGassifiers: number;
+    biomassGasifiers: number;
     hydroPlants: number;
     nuclearPlants: number;
 
@@ -171,12 +173,12 @@ export function ViewGenerators({
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
-                name="Biomass Gassifier"
-                icon={gas_plant}
-                tooltip_icon={gas_symbol}
+                name="Biomass Gasifier"
+                icon={biomass_gasifier}
+                tooltip_icon={wood_chips}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
-                generators={biomassGassifiers}
+                generators={biomassGasifiers}
                 generatorCost={biomassCost}
                 generatorProduction={biomassProduction}
                 description="Burns biomass to power steam engines"

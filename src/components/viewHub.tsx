@@ -17,7 +17,7 @@ export function ViewHub({
     solarFarms,
     oilWells,
     windTurbines,
-    biomassGassifiers,
+    biomassGasifiers,
     hydroPlants,
     nuclearPlants,
 
@@ -61,7 +61,7 @@ export function ViewHub({
     solarFarms: number;
     oilWells: number;
     windTurbines: number;
-    biomassGassifiers: number;
+    biomassGasifiers: number;
     hydroPlants: number;
     nuclearPlants: number;
 
@@ -123,7 +123,7 @@ export function ViewHub({
                                     solarFarms={solarFarms}
                                     oilWells={oilWells}
                                     windTurbines={windTurbines}
-                                    biomassGassifiers={biomassGassifiers}
+                                    biomassGasifiers={biomassGasifiers}
                                     hydroPlants={hydroPlants}
                                     nuclearPlants={nuclearPlants}
 
@@ -193,7 +193,7 @@ export function ViewHub({
                             solarFarms={solarFarms}
                             oilWells={oilWells}
                             windTurbines={windTurbines}
-                            biomassGassifiers={biomassGassifiers}
+                            biomassGasifiers={biomassGasifiers}
                             hydroPlants={hydroPlants}
                             nuclearPlants={nuclearPlants}
 

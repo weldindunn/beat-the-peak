@@ -220,6 +220,36 @@
         "purchased": false
     },
     {
+        "id": 23,
+        "name": "Pyrolysis Power",
+        "description": "Biomass Gasifiers are twice as efficient",
+        "generator": "Biomass Gasifier",
+        "type": "multiplier",
+        "cost": 550000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 24,
+        "name": "Woodpecker Pellets",
+        "description": "Biomass Gasifiers are twice as efficient",
+        "generator": "Biomass Gasifier",
+        "type": "multiplier",
+        "cost": 1300000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 25,
+        "name": "Syngas Fermentation",
+        "description": "Biomass Gasifiers are twice as efficient",
+        "generator": "Biomass Gasifier",
+        "type": "multiplier",
+        "cost": 9500000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
         "id": 26,
         "name": "Norwegian Wood",
         "description": "Hydro Plants are twice as efficient",
