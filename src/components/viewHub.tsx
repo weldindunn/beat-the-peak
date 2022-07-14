@@ -6,6 +6,8 @@ import { ViewUpgrades } from "./viewUpgrades";
 import { Upgrade } from "../interfaces/upgrade";
 
 export function ViewHub({
+    name, 
+    setName,
     watts,
     wattsPerSec,
 
@@ -48,6 +50,8 @@ export function ViewHub({
 
     eraseGame
 } : {
+    name: string;
+    setName: (name: string) => void;
     watts: number; 
     wattsPerSec: number;
 
@@ -164,6 +168,8 @@ export function ViewHub({
                 {/* Center */}
                 <div className="center-column">
                     <ViewCenter
+                        name={name}
+                        setName={setName}
                         watts={watts}
                         wattsPerSec={wattsPerSec}
                         clickBolt={clickBolt}

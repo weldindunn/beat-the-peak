@@ -14,7 +14,6 @@
 .center span {
   opacity: 1;
   color: white;
-  
 }
 
 /* Hides scrollbar for chrome/safari/opera/edge */
@@ -27,14 +26,6 @@
   top: 5%;
   opacity: 0.55;
   z-index: 1;
-}
-
-.name-text-box {
-  display: inline-block;
-  border-radius: 4vh;
-  background-color: black;
-  line-height: 4vh;
-  margin-bottom: 1vh;
 }
 
 .watts-text-box {
@@ -50,6 +41,18 @@
   padding-bottom: 1vh;
   padding-left: 1vw;
   padding-right: 1vw;
+
+  display: inline-block;
+  border-radius: 4vh;
+  background-color: black;
+  color: white;
+  line-height: 4vh;
+  margin-bottom: 1vh;
+  opacity: 0.9;
+}
+
+.coop-name:hover {
+  opacity: 1;
 }
 
 .num-watts {

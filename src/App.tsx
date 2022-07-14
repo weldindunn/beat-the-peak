@@ -15,6 +15,9 @@ function App() {
     load();
   }
 
+  //Player's name
+  const [name, setName] = useState<string>("Bob");
+
   //The number of watts and watts generated per second
   const [watts, setWatts] = useState<number>(1000000);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
@@ -275,6 +278,9 @@ function App() {
      ========= */
 
   function save(): void {
+    //Saves name
+    localStorage.setItem('name', JSON.stringify(name));
+
     //Saves # of watts
     localStorage.setItem('watts', JSON.stringify(watts));
 
@@ -311,6 +317,12 @@ function App() {
      ========= */
 
   function load(): void {
+
+    //Loads name
+    const localName = localStorage.getItem('name');
+    if (localName) {
+      setName(JSON.parse(localName));
+    }
 
     //Loads watts
     const localWatts = localStorage.getItem('watts');
@@ -439,6 +451,8 @@ function App() {
   return (
     <div className="App">
       <ViewHub
+        name={name}
+        setName={setName}
         watts={watts}
         wattsPerSec={wattsPerSec}
 
