@@ -218,6 +218,36 @@
         "cost": 800000000,
         "unlocked": true,
         "purchased": false
+    },
+    {
+        "id": 26,
+        "name": "Norwegian Wood",
+        "description": "Hydro Plants are twice as efficient",
+        "generator": "Hydro Plant",
+        "type": "multiplier",
+        "cost": 8000000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 27,
+        "name": "Ichthyoidal Labor",
+        "description": "Hydro Plants are twice as efficient",
+        "generator": "Hydro Plant",
+        "type": "multiplier",
+        "cost": 95000000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 28,
+        "name": "Artificial Dihydrogen Monoxoide",
+        "description": "Hydro Plants are twice as efficient",
+        "generator": "Hydro Plant",
+        "type": "multiplier",
+        "cost": 2700000000000,
+        "unlocked": true,
+        "purchased": false
     }
 
 ]
