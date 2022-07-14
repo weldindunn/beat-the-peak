@@ -248,6 +248,36 @@
         "cost": 2700000000000,
         "unlocked": true,
         "purchased": false
+    },
+    {
+        "id": 29,
+        "name": "Plutonium Power!",
+        "description": "Nuclear Plants are twice as efficient",
+        "generator": "Nuclear Plant",
+        "type": "multiplier",
+        "cost": 140000000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 30,
+        "name": "Chernobyl Shields",
+        "description": "Nuclear Plants are twice as efficient",
+        "generator": "Nuclear Plant",
+        "type": "multiplier",
+        "cost": 1650000000000,
+        "unlocked": true,
+        "purchased": false
+    },
+    {
+        "id": 31,
+        "name": "Nuclear Fusion",
+        "description": "Nuclear Plants are twice as efficient",
+        "generator": "Nuclear Plant",
+        "type": "multiplier",
+        "cost": 48000000000000,
+        "unlocked": true,
+        "purchased": false
     }
 
 ]

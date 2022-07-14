@@ -16,7 +16,7 @@ function App() {
   }
 
   //The number of watts and watts generated per second
-  const [watts, setWatts] = useState<number>(0);
+  const [watts, setWatts] = useState<number>(1000000);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
 
   //The number of each type of generator
@@ -26,7 +26,7 @@ function App() {
   const [solarFarms, setSolarFarms] = useState<number>(0);
   const [oilWells, setOilWells] = useState<number>(0);
   const [windTurbines, setWindTurbines] = useState<number>(0);
-  const [biomassGassifiers, setBiomassGassifiers] = useState<number>(0);
+  const [biomassGassifiers, setBiomassGassifiers] = useState<number>(1);
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
 

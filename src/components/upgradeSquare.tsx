@@ -10,6 +10,7 @@ import sun from "../img/Sun.png";
 import oil_drop from "../img/Oil_Drop.png";
 import wind_symbol from "../img/Wind_Symbol.png";
 import water_wheel from "../img/Water_Wheel.png";
+import atom from "../img/Atom.png";
 
 export function UpgradeSquare({
     watts, 
@@ -44,12 +45,14 @@ export function UpgradeSquare({
                                     <img src={wind_symbol} alt={upgrade.generator}/>
                                 ) : upgrade.generator === "Hydro Plant" ? (
                                     <img src={water_wheel} alt={upgrade.generator}/>
+                                ) : upgrade.generator === "Nuclear Plant" ? (
+                                    <img src={atom} alt={upgrade.generator}/>
                                 ) : (
                                     <span>{upgrade.generator.charAt(0)}</span>
                                 )
                             }
                             <span className="name">{upgrade.name}</span>
-                            <span className="cost">{numberConvertor(Math.round(upgrade.cost))}</span>
+                            <span className="cost">{numberConvertor(Math.round(upgrade.cost), false)}</span>
                         </div>
                         <span className="description">{upgrade.description}</span>
                     </div>
@@ -73,6 +76,8 @@ export function UpgradeSquare({
                             <img src={wind_symbol} alt={upgrade.generator}/>
                         ) : upgrade.generator === "Hydro Plant" ? (
                             <img src={water_wheel} alt={upgrade.generator}/>
+                        ) : upgrade.generator === "Nuclear Plant" ? (
+                            <img src={atom} alt={upgrade.generator}/>
                         ) : (
                             <span>{upgrade.generator.charAt(0)}</span>
                         )

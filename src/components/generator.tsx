@@ -33,7 +33,7 @@ export function Generator({
                     <div>
                         <img src={tooltip_icon} alt={name}/>
                         <span className="tooltip-name">{name}</span>
-                        <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost))}</span>
+                        <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost), false)}</span>
                     </div>
                     <div>
                         <span className="tooltip-description">{description}</span>
@@ -59,7 +59,7 @@ export function Generator({
                         }
                     </div>
                     <span className="generator-cost">
-                        {numberConvertor(Math.round(generatorCost))}
+                        {numberConvertor(Math.round(generatorCost), false)}
                     </span>
                     <div className="generator-count">
                         {generators}

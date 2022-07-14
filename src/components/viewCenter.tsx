@@ -26,15 +26,11 @@ export function ViewCenter ({
                 {/* # of Watts */}
                 <div className="watts-text-box">
                     <span className="num-watts">
-                        {numberConvertor(watts)}
-                        {
-                            watts > 999999 ? (<br/>) : (<></>)
-                        }
-                        {" watts"}
+                        {numberConvertor(watts, true)}
                     </span>
                     <br/>
                     <span className="num-wps">
-                        {"per second: "}{numberConvertor(wattsPerSec)}
+                        {"per second: "}{numberConvertor(wattsPerSec, false)}
                     </span>
                 </div>
             </div>
