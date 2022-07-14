@@ -40,9 +40,9 @@ export function Generator({
                     </div>
                     <div>
                         <span className="tooltip-production">
-                            Each {name} produces {Math.round(generatorProduction/generators)} watts per second
+                            Each {name} produces {numberConvertor(Math.round(generatorProduction/generators), true)} per second
                             <br/>
-                            Your {name}s produce {generatorProduction} watts per second, {Math.round(generatorProduction/wattsPerSec * 100)}% of your total watts per second
+                            Your {name}s produce {numberConvertor(generatorProduction, true)} per second, {Math.round(generatorProduction/wattsPerSec * 100)}% of your total watts per second
                         </span>
                     </div>
                 </div>

@@ -41,5 +41,5 @@ export function numberConvertor(num: number, isWatts: boolean): string {
         convertedNum += " watts";
     }
 
-    return convertedNum.replace(/^[^/]+\/\*!?/, '').replace(/\*\/[^/]+$/, '');
+    return convertedNum;
 }
