@@ -22,8 +22,9 @@ export function numberConvertor(num: number, isWatts: boolean): string {
     } else if (num > 999999) {
         convertedNum = (num/1000000).toFixed(3).toString().replace(/0+$/, '').replace(/\.$/, '');
         if (isWatts) {
-            convertedNum += " million";
+            convertedNum += "\n";
         }
+        convertedNum += " million";
     } else if (num > 999) {
         if (num > 99999) {
             convertedNum = num.toFixed(0).toString().slice(0, 3) + "," + num.toFixed(0).toString().slice(3);
