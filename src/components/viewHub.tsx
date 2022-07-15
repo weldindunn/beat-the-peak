@@ -4,6 +4,7 @@ import { ViewCenter } from "./viewCenter";
 import { ViewGenerators } from "./viewGenerators";
 import { ViewUpgrades } from "./viewUpgrades";
 import { Upgrade } from "../interfaces/upgrade";
+import { ViewTransporters } from "./viewTransporters";
 
 export function ViewHub({
     name, 
@@ -41,12 +42,37 @@ export function ViewHub({
     hydroCost,
     nuclearCost,
 
+    batteries,
+    meters,
+    phonePoles,
+    transformers,
+    undergroundCables,
+    powerTowers,
+    substations,
+
+    batteryTransportation,
+    meterTransportation,
+    phonePoleTransportation,
+    transformerTransportation,
+    undergroundCableTransportation,
+    powerTowerTransportation,
+    substationTransportation,
+
+    batteryCost,
+    meterCost,
+    phonePoleCost,
+    transformerCost,
+    undergroundCableCost,
+    powerTowerCost,
+    substationCost,
+
     upgrades,
     setUpgrades,
 
     clickBolt,
     buyGenerator,
     buyUpgrade,
+    buyTransporter,
 
     eraseGame
 } : {
@@ -85,12 +111,37 @@ export function ViewHub({
     hydroCost: number;
     nuclearCost: number;
 
+    batteries: number;
+    meters: number;
+    phonePoles: number;
+    transformers: number;
+    undergroundCables: number;
+    powerTowers: number;
+    substations: number;
+
+    batteryTransportation: number;
+    meterTransportation: number;
+    phonePoleTransportation: number;
+    transformerTransportation: number;
+    undergroundCableTransportation: number;
+    powerTowerTransportation: number;
+    substationTransportation: number;
+
+    batteryCost: number;
+    meterCost: number;
+    phonePoleCost: number;
+    transformerCost: number;
+    undergroundCableCost: number;
+    powerTowerCost: number;
+    substationCost: number;
+
     upgrades: Upgrade[];
     setUpgrades: (upgrades: Upgrade[]) => void;
 
     clickBolt: () => void;
     buyGenerator: (generator: string) => void;
     buyUpgrade: (upgrade: Upgrade) => void;
+    buyTransporter: (transporter: string) => void;
 
     eraseGame: () => void;
 }): JSX.Element {
@@ -223,7 +274,35 @@ export function ViewHub({
 
                     {/* Transporters */}
                     <div className="transporters">
-                        <span>Transporters</span>
+                        <ViewTransporters
+                            watts={watts}
+                            wattsPerSec={wattsPerSec}
+                            buyTransporter={buyTransporter}
+
+                            batteries={batteries}
+                            meters={meters}
+                            phonePoles={phonePoles}
+                            transformers={transformers}
+                            undergroundCables={undergroundCables}
+                            powerTowers={powerTowers}
+                            substations={substations}
+
+                            batteryTransportation={batteryTransportation}
+                            meterTransportation={meterTransportation}
+                            phonePoleTransportation={phonePoleTransportation}
+                            transformerTransportation={transformerTransportation}
+                            undergroundCableTransportation={undergroundCableTransportation}
+                            powerTowerTransportation={powerTowerTransportation}
+                            substationTransportation={substationTransportation}
+
+                            batteryCost={batteryCost}
+                            meterCost={meterCost}
+                            phonePoleCost={phonePoleCost}
+                            transformerCost={transformerCost}
+                            undergroundCableCost={undergroundCableCost}
+                            powerTowerCost={powerTowerCost}
+                            substationCost={substationCost}
+                        ></ViewTransporters>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,179 @@
+.transporters {
+  background: #ffd24b;
+  color: #FFFFE0;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 50vh;
+  overflow-y: auto;
+}
+  
+/* Hides scrollbar for chrome/safari/opera/edge */
+.transporters::-webkit-scrollbar {
+  display: none;
+}
+
+.transporter {
+  width: 300px;
+  height: 64px;
+  cursor: pointer;
+  background: url(../../img/generator_background.png);
+  position: relative;
+  border: none;
+  text-align: left;
+  opacity: 0.85;
+  transition-property: opacity, margin-bottom;
+  transition-duration: 0.25s, 0.1s;
+  transition-timing-function: ease-out, ease-out;
+}
+
+.transporter:hover {
+  opacity: 1;
+}
+
+.transporter:disabled {
+  opacity: 0.6;
+}
+.transporter:disabled:hover {
+  opacity: 0.85;
+}
+
+.transporter-icon {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin: 0px;
+
+  filter: drop-shadow(0px 1px 1px #000);
+  -webkit-filter: drop-shadow(0px 1px 1px #000);
+  display: inline-block;
+}
+
+.transporter-icon img {
+  background-position: 0px -64px;
+}
+
+.transporter-content {
+  display:block;
+  position: absolute;
+  left: 68px;
+  top: 2px;
+  right: 0px;
+  bottom: 6px;
+  padding: 4px;
+  color: #FFF;
+  text-shadow: 0px 1px 4px #000;
+}
+
+.transporter-title {
+  font-size: 28px;
+  margin-top: 3px;
+}
+
+.transporter-cost {
+  color:#FC0;
+  font-size: 16px;
+  padding-left: 18px;
+  position: absolute;
+}
+
+.transporter-cost:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0px;
+  background: url(../../img/bolt_money.png);
+  width: 16px;
+  height: 16px;
+}
+
+.transporter-count {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  bottom: 5px;
+  font-size: 40px;
+  opacity: 0.6;
+  color: #eb9d9d;
+  letter-spacing: -2px;
+}
+
+/* ==============
+   Tooltip Format
+   ============== */
+
+.transporter-tooltip {
+  background: url(../../img/Generator_Tooltip_Background.png);
+  color: #FFFFFF;
+  width: 412px;
+  height: 148px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: 2vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  z-index: 1;
+
+  transition-property: opacity, margin-bottom;
+  transition-duration: 0.25s, 0.1s;
+  transition-timing-function: ease-out, ease-out;
+}
+
+.transporter-tooltip img {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+}
+
+.tooltip-name {
+  position: absolute;
+  left: 54px;
+  top: 14px;
+  font-size: 28px;
+}
+
+.tooltip-cost {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  color:#FC0;
+  font-size: 20px;
+  padding-left: 18px;
+}
+
+.tooltip-cost:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  background: url(../../img/bolt_money.png);
+  width: 16px;
+  height: 16px;
+}
+
+.tooltip-description {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 56px;
+  font-size: 14px;
+  color: #c5c5c5;
+}
+
+.tooltip-production {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  margin-top: 10px;
+  bottom: 14px;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #c5c5c5;
+}
