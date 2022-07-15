@@ -229,6 +229,7 @@ function App() {
      ============= */
   
   function buyUpgrade(purchasedUpgrade: Upgrade): void {
+
     setUpgrades(upgrades.map((upgrade: Upgrade): Upgrade => (
       purchasedUpgrade.id === upgrade.id ? 
       {...upgrade, purchased: true} :
@@ -236,6 +237,7 @@ function App() {
     )));
     setWatts(watts - purchasedUpgrade.cost);
 
+    //Add effect
     if (purchasedUpgrade.type === "multiplier") {
         multiply(purchasedUpgrade.generator);
     }
@@ -244,7 +246,7 @@ function App() {
   //Helper function, multiplies production of a generator
   function multiply(generator: string): void {
     if (generator === "Click") {
-        setClickProductionBonus(clickProductionBonus * 2);
+      setClickProductionBonus(clickProductionBonus * 2);
     } else if (generator === "Lineman") {
       setLinemenProductionBonus(linemenProductionBonus * 2);
     } else if (generator === "Coal Plant") {
@@ -277,8 +279,8 @@ function App() {
     //Saves # of watts
     localStorage.setItem('watts', JSON.stringify(watts));
 
-    //Saves upgrades
-    localStorage.setItem('upgrades', JSON.stringify(upgrades));
+    //Saves ids of purchased upgrades 
+    localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => !upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
 
     //Saves generators
     localStorage.setItem('linemen', JSON.stringify(linemen));
@@ -301,8 +303,6 @@ function App() {
     localStorage.setItem('biomassProductionBonus', JSON.stringify(biomassProductionBonus));
     localStorage.setItem('hydroProductionBonus', JSON.stringify(hydroProductionBonus));
     localStorage.setItem('nuclearProductionBonus', JSON.stringify(nuclearProductionBonus));
-
-    console.log("Saved");
   }
 
   /* =========
@@ -326,7 +326,8 @@ function App() {
     //Loads upgrades
     const localUpgrades = localStorage.getItem('upgrades');
     if (localUpgrades) {
-      setUpgrades(JSON.parse(localUpgrades));
+      const purchasedUpgrades = JSON.parse(localUpgrades);
+      setUpgrades(upgrades.filter((upgrade: Upgrade): boolean => purchasedUpgrades.includes(upgrade.id)));
     }
 
     //Loads generators

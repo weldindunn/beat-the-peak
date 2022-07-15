@@ -90,7 +90,7 @@ export function ViewUpgrades({
                             upgrade={upgrade}
                             buyUpgrade={buyUpgrade}
                         ></UpgradeSquare>
-                    ) : (<div></div>)
+                    ) : (<div key={upgrade.id}></div>)
                 ))
             }
         </>
