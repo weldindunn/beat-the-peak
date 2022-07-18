@@ -11,6 +11,9 @@ export function ViewHub({
     setName,
     watts,
     wattsPerSec,
+    netWattsPerSec,
+    members,
+    totalTransportation,
 
     linemen,
     coalPlants,
@@ -80,6 +83,9 @@ export function ViewHub({
     setName: (name: string) => void;
     watts: number; 
     wattsPerSec: number;
+    netWattsPerSec: number;
+    members: number;
+    totalTransportation: number;
 
     linemen: number;
     coalPlants: number;
@@ -223,6 +229,8 @@ export function ViewHub({
                         setName={setName}
                         watts={watts}
                         wattsPerSec={wattsPerSec}
+                        netWattsPerSec={netWattsPerSec}
+                        members={members}
                         clickBolt={clickBolt}
                     ></ViewCenter>
                 </div>
@@ -277,6 +285,7 @@ export function ViewHub({
                         <ViewTransporters
                             watts={watts}
                             wattsPerSec={wattsPerSec}
+                            totalTransportation={totalTransportation}
                             buyTransporter={buyTransporter}
 
                             batteries={batteries}

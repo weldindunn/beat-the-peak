@@ -18,9 +18,14 @@ function App() {
   //Player's name
   const [name, setName] = useState<string>("Bob");
 
-  //The number of watts and watts generated per second
+  //The number of watts, watts generated per second, and surplus/debt of watts generated modified by those transported
   const [watts, setWatts] = useState<number>(0);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
+  const [netWattsPerSec, setNetWattsPerSec] = useState<number>(0);
+
+  //The number of members in the co-op
+  const [members, setMembers] = useState<number>(0);
+  const [wattsPerMember, setWattsPerMember] = useState<number>(10);
 
   //The number of each type of generator
   const [linemen, setLinemen] = useState<number>(0); 
@@ -129,34 +134,35 @@ function App() {
   /* =========================================
      Transportation capacity of each generator
      ========================================= */
-  const batteryBaseTransportation = 1;
+  const batteryBaseTransportation = 10;
   const [batteryTransportationBonus, setBatteryTransportationBonus] = useState<number>(1);
   const [batteryTransportation, setBatteryTransportation] = useState<number>(batteryBaseTransportation * batteryTransportationBonus * batteries);
 
-  const meterBaseTransportation = 10;
+  const meterBaseTransportation = 100;
   const [meterTransportationBonus, setMeterTransportationBonus] = useState<number>(1);
   const [meterTransportation, setMeterTransportation] = useState<number>(meterBaseTransportation * meterTransportationBonus * meters);
 
-  const phonePoleBaseTransportation = 80;
+  const phonePoleBaseTransportation = 800;
   const [phonePoleTransportationBonus, setPhonePoleTransportationBonus] = useState<number>(1);
   const [phonePoleTransportation, setPhonePoleTransportation] = useState<number>(phonePoleBaseTransportation * phonePoleTransportationBonus * phonePoles);
 
-  const transformerBaseTransportation = 470;
+  const transformerBaseTransportation = 4700;
   const [transformerTransportationBonus, setTransformerTransportationBonus] = useState<number>(1);
   const [transformerTransportation, setTransformerTransportation] = useState<number>(transformerBaseTransportation * transformerTransportationBonus * transformers);
 
-  const undergroundCableBaseTransportation = 2600;
+  const undergroundCableBaseTransportation = 26000;
   const [undergroundCableTransportationBonus, setUndergroundCableTransportationBonus] = useState<number>(1);
   const [undergroundCableTransportation, setUndergroundCableTransportation] = useState<number>(undergroundCableBaseTransportation * undergroundCableTransportationBonus * undergroundCables);
 
-  const powerTowerBaseTransportation = 14000;
+  const powerTowerBaseTransportation = 140000;
   const [powerTowerTransportationBonus, setPowerTowerTransportationBonus] = useState<number>(1);
   const [powerTowerTransportation, setPowerTowerTransportation] = useState<number>(powerTowerBaseTransportation * powerTowerTransportationBonus * powerTowers);
 
-  const substationBaseTransportation = 78000;
+  const substationBaseTransportation = 780000;
   const [substationTransportationBonus, setSubstationTransportationBonus] = useState<number>(1);
   const [substationTransportation, setSubstationTransportation] = useState<number>(substationBaseTransportation * substationTransportationBonus * substations);
 
+  const [totalTransportation, setTotalTransportation] = useState<number>(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
 
   /* ========================
      Cost of each transporter
@@ -208,11 +214,21 @@ function App() {
     }
 
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
-    setWatts(watts + (wattsPerSec)/(1000/deltaTime))
+    setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
+    setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
+
+    if (totalTransportation > 0) {
+      setMembers(totalTransportation/wattsPerMember)
+    }
 
     setTime(time);
     setDeltaTime(deltaTime);
   });
+
+  //Updates netWattsPerSec, which is dependent on a fluid generation state
+  useEffect(() => {
+    setNetWattsPerSec(wattsPerSec - (members*wattsPerMember));
+  }, [wattsPerSec, members, wattsPerMember])
 
   //Click Bolt
   function clickBolt(): void {
@@ -342,17 +358,16 @@ function App() {
 
     setSubstationCost((substationBaseCost * Math.pow(1.15, substations)) * substationCostBonus);
     setSubstationTransportation(substationBaseTransportation * substationTransportationBonus * substations);
-    }, [batteries, batteryCostBonus, batteryTransportationBonus,
-        meters, meterCostBonus, meterTransportationBonus,
-        phonePoles, phonePoleCostBonus, phonePoleTransportationBonus,
-        transformers, transformerCostBonus, transformerTransportationBonus,
-        undergroundCables, undergroundCableCostBonus, undergroundCableTransportationBonus,
-        powerTowers, powerTowerCostBonus, powerTowerTransportationBonus,
-        substations, substationCostBonus, substationTransportationBonus]
+  }, [batteries, batteryCostBonus, batteryTransportationBonus,
+      meters, meterCostBonus, meterTransportationBonus,
+      phonePoles, phonePoleCostBonus, phonePoleTransportationBonus,
+      transformers, transformerCostBonus, transformerTransportationBonus,
+      undergroundCables, undergroundCableCostBonus, undergroundCableTransportationBonus,
+      powerTowers, powerTowerCostBonus, powerTowerTransportationBonus,
+      substations, substationCostBonus, substationTransportationBonus]
   );
 
   function buyTransporter(transporter: string) {
-
     if (transporter === "Battery") {
       setBatteries(batteries + 1);
       setWatts(watts - Math.round(batteryCost));
@@ -583,6 +598,9 @@ function App() {
         setName={setName}
         watts={watts}
         wattsPerSec={wattsPerSec}
+        netWattsPerSec={netWattsPerSec}
+        members={members}
+        totalTransportation={totalTransportation}
 
         linemen={linemen}
         coalPlants={coalPlants}

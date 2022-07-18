@@ -5,6 +5,7 @@ import "./style/transporters.css";
 export function ViewTransporters({
     watts,
     wattsPerSec,
+    totalTransportation,
     buyTransporter,
 
     batteries,
@@ -33,6 +34,7 @@ export function ViewTransporters({
 } : {
     watts: number; 
     wattsPerSec: number;
+    totalTransportation: number;
     buyTransporter: (transporter: string) => void;
 
     batteries: number;
@@ -68,6 +70,7 @@ export function ViewTransporters({
                 name="Battery"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={batteries}
                 transporterCost={batteryCost}
                 transporterTransportation={batteryTransportation}
@@ -78,6 +81,7 @@ export function ViewTransporters({
                 name="Meter"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={meters}
                 transporterCost={meterCost}
                 transporterTransportation={meterTransportation}
@@ -88,6 +92,7 @@ export function ViewTransporters({
                 name="Phone Pole"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={phonePoles}
                 transporterCost={phonePoleCost}
                 transporterTransportation={phonePoleTransportation}
@@ -98,6 +103,7 @@ export function ViewTransporters({
                 name="Transformer"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={transformers}
                 transporterCost={transformerCost}
                 transporterTransportation={transformerTransportation}
@@ -108,6 +114,7 @@ export function ViewTransporters({
                 name="Underground Cable"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={undergroundCables}
                 transporterCost={undergroundCableCost}
                 transporterTransportation={undergroundCableTransportation}
@@ -118,6 +125,7 @@ export function ViewTransporters({
                 name="Power Tower"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={powerTowers}
                 transporterCost={powerTowerCost}
                 transporterTransportation={powerTowerTransportation}
@@ -128,6 +136,7 @@ export function ViewTransporters({
                 name="Substation"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalTransportation={totalTransportation}
                 transporters={substations}
                 transporterCost={substationCost}
                 transporterTransportation={substationTransportation}

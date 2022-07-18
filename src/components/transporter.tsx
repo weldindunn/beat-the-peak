@@ -6,6 +6,7 @@ export function Transporter({
     name,
     watts, 
     wattsPerSec,
+    totalTransportation,
     transporters,
     transporterCost,
     transporterTransportation,
@@ -15,6 +16,7 @@ export function Transporter({
     name: string,
     watts: number; 
     wattsPerSec: number;
+    totalTransportation: number;
     transporters: number;
     transporterCost: number;
     transporterTransportation: number;
@@ -36,9 +38,9 @@ export function Transporter({
                     </div>
                     <div>
                         <span className="tooltip-production">
-                            Each {name} produces {numberConvertor(Math.round(transporterTransportation/transporters), true)} per second
+                            Each {name} transports {numberConvertor(Math.round(transporterTransportation/transporters), true)} per second
                             <br/>
-                            Your {name}s produce {numberConvertor(transporterTransportation, true)} per second, {Math.round(transporterTransportation/wattsPerSec * 100)}% of your total watts per second
+                            Your {name}s transport {numberConvertor(transporterTransportation, true)} per second, {Math.round(transporterTransportation/totalTransportation * 100)}% of your total watts transported per second
                         </span>
                     </div>
                 </div>
