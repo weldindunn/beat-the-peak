@@ -452,6 +452,24 @@ function App() {
     localStorage.setItem('biomassProductionBonus', JSON.stringify(biomassProductionBonus));
     localStorage.setItem('hydroProductionBonus', JSON.stringify(hydroProductionBonus));
     localStorage.setItem('nuclearProductionBonus', JSON.stringify(nuclearProductionBonus));
+
+    //Saves transporters
+    localStorage.setItem('batteries', JSON.stringify(batteries));
+    localStorage.setItem('meters', JSON.stringify(meters));
+    localStorage.setItem('phonePoles', JSON.stringify(phonePoles));
+    localStorage.setItem('transformers', JSON.stringify(transformers));
+    localStorage.setItem('undergroundCables', JSON.stringify(undergroundCables));
+    localStorage.setItem('powerTowers', JSON.stringify(powerTowers));
+    localStorage.setItem('substations', JSON.stringify(substations));
+
+    //Saves transportation bonuses
+    localStorage.setItem('batteryTransportationBonus', JSON.stringify(batteryTransportationBonus));
+    localStorage.setItem('meterTransportationBonus', JSON.stringify(meterTransportationBonus));
+    localStorage.setItem('phonePoleTransportationBonus', JSON.stringify(phonePoleTransportationBonus));
+    localStorage.setItem('transformerTransportationBonus', JSON.stringify(transformerTransportationBonus));
+    localStorage.setItem('undergroundCableTransportationBonus', JSON.stringify(undergroundCableTransportationBonus));
+    localStorage.setItem('powerTowerTransportationBonus', JSON.stringify(powerTowerTransportationBonus));
+    localStorage.setItem('substationTransportationBonus', JSON.stringify(substationTransportationBonus));
   }
 
   /* =========
@@ -553,6 +571,66 @@ function App() {
     const localNuclearProductionBonus = localStorage.getItem('nuclearProductionBonus');
     if (localNuclearProductionBonus) {
       setNuclearProductionBonus(JSON.parse(localNuclearProductionBonus));
+    }
+
+    //Loads transporters
+    const localBatteries = localStorage.getItem('batteries');
+    if (localBatteries) {
+      setBatteries(JSON.parse(localBatteries));
+    }
+    const localMeters = localStorage.getItem('meters');
+    if (localMeters) {
+      setMeters(JSON.parse(localMeters));
+    }
+    const localPhonePoles = localStorage.getItem('phonePoles');
+    if (localPhonePoles) {
+      setPhonePoles(JSON.parse(localPhonePoles));
+    }
+    const localTransformers = localStorage.getItem('transformers');
+    if (localTransformers) {
+      setTransformers(JSON.parse(localTransformers));
+    }
+    const localUndergroundCables = localStorage.getItem('undergroundCables');
+    if (localUndergroundCables) {
+      setUndergroundCables(JSON.parse(localUndergroundCables));
+    }
+    const localPowerTowers = localStorage.getItem('powerTowers');
+    if (localPowerTowers) {
+      setPowerTowers(JSON.parse(localPowerTowers));
+    }
+    const localSubstations = localStorage.getItem('substations');
+    if (localSubstations) {
+      setSubstations(JSON.parse(localSubstations));
+    }
+
+    //Loads transportation bonuses
+    const localBatteryTransportationBonus = localStorage.getItem('batteryTransportationBonus');
+    if (localBatteryTransportationBonus) {
+      setBatteryTransportationBonus(JSON.parse(localBatteryTransportationBonus));
+    }
+    const localMeterTransportationBonus = localStorage.getItem('meterTransportationBonus');
+    if (localMeterTransportationBonus) {
+      setMeterTransportationBonus(JSON.parse(localMeterTransportationBonus));
+    }
+    const localPhonePoleTransportationBonus = localStorage.getItem('phonePoleTransportationBonus');
+    if (localPhonePoleTransportationBonus) {
+      setPhonePoleTransportationBonus(JSON.parse(localPhonePoleTransportationBonus));
+    }
+    const localTransformerTransportationBonus = localStorage.getItem('transformerTransportationBonus');
+    if (localTransformerTransportationBonus) {
+      setTransformerTransportationBonus(JSON.parse(localTransformerTransportationBonus));
+    }
+    const localUndergroundCableTransportationBonus = localStorage.getItem('undergroundCableTransportationBonus');
+    if (localUndergroundCableTransportationBonus) {
+      setUndergroundCableTransportationBonus(JSON.parse(localUndergroundCableTransportationBonus));
+    }
+    const localPowerTowerTransportationBonus = localStorage.getItem('powerTowerTransportationBonus');
+    if (localPowerTowerTransportationBonus) {
+      setPowerTowerTransportationBonus(JSON.parse(localPowerTowerTransportationBonus));
+    }
+    const localSubstationTransportationBonus = localStorage.getItem('substationTransportationBonus');
+    if (localSubstationTransportationBonus) {
+      setSubstationTransportationBonus(JSON.parse(localSubstationTransportationBonus));
     }
 
     console.log("Loaded");
