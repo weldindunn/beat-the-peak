@@ -9,12 +9,16 @@ export function ViewCenter ({
     setName,
     watts, 
     wattsPerSec,
+    netWattsPerSec,
+    members,
     clickBolt
 } : {
     name: string;
     setName: (name: string) => void;
     watts: number; 
     wattsPerSec: number;
+    netWattsPerSec: number;
+    members: number;
     clickBolt: () => void;
 }): JSX.Element {
 
@@ -70,7 +74,15 @@ export function ViewCenter ({
                     </span>
                     <br/>
                     <span className="num-wps">
-                        {"per second: "}{numberConvertor(wattsPerSec, false)}
+                        {"per second: "}{numberConvertor(wattsPerSec, false)}{" (Net: "}{numberConvertor(netWattsPerSec, false)}{")"}
+                    </span>
+                </div>
+
+                {/* # of Watts */}
+                <div className="members-text-box">
+                    <span className="num-members">
+                        {numberConvertor(members, false)}{" member"}
+                        { members > 0 ? ("s") : ("")}
                     </span>
                 </div>
             </div>

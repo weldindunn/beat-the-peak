@@ -18,9 +18,14 @@ function App() {
   //Player's name
   const [name, setName] = useState<string>("Bob");
 
-  //The number of watts and watts generated per second
+  //The number of watts, watts generated per second, and surplus/debt of watts generated modified by those transported
   const [watts, setWatts] = useState<number>(0);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
+  const [netWattsPerSec, setNetWattsPerSec] = useState<number>(0);
+
+  //The number of members in the co-op
+  const [members, setMembers] = useState<number>(0);
+  const [wattsPerMember, setWattsPerMember] = useState<number>(10);
 
   //The number of each type of generator
   const [linemen, setLinemen] = useState<number>(0); 
@@ -117,6 +122,80 @@ function App() {
   const [nuclearCost, setNuclearCost] = useState<number>((nuclearBaseCost * Math.pow(1.15, nuclearPlants)) * nuclearCostBonus);
 
 
+  //The number of each type of transporter
+  const [batteries, setBatteries] = useState<number>(0); 
+  const [meters, setMeters] = useState<number>(0);
+  const [phonePoles, setPhonePoles] = useState<number>(0);
+  const [transformers, setTransformers] = useState<number>(0);
+  const [undergroundCables, setUndergroundCables] = useState<number>(0);
+  const [powerTowers, setPowerTowers] = useState<number>(0);
+  const [substations, setSubstations] = useState<number>(0);
+
+  /* =========================================
+     Transportation capacity of each generator
+     ========================================= */
+  const batteryBaseTransportation = 10;
+  const [batteryTransportationBonus, setBatteryTransportationBonus] = useState<number>(1);
+  const [batteryTransportation, setBatteryTransportation] = useState<number>(batteryBaseTransportation * batteryTransportationBonus * batteries);
+
+  const meterBaseTransportation = 100;
+  const [meterTransportationBonus, setMeterTransportationBonus] = useState<number>(1);
+  const [meterTransportation, setMeterTransportation] = useState<number>(meterBaseTransportation * meterTransportationBonus * meters);
+
+  const phonePoleBaseTransportation = 800;
+  const [phonePoleTransportationBonus, setPhonePoleTransportationBonus] = useState<number>(1);
+  const [phonePoleTransportation, setPhonePoleTransportation] = useState<number>(phonePoleBaseTransportation * phonePoleTransportationBonus * phonePoles);
+
+  const transformerBaseTransportation = 4700;
+  const [transformerTransportationBonus, setTransformerTransportationBonus] = useState<number>(1);
+  const [transformerTransportation, setTransformerTransportation] = useState<number>(transformerBaseTransportation * transformerTransportationBonus * transformers);
+
+  const undergroundCableBaseTransportation = 26000;
+  const [undergroundCableTransportationBonus, setUndergroundCableTransportationBonus] = useState<number>(1);
+  const [undergroundCableTransportation, setUndergroundCableTransportation] = useState<number>(undergroundCableBaseTransportation * undergroundCableTransportationBonus * undergroundCables);
+
+  const powerTowerBaseTransportation = 140000;
+  const [powerTowerTransportationBonus, setPowerTowerTransportationBonus] = useState<number>(1);
+  const [powerTowerTransportation, setPowerTowerTransportation] = useState<number>(powerTowerBaseTransportation * powerTowerTransportationBonus * powerTowers);
+
+  const substationBaseTransportation = 780000;
+  const [substationTransportationBonus, setSubstationTransportationBonus] = useState<number>(1);
+  const [substationTransportation, setSubstationTransportation] = useState<number>(substationBaseTransportation * substationTransportationBonus * substations);
+
+  const [totalTransportation, setTotalTransportation] = useState<number>(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
+
+  /* ========================
+     Cost of each transporter
+     ======================== */
+  const batteryBaseCost = 150;
+  const batteryCostBonus = 1;
+  const [batteryCost, setBatteryCost] = useState<number>((batteryBaseCost * Math.pow(1.15, batteries)) * batteryCostBonus);
+
+  const meterBaseCost = 2500;
+  const meterCostBonus = 1;
+  const [meterCost, setMeterCost] = useState<number>((meterBaseCost * Math.pow(1.15, meters)) * meterCostBonus);
+
+  const phonePoleBaseCost = 26000;
+  const phonePoleCostBonus = 1;
+  const [phonePoleCost, setPhonePoleCost] = useState<number>((phonePoleBaseCost * Math.pow(1.15, phonePoles)) * phonePoleCostBonus);
+
+  const transformerBaseCost = 280000;
+  const transformerCostBonus = 1;
+  const [transformerCost, setTransformerCost] = useState<number>((transformerBaseCost * Math.pow(1.15, transformers)) * transformerCostBonus);
+
+  const undergroundCableBaseCost = 3000000;
+  const undergroundCableCostBonus = 1;
+  const [undergroundCableCost, setUndergroundCableCost] = useState<number>((undergroundCableBaseCost * Math.pow(1.15, undergroundCables)) * undergroundCableCostBonus);
+
+  const powerTowerBaseCost = 32000000;
+  const powerTowerCostBonus = 1;
+  const [powerTowerCost, setPowerTowerCost] = useState<number>((powerTowerBaseCost * Math.pow(1.15, powerTowers)) * powerTowerCostBonus);
+
+  const substationBaseCost = 460000000;
+  const substationCostBonus = 1;
+  const [substationCost, setSubstationCost] = useState<number>((substationBaseCost * Math.pow(1.15, substations)) * substationCostBonus);
+
+
   //Array of upgrades
   const [upgrades, setUpgrades] = useState<Upgrade[]>(UPGRADES);
 
@@ -135,11 +214,21 @@ function App() {
     }
 
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
-    setWatts(watts + (wattsPerSec)/(1000/deltaTime))
+    setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
+    setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
+
+    if (totalTransportation > 0) {
+      setMembers(totalTransportation/wattsPerMember)
+    }
 
     setTime(time);
     setDeltaTime(deltaTime);
   });
+
+  //Updates netWattsPerSec, which is dependent on a fluid generation state
+  useEffect(() => {
+    setNetWattsPerSec(wattsPerSec - (members*wattsPerMember));
+  }, [wattsPerSec, members, wattsPerMember])
 
   //Click Bolt
   function clickBolt(): void {
@@ -243,6 +332,66 @@ function App() {
     }
   }
 
+  /* ===============
+     Buy Transporter
+     =============== */
+    
+  //Update costs
+  useEffect(() => {
+    setBatteryCost((batteryBaseCost * Math.pow(1.15, batteries)) * batteryCostBonus);
+    setBatteryTransportation(batteryBaseTransportation * batteryTransportationBonus * batteries);
+
+    setMeterCost((meterBaseCost * Math.pow(1.15, meters)) * meterCostBonus);
+    setMeterTransportation(meterBaseTransportation * meterTransportationBonus * meters);
+
+    setPhonePoleCost((phonePoleBaseCost * Math.pow(1.15, phonePoles)) * phonePoleCostBonus);
+    setPhonePoleTransportation(phonePoleBaseTransportation * phonePoleTransportationBonus * phonePoles);
+
+    setTransformerCost((transformerBaseCost * Math.pow(1.15, transformers)) * transformerCostBonus);
+    setTransformerTransportation(transformerBaseTransportation * transformerTransportationBonus * transformers);
+
+    setUndergroundCableCost((undergroundCableBaseCost * Math.pow(1.15, undergroundCables)) * undergroundCableCostBonus);
+    setUndergroundCableTransportation(undergroundCableBaseTransportation * undergroundCableTransportationBonus * undergroundCables);
+
+    setPowerTowerCost((powerTowerBaseCost * Math.pow(1.15, powerTowers)) * powerTowerCostBonus);
+    setPowerTowerTransportation(powerTowerBaseTransportation * powerTowerTransportationBonus * powerTowers);
+
+    setSubstationCost((substationBaseCost * Math.pow(1.15, substations)) * substationCostBonus);
+    setSubstationTransportation(substationBaseTransportation * substationTransportationBonus * substations);
+  }, [batteries, batteryCostBonus, batteryTransportationBonus,
+      meters, meterCostBonus, meterTransportationBonus,
+      phonePoles, phonePoleCostBonus, phonePoleTransportationBonus,
+      transformers, transformerCostBonus, transformerTransportationBonus,
+      undergroundCables, undergroundCableCostBonus, undergroundCableTransportationBonus,
+      powerTowers, powerTowerCostBonus, powerTowerTransportationBonus,
+      substations, substationCostBonus, substationTransportationBonus]
+  );
+
+  function buyTransporter(transporter: string) {
+    if (transporter === "Battery") {
+      setBatteries(batteries + 1);
+      setWatts(watts - Math.round(batteryCost));
+    } else if (transporter === "Meter") {
+      setMeters(meters + 1);
+      setWatts(watts - Math.round(meterCost));
+    } else if (transporter === "Phone Pole") {
+      setPhonePoles(phonePoles + 1);
+      setWatts(watts - Math.round(phonePoleCost));
+    } else if (transporter === "Transformer") {
+      setTransformers(transformers + 1);
+      setWatts(watts - Math.round(transformerCost));
+    } else if (transporter === "Underground Cable") {
+      setUndergroundCables(undergroundCables + 1);
+      setWatts(watts - Math.round(undergroundCableCost));
+    } else if (transporter === "Power Tower") {
+      setPowerTowers(powerTowers + 1);
+      setWatts(watts - Math.round(powerTowerCost));
+    } else if (transporter === "Substation") {
+      setSubstations(substations + 1);
+      setWatts(watts - Math.round(substationCost));
+    }
+  }
+
   //Helper function, multiplies production of a generator
   function multiply(generator: string): void {
     if (generator === "Click") {
@@ -303,6 +452,24 @@ function App() {
     localStorage.setItem('biomassProductionBonus', JSON.stringify(biomassProductionBonus));
     localStorage.setItem('hydroProductionBonus', JSON.stringify(hydroProductionBonus));
     localStorage.setItem('nuclearProductionBonus', JSON.stringify(nuclearProductionBonus));
+
+    //Saves transporters
+    localStorage.setItem('batteries', JSON.stringify(batteries));
+    localStorage.setItem('meters', JSON.stringify(meters));
+    localStorage.setItem('phonePoles', JSON.stringify(phonePoles));
+    localStorage.setItem('transformers', JSON.stringify(transformers));
+    localStorage.setItem('undergroundCables', JSON.stringify(undergroundCables));
+    localStorage.setItem('powerTowers', JSON.stringify(powerTowers));
+    localStorage.setItem('substations', JSON.stringify(substations));
+
+    //Saves transportation bonuses
+    localStorage.setItem('batteryTransportationBonus', JSON.stringify(batteryTransportationBonus));
+    localStorage.setItem('meterTransportationBonus', JSON.stringify(meterTransportationBonus));
+    localStorage.setItem('phonePoleTransportationBonus', JSON.stringify(phonePoleTransportationBonus));
+    localStorage.setItem('transformerTransportationBonus', JSON.stringify(transformerTransportationBonus));
+    localStorage.setItem('undergroundCableTransportationBonus', JSON.stringify(undergroundCableTransportationBonus));
+    localStorage.setItem('powerTowerTransportationBonus', JSON.stringify(powerTowerTransportationBonus));
+    localStorage.setItem('substationTransportationBonus', JSON.stringify(substationTransportationBonus));
   }
 
   /* =========
@@ -406,6 +573,66 @@ function App() {
       setNuclearProductionBonus(JSON.parse(localNuclearProductionBonus));
     }
 
+    //Loads transporters
+    const localBatteries = localStorage.getItem('batteries');
+    if (localBatteries) {
+      setBatteries(JSON.parse(localBatteries));
+    }
+    const localMeters = localStorage.getItem('meters');
+    if (localMeters) {
+      setMeters(JSON.parse(localMeters));
+    }
+    const localPhonePoles = localStorage.getItem('phonePoles');
+    if (localPhonePoles) {
+      setPhonePoles(JSON.parse(localPhonePoles));
+    }
+    const localTransformers = localStorage.getItem('transformers');
+    if (localTransformers) {
+      setTransformers(JSON.parse(localTransformers));
+    }
+    const localUndergroundCables = localStorage.getItem('undergroundCables');
+    if (localUndergroundCables) {
+      setUndergroundCables(JSON.parse(localUndergroundCables));
+    }
+    const localPowerTowers = localStorage.getItem('powerTowers');
+    if (localPowerTowers) {
+      setPowerTowers(JSON.parse(localPowerTowers));
+    }
+    const localSubstations = localStorage.getItem('substations');
+    if (localSubstations) {
+      setSubstations(JSON.parse(localSubstations));
+    }
+
+    //Loads transportation bonuses
+    const localBatteryTransportationBonus = localStorage.getItem('batteryTransportationBonus');
+    if (localBatteryTransportationBonus) {
+      setBatteryTransportationBonus(JSON.parse(localBatteryTransportationBonus));
+    }
+    const localMeterTransportationBonus = localStorage.getItem('meterTransportationBonus');
+    if (localMeterTransportationBonus) {
+      setMeterTransportationBonus(JSON.parse(localMeterTransportationBonus));
+    }
+    const localPhonePoleTransportationBonus = localStorage.getItem('phonePoleTransportationBonus');
+    if (localPhonePoleTransportationBonus) {
+      setPhonePoleTransportationBonus(JSON.parse(localPhonePoleTransportationBonus));
+    }
+    const localTransformerTransportationBonus = localStorage.getItem('transformerTransportationBonus');
+    if (localTransformerTransportationBonus) {
+      setTransformerTransportationBonus(JSON.parse(localTransformerTransportationBonus));
+    }
+    const localUndergroundCableTransportationBonus = localStorage.getItem('undergroundCableTransportationBonus');
+    if (localUndergroundCableTransportationBonus) {
+      setUndergroundCableTransportationBonus(JSON.parse(localUndergroundCableTransportationBonus));
+    }
+    const localPowerTowerTransportationBonus = localStorage.getItem('powerTowerTransportationBonus');
+    if (localPowerTowerTransportationBonus) {
+      setPowerTowerTransportationBonus(JSON.parse(localPowerTowerTransportationBonus));
+    }
+    const localSubstationTransportationBonus = localStorage.getItem('substationTransportationBonus');
+    if (localSubstationTransportationBonus) {
+      setSubstationTransportationBonus(JSON.parse(localSubstationTransportationBonus));
+    }
+
     console.log("Loaded");
   }
 
@@ -449,6 +676,9 @@ function App() {
         setName={setName}
         watts={watts}
         wattsPerSec={wattsPerSec}
+        netWattsPerSec={netWattsPerSec}
+        members={members}
+        totalTransportation={totalTransportation}
 
         linemen={linemen}
         coalPlants={coalPlants}
@@ -480,11 +710,36 @@ function App() {
         hydroCost={hydroCost}
         nuclearCost={nuclearCost}
 
+        batteries={batteries}
+        meters={meters}
+        phonePoles={phonePoles}
+        transformers={transformers}
+        undergroundCables={undergroundCables}
+        powerTowers={powerTowers}
+        substations={substations}
+
+        batteryTransportation={batteryTransportation}
+        meterTransportation={meterTransportation}
+        phonePoleTransportation={phonePoleTransportation}
+        transformerTransportation={transformerTransportation}
+        undergroundCableTransportation={undergroundCableTransportation}
+        powerTowerTransportation={powerTowerTransportation}
+        substationTransportation={substationTransportation}
+
+        batteryCost={batteryCost}
+        meterCost={meterCost}
+        phonePoleCost={phonePoleCost}
+        transformerCost={transformerCost}
+        undergroundCableCost={undergroundCableCost}
+        powerTowerCost={powerTowerCost}
+        substationCost={substationCost}
+
         upgrades={upgrades}
         setUpgrades={setUpgrades}
 
         clickBolt={clickBolt}
         buyGenerator={buyGenerator}
+        buyTransporter={buyTransporter}
         buyUpgrade={buyUpgrade}
 
         eraseGame={eraseGame}

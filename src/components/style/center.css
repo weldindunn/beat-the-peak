@@ -32,7 +32,13 @@
   background-color: black;
   line-height: 3vh;
   padding-top: 2vh;
-  padding-bottom: 1vh;
+}
+
+.members-text-box {
+  background-color: black;
+  line-height: 3vh;
+  padding-top: 1.5vh;
+  padding-bottom: 2vh;
 }
 
 .coop-name {
@@ -61,6 +67,10 @@
 
 .num-wps {
   font-size: 3vh;
+}
+
+.num-members {
+  font-size: 4.2vh;
 }
 
 /* Style of bolt button */
