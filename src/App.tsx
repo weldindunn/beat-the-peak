@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ViewHub } from './components/viewHub';
 import { useFrameLoop } from './components/utilities/frameLoop';
 import { solarCurve } from './components/utilities/solarCurve';
+import { windCurve } from './components/utilities/windCurve';
 import { Upgrade } from "./interfaces/upgrade";
 import upgrades from "./data/upgrades.json";
 
@@ -60,7 +61,8 @@ function App() {
 
   const solarBaseProduction = 470;
   const [solarProductionBonus, setSolarProductionBonus] = useState<number>(1);
-  const [solarProduction, setSolarProduction] = useState<number>(solarBaseProduction * solarProductionBonus * solarFarms);
+  const [solarCurveModifier, setSolarCurveModifier] = useState<number>(1);
+  const [solarProduction, setSolarProduction] = useState<number>(solarBaseProduction * solarProductionBonus * solarCurveModifier * solarFarms);
 
   const oilBaseProduction = 2600;
   const [oilProductionBonus, setOilProductionBonus] = useState<number>(1);
@@ -68,7 +70,8 @@ function App() {
 
   const windBaseProduction = 14000;
   const [windProductionBonus, setWindProductionBonus] = useState<number>(1);
-  const [windProduction, setWindProduction] = useState<number>(windBaseProduction * windProductionBonus * windTurbines);
+  const [windCurveModifier, setWindCurveModifier] = useState<number>(1);
+  const [windProduction, setWindProduction] = useState<number>(windBaseProduction * windProductionBonus * windCurveModifier * windTurbines);
 
   const biomassBaseProduction = 78000;
   const [biomassProductionBonus, setBiomassProductionBonus] = useState<number>(1);
@@ -223,12 +226,13 @@ function App() {
     if (time > newMonth) {
       setNewMonth(time + 60000); //Every minute...
 
-      if (currentMonth > 10) {
-        setCurrentMonth(0); //... move to the next month
-      } else {
-        setCurrentMonth(currentMonth + 1); //... move to the next month
+      if (currentMonth > 10) { //...if it's december...
+        setCurrentMonth(0); //...move to January...
+      } else { //...but if it's any other month...
+        setCurrentMonth(currentMonth + 1); //...move to the next month
       }
-      setSolarProductionBonus(solarCurve(currentMonth + 1));
+      setSolarCurveModifier(solarCurve(currentMonth + 1));
+      setWindCurveModifier(windCurve(currentMonth + 1));
     }
 
     if (time > newYear) {
@@ -473,9 +477,9 @@ function App() {
     localStorage.setItem('linemenProductionBonus', JSON.stringify(linemenProductionBonus));
     localStorage.setItem('coalProductionBonus', JSON.stringify(coalProductionBonus));
     localStorage.setItem('gasProductionBonus', JSON.stringify(gasProductionBonus));
-    localStorage.setItem('solarProductionBonus', JSON.stringify(solarProductionBonus));
+    //localStorage.setItem('solarProductionBonus', JSON.stringify(solarProductionBonus));
     localStorage.setItem('oilProductionBonus', JSON.stringify(oilProductionBonus));
-    localStorage.setItem('windProductionBonus', JSON.stringify(windProductionBonus));
+    //localStorage.setItem('windProductionBonus', JSON.stringify(windProductionBonus));
     localStorage.setItem('biomassProductionBonus', JSON.stringify(biomassProductionBonus));
     localStorage.setItem('hydroProductionBonus', JSON.stringify(hydroProductionBonus));
     localStorage.setItem('nuclearProductionBonus', JSON.stringify(nuclearProductionBonus));
@@ -585,18 +589,22 @@ function App() {
     if (localGasProductionBonus) {
       setGasProductionBonus(JSON.parse(localGasProductionBonus));
     }
+    /*
     const localSolarProductionBonus = localStorage.getItem('solarProductionBonus');
     if (localSolarProductionBonus) {
       setSolarProductionBonus(JSON.parse(localSolarProductionBonus));
     }
+    */
     const localOilProductionBonus = localStorage.getItem('oilProductionBonus');
     if (localOilProductionBonus) {
       setOilProductionBonus(JSON.parse(localOilProductionBonus));
     }
+    /*
     const localWindProductionBonus = localStorage.getItem('windProductionBonus');
     if (localWindProductionBonus) {
       setWindProductionBonus(JSON.parse(localWindProductionBonus));
     }
+    */
     const localBiomassProductionBonus = localStorage.getItem('biomassProductionBonus');
     if (localBiomassProductionBonus) {
       setBiomassProductionBonus(JSON.parse(localBiomassProductionBonus));
