@@ -292,13 +292,13 @@ function App() {
     setGasProduction(gasBaseProduction * gasProductionBonus * gasPlants);
 
     setSolarCost((solarBaseCost * Math.pow(1.15, solarFarms)) * solarCostBonus);
-    setSolarProduction(solarBaseProduction * solarProductionBonus * solarFarms);
+    setSolarProduction(solarBaseProduction * solarProductionBonus * solarCurveModifier * solarFarms);
 
     setOilCost((oilBaseCost * Math.pow(1.15, oilWells)) * oilCostBonus);
     setOilProduction(oilBaseProduction * oilProductionBonus * oilWells);
 
     setWindCost((windBaseCost * Math.pow(1.15, windTurbines)) * windCostBonus);
-    setWindProduction(windBaseProduction * windProductionBonus * windTurbines);
+    setWindProduction(windBaseProduction * windProductionBonus * windCurveModifier * windTurbines);
 
     setBiomassCost((biomassBaseCost * Math.pow(1.15, biomassGasifiers)) * biomassCostBonus);
     setBiomassProduction(biomassBaseProduction * biomassProductionBonus * biomassGasifiers);
@@ -312,9 +312,9 @@ function App() {
         linemen, linemenCostBonus, linemenProductionBonus,
         coalPlants, coalCostBonus, coalProductionBonus,
         gasPlants, gasCostBonus, gasProductionBonus,
-        solarFarms, solarCostBonus, solarProductionBonus,
+        solarFarms, solarCostBonus, solarProductionBonus, solarCurveModifier,
         oilWells, oilCostBonus, oilProductionBonus,
-        windTurbines, windCostBonus, windProductionBonus,
+        windTurbines, windCostBonus, windProductionBonus, windCurveModifier,
         biomassGasifiers, biomassCostBonus, biomassProductionBonus,
         hydroPlants, hydroCostBonus, hydroProductionBonus,
         nuclearPlants, nuclearCostBonus, nuclearProductionBonus]
