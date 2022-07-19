@@ -14,6 +14,7 @@ export function ViewHub({
     wattsPerSec,
     netWattsPerSec,
     members,
+    scenery,
     currentMonth,
     currentYear,
     totalTransportation,
@@ -88,6 +89,7 @@ export function ViewHub({
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
+    scenery: string;
     currentMonth: number;
     currentYear: number;
     totalTransportation: number;
@@ -166,6 +168,7 @@ export function ViewHub({
                         <div className="events-column">
                             <div className="events">
                                 <ViewEvents
+                                    scenery={scenery}
                                     currentMonth={currentMonth}
                                     currentYear={currentYear}
                                 ></ViewEvents>

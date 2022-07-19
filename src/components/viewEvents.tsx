@@ -1,13 +1,14 @@
 import React from "react";
 import "./style/events.css";
-import noon from "../img/Day_Night_Cycle_Noon.png";
 
 export function ViewEvents({
     currentMonth,
-    currentYear
+    currentYear,
+    scenery
 } : {
     currentMonth: number;
     currentYear: number;
+    scenery: string;
 }): JSX.Element {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -18,7 +19,7 @@ export function ViewEvents({
             </div>
 
             <div className="scene">
-                <img src={noon} alt="Scenery" />
+                <img src={scenery} alt="Scenery" />
             </div>
 
             <div className="date">

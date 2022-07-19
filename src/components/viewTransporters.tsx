@@ -93,7 +93,7 @@ export function ViewTransporters({
                 buyTransporter={buyTransporter}
             ></Transporter>
             <Transporter
-                name="Phone Pole"
+                name="Utility Pole"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
