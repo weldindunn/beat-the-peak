@@ -1,0 +1,15 @@
+.events {
+  background: #ffd24b;
+  color: #FFFFE0;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+/* Hides scrollbar for chrome/safari/opera/edge */
+.events::-webkit-scrollbar {
+  display: none;
+}
+
+.date {
+  font-size: 4vh;
+}

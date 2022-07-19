@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ViewHub } from './components/viewHub';
 import { useFrameLoop } from './components/utilities/frameLoop';
+import { solarCurve } from './components/utilities/solarCurve';
 import { Upgrade } from "./interfaces/upgrade";
 import upgrades from "./data/upgrades.json";
 
@@ -199,6 +200,10 @@ function App() {
   //Array of upgrades
   const [upgrades, setUpgrades] = useState<Upgrade[]>(UPGRADES);
 
+  //Array of months
+  const [currentMonth, setCurrentMonth] = useState<number>(0);
+  const [currentYear, setCurrentYear] = useState<number>(1);
+
   /* ==========
      Game Loop!
      ========== */
@@ -206,11 +211,29 @@ function App() {
   const [deltaTime, setDeltaTime] = useState(0);
 
   const [newSave, setNewSave] = useState(5000);
+  const [newMonth, setNewMonth] = useState(60000);
+  const [newYear, setNewYear] = useState(720000);
+
   useFrameLoop((time: number, deltaTime: number) => {
     if (time > newSave) {
       setNewSave(time + 1000);
-
       save();
+    }
+
+    if (time > newMonth) {
+      setNewMonth(time + 60000); //Every minute...
+
+      if (currentMonth > 10) {
+        setCurrentMonth(0); //... move to the next month
+      } else {
+        setCurrentMonth(currentMonth + 1); //... move to the next month
+      }
+      setSolarProductionBonus(solarCurve(currentMonth + 1));
+    }
+
+    if (time > newYear) {
+      setNewYear(time + 720000); //Every 12 minutes...
+      setCurrentYear(currentYear + 1); //... move to the next year
     }
 
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
@@ -428,6 +451,10 @@ function App() {
     //Saves # of watts
     localStorage.setItem('watts', JSON.stringify(watts));
 
+    //Saves the date
+    localStorage.setItem('currentMonth', JSON.stringify(currentMonth));
+    localStorage.setItem('currentYear', JSON.stringify(currentYear));
+
     //Saves ids of purchased upgrades 
     localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => !upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
 
@@ -488,6 +515,16 @@ function App() {
     const localWatts = localStorage.getItem('watts');
     if (localWatts) {
       setWatts(JSON.parse(localWatts));
+    }
+
+    //Loads date
+    const localCurrentMonth = localStorage.getItem('currentMonth');
+    if (localCurrentMonth) {
+      setCurrentMonth(JSON.parse(localCurrentMonth));
+    }
+    const localCurrentYear = localStorage.getItem('currentYear');
+    if (localCurrentYear) {
+      setCurrentYear(JSON.parse(localCurrentYear));
     }
 
     //Loads upgrades
@@ -642,6 +679,10 @@ function App() {
   
   function eraseGame(): void {
     setWatts(0);
+    setMembers(0);
+
+    setCurrentMonth(0);
+    setCurrentYear(1);
     setUpgrades(UPGRADES);
 
     setLinemen(0);
@@ -664,6 +705,22 @@ function App() {
     setBiomassProductionBonus(1);
     setHydroProductionBonus(1);
     setNuclearProductionBonus(1);
+
+    setBatteries(0);
+    setMeters(0);
+    setPhonePoles(0);
+    setTransformers(0);
+    setUndergroundCables(0);
+    setPowerTowers(0);
+    setSubstations(0);
+
+    setBatteryTransportationBonus(1);
+    setMeterTransportationBonus(1);
+    setPhonePoleTransportationBonus(1);
+    setTransformerTransportationBonus(1);
+    setUndergroundCableTransportationBonus(1);
+    setPowerTowerTransportationBonus(1);
+    setSubstationTransportationBonus(1);
   }
 
   /* ===========
@@ -678,6 +735,8 @@ function App() {
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}
+        currentMonth={currentMonth}
+        currentYear={currentYear}
         totalTransportation={totalTransportation}
 
         linemen={linemen}

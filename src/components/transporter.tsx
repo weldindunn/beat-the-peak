@@ -48,7 +48,7 @@ export function Transporter({
                 </div>
             }
         >
-            <button className="transporter" onClick={() => buyTransporter(name)} disabled={watts < Math.round(transporterCost) || (netWattsPerSec - transporterTransportation) < 0}>
+            <button className="transporter" onClick={() => buyTransporter(name)} disabled={watts < Math.round(transporterCost) || (((netWattsPerSec - transporterTransportation) < 0) && (transporterTransportation !== 0))}>
                 <div className="transporter-icon">
                     {/*<img src={icon} alt={name.charAt(0)}></img>*/}
                 </div>
