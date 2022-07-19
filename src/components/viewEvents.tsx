@@ -1,5 +1,6 @@
 import React from "react";
 import "./style/events.css";
+import noon from "../img/Day_Night_Cycle_Noon.png";
 
 export function ViewEvents({
     currentMonth,
@@ -12,8 +13,13 @@ export function ViewEvents({
 
     return (
         <>
-            <span>Events</span>
+            <div className="title">
+                <span>Events</span>
+            </div>
 
+            <div className="scene">
+                <img src={noon} alt="Scenery" />
+            </div>
 
             <div className="date">
                 <span>{"Date: "}{months[currentMonth]}{", Year "}{currentYear}</span>

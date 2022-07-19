@@ -1,6 +1,6 @@
 .events {
   background: #ffd24b;
-  color: #FFFFE0;
+  color: #FFFFFF;
   height: 50vh;
   overflow-y: auto;
 }
@@ -11,5 +11,7 @@
 }
 
 .date {
-  font-size: 4vh;
+  margin-top: 4px;
+  font-size: 28px;
+  color: #645424;
 }
