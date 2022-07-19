@@ -2,5 +2,5 @@
 
 export function solarCurve(month: number): number {
     // y = -(0.4x - 2.4)^2 + 10
-    return ((-1)*(Math.pow((0.40 * month - 2.4), 2)) + 10)/10 + 0.25
+    return ((-1)*(Math.pow((0.40 * month - 2.4), 2)) + 12.5)/10
 }

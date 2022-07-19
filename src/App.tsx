@@ -33,9 +33,9 @@ function App() {
   const [linemen, setLinemen] = useState<number>(0); 
   const [coalPlants, setCoalPlants] = useState<number>(0);
   const [gasPlants, setGasPlants] = useState<number>(0);
-  const [solarFarms, setSolarFarms] = useState<number>(0);
+  const [solarFarms, setSolarFarms] = useState<number>(1);
   const [oilWells, setOilWells] = useState<number>(0);
-  const [windTurbines, setWindTurbines] = useState<number>(0);
+  const [windTurbines, setWindTurbines] = useState<number>(1);
   const [biomassGasifiers, setBiomassGasifiers] = useState<number>(0);
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
@@ -70,7 +70,7 @@ function App() {
 
   const windBaseProduction = 14000;
   const [windProductionBonus, setWindProductionBonus] = useState<number>(1);
-  const [windCurveModifier, setWindCurveModifier] = useState<number>(1);
+  const [windCurveModifier, setWindCurveModifier] = useState<number>(1.33);
   const [windProduction, setWindProduction] = useState<number>(windBaseProduction * windProductionBonus * windCurveModifier * windTurbines);
 
   const biomassBaseProduction = 78000;
@@ -240,9 +240,6 @@ function App() {
       setCurrentYear(currentYear + 1); //... move to the next year
     }
 
-    //console.log("Solar gen: " + solarProduction);
-    //console.log("Wind gen: " + windProduction);
-
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
     setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
     setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
@@ -259,15 +256,6 @@ function App() {
   useEffect(() => {
     setNetWattsPerSec(wattsPerSec - (members*wattsPerMember));
   }, [wattsPerSec, members, wattsPerMember])
-
-  useEffect(() => {
-    setSolarProduction(solarBaseProduction * solarProductionBonus * solarCurveModifier * solarFarms);
-    setWindProduction(windBaseProduction * windProductionBonus * windCurveModifier * windTurbines);
-  }, [solarBaseProduction, windBaseProduction,
-      solarProductionBonus, windProductionBonus,
-      solarCurveModifier, windCurveModifier,
-      solarFarms, windTurbines]
-  )
 
   //Click Bolt
   function clickBolt(): void {
@@ -489,9 +477,9 @@ function App() {
     localStorage.setItem('linemenProductionBonus', JSON.stringify(linemenProductionBonus));
     localStorage.setItem('coalProductionBonus', JSON.stringify(coalProductionBonus));
     localStorage.setItem('gasProductionBonus', JSON.stringify(gasProductionBonus));
-    //localStorage.setItem('solarProductionBonus', JSON.stringify(solarProductionBonus));
+    localStorage.setItem('solarProductionBonus', JSON.stringify(solarProductionBonus));
     localStorage.setItem('oilProductionBonus', JSON.stringify(oilProductionBonus));
-    //localStorage.setItem('windProductionBonus', JSON.stringify(windProductionBonus));
+    localStorage.setItem('windProductionBonus', JSON.stringify(windProductionBonus));
     localStorage.setItem('biomassProductionBonus', JSON.stringify(biomassProductionBonus));
     localStorage.setItem('hydroProductionBonus', JSON.stringify(hydroProductionBonus));
     localStorage.setItem('nuclearProductionBonus', JSON.stringify(nuclearProductionBonus));
@@ -537,6 +525,8 @@ function App() {
     const localCurrentMonth = localStorage.getItem('currentMonth');
     if (localCurrentMonth) {
       setCurrentMonth(JSON.parse(localCurrentMonth));
+      setSolarCurveModifier(solarCurve(JSON.parse(localCurrentMonth)));
+      setWindCurveModifier(windCurve(JSON.parse(localCurrentMonth)));
     }
     const localCurrentYear = localStorage.getItem('currentYear');
     if (localCurrentYear) {
@@ -601,22 +591,18 @@ function App() {
     if (localGasProductionBonus) {
       setGasProductionBonus(JSON.parse(localGasProductionBonus));
     }
-    /*
     const localSolarProductionBonus = localStorage.getItem('solarProductionBonus');
     if (localSolarProductionBonus) {
       setSolarProductionBonus(JSON.parse(localSolarProductionBonus));
     }
-    */
     const localOilProductionBonus = localStorage.getItem('oilProductionBonus');
     if (localOilProductionBonus) {
       setOilProductionBonus(JSON.parse(localOilProductionBonus));
     }
-    /*
     const localWindProductionBonus = localStorage.getItem('windProductionBonus');
     if (localWindProductionBonus) {
       setWindProductionBonus(JSON.parse(localWindProductionBonus));
     }
-    */
     const localBiomassProductionBonus = localStorage.getItem('biomassProductionBonus');
     if (localBiomassProductionBonus) {
       setBiomassProductionBonus(JSON.parse(localBiomassProductionBonus));
@@ -725,6 +711,9 @@ function App() {
     setBiomassProductionBonus(1);
     setHydroProductionBonus(1);
     setNuclearProductionBonus(1);
+
+    setSolarCurveModifier(0.674);
+    setWindCurveModifier(1);
 
     setBatteries(0);
     setMeters(0);
