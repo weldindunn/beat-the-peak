@@ -61,7 +61,7 @@ function App() {
 
   const solarBaseProduction = 470;
   const [solarProductionBonus, setSolarProductionBonus] = useState<number>(1);
-  const [solarCurveModifier, setSolarCurveModifier] = useState<number>(1);
+  const [solarCurveModifier, setSolarCurveModifier] = useState<number>(0.424);
   const [solarProduction, setSolarProduction] = useState<number>(solarBaseProduction * solarProductionBonus * solarCurveModifier * solarFarms);
 
   const oilBaseProduction = 2600;
@@ -240,6 +240,9 @@ function App() {
       setCurrentYear(currentYear + 1); //... move to the next year
     }
 
+    //console.log("Solar gen: " + solarProduction);
+    //console.log("Wind gen: " + windProduction);
+
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
     setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
     setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
@@ -256,6 +259,15 @@ function App() {
   useEffect(() => {
     setNetWattsPerSec(wattsPerSec - (members*wattsPerMember));
   }, [wattsPerSec, members, wattsPerMember])
+
+  useEffect(() => {
+    setSolarProduction(solarBaseProduction * solarProductionBonus * solarCurveModifier * solarFarms);
+    setWindProduction(windBaseProduction * windProductionBonus * windCurveModifier * windTurbines);
+  }, [solarBaseProduction, windBaseProduction,
+      solarProductionBonus, windProductionBonus,
+      solarCurveModifier, windCurveModifier,
+      solarFarms, windTurbines]
+  )
 
   //Click Bolt
   function clickBolt(): void {
