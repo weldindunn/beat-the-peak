@@ -82,7 +82,7 @@ export function ViewCenter ({
                 <div className="members-text-box">
                     <span className="num-members">
                         {numberConvertor(members, false)}{" member"}
-                        { members > 0 ? ("s") : ("")}
+                        { members !== 1 ? ("s") : ("")}
                     </span>
                 </div>
             </div>

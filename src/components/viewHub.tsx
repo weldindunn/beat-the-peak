@@ -5,6 +5,7 @@ import { ViewGenerators } from "./viewGenerators";
 import { ViewUpgrades } from "./viewUpgrades";
 import { Upgrade } from "../interfaces/upgrade";
 import { ViewTransporters } from "./viewTransporters";
+import { ViewEvents } from "./viewEvents";
 
 export function ViewHub({
     name, 
@@ -13,6 +14,8 @@ export function ViewHub({
     wattsPerSec,
     netWattsPerSec,
     members,
+    currentMonth,
+    currentYear,
     totalTransportation,
 
     linemen,
@@ -85,6 +88,8 @@ export function ViewHub({
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
+    currentMonth: number;
+    currentYear: number;
     totalTransportation: number;
 
     linemen: number;
@@ -160,7 +165,10 @@ export function ViewHub({
                         {/* Events */}
                         <div className="events-column">
                             <div className="events">
-                                <span>Events</span>
+                                <ViewEvents
+                                    currentMonth={currentMonth}
+                                    currentYear={currentYear}
+                                ></ViewEvents>
                             </div>
                         </div>
 
