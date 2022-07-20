@@ -11,6 +11,7 @@ import upgrades from "./data/upgrades.json";
 import morning from "./img/Day_Night_Cycle_Morning.png";
 import noon from "./img/Day_Night_Cycle_Noon.png";
 import evening from "./img/Day_Night_Cycle_Evening.png";
+import { hydroCurve } from './components/utilities/hydroCurve';
 
 const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
@@ -86,7 +87,8 @@ function App() {
 
   const hydroBaseProduction = 440000;
   const [hydroProductionBonus, setHydroProductionBonus] = useState<number>(1);
-  const [hydroProduction, setHydroProduction] = useState<number>(hydroBaseProduction * hydroProductionBonus * hydroPlants);
+  const [hydroCurveModifier, setHydroCurveModifier] = useState<number>(0.9)
+  const [hydroProduction, setHydroProduction] = useState<number>(hydroBaseProduction * hydroProductionBonus * hydroCurveModifier * hydroPlants);
 
   const nuclearBaseProduction = 2600000;
   const [nuclearProductionBonus, setNuclearProductionBonus] = useState<number>(1);
@@ -253,6 +255,7 @@ function App() {
       }
       setSolarCurveModifier(solarCurve(currentMonth + 1));
       setWindCurveModifier(windCurve(currentMonth + 1));
+      setHydroCurveModifier(hydroCurve(currentMonth + 1));
     }
 
     if (time > newYear) {
@@ -312,7 +315,7 @@ function App() {
     setBiomassProduction(biomassBaseProduction * biomassProductionBonus * biomassGasifiers);
 
     setHydroCost((hydroBaseCost * Math.pow(1.15, hydroPlants)) * hydroCostBonus);
-    setHydroProduction(hydroBaseProduction * hydroProductionBonus * hydroPlants);
+    setHydroProduction(hydroBaseProduction * hydroProductionBonus * hydroCurveModifier * hydroPlants);
 
     setNuclearCost((nuclearBaseCost * Math.pow(1.15, nuclearPlants)) * nuclearCostBonus);
     setNuclearProduction(nuclearBaseProduction * nuclearProductionBonus * nuclearPlants);
@@ -324,7 +327,7 @@ function App() {
         oilWells, oilCostBonus, oilProductionBonus,
         windTurbines, windCostBonus, windProductionBonus, windCurveModifier,
         biomassGasifiers, biomassCostBonus, biomassProductionBonus,
-        hydroPlants, hydroCostBonus, hydroProductionBonus,
+        hydroPlants, hydroCostBonus, hydroProductionBonus, hydroCurveModifier,
         nuclearPlants, nuclearCostBonus, nuclearProductionBonus]
   );
 
@@ -547,6 +550,7 @@ function App() {
       setCurrentMonth(JSON.parse(localCurrentMonth));
       setSolarCurveModifier(solarCurve(JSON.parse(localCurrentMonth)));
       setWindCurveModifier(windCurve(JSON.parse(localCurrentMonth)));
+      setHydroCurveModifier(hydroCurve(JSON.parse(localCurrentMonth)));
     }
     const localCurrentYear = localStorage.getItem('currentYear');
     if (localCurrentYear) {
@@ -733,8 +737,9 @@ function App() {
     setHydroProductionBonus(1);
     setNuclearProductionBonus(1);
 
-    setSolarCurveModifier(0.674);
-    setWindCurveModifier(1);
+    setSolarCurveModifier(solarCurve(0));
+    setWindCurveModifier(windCurve(0));
+    setHydroCurveModifier(hydroCurve(0))
 
     setBatteries(0);
     setMeters(0);
