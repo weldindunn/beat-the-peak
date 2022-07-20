@@ -40,9 +40,9 @@ function App() {
   const [linemen, setLinemen] = useState<number>(0); 
   const [coalPlants, setCoalPlants] = useState<number>(0);
   const [gasPlants, setGasPlants] = useState<number>(0);
-  const [solarFarms, setSolarFarms] = useState<number>(1);
+  const [solarFarms, setSolarFarms] = useState<number>(0);
   const [oilWells, setOilWells] = useState<number>(0);
-  const [windTurbines, setWindTurbines] = useState<number>(1);
+  const [windTurbines, setWindTurbines] = useState<number>(0);
   const [biomassGasifiers, setBiomassGasifiers] = useState<number>(0);
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
@@ -707,6 +707,7 @@ function App() {
     setWatts(0);
     setMembers(0);
 
+    setScenery(morning);
     setCurrentMonth(0);
     setCurrentYear(1);
     setUpgrades(UPGRADES);
