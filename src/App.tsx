@@ -5,13 +5,16 @@ import { ViewHub } from './components/viewHub';
 import { useFrameLoop } from './components/utilities/frameLoop';
 import { solarCurve } from './components/utilities/solarCurve';
 import { windCurve } from './components/utilities/windCurve';
+import { hydroCurve } from './components/utilities/hydroCurve';
 import { Upgrade } from "./interfaces/upgrade";
 import upgrades from "./data/upgrades.json";
 
 import morning from "./img/Day_Night_Cycle_Morning.png";
 import noon from "./img/Day_Night_Cycle_Noon.png";
 import evening from "./img/Day_Night_Cycle_Evening.png";
-import { hydroCurve } from './components/utilities/hydroCurve';
+import crescent from "./img/Day_Night_Cycle_Night_Crescent.png";
+import full_moon from "./img/Day_Night_Cycle_Night_Full_Moon.png";
+import dawn from "./img/Day_Night_Cycle_Night_Dawn.png";
 
 const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
@@ -223,7 +226,7 @@ function App() {
   const [deltaTime, setDeltaTime] = useState(0);
 
   const [newSave, setNewSave] = useState(5000);
-  const [newScenery, setNewScenery] = useState(20000);
+  const [newScenery, setNewScenery] = useState(10000);
   const [newMonth, setNewMonth] = useState(60000);
   const [newYear, setNewYear] = useState(720000);
 
@@ -234,11 +237,17 @@ function App() {
     }
 
     if (time > newScenery) {
-      setNewScenery(time + 20000);
+      setNewScenery(time + 10000);
 
-      if (time % 60000 > 40000) {
-        setScenery(evening);
+      if (time % 60000 > 50000) {
+        setScenery(dawn);
+      } else if (time % 60000 > 40000) {
+        setScenery(full_moon);
+      } else if (time % 60000 > 30000) {
+        setScenery(crescent);
       } else if (time % 60000 > 20000) {
+        setScenery(evening);
+      } else if (time % 60000 > 10000) {
         setScenery(noon);
       } else {
         setScenery(morning);
