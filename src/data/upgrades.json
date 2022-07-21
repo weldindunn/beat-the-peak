@@ -32,8 +32,8 @@
     {
         "id": 4,
         "name": "Ultra-Pliers",
-        "description": "Linemen are twice as efficient",
-        "generator": "Lineman",
+        "description": "Lineworkers are twice as efficient",
+        "generator": "Lineworker",
         "type": "multiplier",
         "cost": 1000,
         "unlocked": true,
@@ -42,8 +42,8 @@
     {
         "id": 5,
         "name": "Wrench Monkeys",
-        "description": "Linemen are twice as efficient",
-        "generator": "Lineman",
+        "description": "Lineworkers are twice as efficient",
+        "generator": "Lineworker",
         "type": "multiplier",
         "cost": 10000,
         "unlocked": true,
@@ -52,8 +52,8 @@
     {
         "id": 6,
         "name": "Hammer Time!",
-        "description": "Linemen are twice as efficient",
-        "generator": "Lineman",
+        "description": "Lineworker are twice as efficient",
+        "generator": "Lineworker",
         "type": "multiplier",
         "cost": 50000,
         "unlocked": true,
@@ -141,7 +141,7 @@
     },
     {
         "id": 15,
-        "name": "Perovskite Cells",
+        "name": "A Second Sun",
         "description": "Solar Farms are twice as efficient",
         "generator": "Solar Farm",
         "type": "multiplier",

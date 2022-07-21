@@ -101,7 +101,7 @@ export function ViewGenerators({
                 <span>Generators</span>
             </div>
             <Generator
-                name="Lineman"
+                name="Lineworker"
                 icon={lineman}
                 tooltip_icon={hard_hat}
                 watts={watts}

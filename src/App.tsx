@@ -342,7 +342,7 @@ function App() {
 
   function buyGenerator(generator: string) {
 
-    if (generator === "Lineman") {
+    if (generator === "Lineworker") {
       setLinemen(linemen + 1);
       setWatts(watts - Math.round(linemenCost));
     } else if (generator === "Coal Plant") {
@@ -433,7 +433,7 @@ function App() {
     } else if (transporter === "Meter") {
       setMeters(meters + 1);
       setWatts(watts - Math.round(meterCost));
-    } else if (transporter === "Phone Pole") {
+    } else if (transporter === "Utility Pole") {
       setPhonePoles(phonePoles + 1);
       setWatts(watts - Math.round(phonePoleCost));
     } else if (transporter === "Transformer") {
