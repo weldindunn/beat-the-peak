@@ -32,7 +32,7 @@ export function UpgradeSquare({
                             { //Image
                                 upgrade.generator === "Click" ? (
                                     <img src={cursor} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Lineman" ? (
+                                ) : upgrade.generator === "Lineworker" ? (
                                     <img src={hard_hat} alt={upgrade.generator}/>
                                 ) : upgrade.generator === "Coal Plant" ? (
                                     <img src={coal_lump} alt={upgrade.generator}/>
@@ -65,7 +65,7 @@ export function UpgradeSquare({
                     {
                         upgrade.generator === "Click" ? (
                             <img src={cursor} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Lineman" ? (
+                        ) : upgrade.generator === "Lineworker" ? (
                             <img src={hard_hat} alt={upgrade.generator}/>
                         ) : upgrade.generator === "Coal Plant" ? (
                             <img src={coal_lump} alt={upgrade.generator}/>
