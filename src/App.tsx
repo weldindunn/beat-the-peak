@@ -9,6 +9,9 @@ import { hydroCurve } from './components/utilities/hydroCurve';
 import { hurricaneCurve } from './components/utilities/hurricaneCurve';
 import { blizzardCurve } from './components/utilities/blizzardCurve';
 import { stormCurve } from './components/utilities/stormCurve';
+import { snowStormCurve } from './components/utilities/snowStormCurve';
+import { tornadoCurve } from './components/utilities/tornadoCurve';
+import { heatWaveCurve } from './components/utilities/heatWaveCurve';
 import { Upgrade } from "./interfaces/upgrade";
 import { Advent } from "./interfaces/advent";
 import upgrades from "./data/upgrades.json";
@@ -325,6 +328,33 @@ function App() {
       setAdvents(
         [...advents, 
           {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a snow storm (About 37.39% chance per year)
+    if (randomNumber < snowStormCurve(time % 720000, deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a tornado (About 60% chance per year)
+    if (randomNumber < tornadoCurve(time % 720000, deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": currentMonth + ", " + currentYear, "length": 20000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a heat wave (About 60% chance per year)
+    if (randomNumber < heatWaveCurve(time % 720000, deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": currentMonth + ", " + currentYear, "length": 30000}
         ]
       );
     }
