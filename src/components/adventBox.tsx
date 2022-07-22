@@ -21,7 +21,9 @@ export function AdventBox({
                     }
                 </div>
                 <span className="advent-description">
-                    {advent.description}{"Started: "}{advent.startDate}
+                    {advent.description}
+                    <br/>
+                    {"Started: "}{advent.startDate}
                 </span>
             </div>
         </div>
