@@ -630,7 +630,6 @@ function App() {
   function load(): void {
     //Loads time
     const localTime = localStorage.getItem('time');
-    console.log(localTime);
     if (localTime) {
       setTime(JSON.parse(localTime));
     }
