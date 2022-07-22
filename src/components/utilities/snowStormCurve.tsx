@@ -5,5 +5,5 @@ import { integral } from "./integral"
 
 export function snowStormCurve(time: number, deltaTime: number): number {
     // ((x-150000)*(x-660,000))/21,000,000,000,000,000
-    return integral(time - deltaTime, time, 150000, 660000, 21000000000000000);
+    return integral(time - deltaTime, time, 150000, 660000, 21000000000000000, deltaTime);
 }

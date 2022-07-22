@@ -5,5 +5,5 @@ import { integral } from "./integral";
 
 export function hurricaneCurve(time: number, deltaTime: number): number {
     // ((-1)*(x-300,000)*(x-660,000))/20,000,000,000,000,000
-    return integral(time - deltaTime, time, 300000, 660000, 20000000000000000);
+    return integral(time - deltaTime, time, 300000, 660000, 20000000000000000, deltaTime);
 }

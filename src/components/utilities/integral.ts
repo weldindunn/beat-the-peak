@@ -17,6 +17,6 @@ VVVV
 ((b^3)/3y - (x2*b^2)/2y - (x1*b^2)/2y + ((x1*x2)/y)*b) - ((a^3)/3y - (x2*a^2)/2y - (x1*a^2)/2y + ((x1*x2)/y)*a) <<< integral (area under the curve)
 */
 
-export function integral(a: number, b: number, x1: number, x2: number, y: number): number {
-    return (Math.pow(b, 3)/(3*y) - ((x2 * Math.pow(b, 2))/(2*y)) - ((x1 * Math.pow(b, 2))/(2*y)) + ((x1*x2)/(2*y))*b) - (Math.pow(a, 3)/(3*y) - ((x2 * Math.pow(a, 2))/(2*y)) - ((x1 * Math.pow(a, 2))/(2*y)) + ((x1*x2)/(2*y))*a);
+export function integral(a: number, b: number, x1: number, x2: number, y: number, deltaTime: number): number {
+    return ((Math.pow(b, 3)/(3*y) - ((x2 * Math.pow(b, 2))/(2*y)) - ((x1 * Math.pow(b, 2))/(2*y)) + ((x1*x2)/(2*y))*b) - (Math.pow(a, 3)/(3*y) - ((x2 * Math.pow(a, 2))/(2*y)) - ((x1 * Math.pow(a, 2))/(2*y)) + ((x1*x2)/(2*y))*a));
 }
