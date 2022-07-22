@@ -5,6 +5,7 @@ import "./style/center.css";
 import bolt from "../img/bolt.png";
 
 export function ViewCenter ({
+    time,
     name,
     setName,
     watts, 
@@ -13,6 +14,7 @@ export function ViewCenter ({
     members,
     clickBolt
 } : {
+    time: number;
     name: string;
     setName: (name: string) => void;
     watts: number; 
@@ -25,23 +27,36 @@ export function ViewCenter ({
     const [isEditing, setEditing] = useState<boolean>(false);
     const [resetName, setResetName] = useState<string>("");
 
+    const [isViewing, setViewing] = useState<boolean>(false);
+
     function cancel(): void {
         setName(resetName);
         setEditing(false);
     }
 
-    function open(): void {
+    function openName(): void {
         setResetName(name)
         setEditing(true);
+    }
+
+    function openInfo(): void {
+        setViewing(true);
+    }
+
+    function closeInfo(): void {
+        setViewing(false);
     }
 
     return (
         <div className="center">
             <div className="top-text">
-                {/* Power Button */}
+                {/* Name of Co-op */}
                 <div className="name-text-box">
-                    <button className="coop-name" onClick={open}>
+                    <button className="coop-name" onClick={openName}>
                         {name}'s Electric Cooperative
+                    </button>
+                    <button className="coop-name" onClick={openInfo}>
+                        Info
                     </button>
                 </div>
                 <Modal show={isEditing} animation={true}>
@@ -66,6 +81,19 @@ export function ViewCenter ({
                         <Button variant="warning" onClick={cancel}>Cancel</Button>
                     </Modal.Footer>
                 </Modal>
+                <Modal show={isViewing} animation={true}>
+                    <Modal.Header>
+                        <Modal.Title>Info</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={closeInfo}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
 
                 {/* # of Watts */}
                 <div className="watts-text-box">
@@ -78,7 +106,7 @@ export function ViewCenter ({
                     </span>
                 </div>
 
-                {/* # of Watts */}
+                {/* # of Members */}
                 <div className="members-text-box">
                     <span className="num-members">
                         {numberConvertor(members, false)}{" member"}
