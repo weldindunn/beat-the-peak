@@ -4,6 +4,7 @@ import { ViewCenter } from "./viewCenter";
 import { ViewGenerators } from "./viewGenerators";
 import { ViewUpgrades } from "./viewUpgrades";
 import { Upgrade } from "../interfaces/upgrade";
+import { Advent } from "../interfaces/advent";
 import { ViewTransporters } from "./viewTransporters";
 import { ViewEvents } from "./viewEvents";
 
@@ -75,6 +76,7 @@ export function ViewHub({
 
     upgrades,
     setUpgrades,
+    advents,
 
     clickBolt,
     buyGenerator,
@@ -150,6 +152,7 @@ export function ViewHub({
 
     upgrades: Upgrade[];
     setUpgrades: (upgrades: Upgrade[]) => void;
+    advents: Advent[];
 
     clickBolt: () => void;
     buyGenerator: (generator: string) => void;
@@ -171,6 +174,7 @@ export function ViewHub({
                                     scenery={scenery}
                                     currentMonth={currentMonth}
                                     currentYear={currentYear}
+                                    advents={advents}
                                 ></ViewEvents>
                             </div>
                         </div>

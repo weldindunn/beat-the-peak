@@ -6,7 +6,11 @@ import { useFrameLoop } from './components/utilities/frameLoop';
 import { solarCurve } from './components/utilities/solarCurve';
 import { windCurve } from './components/utilities/windCurve';
 import { hydroCurve } from './components/utilities/hydroCurve';
+import { hurricaneCurve } from './components/utilities/hurricaneCurve';
+import { blizzardCurve } from './components/utilities/blizzardCurve';
+import { stormCurve } from './components/utilities/stormCurve';
 import { Upgrade } from "./interfaces/upgrade";
+import { Advent } from "./interfaces/advent";
 import upgrades from "./data/upgrades.json";
 
 import morning from "./img/Day_Night_Cycle_Morning.png";
@@ -215,6 +219,9 @@ function App() {
   //Array of upgrades
   const [upgrades, setUpgrades] = useState<Upgrade[]>(UPGRADES);
 
+  //Array of advents
+  const [advents, setAdvents] = useState<Advent[]>([]);
+
   //Array of months
   const [currentMonth, setCurrentMonth] = useState<number>(0);
   const [currentYear, setCurrentYear] = useState<number>(1);
@@ -224,6 +231,7 @@ function App() {
      ========== */
   const [time, setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
+  const [randomNumber, setRandomNumber] = useState(Math.random()); //Random number between 0 and 1 used for random events like weather
 
   const [newSave, setNewSave] = useState(5000);
   const [newScenery, setNewScenery] = useState(10000);
@@ -231,11 +239,14 @@ function App() {
   const [newYear, setNewYear] = useState(720000);
 
   useFrameLoop((time: number, deltaTime: number) => {
+    
+    //Autosaves every second
     if (time > newSave) {
       setNewSave(time + 1000);
       save();
     }
 
+    //Cycles through scenery every 10 seconds
     if (time > newScenery) {
       setNewScenery(time + 10000);
 
@@ -254,6 +265,7 @@ function App() {
       }
     }
 
+    //Moves the months forward
     if (time > newMonth) {
       setNewMonth(time + 60000); //Every minute...
 
@@ -267,21 +279,69 @@ function App() {
       setHydroCurveModifier(hydroCurve(currentMonth + 1));
     }
 
+    //Moves the years forward
     if (time > newYear) {
       setNewYear(time + 720000); //Every 12 minutes...
       setCurrentYear(currentYear + 1); //... move to the next year
     }
 
+    //Updates generator production
     setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
-    setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
+
+    //Updates transporter transportation capacity
     setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
 
+    //Adds a frame worth of watts to the watts sum
+    setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
+
+    //Updates the number of members
     if (totalTransportation > 0) {
       setMembers(totalTransportation/wattsPerMember)
     }
 
+    //If the odds are right, start a hurricane
+    if (randomNumber < hurricaneCurve(time % 720000, deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a blizzard
+    if (randomNumber < blizzardCurve(time % 720000, deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
+        ]
+      );
+    }
+
+    //If the odds are right, start an earthquake (odds are once in 15 years)
+    if (randomNumber < 1/((15*720000)/16.7)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 10000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a storm (odds are about 2.8 times a year)
+    if (randomNumber < stormCurve(time % 720000, deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+        ]
+      );
+    }
+
+    if (randomNumber < 0.00001) {
+      console.log("WOAH");
+    }
+
     setTime(time);
     setDeltaTime(deltaTime);
+    setRandomNumber(Math.random());
   });
 
   //Updates netWattsPerSec, which is dependent on a fluid generation state
@@ -481,6 +541,9 @@ function App() {
      ========= */
 
   function save(): void {
+    //Saves the time
+    localStorage.setItem('time', JSON.stringify(time));
+
     //Saves name
     localStorage.setItem('name', JSON.stringify(name));
 
@@ -493,6 +556,9 @@ function App() {
 
     //Saves ids of purchased upgrades 
     localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => !upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
+
+    //Saves advents
+    localStorage.setItem('advents', JSON.stringify(advents));
 
     //Saves generators
     localStorage.setItem('linemen', JSON.stringify(linemen));
@@ -540,6 +606,11 @@ function App() {
      ========= */
 
   function load(): void {
+    //Loads time
+    const localTime = localStorage.getItem('time');
+    if (localTime) {
+      setTime(JSON.parse(localTime));
+    }
 
     //Loads name
     const localName = localStorage.getItem('name');
@@ -551,6 +622,12 @@ function App() {
     const localWatts = localStorage.getItem('watts');
     if (localWatts) {
       setWatts(JSON.parse(localWatts));
+    }
+
+    //Loads advents
+    const localAdvents = localStorage.getItem('advents');
+    if (localAdvents) {
+      setAdvents(JSON.parse(localAdvents));
     }
 
     //Loads date
@@ -717,6 +794,7 @@ function App() {
      ========== */
   
   function eraseGame(): void {
+    setTime(0);
     setWatts(0);
     setMembers(0);
 
@@ -724,6 +802,7 @@ function App() {
     setCurrentMonth(0);
     setCurrentYear(1);
     setUpgrades(UPGRADES);
+    setAdvents([]);
 
     setLinemen(0);
     setCoalPlants(0);
@@ -840,6 +919,7 @@ function App() {
 
         upgrades={upgrades}
         setUpgrades={setUpgrades}
+        advents={advents}
 
         clickBolt={clickBolt}
         buyGenerator={buyGenerator}
