@@ -32,8 +32,8 @@ export function ViewEvents({
 
             {
                 advents.map((advent: Advent) => (
-                    <div>
-                        <AdventBox advent={advent} />
+                    <div key={advent.id}>
+                        <AdventBox advent={advent}/>
                     </div>
                 ))
             }

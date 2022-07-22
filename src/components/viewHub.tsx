@@ -9,6 +9,7 @@ import { ViewTransporters } from "./viewTransporters";
 import { ViewEvents } from "./viewEvents";
 
 export function ViewHub({
+    time,
     name, 
     setName,
     watts,
@@ -85,6 +86,7 @@ export function ViewHub({
 
     eraseGame
 } : {
+    time: number;
     name: string;
     setName: (name: string) => void;
     watts: number; 
@@ -240,6 +242,7 @@ export function ViewHub({
                 {/* Center */}
                 <div className="center-column">
                     <ViewCenter
+                        time={time}
                         name={name}
                         setName={setName}
                         watts={watts}

@@ -226,6 +226,7 @@ function App() {
   const [advents, setAdvents] = useState<Advent[]>([]);
 
   //Array of months
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const [currentMonth, setCurrentMonth] = useState<number>(0);
   const [currentYear, setCurrentYear] = useState<number>(1);
 
@@ -300,7 +301,7 @@ function App() {
     if (randomNumber < hurricaneCurve(time % 720000, deltaTime)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
+          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
         ]
       );
     }
@@ -309,7 +310,7 @@ function App() {
     if (randomNumber < blizzardCurve(time % 720000, deltaTime)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
         ]
       );
     }
@@ -318,7 +319,7 @@ function App() {
     if (randomNumber < 1/((15*720000)/16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 10000}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 10000}
         ]
       );
     }
@@ -327,7 +328,7 @@ function App() {
     if (randomNumber < stormCurve(time % 720000, deltaTime)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
         ]
       );
     }
@@ -336,7 +337,7 @@ function App() {
     if (randomNumber < snowStormCurve(time % 720000, deltaTime)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
         ]
       );
     }
@@ -345,16 +346,16 @@ function App() {
     if (randomNumber < tornadoCurve(time % 720000, deltaTime)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": currentMonth + ", " + currentYear, "length": 20000}
+          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": months[currentMonth] + ", " + currentYear, "length": 20000}
         ]
       );
     }
 
-    //If the odds are right, start a heat wave (About 60% chance per year)
+    //If the odds are right, start a heat wave (odds are about 1.13 times a year)
     if (randomNumber < heatWaveCurve(time % 720000, deltaTime)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
         ]
       );
     }
@@ -570,9 +571,10 @@ function App() {
     //Saves # of watts
     localStorage.setItem('watts', JSON.stringify(watts));
 
-    //Saves the date
+    //Saves the date and scenery
     localStorage.setItem('currentMonth', JSON.stringify(currentMonth));
     localStorage.setItem('currentYear', JSON.stringify(currentYear));
+    localStorage.setItem('scenery', JSON.stringify(scenery));
 
     //Saves ids of purchased upgrades 
     localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => !upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
@@ -628,6 +630,7 @@ function App() {
   function load(): void {
     //Loads time
     const localTime = localStorage.getItem('time');
+    console.log(localTime);
     if (localTime) {
       setTime(JSON.parse(localTime));
     }
@@ -650,7 +653,7 @@ function App() {
       setAdvents(JSON.parse(localAdvents));
     }
 
-    //Loads date
+    //Loads date and scenery
     const localCurrentMonth = localStorage.getItem('currentMonth');
     if (localCurrentMonth) {
       setCurrentMonth(JSON.parse(localCurrentMonth));
@@ -661,6 +664,10 @@ function App() {
     const localCurrentYear = localStorage.getItem('currentYear');
     if (localCurrentYear) {
       setCurrentYear(JSON.parse(localCurrentYear));
+    }
+    const localScenery = localStorage.getItem('scenery');
+    if (localScenery) {
+      setScenery(JSON.parse(localScenery));
     }
 
     //Loads upgrades
@@ -815,6 +822,7 @@ function App() {
   
   function eraseGame(): void {
     setTime(0);
+    setDeltaTime(0);
     setWatts(0);
     setMembers(0);
 
@@ -872,6 +880,7 @@ function App() {
   return (
     <div className="App">
       <ViewHub
+        time={time}
         name={name}
         setName={setName}
         watts={watts}
