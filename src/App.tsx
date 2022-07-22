@@ -236,7 +236,6 @@ function App() {
   const [newSave, setNewSave] = useState(5000);
   const [newScenery, setNewScenery] = useState(10000);
   const [newMonth, setNewMonth] = useState(60000);
-  const [newYear, setNewYear] = useState(720000);
 
   useFrameLoop((time: number, deltaTime: number) => {
     
@@ -271,18 +270,13 @@ function App() {
 
       if (currentMonth > 10) { //...if it's december...
         setCurrentMonth(0); //...move to January...
+        setCurrentYear(currentYear + 1); //...and move to the next year...
       } else { //...but if it's any other month...
         setCurrentMonth(currentMonth + 1); //...move to the next month
       }
       setSolarCurveModifier(solarCurve(currentMonth + 1));
       setWindCurveModifier(windCurve(currentMonth + 1));
       setHydroCurveModifier(hydroCurve(currentMonth + 1));
-    }
-
-    //Moves the years forward
-    if (time > newYear) {
-      setNewYear(time + 720000); //Every 12 minutes...
-      setCurrentYear(currentYear + 1); //... move to the next year
     }
 
     //Updates generator production
@@ -333,10 +327,6 @@ function App() {
           {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": currentMonth + ", " + currentYear, "length": 30000}
         ]
       );
-    }
-
-    if (randomNumber < 0.00001) {
-      console.log("WOAH");
     }
 
     setTime(time);
