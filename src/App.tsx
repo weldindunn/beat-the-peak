@@ -899,6 +899,8 @@ function App() {
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}
+        setWatts={setWatts}
+
         scenery={scenery}
         currentMonth={currentMonth}
         currentYear={currentYear}
