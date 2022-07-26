@@ -5,5 +5,5 @@ import { integral } from "./integral"
 
 export function stormCurve(time: number, deltaTime: number): number {
     // ((0-x)*(x-720,000))/25,000,000,000,000,000
-    return -1*integral(time - deltaTime, time, 0, 720000, 25000000000000000, deltaTime);
+    return (-1)*integral(time, time - deltaTime, 0, 720000, 25000000000000000, deltaTime);
 }

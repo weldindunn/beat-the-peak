@@ -5,5 +5,5 @@ import { integral } from "./integral"
 
 export function tornadoCurve(time: number, deltaTime: number): number {
     // ((-1)*(x-120000)*(x-420,000))/7,500,000,000,000,000
-    return (-1)*integral(time - deltaTime, time, 120000, 420000, 7500000000000000, deltaTime);
+    return (-1)*integral(time, time - deltaTime, 120000, 420000, 7500000000000000, deltaTime);
 }
