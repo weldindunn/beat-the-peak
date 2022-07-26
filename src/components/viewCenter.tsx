@@ -3,8 +3,14 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
 import "./style/center.css";
 import bolt from "../img/bolt.png";
+import { ExportCSV } from './utilities/exportCSV';
 
 export function ViewCenter ({
+    randomNumbers,
+    stormNumbers,
+    tornadoNumbers,
+    heatWaveNumbers,
+
     time,
     name,
     setName,
@@ -14,6 +20,11 @@ export function ViewCenter ({
     members,
     clickBolt
 } : {
+    randomNumbers: number[];
+    stormNumbers: number[];
+    tornadoNumbers: number[];
+    heatWaveNumbers: number[];
+    
     time: number;
     name: string;
     setName: (name: string) => void;
@@ -88,6 +99,7 @@ export function ViewCenter ({
 
                     <Modal.Body>
                         You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.
+                        <ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />
                     </Modal.Body>
 
                     <Modal.Footer>

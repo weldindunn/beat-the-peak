@@ -9,6 +9,11 @@ import { ViewTransporters } from "./viewTransporters";
 import { ViewEvents } from "./viewEvents";
 
 export function ViewHub({
+    randomNumbers,
+    stormNumbers,
+    tornadoNumbers,
+    heatWaveNumbers,
+
     time,
     name, 
     setName,
@@ -86,6 +91,11 @@ export function ViewHub({
 
     eraseGame
 } : {
+    randomNumbers: number[];
+    stormNumbers: number[];
+    tornadoNumbers: number[];
+    heatWaveNumbers: number[];
+
     time: number;
     name: string;
     setName: (name: string) => void;
@@ -250,6 +260,7 @@ export function ViewHub({
                         netWattsPerSec={netWattsPerSec}
                         members={members}
                         clickBolt={clickBolt}
+                        randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
                     ></ViewCenter>
                 </div>
 
