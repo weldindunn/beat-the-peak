@@ -836,6 +836,7 @@ function App() {
     setDeltaTime(0);
     setWatts(0);
     setMembers(0);
+    setName("Bob");
 
     setScenery(morning);
     setCurrentMonth(0);
