@@ -23,10 +23,7 @@ export function AdventBox({
                     }
                 </div>
                 <span className="advent-description">
-                    {advent.description}
-                    <br/>
-                    {"Started: "}{advent.startDate}
-                    {" Ending: "}{advent.length - elapsedTime}
+                    {" Ending: "}{Math.round((advent.length - elapsedTime)/1000)}
                 </span>
             </div>
         </div>
