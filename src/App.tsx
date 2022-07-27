@@ -361,7 +361,7 @@ function App() {
     }
 
     //If the odds are right, start an earthquake (odds are once in 15 years)
-    if (randomNumber < 1/((15*720000)/deltaTime)) {
+    if (randomNumber < 1/((15*720000)/16.7)) {
       setAdvents(
         [...advents, 
           {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 10000}

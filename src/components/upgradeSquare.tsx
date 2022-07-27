@@ -61,7 +61,7 @@ export function UpgradeSquare({
                     </div>
                 }
             >
-                <button className="upgrade" onClick={() => buyUpgrade(upgrade)} disabled={watts < Math.round(upgrade.cost)}>
+                <button className="upgrade" onClick={() => buyUpgrade(upgrade)} disabled={watts < Math.round(upgrade.cost) || upgrade.purchased}>
                     {
                         upgrade.generator === "Click" ? (
                             <img src={cursor} alt={upgrade.generator}/>

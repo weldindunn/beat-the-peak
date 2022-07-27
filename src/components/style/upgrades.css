@@ -1,5 +1,5 @@
 .upgrades {
-  background: rgb(216, 112, 15);
+  background: #C8700F;
   color: #FFFFE0;
   height: 50vh;
   overflow-y: auto;
@@ -8,6 +8,31 @@
 /* Hides scrollbar for chrome/safari/opera/edge */
 .upgrades::-webkit-scrollbar {
   display: none;
+}
+
+.title {
+  width: 100%;
+  height: 44px;
+}
+
+.upgrade-title {
+  position: absolute;
+  left: 47px;
+  line-height: 1;
+}
+
+.info-button {
+  position: absolute;
+  left: 200px;
+  width: 36px;
+  height: 40px;
+  background: url("../../img/info_symbol.png");
+}
+
+.subtitle {
+  margin-bottom: 5px;
+  font-size: 24px;
+  color: #fff3cd;
 }
 
 .upgrade {

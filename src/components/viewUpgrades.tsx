@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Upgrade } from "../interfaces/upgrade";
 import { UpgradeSquare } from "./upgradeSquare";
 import "./style/upgrades.css";
@@ -76,22 +76,44 @@ export function ViewUpgrades({
     upgrades: Upgrade[];
     buyUpgrade: (upgrade: Upgrade) => void;
 }): JSX.Element {
+    const [isViewing, setViewing] = useState<boolean>(false);
+
     return (
         <>
             <div className="title">
-                <span>Upgrades</span>
+                <span className="upgrade-title">Upgrades</span>
+                <button className="info-button" onClick={() => setViewing(!isViewing)}></button>
             </div>
+
             {
-                upgrades.map((upgrade: Upgrade) => (
-                    upgrade.unlocked && !upgrade.purchased ? (
-                        <UpgradeSquare
-                            key={upgrade.id}
-                            watts={watts}
-                            upgrade={upgrade}
-                            buyUpgrade={buyUpgrade}
-                        ></UpgradeSquare>
-                    ) : (<div key={upgrade.id}></div>)
-                ))
+                isViewing ? (
+                    <div className="purchased-upgrades">
+                        <div className="subtitle">Purchased Upgrades</div>
+                        {
+                            upgrades.map((upgrade: Upgrade) => (
+                                upgrade.purchased ? (
+                                    <UpgradeSquare
+                                        key={upgrade.id}
+                                        watts={watts}
+                                        upgrade={upgrade}
+                                        buyUpgrade={buyUpgrade}
+                                    />
+                                ) : (<div key={upgrade.id}/>)
+                            ))
+                        }
+                    </div>
+                ) : (
+                    upgrades.map((upgrade: Upgrade) => (
+                        upgrade.unlocked && !upgrade.purchased ? (
+                            <UpgradeSquare
+                                key={upgrade.id}
+                                watts={watts}
+                                upgrade={upgrade}
+                                buyUpgrade={buyUpgrade}
+                            />
+                        ) : (<div key={upgrade.id}/>)
+                    ))
+                )
             }
         </>
     )
