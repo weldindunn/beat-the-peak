@@ -460,7 +460,7 @@ function App() {
     } else if (generator === "Wind Turbine") {
       setWindTurbines(windTurbines + 1);
       setWatts(watts - Math.round(windCost));
-    } else if (generator === "Biomass Gassifier") {
+    } else if (generator === "Biomass Gasifier") {
       setBiomassGasifiers(biomassGasifiers + 1);
       setWatts(watts - Math.round(biomassCost));
     } else if (generator === "Hydro Plant") {
@@ -567,7 +567,7 @@ function App() {
       setOilProductionBonus(oilProductionBonus * 2);
     } else if (generator === "Wind Turbine") {
       setWindProductionBonus(windProductionBonus * 2);
-    } else if (generator === "Biomass Gassifier") {
+    } else if (generator === "Biomass Gasifier") {
       setBiomassProductionBonus(biomassProductionBonus * 2);
     } else if (generator === "Hydro Plant") {
       setHydroProductionBonus(hydroProductionBonus * 2);
