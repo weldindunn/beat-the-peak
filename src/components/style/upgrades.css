@@ -21,9 +21,20 @@
   color: #FFFFFF;
   font-size: 28px;
   opacity: 0.8;
+  pointer-events: all;
+
   transition-property: opacity, margin-bottom;
   transition-duration: 0.25s, 0.1s;
   transition-timing-function: ease-out, ease-out;
+}
+
+.upgrade-popover {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
 
 .upgrade:hover {
@@ -44,7 +55,7 @@
   padding: 6px;
 }
 
-.tooltip {
+.upgrade-tooltip {
   background: url(../../img/Upgrade_Tooltip_Background.png);
   color: #FFFFFF;
   width: 412px;
@@ -55,13 +66,10 @@
   padding-right: 1vw;
   font-size: 2vw;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-  transition-property: opacity, margin-bottom;
-  transition-duration: 0.25s, 0.1s;
-  transition-timing-function: ease-out, ease-out;
+  z-index: 1;
 }
 
-.tooltip img {
+.upgrade-tooltip img {
   position: absolute;
   top: 10px;
   left: 12px;
