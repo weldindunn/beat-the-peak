@@ -555,7 +555,7 @@ function App() {
   function multiply(generator: string): void {
     if (generator === "Click") {
       setClickProductionBonus(clickProductionBonus * 2);
-    } else if (generator === "Lineman") {
+    } else if (generator === "Lineworker") {
       setLinemenProductionBonus(linemenProductionBonus * 2);
     } else if (generator === "Coal Plant") {
       setCoalProductionBonus(coalProductionBonus * 2);
