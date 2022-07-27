@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Advent } from "../interfaces/advent";
 
 export function AdventBox({
@@ -6,6 +6,8 @@ export function AdventBox({
 } : {
     advent: Advent;
 }): JSX.Element {
+    const [elapsedTime, setElapsedTime] = useState<number>(0);
+
     return (
         <div className="advent">
             {/*
@@ -24,6 +26,7 @@ export function AdventBox({
                     {advent.description}
                     <br/>
                     {"Started: "}{advent.startDate}
+                    {" Ending: "}{advent.length - elapsedTime}
                 </span>
             </div>
         </div>
