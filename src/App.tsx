@@ -235,11 +235,20 @@ function App() {
      ========== */
   const [time, setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
+  //const [averageDeltaTime, setAverageDeltaTime] = useState<number>(16.7);
+  //const [sumDeltaTime, setSumDeltaTime] = useState<number>(0);
+  //const [frameNumber, setFrameNumber] = useState<number>(1);
   const [randomNumber, setRandomNumber] = useState(Math.random()); //Random number between 0 and 1 used for random events like weather
 
   const [newSave, setNewSave] = useState(5000);
   const [newScenery, setNewScenery] = useState(10000);
   const [newMonth, setNewMonth] = useState(60000);
+
+  //Curve values to be exported to CSV:
+  const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
+  const [stormNumbers, setStormNumbers] = useState<number[]>([]);
+  const [tornadoNumbers, setTornadoNumbers] = useState<number[]>([]);
+  const [heatWaveNumbers, setHeatWaveNumbers] = useState<number[]>([]);
 
   useFrameLoop((time: number, deltaTime: number) => {
     
@@ -297,35 +306,8 @@ function App() {
       setMembers(totalTransportation/wattsPerMember)
     }
 
-    //If the odds are right, start a hurricane
-    if (randomNumber < hurricaneCurve(time % 720000, deltaTime)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
-        ]
-      );
-    }
-
-    //If the odds are right, start a blizzard
-    if (randomNumber < blizzardCurve(time % 720000, deltaTime)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
-        ]
-      );
-    }
-
-    //If the odds are right, start an earthquake (odds are once in 15 years)
-    if (randomNumber < 1/((15*720000)/16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 10000}
-        ]
-      );
-    }
-
     //If the odds are right, start a storm (odds are about 2.8 times a year)
-    if (randomNumber < stormCurve(time % 720000, deltaTime)) {
+    if (randomNumber < stormCurve(time % 720000, 16.7)) {
       setAdvents(
         [...advents, 
           {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
@@ -334,7 +316,7 @@ function App() {
     }
 
     //If the odds are right, start a snow storm (About 37.39% chance per year)
-    if (randomNumber < snowStormCurve(time % 720000, deltaTime)) {
+    if (randomNumber < snowStormCurve(time % 720000, 16.7)) {
       setAdvents(
         [...advents, 
           {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
@@ -342,17 +324,8 @@ function App() {
       );
     }
 
-    //If the odds are right, start a tornado (About 60% chance per year)
-    if (randomNumber < tornadoCurve(time % 720000, deltaTime)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": months[currentMonth] + ", " + currentYear, "length": 20000}
-        ]
-      );
-    }
-
     //If the odds are right, start a heat wave (odds are about 1.13 times a year)
-    if (randomNumber < heatWaveCurve(time % 720000, deltaTime)) {
+    if (randomNumber < heatWaveCurve(time % 720000, 16.7)) {
       setAdvents(
         [...advents, 
           {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
@@ -360,9 +333,55 @@ function App() {
       );
     }
 
+    //If the odds are right, start a tornado (About 60% chance per year)
+    if (randomNumber < tornadoCurve(time % 720000, 16.7)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": months[currentMonth] + ", " + currentYear, "length": 20000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a hurricane
+    if (randomNumber < hurricaneCurve(time % 720000, 16.7)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
+        ]
+      );
+    }
+
+    //If the odds are right, start a blizzard
+    if (randomNumber < blizzardCurve(time % 720000, 16.7)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
+        ]
+      );
+    }
+
+    //If the odds are right, start an earthquake (odds are once in 15 years)
+    if (randomNumber < 1/((15*720000)/deltaTime)) {
+      setAdvents(
+        [...advents, 
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 10000}
+        ]
+      );
+    }
+
     setTime(time);
     setDeltaTime(deltaTime);
     setRandomNumber(Math.random());
+    //setFrameNumber(frameNumber + 1);
+    //setSumDeltaTime(sumDeltaTime + deltaTime);
+    //setAverageDeltaTime(sumDeltaTime/frameNumber);
+    //console.log(deltaTime);
+
+    //Updating CSV numbers:
+    setRandomNumbers([...randomNumbers, randomNumber]);
+    setStormNumbers([...stormNumbers, stormCurve(time % 720000, 16.7)]);
+    setTornadoNumbers([...tornadoNumbers, tornadoCurve(time % 720000, 16.7)]);
+    setHeatWaveNumbers([...heatWaveNumbers, heatWaveCurve(time % 720000, 16.7)]);
   });
 
   //Updates netWattsPerSec, which is dependent on a fluid generation state
@@ -441,7 +460,7 @@ function App() {
     } else if (generator === "Wind Turbine") {
       setWindTurbines(windTurbines + 1);
       setWatts(watts - Math.round(windCost));
-    } else if (generator === "Biomass Gassifier") {
+    } else if (generator === "Biomass Gasifier") {
       setBiomassGasifiers(biomassGasifiers + 1);
       setWatts(watts - Math.round(biomassCost));
     } else if (generator === "Hydro Plant") {
@@ -536,7 +555,7 @@ function App() {
   function multiply(generator: string): void {
     if (generator === "Click") {
       setClickProductionBonus(clickProductionBonus * 2);
-    } else if (generator === "Lineman") {
+    } else if (generator === "Lineworker") {
       setLinemenProductionBonus(linemenProductionBonus * 2);
     } else if (generator === "Coal Plant") {
       setCoalProductionBonus(coalProductionBonus * 2);
@@ -548,7 +567,7 @@ function App() {
       setOilProductionBonus(oilProductionBonus * 2);
     } else if (generator === "Wind Turbine") {
       setWindProductionBonus(windProductionBonus * 2);
-    } else if (generator === "Biomass Gassifier") {
+    } else if (generator === "Biomass Gasifier") {
       setBiomassProductionBonus(biomassProductionBonus * 2);
     } else if (generator === "Hydro Plant") {
       setHydroProductionBonus(hydroProductionBonus * 2);
@@ -822,8 +841,13 @@ function App() {
   function eraseGame(): void {
     setTime(0);
     setDeltaTime(0);
+    //setSumDeltaTime(0);
+    //setAverageDeltaTime(16.7);
+    //setFrameNumber(1);
+
     setWatts(0);
     setMembers(0);
+    setName("Bob");
 
     setScenery(morning);
     setCurrentMonth(0);
@@ -879,6 +903,7 @@ function App() {
   return (
     <div className="App">
       <ViewHub
+        randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
         time={time}
         name={name}
         setName={setName}
@@ -886,6 +911,8 @@ function App() {
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}
+        setWatts={setWatts}
+
         scenery={scenery}
         currentMonth={currentMonth}
         currentYear={currentYear}

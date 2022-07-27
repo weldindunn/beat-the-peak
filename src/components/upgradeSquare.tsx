@@ -27,7 +27,7 @@ export function UpgradeSquare({
             <OverlayTrigger
                 placement={"right"}
                 overlay={
-                    <div className="tooltip">
+                    <div className="upgrade-tooltip">
                         <div>
                             { //Image
                                 upgrade.generator === "Click" ? (

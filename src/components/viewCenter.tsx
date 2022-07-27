@@ -3,8 +3,14 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
 import "./style/center.css";
 import bolt from "../img/bolt.png";
+import { ExportCSV } from './utilities/exportCSV';
 
 export function ViewCenter ({
+    randomNumbers,
+    stormNumbers,
+    tornadoNumbers,
+    heatWaveNumbers,
+
     time,
     name,
     setName,
@@ -12,8 +18,14 @@ export function ViewCenter ({
     wattsPerSec,
     netWattsPerSec,
     members,
+    setWatts,
     clickBolt
 } : {
+    randomNumbers: number[];
+    stormNumbers: number[];
+    tornadoNumbers: number[];
+    heatWaveNumbers: number[];
+
     time: number;
     name: string;
     setName: (name: string) => void;
@@ -21,6 +33,7 @@ export function ViewCenter ({
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
+    setWatts: (watts: number) => void;
     clickBolt: () => void;
 }): JSX.Element {
 
@@ -28,6 +41,7 @@ export function ViewCenter ({
     const [resetName, setResetName] = useState<string>("");
 
     const [isViewing, setViewing] = useState<boolean>(false);
+    const [tempWatts, setTempWatts] = useState<string>(watts.toString());
 
     function cancel(): void {
         setName(resetName);
@@ -45,6 +59,7 @@ export function ViewCenter ({
 
     function closeInfo(): void {
         setViewing(false);
+        setWatts(parseInt(tempWatts));
     }
 
     return (
@@ -87,7 +102,19 @@ export function ViewCenter ({
                     </Modal.Header>
 
                     <Modal.Body>
-                        You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.
+                        <p>You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.</p>
+                        <ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />
+                        
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Cheat:</Form.Label>
+                                <Form.Control 
+                                    value={tempWatts}
+                                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTempWatts(event.target.value)}
+                                    placeholder="Enter watts"
+                                />
+                            </Form.Group>
+                        </Form>
                     </Modal.Body>
 
                     <Modal.Footer>
