@@ -171,7 +171,7 @@ export function ViewHub({
     advents: Advent[];
 
     clickBolt: () => void;
-    buyGenerator: (generator: string) => void;
+    buyGenerator: (generator: string, tradeQuantity: number, generatorCost: number) => void;
     buyUpgrade: (upgrade: Upgrade) => void;
     buyTransporter: (transporter: string) => void;
 

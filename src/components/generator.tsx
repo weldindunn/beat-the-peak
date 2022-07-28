@@ -12,6 +12,8 @@ export function Generator({
     generatorCost,
     generatorProduction,
     description,
+    tradeQuantity,
+    priceModifier,
     buyGenerator
 } : {
     name: string,
@@ -23,8 +25,11 @@ export function Generator({
     generatorCost: number;
     generatorProduction: number;
     description: string;
-    buyGenerator: (generator: string) => void;
+    tradeQuantity: number;
+    priceModifier: number;
+    buyGenerator: (generator: string, tradeQuantity: number, generatorCost: number) => void;
 }): JSX.Element {
+
     return (
         <OverlayTrigger
             placement={"left"}
@@ -33,7 +38,7 @@ export function Generator({
                     <div>
                         <img src={tooltip_icon} alt={name}/>
                         <span className="tooltip-name">{name}</span>
-                        <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost), false)}</span>
+                        <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost * priceModifier), false)}</span>
                     </div>
                     <div>
                         <span className="tooltip-description">{description}</span>
@@ -48,7 +53,7 @@ export function Generator({
                 </div>
             }
         >
-            <button className="generator" onClick={() => buyGenerator(name)} disabled={watts < Math.round(generatorCost)}>
+            <button className="generator" onClick={() => buyGenerator(name, tradeQuantity, generatorCost * priceModifier)} disabled={watts < Math.round(generatorCost * priceModifier)}>
                 <div className="generator-icon">
                     <img src={icon} alt={name.charAt(0)}></img>
                 </div>
@@ -59,7 +64,7 @@ export function Generator({
                         }
                     </div>
                     <span className="generator-cost">
-                        {numberConvertor(Math.round(generatorCost), false)}
+                        {numberConvertor(Math.round(generatorCost * priceModifier), false)}
                     </span>
                     <div className="generator-count">
                         {generators}

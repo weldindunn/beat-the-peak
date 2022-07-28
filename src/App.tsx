@@ -440,35 +440,34 @@ function App() {
         nuclearPlants, nuclearCostBonus, nuclearProductionBonus]
   );
 
-  function buyGenerator(generator: string) {
+  function buyGenerator(generator: string, tradeQuantity: number, generatorCost: number) {
 
     if (generator === "Lineworker") {
-      setLinemen(linemen + 1);
-      setWatts(watts - Math.round(linemenCost));
+      setLinemen(linemen + tradeQuantity);
     } else if (generator === "Coal Plant") {
-      setCoalPlants(coalPlants + 1);
-      setWatts(watts - Math.round(coalCost));
+      setCoalPlants(coalPlants + tradeQuantity);
     } else if (generator === "Gas Plant") {
-      setGasPlants(gasPlants + 1);
-      setWatts(watts - Math.round(gasCost));
+      setGasPlants(gasPlants + tradeQuantity);
     } else if (generator === "Solar Farm") {
-      setSolarFarms(solarFarms + 1);
-      setWatts(watts - Math.round(solarCost));
+      setSolarFarms(solarFarms + tradeQuantity);
     } else if (generator === "Oil Well") {
-      setOilWells(oilWells + 1);
-      setWatts(watts - Math.round(oilCost));
+      setOilWells(oilWells + tradeQuantity);
     } else if (generator === "Wind Turbine") {
-      setWindTurbines(windTurbines + 1);
-      setWatts(watts - Math.round(windCost));
+      setWindTurbines(windTurbines + tradeQuantity);
     } else if (generator === "Biomass Gasifier") {
-      setBiomassGasifiers(biomassGasifiers + 1);
-      setWatts(watts - Math.round(biomassCost));
+      setBiomassGasifiers(biomassGasifiers + tradeQuantity);
     } else if (generator === "Hydro Plant") {
-      setHydroPlants(hydroPlants + 1);
-      setWatts(watts - Math.round(hydroCost));
+      setHydroPlants(hydroPlants + tradeQuantity);
     } else if (generator === "Nuclear Plant") {
-      setNuclearPlants(nuclearPlants + 1);
-      setWatts(watts - Math.round(nuclearCost));
+      setNuclearPlants(nuclearPlants + tradeQuantity);
+    }
+
+    if (tradeQuantity === 1) {
+      setWatts(watts - Math.round(generatorCost));
+    } else if (tradeQuantity === 10) {
+      setWatts(watts - Math.round(generatorCost));
+    } else if (tradeQuantity === 100) {
+      setWatts(watts - Math.round(generatorCost));
     }
   }
 

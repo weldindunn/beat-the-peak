@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Generator } from "./generator";
+import { BulkBar } from "./bulkBar";
 import "./style/generators.css";
 
 //Icons
@@ -93,13 +94,19 @@ export function ViewGenerators({
     hydroCost: number;
     nuclearCost: number;
 
-    buyGenerator: (generator: string) => void;
+    buyGenerator: (generator: string, tradeQuantity: number, generatorCost: number) => void;
 }): JSX.Element {
+
+    const [isBuying, setBuying] = useState<boolean>(true);
+    const [tradeQuantity, setTradeQuantity] = useState<number>(1);
+    const [priceModifier, setPriceModifier] = useState<number>(1);
+
     return (
         <div className="generators">
             <div className="title">
                 <span>Generators</span>
             </div>
+            <BulkBar isBuying={isBuying} tradeQuantity={tradeQuantity} setBuying={setBuying} setTradeQuantity={setTradeQuantity} setPriceModifier={setPriceModifier}/>
             <Generator
                 name="Lineworker"
                 icon={lineman}
@@ -110,6 +117,8 @@ export function ViewGenerators({
                 generatorCost={linemenCost}
                 generatorProduction={linemenProduction}
                 description="Produces electricity by brute force"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -122,6 +131,8 @@ export function ViewGenerators({
                 generatorCost={coalCost}
                 generatorProduction={coalProduction}
                 description="Burns coal to power steam engines"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -134,6 +145,8 @@ export function ViewGenerators({
                 generatorCost={gasCost}
                 generatorProduction={gasProduction}
                 description="Burns gas to power steam engines"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -146,6 +159,8 @@ export function ViewGenerators({
                 generatorCost={solarCost}
                 generatorProduction={solarProduction}
                 description="Harnaces the power of the sun to generate electricity"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -158,6 +173,8 @@ export function ViewGenerators({
                 generatorCost={oilCost}
                 generatorProduction={oilProduction}
                 description="Burns oil to power steam engines"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -170,6 +187,8 @@ export function ViewGenerators({
                 generatorCost={windCost}
                 generatorProduction={windProduction}
                 description="Uses wind to spin a turbine generator"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -182,6 +201,8 @@ export function ViewGenerators({
                 generatorCost={biomassCost}
                 generatorProduction={biomassProduction}
                 description="Burns biomass to power steam engines"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -194,6 +215,8 @@ export function ViewGenerators({
                 generatorCost={hydroCost}
                 generatorProduction={hydroProduction}
                 description="Uses water power to spin turbine generators"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
             <Generator
@@ -206,6 +229,8 @@ export function ViewGenerators({
                 generatorCost={nuclearCost}
                 generatorProduction={nuclearProduction}
                 description="Uses the fission of uranium and plutonium to heat steam engines"
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
                 buyGenerator={buyGenerator}
             ></Generator>
         </div>
