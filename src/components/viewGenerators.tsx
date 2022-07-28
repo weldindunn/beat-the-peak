@@ -59,7 +59,7 @@ export function ViewGenerators({
     hydroCost,
     nuclearCost,
 
-    buyGenerator
+    buySellGenerator
 } : {
     watts: number; 
     wattsPerSec: number;
@@ -94,7 +94,7 @@ export function ViewGenerators({
     hydroCost: number;
     nuclearCost: number;
 
-    buyGenerator: (generator: string, tradeQuantity: number, generatorCost: number) => void;
+    buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
 }): JSX.Element {
 
     const [isBuying, setBuying] = useState<boolean>(true);
@@ -106,7 +106,13 @@ export function ViewGenerators({
             <div className="title">
                 <span>Generators</span>
             </div>
-            <BulkBar isBuying={isBuying} tradeQuantity={tradeQuantity} setBuying={setBuying} setTradeQuantity={setTradeQuantity} setPriceModifier={setPriceModifier}/>
+            <BulkBar
+                isBuying={isBuying}
+                tradeQuantity={tradeQuantity}
+                setBuying={setBuying}
+                setTradeQuantity={setTradeQuantity}
+                setPriceModifier={setPriceModifier}
+            />
             <Generator
                 name="Lineworker"
                 icon={lineman}
@@ -119,8 +125,9 @@ export function ViewGenerators({
                 description="Produces electricity by brute force"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Coal Plant"
                 icon={coal_plant}
@@ -133,8 +140,9 @@ export function ViewGenerators({
                 description="Burns coal to power steam engines"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Gas Plant"
                 icon={gas_plant}
@@ -147,8 +155,9 @@ export function ViewGenerators({
                 description="Burns gas to power steam engines"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Solar Farm"
                 icon={solar_farm}
@@ -161,8 +170,9 @@ export function ViewGenerators({
                 description="Harnaces the power of the sun to generate electricity"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Oil Well"
                 icon={oil_well}
@@ -175,8 +185,9 @@ export function ViewGenerators({
                 description="Burns oil to power steam engines"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Wind Turbine"
                 icon={wind_turbine}
@@ -189,8 +200,9 @@ export function ViewGenerators({
                 description="Uses wind to spin a turbine generator"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Biomass Gasifier"
                 icon={biomass_gasifier}
@@ -203,8 +215,9 @@ export function ViewGenerators({
                 description="Burns biomass to power steam engines"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Hydro Plant"
                 icon={dam}
@@ -217,8 +230,9 @@ export function ViewGenerators({
                 description="Uses water power to spin turbine generators"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
             <Generator
                 name="Nuclear Plant"
                 icon={nuclear_plant}
@@ -231,8 +245,9 @@ export function ViewGenerators({
                 description="Uses the fission of uranium and plutonium to heat steam engines"
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
-                buyGenerator={buyGenerator}
-            ></Generator>
+                isBuying={isBuying}
+                buySellGenerator={buySellGenerator}
+            />
         </div>
     )
 }

@@ -87,7 +87,7 @@ export function ViewHub({
     advents,
 
     clickBolt,
-    buyGenerator,
+    buySellGenerator,
     buyUpgrade,
     buyTransporter,
 
@@ -171,7 +171,7 @@ export function ViewHub({
     advents: Advent[];
 
     clickBolt: () => void;
-    buyGenerator: (generator: string, tradeQuantity: number, generatorCost: number) => void;
+    buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
     buyUpgrade: (upgrade: Upgrade) => void;
     buyTransporter: (transporter: string) => void;
 
@@ -310,7 +310,7 @@ export function ViewHub({
                             hydroCost={hydroCost}
                             nuclearCost={nuclearCost}
 
-                            buyGenerator={buyGenerator}
+                            buySellGenerator={buySellGenerator}
                         ></ViewGenerators>
                     </div>
 

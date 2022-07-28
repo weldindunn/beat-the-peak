@@ -1,6 +1,7 @@
 import React from "react";
 import { OverlayTrigger } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
+import { sellingCost } from "./utilities/sellingCost";
 
 export function Generator({
     name,
@@ -14,7 +15,8 @@ export function Generator({
     description,
     tradeQuantity,
     priceModifier,
-    buyGenerator
+    isBuying,
+    buySellGenerator
 } : {
     name: string,
     icon: string,
@@ -27,7 +29,8 @@ export function Generator({
     description: string;
     tradeQuantity: number;
     priceModifier: number;
-    buyGenerator: (generator: string, tradeQuantity: number, generatorCost: number) => void;
+    isBuying: boolean;
+    buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
 }): JSX.Element {
 
     return (
@@ -38,7 +41,13 @@ export function Generator({
                     <div>
                         <img src={tooltip_icon} alt={name}/>
                         <span className="tooltip-name">{name}</span>
-                        <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost * priceModifier), false)}</span>
+                        {
+                            isBuying ? (
+                                <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost * priceModifier), false)}</span>
+                            ) : (
+                                <span className="tooltip-cost">{numberConvertor(Math.round(sellingCost(generatorCost, tradeQuantity)), false)}</span>
+                            )
+                        }
                     </div>
                     <div>
                         <span className="tooltip-description">{description}</span>
@@ -53,7 +62,17 @@ export function Generator({
                 </div>
             }
         >
-            <button className="generator" onClick={() => buyGenerator(name, tradeQuantity, generatorCost * priceModifier)} disabled={watts < Math.round(generatorCost * priceModifier)}>
+            <button 
+                className="generator"
+                onClick={() => {
+                    if (isBuying) {
+                        buySellGenerator(name, tradeQuantity, generatorCost * priceModifier, isBuying)
+                    } else {
+                        buySellGenerator(name, tradeQuantity, sellingCost(generatorCost, tradeQuantity), false)
+                    }
+                }}
+                disabled={((watts < Math.round(generatorCost * priceModifier)) && isBuying) || ((generators < tradeQuantity) && !isBuying)}
+            >
                 <div className="generator-icon">
                     <img src={icon} alt={name.charAt(0)}></img>
                 </div>
@@ -63,9 +82,17 @@ export function Generator({
                             name.length > 13 ? (name.substring(0, 11) + "...") : (name)
                         }
                     </div>
-                    <span className="generator-cost">
-                        {numberConvertor(Math.round(generatorCost * priceModifier), false)}
-                    </span>
+                    {
+                        isBuying ? (
+                            <span className="generator-cost">
+                                {numberConvertor(Math.round(generatorCost * priceModifier), false)}
+                            </span>
+                        ) : (
+                            <span className="generator-cost">
+                                {numberConvertor(Math.round(sellingCost(generatorCost, tradeQuantity)), false)}
+                            </span>
+                        )
+                    }
                     <div className="generator-count">
                         {generators}
                     </div>

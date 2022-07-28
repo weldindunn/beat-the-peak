@@ -16,7 +16,7 @@ export function BulkBar({
 }): JSX.Element {
     return (
         <div className="bar">
-            <button onClick={() => setBuying(true)} >Buy</button>
+            <button onClick={() => setBuying(true)}>Buy</button>
             <button onClick={() => setBuying(false)}>Sell</button>
             <button onClick={() => {setTradeQuantity(1); setPriceModifier(1);}}>1</button>
             <button onClick={() => {setTradeQuantity(10); setPriceModifier(20.303718238);}}>10</button>
