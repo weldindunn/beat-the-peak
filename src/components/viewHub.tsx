@@ -89,7 +89,7 @@ export function ViewHub({
     clickBolt,
     buySellGenerator,
     buyUpgrade,
-    buyTransporter,
+    buySellTransporter,
 
     eraseGame
 } : {
@@ -173,7 +173,7 @@ export function ViewHub({
     clickBolt: () => void;
     buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
     buyUpgrade: (upgrade: Upgrade) => void;
-    buyTransporter: (transporter: string) => void;
+    buySellTransporter: (transporter: string, tradeQuantity: number, transporterCost: number, isBuying: boolean) => void;
 
     eraseGame: () => void;
 }): JSX.Element {
@@ -321,7 +321,7 @@ export function ViewHub({
                             wattsPerSec={wattsPerSec}
                             netWattsPerSec={netWattsPerSec}
                             totalTransportation={totalTransportation}
-                            buyTransporter={buyTransporter}
+                            buySellTransporter={buySellTransporter}
 
                             batteries={batteries}
                             meters={meters}

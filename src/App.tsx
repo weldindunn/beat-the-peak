@@ -554,28 +554,55 @@ function App() {
       substations, substationCostBonus, substationTransportationBonus]
   );
 
-  function buyTransporter(transporter: string) {
-    if (transporter === "Battery") {
-      setBatteries(batteries + 1);
-      setWatts(watts - Math.round(batteryCost));
-    } else if (transporter === "Meter") {
-      setMeters(meters + 1);
-      setWatts(watts - Math.round(meterCost));
-    } else if (transporter === "Utility Pole") {
-      setPhonePoles(phonePoles + 1);
-      setWatts(watts - Math.round(phonePoleCost));
-    } else if (transporter === "Transformer") {
-      setTransformers(transformers + 1);
-      setWatts(watts - Math.round(transformerCost));
-    } else if (transporter === "Underground Cable") {
-      setUndergroundCables(undergroundCables + 1);
-      setWatts(watts - Math.round(undergroundCableCost));
-    } else if (transporter === "Transmission Tower") {
-      setPowerTowers(powerTowers + 1);
-      setWatts(watts - Math.round(powerTowerCost));
-    } else if (transporter === "Substation") {
-      setSubstations(substations + 1);
-      setWatts(watts - Math.round(substationCost));
+  function buySellTransporter(transporter: string, tradeQuantity: number, transporterPrice: number, isBuying: boolean) {
+    if (isBuying) {
+      if (transporter === "Battery") {
+        setBatteries(batteries + tradeQuantity);
+      } else if (transporter === "Meter") {
+        setMeters(meters + tradeQuantity);
+      } else if (transporter === "Utility Pole") {
+        setPhonePoles(phonePoles + tradeQuantity);
+      } else if (transporter === "Transformer") {
+        setTransformers(transformers + tradeQuantity);
+      } else if (transporter === "Underground Cable") {
+        setUndergroundCables(undergroundCables + tradeQuantity);
+      } else if (transporter === "Transmission Tower") {
+        setPowerTowers(powerTowers + tradeQuantity);
+      } else if (transporter === "Substation") {
+        setSubstations(substations + tradeQuantity);
+      }
+  
+      if (tradeQuantity === 1) {
+        setWatts(watts - Math.round(transporterPrice));
+      } else if (tradeQuantity === 10) {
+        setWatts(watts - Math.round(transporterPrice));
+      } else if (tradeQuantity === 100) {
+        setWatts(watts - Math.round(transporterPrice));
+      }
+    } else {
+      if (transporter === "Battery") {
+        setBatteries(batteries - tradeQuantity);
+      } else if (transporter === "Meter") {
+        setMeters(meters - tradeQuantity);
+      } else if (transporter === "Utility Pole") {
+        setPhonePoles(phonePoles - tradeQuantity);
+      } else if (transporter === "Transformer") {
+        setTransformers(transformers - tradeQuantity);
+      } else if (transporter === "Underground Cable") {
+        setUndergroundCables(undergroundCables - tradeQuantity);
+      } else if (transporter === "Transmission Tower") {
+        setPowerTowers(powerTowers - tradeQuantity);
+      } else if (transporter === "Substation") {
+        setSubstations(substations - tradeQuantity);
+      }
+  
+      if (tradeQuantity === 1) {
+        setWatts(watts + Math.round(transporterPrice));
+      } else if (tradeQuantity === 10) {
+        setWatts(watts + Math.round(transporterPrice));
+      } else if (tradeQuantity === 100) {
+        setWatts(watts + Math.round(transporterPrice));
+      }
     }
   }
 
@@ -1006,7 +1033,7 @@ function App() {
 
         clickBolt={clickBolt}
         buySellGenerator={buySellGenerator}
-        buyTransporter={buyTransporter}
+        buySellTransporter={buySellTransporter}
         buyUpgrade={buyUpgrade}
 
         eraseGame={eraseGame}
