@@ -40,9 +40,9 @@ export function Transporter({
                     </div>
                     <div>
                         <span className="tooltip-production">
-                            Each {name} transports {numberConvertor(Math.round(transporterTransportation/transporters), true)} per second
+                            Each {name.toLowerCase()} transports {numberConvertor(Math.round(transporterTransportation/transporters), true)} per second
                             <br/>
-                            Your {name}s transport {numberConvertor(transporterTransportation, true)} per second, {Math.round(transporterTransportation/totalTransportation * 100)}% of your total watts transported per second
+                            Your {name.toLowerCase()}s transport {numberConvertor(transporterTransportation, true)} per second, {Math.round(transporterTransportation/totalTransportation * 100)}% of your total watts transported per second
                         </span>
                     </div>
                 </div>

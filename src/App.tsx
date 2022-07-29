@@ -497,8 +497,6 @@ function App() {
       } else if (tradeQuantity === 100) {
         setWatts(watts + Math.round(generatorPrice));
       }
-
-      console.log("Quantity: " + tradeQuantity);
     }
   }
 
@@ -572,7 +570,7 @@ function App() {
     } else if (transporter === "Underground Cable") {
       setUndergroundCables(undergroundCables + 1);
       setWatts(watts - Math.round(undergroundCableCost));
-    } else if (transporter === "Power Tower") {
+    } else if (transporter === "Transmission Tower") {
       setPowerTowers(powerTowers + 1);
       setWatts(watts - Math.round(powerTowerCost));
     } else if (transporter === "Substation") {

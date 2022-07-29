@@ -129,7 +129,7 @@ export function ViewTransporters({
                 buyTransporter={buyTransporter}
             ></Transporter>
             <Transporter
-                name="Power Tower"
+                name="Transmission Tower"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
