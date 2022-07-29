@@ -10,11 +10,15 @@
     margin: 4px 10px;
     background: none;
     color: #FFFFFF;
-    text-shadow: 0px 1px 4px #000;
     line-height: 1;
 }
 
-.bar button:disabled {
+.glow-button {
+    text-shadow: 0px 0px 2px #AAA;
+    opacity: 1;
+}
+
+.default-button {
     text-shadow: 0px 1px 0px #000;
     opacity: 0.8;
 }
