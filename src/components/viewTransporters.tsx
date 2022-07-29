@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Transporter } from "./transporter";
+import { BulkBar } from "./bulkBar";
 import "./style/transporters.css";
 
 export function ViewTransporters({
@@ -7,7 +8,7 @@ export function ViewTransporters({
     wattsPerSec,
     netWattsPerSec,
     totalTransportation,
-    buyTransporter,
+    buySellTransporter,
 
     batteries,
     meters,
@@ -37,7 +38,7 @@ export function ViewTransporters({
     wattsPerSec: number;
     netWattsPerSec: number;
     totalTransportation: number;
-    buyTransporter: (transporter: string) => void;
+    buySellTransporter: (transporter: string, tradeQuantity: number, transporterCost: number, isBuying: boolean) => void;
 
     batteries: number;
     meters: number;
@@ -63,11 +64,23 @@ export function ViewTransporters({
     powerTowerCost: number;
     substationCost: number;
 }): JSX.Element {
+
+    const [isBuying, setBuying] = useState<boolean>(true);
+    const [tradeQuantity, setTradeQuantity] = useState<number>(1);
+    const [priceModifier, setPriceModifier] = useState<number>(1);
+
     return (
         <div className="transporters">
-            <div className="title">
+            <div className="transporters-header">
                 <span>Transporters</span>
             </div>
+            <BulkBar
+                isBuying={isBuying}
+                tradeQuantity={tradeQuantity}
+                setBuying={setBuying}
+                setTradeQuantity={setTradeQuantity}
+                setPriceModifier={setPriceModifier}
+            />
             <Transporter
                 name="Battery"
                 watts={watts}
@@ -78,7 +91,10 @@ export function ViewTransporters({
                 transporterCost={batteryCost}
                 transporterTransportation={batteryTransportation}
                 description="Stores electricity in a small portable form"
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
             <Transporter
                 name="Meter"
@@ -90,7 +106,10 @@ export function ViewTransporters({
                 transporterCost={meterCost}
                 transporterTransportation={meterTransportation}
                 description=""
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
             <Transporter
                 name="Utility Pole"
@@ -102,7 +121,10 @@ export function ViewTransporters({
                 transporterCost={phonePoleCost}
                 transporterTransportation={phonePoleTransportation}
                 description="Carries electricity across wooden poles"
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
             <Transporter
                 name="Transformer"
@@ -114,7 +136,10 @@ export function ViewTransporters({
                 transporterCost={transformerCost}
                 transporterTransportation={transformerTransportation}
                 description="Converts AC to DC"
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
             <Transporter
                 name="Underground Cable"
@@ -126,10 +151,13 @@ export function ViewTransporters({
                 transporterCost={undergroundCableCost}
                 transporterTransportation={undergroundCableTransportation}
                 description="Carries electricty through buried cables, protected from deadly nature"
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
             <Transporter
-                name="Power Tower"
+                name="Transmission Tower"
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -138,7 +166,10 @@ export function ViewTransporters({
                 transporterCost={powerTowerCost}
                 transporterTransportation={powerTowerTransportation}
                 description="Carries electricity across long distances via large metal towers"
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
             <Transporter
                 name="Substation"
@@ -150,7 +181,10 @@ export function ViewTransporters({
                 transporterCost={substationCost}
                 transporterTransportation={substationTransportation}
                 description=""
-                buyTransporter={buyTransporter}
+                tradeQuantity={tradeQuantity}
+                priceModifier={priceModifier}
+                isBuying={isBuying}
+                buySellTransporter={buySellTransporter}
             ></Transporter>
         </div>
     )

@@ -394,9 +394,9 @@ function App() {
     setWatts(watts + clickPower);
   }
 
-  /* =============
-     Buy Generator
-     ============= */
+  /* ==================
+     Buy/Sell Generator
+     ================== */
     
   //Update costs
   useEffect(() => {
@@ -440,35 +440,63 @@ function App() {
         nuclearPlants, nuclearCostBonus, nuclearProductionBonus]
   );
 
-  function buyGenerator(generator: string) {
-
-    if (generator === "Lineworker") {
-      setLinemen(linemen + 1);
-      setWatts(watts - Math.round(linemenCost));
-    } else if (generator === "Coal Plant") {
-      setCoalPlants(coalPlants + 1);
-      setWatts(watts - Math.round(coalCost));
-    } else if (generator === "Gas Plant") {
-      setGasPlants(gasPlants + 1);
-      setWatts(watts - Math.round(gasCost));
-    } else if (generator === "Solar Farm") {
-      setSolarFarms(solarFarms + 1);
-      setWatts(watts - Math.round(solarCost));
-    } else if (generator === "Oil Well") {
-      setOilWells(oilWells + 1);
-      setWatts(watts - Math.round(oilCost));
-    } else if (generator === "Wind Turbine") {
-      setWindTurbines(windTurbines + 1);
-      setWatts(watts - Math.round(windCost));
-    } else if (generator === "Biomass Gasifier") {
-      setBiomassGasifiers(biomassGasifiers + 1);
-      setWatts(watts - Math.round(biomassCost));
-    } else if (generator === "Hydro Plant") {
-      setHydroPlants(hydroPlants + 1);
-      setWatts(watts - Math.round(hydroCost));
-    } else if (generator === "Nuclear Plant") {
-      setNuclearPlants(nuclearPlants + 1);
-      setWatts(watts - Math.round(nuclearCost));
+  function buySellGenerator(generator: string, tradeQuantity: number, generatorPrice: number, isBuying: boolean) {
+    if (isBuying) {
+      if (generator === "Lineworker") {
+        setLinemen(linemen + tradeQuantity);
+      } else if (generator === "Coal Plant") {
+        setCoalPlants(coalPlants + tradeQuantity);
+      } else if (generator === "Gas Plant") {
+        setGasPlants(gasPlants + tradeQuantity);
+      } else if (generator === "Solar Farm") {
+        setSolarFarms(solarFarms + tradeQuantity);
+      } else if (generator === "Oil Well") {
+        setOilWells(oilWells + tradeQuantity);
+      } else if (generator === "Wind Turbine") {
+        setWindTurbines(windTurbines + tradeQuantity);
+      } else if (generator === "Biomass Gasifier") {
+        setBiomassGasifiers(biomassGasifiers + tradeQuantity);
+      } else if (generator === "Hydro Plant") {
+        setHydroPlants(hydroPlants + tradeQuantity);
+      } else if (generator === "Nuclear Plant") {
+        setNuclearPlants(nuclearPlants + tradeQuantity);
+      }
+  
+      if (tradeQuantity === 1) {
+        setWatts(watts - Math.round(generatorPrice));
+      } else if (tradeQuantity === 10) {
+        setWatts(watts - Math.round(generatorPrice));
+      } else if (tradeQuantity === 100) {
+        setWatts(watts - Math.round(generatorPrice));
+      }
+    } else {
+      if (generator === "Lineworker") {
+        setLinemen(linemen - tradeQuantity);
+      } else if (generator === "Coal Plant") {
+        setCoalPlants(coalPlants - tradeQuantity);
+      } else if (generator === "Gas Plant") {
+        setGasPlants(gasPlants - tradeQuantity);
+      } else if (generator === "Solar Farm") {
+        setSolarFarms(solarFarms - tradeQuantity);
+      } else if (generator === "Oil Well") {
+        setOilWells(oilWells - tradeQuantity);
+      } else if (generator === "Wind Turbine") {
+        setWindTurbines(windTurbines - tradeQuantity);
+      } else if (generator === "Biomass Gasifier") {
+        setBiomassGasifiers(biomassGasifiers - tradeQuantity);
+      } else if (generator === "Hydro Plant") {
+        setHydroPlants(hydroPlants - tradeQuantity);
+      } else if (generator === "Nuclear Plant") {
+        setNuclearPlants(nuclearPlants - tradeQuantity);
+      }
+  
+      if (tradeQuantity === 1) {
+        setWatts(watts + Math.round(generatorPrice));
+      } else if (tradeQuantity === 10) {
+        setWatts(watts + Math.round(generatorPrice));
+      } else if (tradeQuantity === 100) {
+        setWatts(watts + Math.round(generatorPrice));
+      }
     }
   }
 
@@ -526,28 +554,55 @@ function App() {
       substations, substationCostBonus, substationTransportationBonus]
   );
 
-  function buyTransporter(transporter: string) {
-    if (transporter === "Battery") {
-      setBatteries(batteries + 1);
-      setWatts(watts - Math.round(batteryCost));
-    } else if (transporter === "Meter") {
-      setMeters(meters + 1);
-      setWatts(watts - Math.round(meterCost));
-    } else if (transporter === "Utility Pole") {
-      setPhonePoles(phonePoles + 1);
-      setWatts(watts - Math.round(phonePoleCost));
-    } else if (transporter === "Transformer") {
-      setTransformers(transformers + 1);
-      setWatts(watts - Math.round(transformerCost));
-    } else if (transporter === "Underground Cable") {
-      setUndergroundCables(undergroundCables + 1);
-      setWatts(watts - Math.round(undergroundCableCost));
-    } else if (transporter === "Power Tower") {
-      setPowerTowers(powerTowers + 1);
-      setWatts(watts - Math.round(powerTowerCost));
-    } else if (transporter === "Substation") {
-      setSubstations(substations + 1);
-      setWatts(watts - Math.round(substationCost));
+  function buySellTransporter(transporter: string, tradeQuantity: number, transporterPrice: number, isBuying: boolean) {
+    if (isBuying) {
+      if (transporter === "Battery") {
+        setBatteries(batteries + tradeQuantity);
+      } else if (transporter === "Meter") {
+        setMeters(meters + tradeQuantity);
+      } else if (transporter === "Utility Pole") {
+        setPhonePoles(phonePoles + tradeQuantity);
+      } else if (transporter === "Transformer") {
+        setTransformers(transformers + tradeQuantity);
+      } else if (transporter === "Underground Cable") {
+        setUndergroundCables(undergroundCables + tradeQuantity);
+      } else if (transporter === "Transmission Tower") {
+        setPowerTowers(powerTowers + tradeQuantity);
+      } else if (transporter === "Substation") {
+        setSubstations(substations + tradeQuantity);
+      }
+  
+      if (tradeQuantity === 1) {
+        setWatts(watts - Math.round(transporterPrice));
+      } else if (tradeQuantity === 10) {
+        setWatts(watts - Math.round(transporterPrice));
+      } else if (tradeQuantity === 100) {
+        setWatts(watts - Math.round(transporterPrice));
+      }
+    } else {
+      if (transporter === "Battery") {
+        setBatteries(batteries - tradeQuantity);
+      } else if (transporter === "Meter") {
+        setMeters(meters - tradeQuantity);
+      } else if (transporter === "Utility Pole") {
+        setPhonePoles(phonePoles - tradeQuantity);
+      } else if (transporter === "Transformer") {
+        setTransformers(transformers - tradeQuantity);
+      } else if (transporter === "Underground Cable") {
+        setUndergroundCables(undergroundCables - tradeQuantity);
+      } else if (transporter === "Transmission Tower") {
+        setPowerTowers(powerTowers - tradeQuantity);
+      } else if (transporter === "Substation") {
+        setSubstations(substations - tradeQuantity);
+      }
+  
+      if (tradeQuantity === 1) {
+        setWatts(watts + Math.round(transporterPrice));
+      } else if (tradeQuantity === 10) {
+        setWatts(watts + Math.round(transporterPrice));
+      } else if (tradeQuantity === 100) {
+        setWatts(watts + Math.round(transporterPrice));
+      }
     }
   }
 
@@ -596,7 +651,7 @@ function App() {
     localStorage.setItem('scenery', JSON.stringify(scenery));
 
     //Saves ids of purchased upgrades 
-    localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => !upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
+    localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
 
     //Saves advents
     localStorage.setItem('advents', JSON.stringify(advents));
@@ -692,7 +747,7 @@ function App() {
     const localUpgrades = localStorage.getItem('upgrades');
     if (localUpgrades) {
       const purchasedUpgrades = JSON.parse(localUpgrades);
-      setUpgrades(upgrades.filter((upgrade: Upgrade): boolean => purchasedUpgrades.includes(upgrade.id)));
+      setUpgrades(upgrades.map((upgrade: Upgrade): Upgrade => purchasedUpgrades.includes(upgrade.id) ? {...upgrade, purchased: true} : {...upgrade}));
     }
 
     //Loads generators
@@ -977,8 +1032,8 @@ function App() {
         advents={advents}
 
         clickBolt={clickBolt}
-        buyGenerator={buyGenerator}
-        buyTransporter={buyTransporter}
+        buySellGenerator={buySellGenerator}
+        buySellTransporter={buySellTransporter}
         buyUpgrade={buyUpgrade}
 
         eraseGame={eraseGame}

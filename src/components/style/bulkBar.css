@@ -1,0 +1,24 @@
+.bar {
+    height: 28px;
+    width: 100%;
+    background-color: #5f0606;
+}
+
+.bar button {
+    vertical-align: top;
+    font-size: 20px;
+    margin: 4px 10px;
+    background: none;
+    color: #FFFFFF;
+    line-height: 1;
+}
+
+.glow-button {
+    text-shadow: 0px 0px 2px #AAA;
+    opacity: 1;
+}
+
+.default-button {
+    text-shadow: 0px 1px 0px #000;
+    opacity: 0.8;
+}

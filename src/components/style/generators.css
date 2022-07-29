@@ -14,6 +14,12 @@
   display: none;
 }
 
+.generators-header {
+  margin-top: 5px;
+  margin-bottom: 8px;
+  font-size: 36px;
+}
+
 .generator {
   width: 300px;
   height: 64px;

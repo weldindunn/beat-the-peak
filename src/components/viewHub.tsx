@@ -87,9 +87,9 @@ export function ViewHub({
     advents,
 
     clickBolt,
-    buyGenerator,
+    buySellGenerator,
     buyUpgrade,
-    buyTransporter,
+    buySellTransporter,
 
     eraseGame
 } : {
@@ -171,9 +171,9 @@ export function ViewHub({
     advents: Advent[];
 
     clickBolt: () => void;
-    buyGenerator: (generator: string) => void;
+    buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
     buyUpgrade: (upgrade: Upgrade) => void;
-    buyTransporter: (transporter: string) => void;
+    buySellTransporter: (transporter: string, tradeQuantity: number, transporterCost: number, isBuying: boolean) => void;
 
     eraseGame: () => void;
 }): JSX.Element {
@@ -245,7 +245,7 @@ export function ViewHub({
                     <div className="structures-column">
                         {/* Structures */}
                         <div className="structures">
-                            <span>Structures</span>
+                            <span className="title">Structures</span>
                         </div>
                     </div>
                 </div>
@@ -310,7 +310,7 @@ export function ViewHub({
                             hydroCost={hydroCost}
                             nuclearCost={nuclearCost}
 
-                            buyGenerator={buyGenerator}
+                            buySellGenerator={buySellGenerator}
                         ></ViewGenerators>
                     </div>
 
@@ -321,7 +321,7 @@ export function ViewHub({
                             wattsPerSec={wattsPerSec}
                             netWattsPerSec={netWattsPerSec}
                             totalTransportation={totalTransportation}
-                            buyTransporter={buyTransporter}
+                            buySellTransporter={buySellTransporter}
 
                             batteries={batteries}
                             meters={meters}

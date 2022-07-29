@@ -1,6 +1,7 @@
 import React from "react";
 import { OverlayTrigger } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
+import { sellingCost } from "./utilities/sellingCost";
 
 export function Generator({
     name,
@@ -12,7 +13,10 @@ export function Generator({
     generatorCost,
     generatorProduction,
     description,
-    buyGenerator
+    tradeQuantity,
+    priceModifier,
+    isBuying,
+    buySellGenerator
 } : {
     name: string,
     icon: string,
@@ -23,8 +27,12 @@ export function Generator({
     generatorCost: number;
     generatorProduction: number;
     description: string;
-    buyGenerator: (generator: string) => void;
+    tradeQuantity: number;
+    priceModifier: number;
+    isBuying: boolean;
+    buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
 }): JSX.Element {
+
     return (
         <OverlayTrigger
             placement={"left"}
@@ -33,22 +41,38 @@ export function Generator({
                     <div>
                         <img src={tooltip_icon} alt={name}/>
                         <span className="tooltip-name">{name}</span>
-                        <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost), false)}</span>
+                        {
+                            isBuying ? (
+                                <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost * priceModifier), false)}</span>
+                            ) : (
+                                <span className="tooltip-cost">{numberConvertor(Math.round(sellingCost(generatorCost, tradeQuantity)), false)}</span>
+                            )
+                        }
                     </div>
                     <div>
                         <span className="tooltip-description">{description}</span>
                     </div>
                     <div>
                         <span className="tooltip-production">
-                            Each {name} produces {numberConvertor(Math.round(generatorProduction/generators), true)} per second
+                            Each {name.toLowerCase()} produces {numberConvertor(Math.round(generatorProduction/generators), true)} per second
                             <br/>
-                            Your {name}s produce {numberConvertor(generatorProduction, true)} per second, {Math.round(generatorProduction/wattsPerSec * 100)}% of your total watts per second
+                            Your {name.toLowerCase()}s produce {numberConvertor(generatorProduction, true)} per second, {Math.round(generatorProduction/wattsPerSec * 100)}% of your total watts per second
                         </span>
                     </div>
                 </div>
             }
         >
-            <button className="generator" onClick={() => buyGenerator(name)} disabled={watts < Math.round(generatorCost)}>
+            <button 
+                className="generator"
+                onClick={() => {
+                    if (isBuying) {
+                        buySellGenerator(name, tradeQuantity, generatorCost * priceModifier, isBuying)
+                    } else {
+                        buySellGenerator(name, tradeQuantity, sellingCost(generatorCost, tradeQuantity), false)
+                    }
+                }}
+                disabled={((watts < Math.round(generatorCost * priceModifier)) && isBuying) || ((generators < tradeQuantity) && !isBuying)}
+            >
                 <div className="generator-icon">
                     <img src={icon} alt={name.charAt(0)}></img>
                 </div>
@@ -58,9 +82,17 @@ export function Generator({
                             name.length > 13 ? (name.substring(0, 11) + "...") : (name)
                         }
                     </div>
-                    <span className="generator-cost">
-                        {numberConvertor(Math.round(generatorCost), false)}
-                    </span>
+                    {
+                        isBuying ? (
+                            <span className="generator-cost">
+                                {numberConvertor(Math.round(generatorCost * priceModifier), false)}
+                            </span>
+                        ) : (
+                            <span className="generator-cost">
+                                {numberConvertor(Math.round(sellingCost(generatorCost, tradeQuantity)), false)}
+                            </span>
+                        )
+                    }
                     <div className="generator-count">
                         {generators}
                     </div>
