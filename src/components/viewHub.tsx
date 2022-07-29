@@ -245,7 +245,7 @@ export function ViewHub({
                     <div className="structures-column">
                         {/* Structures */}
                         <div className="structures">
-                            <span>Structures</span>
+                            <span className="title">Structures</span>
                         </div>
                     </div>
                 </div>

@@ -103,7 +103,7 @@ export function ViewGenerators({
 
     return (
         <div className="generators">
-            <div className="title">
+            <div className="generators-header">
                 <span>Generators</span>
             </div>
             <BulkBar

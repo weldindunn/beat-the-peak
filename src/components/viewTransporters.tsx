@@ -71,7 +71,7 @@ export function ViewTransporters({
 
     return (
         <div className="transporters">
-            <div className="title">
+            <div className="transporters-header">
                 <span>Transporters</span>
             </div>
             <BulkBar
