@@ -80,7 +80,7 @@ export function ViewUpgrades({
 
     return (
         <>
-            <div className="title">
+            <div className="upgrades-header">
                 <span className="upgrade-title">Upgrades</span>
                 <button className="info-button" onClick={() => setViewing(!isViewing)}></button>
             </div>
@@ -103,16 +103,22 @@ export function ViewUpgrades({
                         }
                     </div>
                 ) : (
-                    upgrades.map((upgrade: Upgrade) => (
-                        upgrade.unlocked && !upgrade.purchased ? (
-                            <UpgradeSquare
-                                key={upgrade.id}
-                                watts={watts}
-                                upgrade={upgrade}
-                                buyUpgrade={buyUpgrade}
-                            />
-                        ) : (<div key={upgrade.id}/>)
-                    ))
+                    <div className="available-upgrades">
+                        <div className="subtitle">Available Upgrades</div>
+                        {
+                            upgrades.map((upgrade: Upgrade) => (
+                                upgrade.unlocked && !upgrade.purchased ? (
+                                    <UpgradeSquare
+                                        key={upgrade.id}
+                                        watts={watts}
+                                        upgrade={upgrade}
+                                        buyUpgrade={buyUpgrade}
+                                    />
+                                ) : (<div key={upgrade.id}/>)
+                            ))
+
+                        }
+                    </div>
                 )
             }
         </>
