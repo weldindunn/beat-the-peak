@@ -18,7 +18,7 @@ export function ViewEvents({
 
     return (
         <>
-            <div className="title">
+            <div className="events-header">
                 <span>Events</span>
             </div>
 
