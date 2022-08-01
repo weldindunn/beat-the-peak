@@ -42,6 +42,7 @@ function App() {
   const [watts, setWatts] = useState<number>(0);
   const [wattsPerSec, setWattsPerSec] = useState<number>(0);
   const [netWattsPerSec, setNetWattsPerSec] = useState<number>(0);
+  const [totalWatts, setTotalWatts] = useState<number>(0);
 
   //The number of members in the co-op
   const [members, setMembers] = useState<number>(0);
@@ -300,6 +301,7 @@ function App() {
 
     //Adds a frame worth of watts to the watts sum
     setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
+    setTotalWatts(totalWatts + (netWattsPerSec)/(1000/deltaTime))
 
     //Updates the number of members
     if (totalTransportation > 0) {
@@ -392,6 +394,7 @@ function App() {
   //Click Bolt
   function clickBolt(): void {
     setWatts(watts + clickPower);
+    setTotalWatts(totalWatts + clickPower);
   }
 
   /* ==================
@@ -644,6 +647,7 @@ function App() {
 
     //Saves # of watts
     localStorage.setItem('watts', JSON.stringify(watts));
+    localStorage.setItem('total-watts', JSON.stringify(totalWatts));
 
     //Saves the date and scenery
     localStorage.setItem('currentMonth', JSON.stringify(currentMonth));
@@ -718,6 +722,10 @@ function App() {
     const localWatts = localStorage.getItem('watts');
     if (localWatts) {
       setWatts(JSON.parse(localWatts));
+    }
+    const localTotalWatts = localStorage.getItem('total-watts');
+    if (localTotalWatts) {
+      setTotalWatts(JSON.parse(localTotalWatts));
     }
 
     //Loads advents
@@ -901,6 +909,7 @@ function App() {
     //setFrameNumber(1);
 
     setWatts(0);
+    setTotalWatts(0);
     setMembers(0);
     setName("Bob");
 
@@ -963,10 +972,12 @@ function App() {
         name={name}
         setName={setName}
         watts={watts}
+        totalWatts={totalWatts}
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}
         setWatts={setWatts}
+        setTotalWatts={setTotalWatts}
 
         scenery={scenery}
         currentMonth={currentMonth}

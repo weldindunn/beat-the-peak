@@ -27,6 +27,7 @@ import atom from "../img/Atom.png";
 
 export function ViewGenerators({
     watts,
+    totalWatts,
     wattsPerSec,
 
     linemen,
@@ -62,6 +63,7 @@ export function ViewGenerators({
     buySellGenerator
 } : {
     watts: number; 
+    totalWatts: number;
     wattsPerSec: number;
 
     linemen: number;
@@ -119,10 +121,12 @@ export function ViewGenerators({
                 tooltip_icon={hard_hat}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={linemen}
                 generatorCost={linemenCost}
                 generatorProduction={linemenProduction}
                 description="Produces electricity by brute force"
+                availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -134,10 +138,12 @@ export function ViewGenerators({
                 tooltip_icon={coal_lump}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={coalPlants}
                 generatorCost={coalCost}
                 generatorProduction={coalProduction}
                 description="Burns coal to power steam engines"
+                availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -149,10 +155,12 @@ export function ViewGenerators({
                 tooltip_icon={gas_symbol}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={gasPlants}
                 generatorCost={gasCost}
                 generatorProduction={gasProduction}
                 description="Burns gas to power steam engines"
+                availabilityThreshold={coalCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -164,10 +172,12 @@ export function ViewGenerators({
                 tooltip_icon={sun}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={solarFarms}
                 generatorCost={solarCost}
                 generatorProduction={solarProduction}
                 description="Harnaces the power of the sun to generate electricity"
+                availabilityThreshold={gasCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -179,10 +189,12 @@ export function ViewGenerators({
                 tooltip_icon={oil_drop}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={oilWells}
                 generatorCost={oilCost}
                 generatorProduction={oilProduction}
                 description="Burns oil to power steam engines"
+                availabilityThreshold={solarCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -194,10 +206,12 @@ export function ViewGenerators({
                 tooltip_icon={wind_symbol}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={windTurbines}
                 generatorCost={windCost}
                 generatorProduction={windProduction}
                 description="Uses wind to spin a turbine generator"
+                availabilityThreshold={oilCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -209,10 +223,12 @@ export function ViewGenerators({
                 tooltip_icon={wood_chips}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={biomassGasifiers}
                 generatorCost={biomassCost}
                 generatorProduction={biomassProduction}
                 description="Burns biomass to power steam engines"
+                availabilityThreshold={windCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -224,10 +240,12 @@ export function ViewGenerators({
                 tooltip_icon={water_wheel}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={hydroPlants}
                 generatorCost={hydroCost}
                 generatorProduction={hydroProduction}
                 description="Uses water power to spin turbine generators"
+                availabilityThreshold={biomassCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -239,10 +257,12 @@ export function ViewGenerators({
                 tooltip_icon={atom}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
+                totalWatts={totalWatts}
                 generators={nuclearPlants}
                 generatorCost={nuclearCost}
                 generatorProduction={nuclearProduction}
                 description="Uses the fission of uranium and plutonium to heat steam engines"
+                availabilityThreshold={hydroCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}

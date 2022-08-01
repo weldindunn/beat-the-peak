@@ -15,10 +15,12 @@ export function ViewCenter ({
     name,
     setName,
     watts, 
+    totalWatts,
     wattsPerSec,
     netWattsPerSec,
     members,
     setWatts,
+    setTotalWatts,
     clickBolt
 } : {
     randomNumbers: number[];
@@ -30,10 +32,12 @@ export function ViewCenter ({
     name: string;
     setName: (name: string) => void;
     watts: number; 
+    totalWatts: number;
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
     setWatts: (watts: number) => void;
+    setTotalWatts: (totalWatts: number) => void;
     clickBolt: () => void;
 }): JSX.Element {
 
@@ -54,7 +58,8 @@ export function ViewCenter ({
     }
 
     function saveWatts(): void {
-        setWatts(parseInt(tempWatts));
+        setWatts(watts + parseInt(tempWatts));
+        setTotalWatts(totalWatts + parseInt(tempWatts));
     }
 
     function openInfo(): void {

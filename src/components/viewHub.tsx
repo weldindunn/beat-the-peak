@@ -19,10 +19,12 @@ export function ViewHub({
     name, 
     setName,
     watts,
+    totalWatts,
     wattsPerSec,
     netWattsPerSec,
     members,
     setWatts,
+    setTotalWatts,
 
     scenery,
     currentMonth,
@@ -103,10 +105,12 @@ export function ViewHub({
     name: string;
     setName: (name: string) => void;
     watts: number; 
+    totalWatts: number;
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
     setWatts: (watts: number) => void;
+    setTotalWatts: (totalWatts: number) => void;
     
     scenery: string;
     currentMonth: number;
@@ -262,12 +266,14 @@ export function ViewHub({
                         name={name}
                         setName={setName}
                         watts={watts}
+                        totalWatts={totalWatts}
                         wattsPerSec={wattsPerSec}
                         netWattsPerSec={netWattsPerSec}
                         members={members}
                         clickBolt={clickBolt}
                         randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
                         setWatts={setWatts}
+                        setTotalWatts={setTotalWatts}
                     ></ViewCenter>
                 </div>
 
@@ -279,6 +285,7 @@ export function ViewHub({
                     {/* Generators */}
                     <ViewGenerators
                         watts={watts}
+                        totalWatts={totalWatts}
                         wattsPerSec={wattsPerSec}
 
                         linemen={linemen}
