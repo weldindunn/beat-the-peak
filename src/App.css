@@ -3,6 +3,7 @@
   height: 100vh;
   overflow-y: hidden;
   overflow-x: auto;
+  background: #5f0606;
 }
 
 /* Hides scrollbar for chrome/safari/opera/edge */
