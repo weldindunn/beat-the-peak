@@ -136,14 +136,6 @@ export function ViewCenter ({
                         {"per second: "}{numberConvertor(netWattsPerSec, false)}
                     </span>
                 </div>
-
-                {/* # of Members */}
-                <div className="members-text-box">
-                    <span className="num-members">
-                        {numberConvertor(members, false)}{" member"}
-                        { members !== 1 ? ("s") : ("")}
-                    </span>
-                </div>
             </div>
 
             {/* Power Button */}
@@ -151,6 +143,14 @@ export function ViewCenter ({
                 <button onClick={clickBolt} >
                     <img src={bolt} alt="Bolt"/>
                 </button>
+            </div>
+
+            {/* # of Members */}
+            <div className="members-text-box">
+                <span className="num-members">
+                    {numberConvertor(members, false)}{" member"}
+                    { members !== 1 ? ("s") : ("")}
+                </span>
             </div>
         </div>
     )

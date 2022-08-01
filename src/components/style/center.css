@@ -37,10 +37,15 @@
   background-color: black;
   line-height: 3vh;
   padding-top: 2vh;
+  padding-bottom: 2vh;
 }
 
 .members-text-box {
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
   background-color: black;
+  opacity: 0.55;
   line-height: 3vh;
   padding-top: 1.5vh;
   padding-bottom: 2vh;
@@ -67,15 +72,15 @@
 }
 
 .num-watts {
-  font-size: 5vh;
+  font-size: 4.2vh;
 }
 
 .num-wps {
-  font-size: 3vh;
+  font-size: 2.8vh;
 }
 
 .num-members {
-  font-size: 4.2vh;
+  font-size: 3.2vh;
 }
 
 /* Style of bolt button */
