@@ -53,13 +53,16 @@ export function ViewCenter ({
         setEditing(true);
     }
 
+    function saveWatts(): void {
+        setWatts(parseInt(tempWatts));
+    }
+
     function openInfo(): void {
         setViewing(true);
     }
 
     function closeInfo(): void {
         setViewing(false);
-        setWatts(parseInt(tempWatts));
     }
 
     return (
@@ -104,7 +107,7 @@ export function ViewCenter ({
                     <Modal.Body>
                         <p>You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.</p>
                         <ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />
-                        
+                        <br/>
                         <Form>
                             <Form.Group>
                                 <Form.Label>Cheat:</Form.Label>
@@ -113,6 +116,7 @@ export function ViewCenter ({
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTempWatts(event.target.value)}
                                     placeholder="Enter watts"
                                 />
+                                <Button variant="success" onClick={saveWatts}>Save</Button>
                             </Form.Group>
                         </Form>
                     </Modal.Body>
