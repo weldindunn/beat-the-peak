@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 /* Hides scrollbar for chrome/safari/opera/edge */
@@ -8,8 +11,8 @@
 }
 
 div {
-  display: block;
   line-height: 1;
+  display: inline-block;
 }
 
 body {
@@ -22,24 +25,23 @@ body {
   padding: 0;
   border: 0;
   outline: 0;
+  line-height: 1;
   font-size: 100%;
   font-style: inherit;
   font-size: inherit;
   font-family: inherit;
-  vertical-align: baseline;
+  vertical-align: top;
 }
 
 /*==============
   Menu Bar style
   ============== */
 .menuBar {
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  position: relative;
   width: 100%;
-  height: 32px;
+  height: /*32px*/2vh;
   background: #5e0606;
-  display: flex;
+  display: inline-block;
 }
 
 .menuBarItem {
@@ -47,11 +49,11 @@ body {
   color: #FFFFFF;
   background: #4b0505;
   border-style: solid;
-  border-width: 2px;
+  border-width: (1/8)vh;
   border-color: #680606;
-  margin-left: 2px;
-  padding: 2px 8px 3px 9px;
-
+  margin-left: 1.5vh;
+  padding: (1/8)vh 0.5vh 0.2vh 0.5vh;
+  font-size: 75%;
 }
 
 .menuBarItem a {
@@ -65,142 +67,104 @@ body {
 }
 
 
-/*  Settings for whole page */
-.hub {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  top: 32px;
-  overflow: hidden;
 
-  font-size: 36px;
+.hub {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 98vh;
+
+  font-size: 2.25vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.left-barrier {
-  position: absolute;
-  background: #5f0606;
-  top: 0px;
-  bottom: 0px;
-  left: 319px;
-  width: 16px;
-  height: 100%;
-
-}
-
-.middle-barrier {
-  position: absolute;
-  background: #5f0606;
-  top: 0px;
-  bottom: 0px;
-  left: 616px;
-  width: 16px;
-  height: 100%;
-
-}
-
-.right-barrier {
-  position: absolute;
-  background: #5f0606;
-  top: 0px;
-  bottom: 0px;
-  right: 300px;
-  width: 16px;
-  height: 100%;
-
+/* Hides scrollbar for chrome/safari/opera/edge */
+.hub::-webkit-scrollbar {
+  display: none;
 }
 
 .left-column {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 616px;
+  position: relative;
+  height: 100%;
+  width: 44%;
 }
 
-.top-row {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 616px;
-}
-
-.events-column {
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  margin-right: 16px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  
-  width: 319px;
-}
-
-.upgrades-column {
-  position: absolute;
-  top: 0px;
-  left: 335px;
-  min-width: 100px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  width: 281px;
-}
-
-.structures-column {
-  position: absolute;
-  top: 50vh;
-  left: 0px;
-  bottom: 0px;
-  margin-right: 16px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  width: 616px;
+.middle-barrier {
+  position: relative;
+  background: #5f0606;
+  width: 1%;
+  height: 100%;
 }
 
 .center-column {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 632px;
-  right: 316px;
-  min-width: 100px;
+  position: relative;
+  width: 25%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.right-barrier {
+  position: relative;
+  background: #5f0606;
+  width: 1%;
+  height: 100%;
 }
 
 .right-column {
-  position: absolute;
-  top: 0px;
-  right: 0px;
+  position: relative;
+  overflow-x:visible;
+  overflow-y: hidden;
+  height: 100%;
+  width: 29%;
+}
+
+.right-center-barrier {
+  position: relative;
+  background: #5f0606;
+  width: 100%;
+  height: 2vh;
+}
+
+.top-row {
+  position: relative;
+  display: inline;
+  float: left;
+  height: 48vh;
+  width: 100%
+}
+
+.events-column {
+  position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
-  width: 300px;
+  width: 59.5%;
 }
 
-.title {
-  display: inline-block;
+.left-barrier {
+  position: relative;
+  background: #5f0606;
+  width: 2.5%;
+  height: 100%;
+}
+
+.upgrades-column {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 38%;
+}
+
+.left-center-barrier {
+  position: relative;
+  background: #5f0606;
   width: 100%;
-  margin-top: 6px;
-  margin-bottom: 10px;
-}
-  
-/*======================
-  Structure column style
-  ====================== */
-.structures {
-  background: #2b862b;
-  color: #FFFFFF;
-  height: 50vh;
+  height: 2vh;
 }
 
-/*======================
-  Transporter column style
-  ====================== */
-.transporters {
-  background: #ffd24b;
-  color: #FFFFFF;
-  height: 50vh;
+.structures-column {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
 }
-

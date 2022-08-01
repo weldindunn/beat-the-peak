@@ -133,7 +133,7 @@ export function ViewCenter ({
                     </span>
                     <br/>
                     <span className="num-wps">
-                        {"per second: "}{numberConvertor(wattsPerSec, false)}{" (Net: "}{numberConvertor(netWattsPerSec, false)}{")"}
+                        {"per second: "}{numberConvertor(netWattsPerSec, false)}
                     </span>
                 </div>
 

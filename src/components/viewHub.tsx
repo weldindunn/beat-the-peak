@@ -7,6 +7,7 @@ import { Upgrade } from "../interfaces/upgrade";
 import { Advent } from "../interfaces/advent";
 import { ViewTransporters } from "./viewTransporters";
 import { ViewEvents } from "./viewEvents";
+import { ViewStructures } from "./viewStructures";
 
 export function ViewHub({
     randomNumbers,
@@ -242,11 +243,12 @@ export function ViewHub({
                         </div>
                     </div>
 
+                    {/*Barrier between top row and structures*/}
+                    <div className="left-center-barrier"/>
+
+                    {/* Structures */}
                     <div className="structures-column">
-                        {/* Structures */}
-                        <div className="structures">
-                            <span className="title">Structures</span>
-                        </div>
+                        <ViewStructures></ViewStructures>
                     </div>
                 </div>
 
@@ -275,79 +277,78 @@ export function ViewHub({
                 {/* Generators and Transporters */}
                 <div className="right-column">
                     {/* Generators */}
-                    <div>
-                        <ViewGenerators
-                            watts={watts}
-                            wattsPerSec={wattsPerSec}
+                    <ViewGenerators
+                        watts={watts}
+                        wattsPerSec={wattsPerSec}
 
-                            linemen={linemen}
-                            coalPlants={coalPlants}
-                            gasPlants={gasPlants}
-                            solarFarms={solarFarms}
-                            oilWells={oilWells}
-                            windTurbines={windTurbines}
-                            biomassGasifiers={biomassGasifiers}
-                            hydroPlants={hydroPlants}
-                            nuclearPlants={nuclearPlants}
+                        linemen={linemen}
+                        coalPlants={coalPlants}
+                        gasPlants={gasPlants}
+                        solarFarms={solarFarms}
+                        oilWells={oilWells}
+                        windTurbines={windTurbines}
+                        biomassGasifiers={biomassGasifiers}
+                        hydroPlants={hydroPlants}
+                        nuclearPlants={nuclearPlants}
 
-                            linemenProduction={linemenProduction}
-                            coalProduction={coalProduction}
-                            gasProduction={gasProduction}
-                            solarProduction={solarProduction}
-                            oilProduction={oilProduction}
-                            windProduction={windProduction}
-                            biomassProduction={biomassProduction}
-                            hydroProduction={hydroProduction}
-                            nuclearProduction={nuclearProduction}
-                        
-                            linemenCost={linemenCost}
-                            coalCost={coalCost}
-                            gasCost={gasCost}
-                            solarCost={solarCost}
-                            oilCost={oilCost}
-                            windCost={windCost}
-                            biomassCost={biomassCost}
-                            hydroCost={hydroCost}
-                            nuclearCost={nuclearCost}
+                        linemenProduction={linemenProduction}
+                        coalProduction={coalProduction}
+                        gasProduction={gasProduction}
+                        solarProduction={solarProduction}
+                        oilProduction={oilProduction}
+                        windProduction={windProduction}
+                        biomassProduction={biomassProduction}
+                        hydroProduction={hydroProduction}
+                        nuclearProduction={nuclearProduction}
+                    
+                        linemenCost={linemenCost}
+                        coalCost={coalCost}
+                        gasCost={gasCost}
+                        solarCost={solarCost}
+                        oilCost={oilCost}
+                        windCost={windCost}
+                        biomassCost={biomassCost}
+                        hydroCost={hydroCost}
+                        nuclearCost={nuclearCost}
 
-                            buySellGenerator={buySellGenerator}
-                        ></ViewGenerators>
-                    </div>
+                        buySellGenerator={buySellGenerator}
+                    ></ViewGenerators>
+
+                    {/*Barrier between generators and transporters*/}
+                    <div className="right-center-barrier"/>
 
                     {/* Transporters */}
-                    <div className="transporters">
-                        <ViewTransporters
-                            watts={watts}
-                            wattsPerSec={wattsPerSec}
-                            netWattsPerSec={netWattsPerSec}
-                            totalTransportation={totalTransportation}
-                            buySellTransporter={buySellTransporter}
+                    <ViewTransporters
+                        watts={watts}
+                        wattsPerSec={wattsPerSec}
+                        netWattsPerSec={netWattsPerSec}
+                        totalTransportation={totalTransportation}
+                        buySellTransporter={buySellTransporter}
 
-                            batteries={batteries}
-                            meters={meters}
-                            phonePoles={phonePoles}
-                            transformers={transformers}
-                            undergroundCables={undergroundCables}
-                            powerTowers={powerTowers}
-                            substations={substations}
+                        batteries={batteries}
+                        meters={meters}
+                        phonePoles={phonePoles}
+                        transformers={transformers}
+                        undergroundCables={undergroundCables}
+                        powerTowers={powerTowers}
+                        substations={substations}
 
-                            batteryTransportation={batteryTransportation}
-                            meterTransportation={meterTransportation}
-                            phonePoleTransportation={phonePoleTransportation}
-                            transformerTransportation={transformerTransportation}
-                            undergroundCableTransportation={undergroundCableTransportation}
-                            powerTowerTransportation={powerTowerTransportation}
-                            substationTransportation={substationTransportation}
+                        batteryTransportation={batteryTransportation}
+                        meterTransportation={meterTransportation}
+                        phonePoleTransportation={phonePoleTransportation}
+                        transformerTransportation={transformerTransportation}
+                        undergroundCableTransportation={undergroundCableTransportation}
+                        powerTowerTransportation={powerTowerTransportation}
+                        substationTransportation={substationTransportation}
 
-                            batteryCost={batteryCost}
-                            meterCost={meterCost}
-                            phonePoleCost={phonePoleCost}
-                            transformerCost={transformerCost}
-                            undergroundCableCost={undergroundCableCost}
-                            powerTowerCost={powerTowerCost}
-                            substationCost={substationCost}
-                        ></ViewTransporters>
-                    </div>
+                        batteryCost={batteryCost}
+                        meterCost={meterCost}
+                        phonePoleCost={phonePoleCost}
+                        transformerCost={transformerCost}
+                        undergroundCableCost={undergroundCableCost}
+                        powerTowerCost={powerTowerCost}
+                        substationCost={substationCost}
+                    ></ViewTransporters>
                 </div>
             </div>
         </>

@@ -8,12 +8,17 @@
   );
 
   height: 100%;
-  overflow-y:auto;
+  overflow-y: auto;
+  text-align: center;
 }
 
 .center span {
   opacity: 1;
   color: white;
+}
+
+.center div {
+  width: 100%;
 }
 
 /* Hides scrollbar for chrome/safari/opera/edge */
@@ -23,7 +28,7 @@
 
 .top-text {
   position: relative;
-  top: 5%;
+  margin-top: 30px;
   opacity: 0.55;
   z-index: 1;
 }
