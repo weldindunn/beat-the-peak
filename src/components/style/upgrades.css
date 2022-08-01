@@ -1,7 +1,9 @@
 .upgrades {
   background: #C8700F;
   color: #FFFFE0;
-  height: 50vh;
+  text-align: center;
+  height: 48vh;
+  width: 100%;
   overflow-y: auto;
 }
 
@@ -10,13 +12,18 @@
   display: none;
 }
 
+.upgrades div {
+  display: block;
+}
+
 .upgrades-header {
   display: inline-block;
   width: 100%;
   vertical-align: top;
   margin-top: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
   font-size: 36px;
+  text-shadow: 1px 1px 1px rgba(57, 57, 57, 0.5);
 }
 
 .upgrades-header span {
@@ -30,10 +37,15 @@
   width: 36px;
 }
 
+.info-button:hover {
+  opacity: 0.85;
+}
+
 .subtitle {
   margin-bottom: 5px;
   font-size: 24px;
-  color: #fff3cd;
+  color: #FFFFE0;
+  text-shadow: 1px 1px 1px rgba(57, 57, 57, 0.5);
 }
 
 .upgrade {

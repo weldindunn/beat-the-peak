@@ -1,0 +1,14 @@
+.structures {
+    background: #2b862b;
+    color: #FFFFFF;
+    text-align: center;
+    height: 48vh;
+    width: 100%;
+  }
+
+.structures-header {
+    margin-top: 5px;
+    margin-bottom: 8px;
+    font-size: 36px;
+    text-shadow: 1px 1px 1px rgba(57, 57, 57, 0.5);
+}

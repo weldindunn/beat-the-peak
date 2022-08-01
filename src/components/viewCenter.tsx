@@ -133,15 +133,7 @@ export function ViewCenter ({
                     </span>
                     <br/>
                     <span className="num-wps">
-                        {"per second: "}{numberConvertor(wattsPerSec, false)}{" (Net: "}{numberConvertor(netWattsPerSec, false)}{")"}
-                    </span>
-                </div>
-
-                {/* # of Members */}
-                <div className="members-text-box">
-                    <span className="num-members">
-                        {numberConvertor(members, false)}{" member"}
-                        { members !== 1 ? ("s") : ("")}
+                        {"per second: "}{numberConvertor(netWattsPerSec, false)}
                     </span>
                 </div>
             </div>
@@ -151,6 +143,14 @@ export function ViewCenter ({
                 <button onClick={clickBolt} >
                     <img src={bolt} alt="Bolt"/>
                 </button>
+            </div>
+
+            {/* # of Members */}
+            <div className="members-text-box">
+                <span className="num-members">
+                    {numberConvertor(members, false)}{" member"}
+                    { members !== 1 ? ("s") : ("")}
+                </span>
             </div>
         </div>
     )
