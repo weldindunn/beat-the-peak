@@ -5,6 +5,7 @@ import "./style/transporters.css";
 
 export function ViewTransporters({
     watts,
+    totalWatts,
     wattsPerSec,
     netWattsPerSec,
     totalTransportation,
@@ -35,6 +36,7 @@ export function ViewTransporters({
     substationCost
 } : {
     watts: number; 
+    totalWatts: number;
     wattsPerSec: number;
     netWattsPerSec: number;
     totalTransportation: number;
@@ -86,11 +88,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={batteries}
                 transporterCost={batteryCost}
                 transporterTransportation={batteryTransportation}
                 description="Stores electricity in a small portable form"
+                availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -101,11 +105,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={meters}
                 transporterCost={meterCost}
                 transporterTransportation={meterTransportation}
                 description=""
+                availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -116,11 +122,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={phonePoles}
                 transporterCost={phonePoleCost}
                 transporterTransportation={phonePoleTransportation}
                 description="Carries electricity across wooden poles"
+                availabilityThreshold={meterCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -131,11 +139,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={transformers}
                 transporterCost={transformerCost}
                 transporterTransportation={transformerTransportation}
                 description="Converts AC to DC"
+                availabilityThreshold={phonePoleCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -146,11 +156,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={undergroundCables}
                 transporterCost={undergroundCableCost}
                 transporterTransportation={undergroundCableTransportation}
                 description="Carries electricty through buried cables, protected from deadly nature"
+                availabilityThreshold={transformerCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -161,11 +173,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={powerTowers}
                 transporterCost={powerTowerCost}
                 transporterTransportation={powerTowerTransportation}
                 description="Carries electricity across long distances via large metal towers"
+                availabilityThreshold={undergroundCableCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}
@@ -176,11 +190,13 @@ export function ViewTransporters({
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
+                totalWatts={totalWatts}
                 totalTransportation={totalTransportation}
                 transporters={substations}
                 transporterCost={substationCost}
                 transporterTransportation={substationTransportation}
                 description=""
+                availabilityThreshold={powerTowerCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
                 isBuying={isBuying}

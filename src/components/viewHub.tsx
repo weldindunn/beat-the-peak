@@ -327,6 +327,7 @@ export function ViewHub({
                     {/* Transporters */}
                     <ViewTransporters
                         watts={watts}
+                        totalWatts={totalWatts}
                         wattsPerSec={wattsPerSec}
                         netWattsPerSec={netWattsPerSec}
                         totalTransportation={totalTransportation}
