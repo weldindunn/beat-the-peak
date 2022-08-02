@@ -14,7 +14,9 @@ import { tornadoCurve } from './components/utilities/tornadoCurve';
 import { heatWaveCurve } from './components/utilities/heatWaveCurve';
 import { Upgrade } from "./interfaces/upgrade";
 import { Advent } from "./interfaces/advent";
+import { Location } from "./interfaces/location";
 import upgrades from "./data/upgrades.json";
+import locations from "./data/powerRelations.json";
 
 import morning from "./img/Day_Night_Cycle_Morning.png";
 import noon from "./img/Day_Night_Cycle_Noon.png";
@@ -47,6 +49,12 @@ function App() {
   //The number of members in the co-op
   const [members, setMembers] = useState<number>(0);
   const [wattsPerMember, setWattsPerMember] = useState<number>(10);
+
+  //A list of locations with the amount of power they consume in a month (GWh)
+  const [locationIndex, setLocationIndex] = useState<number>(0);
+  const LOCATIONS = locations.map((location): Location => ({...location}));
+  const sortedLocations = LOCATIONS.sort((a, b) => a.power - b.power);
+  const [currentLocation, setCurrentLocation] = useState<Location>(sortedLocations[locationIndex]);
 
   //The number of each type of generator
   const [linemen, setLinemen] = useState<number>(0); 
@@ -307,6 +315,17 @@ function App() {
     if (totalTransportation > 0) {
       setMembers(totalTransportation/wattsPerMember)
     }
+
+    //Updates the power location
+
+    if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360) { //If the total kWh is more than the next lowest value in the list
+      setLocationIndex(locationIndex + 1);
+      setCurrentLocation(sortedLocations[locationIndex + 1]);
+    }
+
+    /* ==============
+       Weather Events
+       ============== */
 
     //If the odds are right, start a storm (odds are about 2.8 times a year)
     if (randomNumber < stormCurve(time % 720000, 16.7)) {
@@ -660,6 +679,9 @@ function App() {
     //Saves advents
     localStorage.setItem('advents', JSON.stringify(advents));
 
+    //Saves locationIndex
+    localStorage.setItem('locationIndex', JSON.stringify(locationIndex));
+
     //Saves generators
     localStorage.setItem('linemen', JSON.stringify(linemen));
     localStorage.setItem('coalPlants', JSON.stringify(coalPlants));
@@ -732,6 +754,13 @@ function App() {
     const localAdvents = localStorage.getItem('advents');
     if (localAdvents) {
       setAdvents(JSON.parse(localAdvents));
+    }
+
+    //Loads location
+    const localLocationIndex = localStorage.getItem('locationIndex');
+    if (localLocationIndex) {
+      setLocationIndex(JSON.parse(localLocationIndex));
+      setCurrentLocation(sortedLocations[JSON.parse(localLocationIndex)]);
     }
 
     //Loads date and scenery
@@ -912,6 +941,9 @@ function App() {
     setTotalWatts(0);
     setMembers(0);
     setName("Bob");
+    setCurrentLocation(sortedLocations[0]);
+    setLocationIndex(0);
+
 
     setScenery(morning);
     setCurrentMonth(0);
@@ -973,6 +1005,7 @@ function App() {
         setName={setName}
         watts={watts}
         totalWatts={totalWatts}
+        currentLocation={currentLocation}
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}

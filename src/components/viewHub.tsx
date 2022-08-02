@@ -8,6 +8,7 @@ import { Advent } from "../interfaces/advent";
 import { ViewTransporters } from "./viewTransporters";
 import { ViewEvents } from "./viewEvents";
 import { ViewStructures } from "./viewStructures";
+import { Location } from "../interfaces/location";
 
 export function ViewHub({
     randomNumbers,
@@ -20,6 +21,7 @@ export function ViewHub({
     setName,
     watts,
     totalWatts,
+    currentLocation,
     wattsPerSec,
     netWattsPerSec,
     members,
@@ -106,6 +108,7 @@ export function ViewHub({
     setName: (name: string) => void;
     watts: number; 
     totalWatts: number;
+    currentLocation: Location;
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
@@ -267,6 +270,7 @@ export function ViewHub({
                         setName={setName}
                         watts={watts}
                         totalWatts={totalWatts}
+                        currentLocation={currentLocation}
                         wattsPerSec={wattsPerSec}
                         netWattsPerSec={netWattsPerSec}
                         members={members}

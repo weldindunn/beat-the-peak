@@ -1,0 +1,257 @@
+[
+    {
+        "id": 1,
+        "power": 6950,
+        "location": "Alabama"
+    },
+    {
+        "id": 2,
+        "power": 493,
+        "location": "Alaska"
+    },
+    {
+        "id": 3,
+        "power": 6830,
+        "location": "Arizona"
+    },
+    {
+        "id": 4,
+        "power": 3821,
+        "location": "Arkansas"
+    },
+    {
+        "id": 5,
+        "power": 20848,
+        "location": "California"
+    },
+    {
+        "id": 6,
+        "power": 4671,
+        "location": "Colorado"
+    },
+    {
+        "id": 7,
+        "power": 2260,
+        "location": "Connecticut"
+    },
+    {
+        "id": 8,
+        "power": 927,
+        "location": "Delaware"
+    },
+    {
+        "id": 9,
+        "power": 816,
+        "location": "Washington, D.C."
+    },
+    {
+        "id": 10,
+        "power": 20203,
+        "location": "Florida"
+    },
+    {
+        "id": 11,
+        "power": 11123,
+        "location": "Georgia"
+    },
+    {
+        "id": 12,
+        "power": 733,
+        "location": "Hawaii"
+    },
+    {
+        "id": 13,
+        "power": 2038,
+        "location": "Idaho"
+    },
+    {
+        "id": 14,
+        "power": 11039,
+        "location": "Illinois"
+    },
+    {
+        "id": 15,
+        "power": 8096,
+        "location": "Indiana"
+    },
+    {
+        "id": 16,
+        "power": 4220,
+        "location": "Iowa"
+    },
+    {
+        "id": 17,
+        "power": 3290,
+        "location": "Kansas"
+    },
+    {
+        "id": 18,
+        "power": 5983,
+        "location": "Kentucky"
+    },
+    {
+        "id": 19,
+        "power": 7427,
+        "location": "Louisiana"
+    },
+    {
+        "id": 20,
+        "power": 946,
+        "location": "Maine"
+    },
+    {
+        "id": 21,
+        "power": 4802,
+        "location": "Maryland"
+    },
+    {
+        "id": 22,
+        "power": 4167,
+        "location": "Massachusetts"
+    },
+    {
+        "id": 23,
+        "power": 8084,
+        "location": "Michigan"
+    },
+    {
+        "id": 24,
+        "power": 5338,
+        "location": "Minnesota"
+    },
+    {
+        "id": 25,
+        "power": 3874,
+        "location": "Mississippi"
+    },
+    {
+        "id": 26,
+        "power": 6311,
+        "location": "Missouri"
+    },
+    {
+        "id": 27,
+        "power": 1215,
+        "location": "Montana"
+    },
+    {
+        "id": 28,
+        "power": 2598,
+        "location": "Nebraska"
+    },
+    {
+        "id": 29,
+        "power": 3186,
+        "location": "Nevada"
+    },
+    {
+        "id": 30,
+        "power": 891,
+        "location": "New Hampshire"
+    },
+    {
+        "id": 31,
+        "power": 6000,
+        "location": "New Jersey"
+    },
+    {
+        "id": 32,
+        "power": 2065,
+        "location": "New Mexico"
+    },
+    {
+        "id": 33,
+        "power": 11701,
+        "location": "New York"
+    },
+    {
+        "id": 34,
+        "power": 10866,
+        "location": "North Carolina"
+    },
+    {
+        "id": 35,
+        "power": 1818,
+        "location": "North Dakota"
+    },
+    {
+        "id": 36,
+        "power": 11885,
+        "location": "Ohio"
+    },
+    {
+        "id": 37,
+        "power": 5192,
+        "location": "Oklahoma"
+    },
+    {
+        "id": 38,
+        "power": 4252,
+        "location": "Oregon"
+    },
+    {
+        "id": 39,
+        "power": 11643,
+        "location": "Pennsylvania"
+    },
+    {
+        "id": 40,
+        "power": 613,
+        "location": "Rhode Island"
+    },
+    {
+        "id": 41,
+        "power": 6395,
+        "location": "South Carolina"
+    },
+    {
+        "id": 42,
+        "power": 1058,
+        "location": "South Dakota"
+    },
+    {
+        "id": 43,
+        "power": 7917,
+        "location": "Tennessee"
+    },
+    {
+        "id": 44,
+        "power": 35572,
+        "location": "Texas"
+    },
+    {
+        "id": 45,
+        "power": 2639,
+        "location": "Utah"
+    },
+    {
+        "id": 46,
+        "power": 444,
+        "location": "Vermont"
+    },
+    {
+        "id": 47,
+        "power": 9771,
+        "location": "Virginia"
+    },
+    {
+        "id": 48,
+        "power": 7226,
+        "location": "Washington"
+    },
+    {
+        "id": 49,
+        "power": 2673,
+        "location": "West Virginia"
+    },
+    {
+        "id": 50,
+        "power": 5621,
+        "location": "Wisconsin"
+    },
+    {
+        "id": 51,
+        "power": 1278,
+        "location": "Wyoming"
+    }
+]

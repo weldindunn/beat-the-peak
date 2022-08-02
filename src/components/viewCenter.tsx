@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
+import { ExportCSV } from './utilities/exportCSV';
+import { Location } from "../interfaces/location";
 import "./style/center.css";
 import bolt from "../img/bolt.png";
-import { ExportCSV } from './utilities/exportCSV';
 
 export function ViewCenter ({
     randomNumbers,
@@ -16,6 +17,7 @@ export function ViewCenter ({
     setName,
     watts, 
     totalWatts,
+    currentLocation,
     wattsPerSec,
     netWattsPerSec,
     members,
@@ -33,6 +35,7 @@ export function ViewCenter ({
     setName: (name: string) => void;
     watts: number; 
     totalWatts: number;
+    currentLocation: Location;
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
@@ -112,6 +115,9 @@ export function ViewCenter ({
                     <Modal.Body>
                         <p>You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.</p>
                         <ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />
+                        <br/><br/>
+                        <p>You have generated a total of {numberConvertor(totalWatts, true)}!</p>
+                        <p>That's enough energy to power {currentLocation.location} for a month!</p>
                         <br/>
                         <Form>
                             <Form.Group>
