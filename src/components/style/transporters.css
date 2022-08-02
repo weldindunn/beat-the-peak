@@ -177,6 +177,16 @@
   color: #c5c5c5;
 }
 
+.tooltip-quote {
+  position: absolute;
+  left: 24px;
+  right: 20px;
+  top: 72px;
+  font-size: 12px;
+  font-style: italic;
+  color: #c5c5c5;
+}
+
 .tooltip-production {
   position: absolute;
   left: 20px;

@@ -14,6 +14,7 @@ export function Transporter({
     transporterCost,
     transporterTransportation,
     description,
+    quote,
     availabilityThreshold,
     isBuying,
     tradeQuantity,
@@ -30,6 +31,7 @@ export function Transporter({
     transporterCost: number;
     transporterTransportation: number;
     description: string;
+    quote: string;
     availabilityThreshold: number;
     isBuying: boolean;
     tradeQuantity: number;
@@ -55,6 +57,9 @@ export function Transporter({
                         </div>
                         <div>
                             <span className="tooltip-description">{description}</span>
+                        </div>
+                        <div>
+                            <span className="tooltip-quote">{"\""}{quote}{"\""}</span>
                         </div>
                         <div>
                             <span className="tooltip-production">

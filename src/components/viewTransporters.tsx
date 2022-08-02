@@ -94,6 +94,7 @@ export function ViewTransporters({
                 transporterCost={batteryCost}
                 transporterTransportation={batteryTransportation}
                 description="Stores electricity in a small portable form"
+                quote="Yippee double-A"
                 availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -110,7 +111,8 @@ export function ViewTransporters({
                 transporters={meters}
                 transporterCost={meterCost}
                 transporterTransportation={meterTransportation}
-                description=""
+                description="Measures the amount of electricity used at a location"
+                quote="Here in the states we call them yards"
                 availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -128,6 +130,7 @@ export function ViewTransporters({
                 transporterCost={phonePoleCost}
                 transporterTransportation={phonePoleTransportation}
                 description="Carries electricity across wooden poles"
+                quote="The gossip spots of the birds"
                 availabilityThreshold={meterCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -145,6 +148,7 @@ export function ViewTransporters({
                 transporterCost={transformerCost}
                 transporterTransportation={transformerTransportation}
                 description="Converts AC to DC"
+                quote={"Not 'robots in disguise'"}
                 availabilityThreshold={phonePoleCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -162,6 +166,7 @@ export function ViewTransporters({
                 transporterCost={undergroundCableCost}
                 transporterTransportation={undergroundCableTransportation}
                 description="Carries electricty through buried cables, protected from deadly nature"
+                quote="I used to like underground cables, until they went mainstream"
                 availabilityThreshold={transformerCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -179,6 +184,7 @@ export function ViewTransporters({
                 transporterCost={powerTowerCost}
                 transporterTransportation={powerTowerTransportation}
                 description="Carries electricity across long distances via large metal towers"
+                quote={"I think \"power tower\" is a cooler name"}
                 availabilityThreshold={undergroundCableCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -195,7 +201,8 @@ export function ViewTransporters({
                 transporters={substations}
                 transporterCost={substationCost}
                 transporterTransportation={substationTransportation}
-                description=""
+                description="Steps down the high voltage electricity from tower for local transmission"
+                quote="Danger danger, high voltage!"
                 availabilityThreshold={powerTowerCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
