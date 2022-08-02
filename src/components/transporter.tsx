@@ -5,6 +5,7 @@ import { sellingCost } from "./utilities/sellingCost";
 
 export function Transporter({
     name,
+    tooltip_icon,
     watts, 
     wattsPerSec,
     netWattsPerSec,
@@ -21,7 +22,8 @@ export function Transporter({
     priceModifier,
     buySellTransporter
 } : {
-    name: string,
+    name: string;
+    tooltip_icon: string;
     watts: number; 
     wattsPerSec: number;
     netWattsPerSec: number;
@@ -43,32 +45,50 @@ export function Transporter({
             <OverlayTrigger
                 placement={"left"}
                 overlay={
-                    <div className="generator-tooltip">
-                        <div>
-                            {/*<img src={tooltip_icon} alt={name}/>*/}
-                            <span className="tooltip-name">{name}</span>
-                            {
-                                isBuying ? (
-                                    <span className="tooltip-cost">{numberConvertor(Math.round(transporterCost * priceModifier), false)}</span>
-                                ) : (
-                                    <span className="tooltip-cost">{numberConvertor(Math.round(sellingCost(transporterCost, tradeQuantity)), false)}</span>
-                                )
-                            }
+                    transporters > 0 ? (
+                        <div className="purchased-transporter-tooltip">
+                            <div className="transporter-tooltip-top">
+                                <img src={tooltip_icon} alt={name}/>
+                                <span className="transporter-tooltip-name">{name}</span>
+                                {
+                                    isBuying ? (
+                                        <span className="transporter-tooltip-cost">{numberConvertor(Math.round(transporterCost * priceModifier), false)}</span>
+                                    ) : (
+                                        <span className="transporter-tooltip-cost">{numberConvertor(Math.round(sellingCost(transporterCost, tradeQuantity)), false)}</span>
+                                    )
+                                }
+                            </div>
+                            <span className="transporter-tooltip-description">{description}</span>
+                            <span className="transporter-tooltip-quote">{"\""}{quote}{"\""}</span>
+                            <div>
+                                <span className="tooltip-production">
+                                    Each {name.toLowerCase()} transports {numberConvertor(Math.round(transporterTransportation/transporters), true)} per second
+                                    <br/>
+                                    Your {name.toLowerCase()}s transport {numberConvertor(transporterTransportation, true)} per second, {Math.round(transporterTransportation/totalTransportation * 100)}% of your total watts transported per second
+                                </span>
+                            </div>
                         </div>
-                        <div>
-                            <span className="tooltip-description">{description}</span>
+                    ) : (
+                        <div className="non-purchased-transporter-tooltip">
+                            <div className="transporter-tooltip-top">
+                                <img src={tooltip_icon} alt={name}/>
+                                <span className="transporter-tooltip-name">
+                                    {
+                                        name.length > 14 ? (name.substring(0, 12) + "...") : (name)
+                                    }
+                                </span>
+                                {
+                                    isBuying ? (
+                                        <span className="transporter-tooltip-cost">{numberConvertor(Math.round(transporterCost * priceModifier), false)}</span>
+                                    ) : (
+                                        <span className="transporter-tooltip-cost">{numberConvertor(Math.round(sellingCost(transporterCost, tradeQuantity)), false)}</span>
+                                    )
+                                }
+                            </div>
+                            <span className="transporter-tooltip-description">{description}</span>
+                            <span className="transporter-tooltip-quote">{"\""}{quote}{"\""}</span>
                         </div>
-                        <div>
-                            <span className="tooltip-quote">{"\""}{quote}{"\""}</span>
-                        </div>
-                        <div>
-                            <span className="tooltip-production">
-                                Each {name.toLowerCase()} transports {numberConvertor(Math.round(transporterTransportation/transporters), true)} per second
-                                <br/>
-                                Your {name.toLowerCase()}s transport {numberConvertor(transporterTransportation, true)} per second, {Math.round(transporterTransportation/totalTransportation * 100)}% of your total watts transported per second
-                            </span>
-                        </div>
-                    </div>
+                    )
                 }
             >
                 <button

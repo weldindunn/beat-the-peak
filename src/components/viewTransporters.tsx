@@ -3,6 +3,9 @@ import { Transporter } from "./transporter";
 import { BulkBar } from "./bulkBar";
 import "./style/transporters.css";
 
+//Tooltip Icons
+import placeholder_icon from "../img/Icon_Placeholder.png";
+
 export function ViewTransporters({
     watts,
     totalWatts,
@@ -85,6 +88,7 @@ export function ViewTransporters({
             />
             <Transporter
                 name="Battery"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -103,6 +107,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Meter"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -121,6 +126,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Utility Pole"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -139,6 +145,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Transformer"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -157,6 +164,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Underground Cable"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -175,6 +183,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Transmission Tower"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
@@ -193,6 +202,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Substation"
+                tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
