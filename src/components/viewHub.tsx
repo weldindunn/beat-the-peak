@@ -22,6 +22,7 @@ export function ViewHub({
     watts,
     totalWatts,
     currentLocation,
+    powerStatus,
     wattsPerSec,
     netWattsPerSec,
     members,
@@ -109,6 +110,7 @@ export function ViewHub({
     watts: number; 
     totalWatts: number;
     currentLocation: Location;
+    powerStatus: string;
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
@@ -271,6 +273,7 @@ export function ViewHub({
                         watts={watts}
                         totalWatts={totalWatts}
                         currentLocation={currentLocation}
+                        powerStatus={powerStatus}
                         wattsPerSec={wattsPerSec}
                         netWattsPerSec={netWattsPerSec}
                         members={members}

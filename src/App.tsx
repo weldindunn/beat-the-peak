@@ -55,6 +55,7 @@ function App() {
   const LOCATIONS = locations.map((location): Location => ({...location}));
   const sortedLocations = LOCATIONS.sort((a, b) => a.power - b.power);
   const [currentLocation, setCurrentLocation] = useState<Location>(sortedLocations[locationIndex]);
+  const [powerStatus, setPowerStatus] = useState<string>("nothing"); //GWh on the scale of days, months, years, or NOTHING
 
   //The number of each type of generator
   const [linemen, setLinemen] = useState<number>(0); 
@@ -316,11 +317,46 @@ function App() {
       setMembers(totalTransportation/wattsPerMember)
     }
 
-    //Updates the power location
+    /* ===============
+       Location Update
+       =============== */
 
-    if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360) { //If the total kWh is more than the next lowest value in the list
-      setLocationIndex(locationIndex + 1);
-      setCurrentLocation(sortedLocations[locationIndex + 1]);
+    //Updates the Power Status based on whether or not the Total Watts are high enough to make it to the next level
+    if (totalWatts < (sortedLocations[0].power*1000000000/360)/30) { //If total watts won't even power Barbados for a day
+      setPowerStatus("nothing");
+    } else if (totalWatts < (sortedLocations[0].power*1000000000/360)) { //If total watts won't power Barbados for a month
+      setPowerStatus("day");
+    } else if (totalWatts < (sortedLocations[0].power*1000000000/360)*12) { //If total watts won't power Barbados for a month
+      setPowerStatus("month");
+    } else {
+      setPowerStatus("year");
+    }
+
+    //Updates the current location if total watts are high enough
+    if (powerStatus === "day") {
+      if (totalWatts < (sortedLocations[1].power*1000000000)/360/30) { //If it's the first time getting to the day level
+        setCurrentLocation(sortedLocations[0]);
+        setLocationIndex(0);
+      } else if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360/30) { //If the total kWh is more than the next lowest value in the list
+        setLocationIndex(locationIndex + 1);
+        setCurrentLocation(sortedLocations[locationIndex + 1]);
+      }
+    } else if (powerStatus === "month") {
+      if (totalWatts < (sortedLocations[1].power*1000000000)/360) { //If it's the first time getting to the month level
+        setCurrentLocation(sortedLocations[0]);
+        setLocationIndex(0);
+      } else if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360) { //If the total kWh is more than the next lowest value in the list
+        setLocationIndex(locationIndex + 1);
+        setCurrentLocation(sortedLocations[locationIndex + 1]);
+      }
+    } else if (powerStatus === "year") {
+      if (totalWatts < ((sortedLocations[1].power*1000000000)/360)*12) { //If it's the first time getting to the year level
+        setCurrentLocation(sortedLocations[0]);
+        setLocationIndex(0);
+      } else if (totalWatts > ((sortedLocations[locationIndex + 1].power*1000000000)/360)*12) { //If the total kWh is more than the next lowest value in the list
+        setLocationIndex(locationIndex + 1);
+        setCurrentLocation(sortedLocations[locationIndex + 1]);
+      }
     }
 
     /* ==============
@@ -1006,6 +1042,7 @@ function App() {
         watts={watts}
         totalWatts={totalWatts}
         currentLocation={currentLocation}
+        powerStatus={powerStatus}
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}

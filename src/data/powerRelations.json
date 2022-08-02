@@ -253,5 +253,130 @@
         "id": 51,
         "power": 1278,
         "location": "Wyoming"
+    },
+    {
+        "id": 52,
+        "power": 37452,
+        "location": "France"
+    },
+    {
+        "id": 53,
+        "power": 43689,
+        "location": "Germany"
+    },
+    {
+        "id": 54,
+        "power": 43920,
+        "location": "South Korea"
+    },
+    {
+        "id": 55,
+        "power": 45772,
+        "location": "Canada"
+    },
+    {
+        "id": 56,
+        "power": 49770,
+        "location": "Brazil"
+    },
+    {
+        "id": 57,
+        "power": 75237,
+        "location": "Japan"
+    },
+    {
+        "id": 58,
+        "power": 80430,
+        "location": "Russia"
+    },
+    {
+        "id": 59,
+        "power": 115285,
+        "location": "India"
+    },
+    {
+        "id": 60,
+        "power": 332464,
+        "location": "the United States"
+    },
+    {
+        "id": 61,
+        "power": 692733,
+        "location": "China"
+    },
+    {
+        "id": 62,
+        "power": 1949833,
+        "location": "the world"
+    },
+    {
+        "id": 63,
+        "power": 404,
+        "location": "Albania"
+    },
+    {
+        "id": 64,
+        "power": 377,
+        "location": "Cyprus"
+    },
+    {
+        "id": 65,
+        "power": 338,
+        "location": "Laos"
+    },
+    {
+        "id": 66,
+        "power": 295,
+        "location": "Uganda"
+    },
+    {
+        "id": 67,
+        "power": 253,
+        "location": "Mali"
+    },
+    {
+        "id": 68,
+        "power": 205,
+        "location": "Malta"
+    },
+    {
+        "id": 69,
+        "power": 176,
+        "location": "Madagascar"
+    },
+    {
+        "id": 70,
+        "power": 148,
+        "location": "the Bahamas"
+    },
+    {
+        "id": 71,
+        "power": 104,
+        "location": "Togo"
+    },
+    {
+        "id": 72,
+        "power": 83,
+        "location": "Barbados"
+    },
+    {
+        "id": 73,
+        "power": 42,
+        "location": "Andorra"
+    },
+    {
+        "id": 74,
+        "power": 17,
+        "location": "Grenada"
+    },
+    {
+        "id": 75,
+        "power": 10,
+        "location": "Samoa"
+    },
+    {
+        "id": 76,
+        "power": 4,
+        "location": "Tonga"
     }
 ]

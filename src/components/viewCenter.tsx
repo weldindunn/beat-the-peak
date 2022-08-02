@@ -18,6 +18,7 @@ export function ViewCenter ({
     watts, 
     totalWatts,
     currentLocation,
+    powerStatus,
     wattsPerSec,
     netWattsPerSec,
     members,
@@ -36,6 +37,7 @@ export function ViewCenter ({
     watts: number; 
     totalWatts: number;
     currentLocation: Location;
+    powerStatus: string;
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
@@ -117,7 +119,13 @@ export function ViewCenter ({
                         <ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />
                         <br/><br/>
                         <p>You have generated a total of {numberConvertor(totalWatts, true)}!</p>
-                        <p>That's enough energy to power {currentLocation.location} for a month!</p>
+                        {
+                            powerStatus === "nothing" ? (
+                                <p>Those are rookie numbers, gotta pump those up.</p>
+                            ) : (
+                                <p>That's enough energy to power {currentLocation.location} for a {powerStatus}!</p>
+                            )
+                        }
                         <br/>
                         <Form>
                             <Form.Group>
