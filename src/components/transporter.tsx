@@ -37,7 +37,7 @@ export function Transporter({
     buySellTransporter: (transporter: string, tradeQuantity: number, transporterCost: number, isBuying: boolean) => void;
 }): JSX.Element {
     return (
-        totalWatts > availabilityThreshold ? (
+        totalWatts >= availabilityThreshold ? (
             <OverlayTrigger
                 placement={"left"}
                 overlay={
