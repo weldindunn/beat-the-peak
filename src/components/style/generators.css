@@ -115,15 +115,15 @@
    Tooltip Format
    ============== */
 
-.generator-tooltip {
-  background: url(../../img/Generator_Tooltip_Background.png);
+  .generator-tooltip {
+  background: url(../../img/Generator_Tooltip_Background_Large.png);
+  position: relative;
   color: #FFFFFF;
   width: 412px;
-  height: 148px;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  height: 180px;
+  padding-top: 16px;
+  padding-right: 16px;
+  padding-left: 20px;
   font-size: 2vw;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   z-index: 1;
@@ -133,31 +133,54 @@
   transition-timing-function: ease-out, ease-out;
 }
 
+.generator-tooltip-two {
+  background: url(../../img/Generator_Tooltip_Background_Small.png);
+  position: relative;
+  color: #FFFFFF;
+  width: 412px;
+  height: 120px;
+  padding-top: 16px;
+  padding-right: 16px;
+  padding-left: 20px;
+  font-size: 2vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  z-index: 1;
+
+  transition-property: opacity, margin-bottom;
+  transition-duration: 0.25s, 0.1s;
+  transition-timing-function: ease-out, ease-out;
+}
+
+.generator-tooltip-top {
+  position: relative;
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 .generator-tooltip img {
-  position: absolute;
-  top: 10px;
-  left: 12px;
+  position: relative;
   width: 36px;
   height: 36px;
 }
 
-.tooltip-name {
-  position: absolute;
-  left: 54px;
-  top: 14px;
+.generator-tooltip-name {
+  position: relative;
   font-size: 28px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
-.tooltip-cost {
-  position: absolute;
-  top: 14px;
-  right: 12px;
+.generator-tooltip-cost {
+  position: relative;
+  float: right;
   color:#FC0;
   font-size: 20px;
   padding-left: 18px;
 }
 
-.tooltip-cost:before {
+.generator-tooltip-cost:before {
   content: '';
   display: block;
   position: absolute;
@@ -168,16 +191,25 @@
   height: 16px;
 }
 
-.tooltip-description {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 56px;
+.generator-tooltip-description {
+  position: relative;
+  display: block;
+  margin-bottom: 3px;
+  margin-left: 2px;
   font-size: 14px;
   color: #c5c5c5;
 }
 
-.tooltip-production {
+.generator-tooltip-quote {
+  position: relative;
+  display: block;
+  margin-left: 6px;
+  font-size: 12px;
+  font-style: italic;
+  color: #c5c5c5;
+}
+
+.generator-production {
   position: absolute;
   left: 20px;
   right: 20px;

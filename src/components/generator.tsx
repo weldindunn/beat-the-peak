@@ -14,6 +14,7 @@ export function Generator({
     generatorCost,
     generatorProduction,
     description,
+    quote,
     availabilityThreshold,
     tradeQuantity,
     priceModifier,
@@ -30,6 +31,7 @@ export function Generator({
     generatorCost: number;
     generatorProduction: number;
     description: string;
+    quote: string;
     availabilityThreshold: number;
     tradeQuantity: number;
     priceModifier: number;
@@ -42,28 +44,37 @@ export function Generator({
             <OverlayTrigger
                 placement={"left"}
                 overlay={
-                    <div className="generator-tooltip">
-                        <div>
+                    <div className={generators > 0 ? "generator-tooltip" : "generator-tooltip-two"}>
+                        <div className="generator-tooltip-top">
                             <img src={tooltip_icon} alt={name}/>
-                            <span className="tooltip-name">{name}</span>
+                            <span className="generator-tooltip-name">
+                                {
+                                    name.length > 14 ? (name.substring(0, 12) + "...") : (name)
+                                }
+                            </span>
                             {
                                 isBuying ? (
-                                    <span className="tooltip-cost">{numberConvertor(Math.round(generatorCost * priceModifier), false)}</span>
+                                    <span className="generator-tooltip-cost">{numberConvertor(Math.round(generatorCost * priceModifier), false)}</span>
                                 ) : (
-                                    <span className="tooltip-cost">{numberConvertor(Math.round(sellingCost(generatorCost, tradeQuantity)), false)}</span>
+                                    <span className="generator-tooltip-cost">{numberConvertor(Math.round(sellingCost(generatorCost, tradeQuantity)), false)}</span>
                                 )
                             }
                         </div>
-                        <div>
-                            <span className="tooltip-description">{description}</span>
-                        </div>
-                        <div>
-                            <span className="tooltip-production">
-                                Each {name.toLowerCase()} produces {numberConvertor(Math.round(generatorProduction/generators), true)} per second
-                                <br/>
-                                Your {name.toLowerCase()}s produce {numberConvertor(generatorProduction, true)} per second, {Math.round(generatorProduction/wattsPerSec * 100)}% of your total watts per second
-                            </span>
-                        </div>
+                        <span className="generator-tooltip-description">{description}</span>
+                        <span className="transporter-tooltip-quote">{"\""}{quote}{"\""}</span>
+                        {
+                            generators > 0 ? (
+                                <div>
+                                    <span className="generator-production">
+                                        Each {name.toLowerCase()} generates {numberConvertor(Math.round(generatorProduction/generators), true)} per second
+                                        <br/>
+                                        Your {name.toLowerCase()}s generate {numberConvertor(generatorProduction, true)} per second, {Math.round(generatorProduction/wattsPerSec * 100)}% of your total watts generated per second
+                                    </span>
+                                </div>
+                            ) : (
+                                <></>
+                            )
+                        }
                     </div>
                 }
             >

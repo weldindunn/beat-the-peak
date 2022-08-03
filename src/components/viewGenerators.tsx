@@ -126,6 +126,7 @@ export function ViewGenerators({
                 generatorCost={linemenCost}
                 generatorProduction={linemenProduction}
                 description="Produces electricity by brute force"
+                quote="I'd rather have 1% of the effort of 100 men than 100% of my own effort"
                 availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -143,6 +144,7 @@ export function ViewGenerators({
                 generatorCost={coalCost}
                 generatorProduction={coalProduction}
                 description="Burns coal to power steam engines"
+                quote="A diamond is nothing but a chunk of coal that did well under pressure"
                 availabilityThreshold={0}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -160,6 +162,7 @@ export function ViewGenerators({
                 generatorCost={gasCost}
                 generatorProduction={gasProduction}
                 description="Burns gas to power steam engines"
+                quote="Gas is the new coal"
                 availabilityThreshold={coalCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -177,6 +180,7 @@ export function ViewGenerators({
                 generatorCost={solarCost}
                 generatorProduction={solarProduction}
                 description="Harnaces the power of the sun to generate electricity"
+                quote="Don't blame it on the sunshine"
                 availabilityThreshold={gasCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -194,6 +198,7 @@ export function ViewGenerators({
                 generatorCost={oilCost}
                 generatorProduction={oilProduction}
                 description="Burns oil to power steam engines"
+                quote="There will be blood"
                 availabilityThreshold={solarCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -211,6 +216,7 @@ export function ViewGenerators({
                 generatorCost={windCost}
                 generatorProduction={windProduction}
                 description="Uses wind to spin a turbine generator"
+                quote="It is easy to see that thou art not used to this business of adventures"
                 availabilityThreshold={oilCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -228,6 +234,7 @@ export function ViewGenerators({
                 generatorCost={biomassCost}
                 generatorProduction={biomassProduction}
                 description="Burns biomass to power steam engines"
+                quote="Tree powers, activate!"
                 availabilityThreshold={windCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -245,6 +252,7 @@ export function ViewGenerators({
                 generatorCost={hydroCost}
                 generatorProduction={hydroProduction}
                 description="Uses water power to spin turbine generators"
+                quote="What have the Romans ever done for us!"
                 availabilityThreshold={biomassCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
@@ -262,6 +270,7 @@ export function ViewGenerators({
                 generatorCost={nuclearCost}
                 generatorProduction={nuclearProduction}
                 description="Uses the fission of uranium and plutonium to heat steam engines"
+                quote="One heck of a way to boil water"
                 availabilityThreshold={hydroCost}
                 tradeQuantity={tradeQuantity}
                 priceModifier={priceModifier}
