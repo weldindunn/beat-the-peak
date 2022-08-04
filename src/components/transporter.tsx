@@ -88,7 +88,7 @@ export function Transporter({
                             buySellTransporter(name, tradeQuantity, sellingCost(transporterCost, tradeQuantity), false)
                         }
                     }}
-                    disabled={watts < Math.round(transporterCost) || (((netWattsPerSec - transporterTransportation) < 0) && (transporterTransportation !== 0))}
+                    disabled={((watts < Math.round(transporterCost) || (((netWattsPerSec - (transporterTransportation/transporters)) < 0) && (transporterTransportation/transporters !== 0))) && isBuying) || ((transporters < tradeQuantity) && !isBuying)}
                 >
                     <div className="transporter-icon">
                         {/*<img src={icon} alt={name.charAt(0)}></img>*/}

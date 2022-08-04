@@ -313,9 +313,7 @@ function App() {
     setTotalWatts(totalWatts + (netWattsPerSec)/(1000/deltaTime))
 
     //Updates the number of members
-    if (totalTransportation > 0) {
-      setMembers(totalTransportation/wattsPerMember)
-    }
+    setMembers(totalTransportation/wattsPerMember);
 
     /* ===============
        Location Update
