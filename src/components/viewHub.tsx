@@ -118,7 +118,7 @@ export function ViewHub({
     setTotalWatts: (totalWatts: number) => void;
     
     scenery: string;
-    currentMonth: number;
+    currentMonth: string;
     currentYear: number;
     totalTransportation: number;
 

@@ -38,7 +38,8 @@ function App() {
   const [name, setName] = useState<string>("Bob");
 
   //Event Scenery
-  const [scenery, setScenery] = useState<string>(morning);
+  const sceneryCycle = [morning, noon, evening, crescent, full_moon, dawn];
+  const [scenery, setScenery] = useState<string>(sceneryCycle[0]);
 
   //The number of watts, watts generated per second, and surplus/debt of watts generated modified by those transported
   const [watts, setWatts] = useState<number>(0);
@@ -51,9 +52,9 @@ function App() {
   const [wattsPerMember, setWattsPerMember] = useState<number>(10);
 
   //A list of locations with the amount of power they consume in a month (GWh)
-  const [locationIndex, setLocationIndex] = useState<number>(0);
   const LOCATIONS = locations.map((location): Location => ({...location}));
   const sortedLocations = LOCATIONS.sort((a, b) => a.power - b.power);
+  const [locationIndex, setLocationIndex] = useState<number>(0);
   const [currentLocation, setCurrentLocation] = useState<Location>(sortedLocations[locationIndex]);
   const [powerStatus, setPowerStatus] = useState<string>("nothing"); //GWh on the scale of days, months, years, or NOTHING
 
@@ -237,7 +238,7 @@ function App() {
 
   //Array of months
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const [currentMonth, setCurrentMonth] = useState<number>(0);
+  const [currentMonth, setCurrentMonth] = useState<string>(months[0]);
   const [currentYear, setCurrentYear] = useState<number>(1);
 
   /* ==========
@@ -245,14 +246,8 @@ function App() {
      ========== */
   const [time, setTime] = useState(0);
   const [deltaTime, setDeltaTime] = useState(0);
-  //const [averageDeltaTime, setAverageDeltaTime] = useState<number>(16.7);
-  //const [sumDeltaTime, setSumDeltaTime] = useState<number>(0);
-  //const [frameNumber, setFrameNumber] = useState<number>(1);
+  const [savedTime, setSavedTime] = useState(0);
   const [randomNumber, setRandomNumber] = useState(Math.random()); //Random number between 0 and 1 used for random events like weather
-
-  const [newSave, setNewSave] = useState(5000);
-  const [newScenery, setNewScenery] = useState(10000);
-  const [newMonth, setNewMonth] = useState(60000);
 
   //Curve values to be exported to CSV:
   const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
@@ -260,46 +255,14 @@ function App() {
   const [tornadoNumbers, setTornadoNumbers] = useState<number[]>([]);
   const [heatWaveNumbers, setHeatWaveNumbers] = useState<number[]>([]);
 
+  const [newSave, setNewSave] = useState(5000);
+
   useFrameLoop((time: number, deltaTime: number) => {
     
     //Autosaves every second
-    if (time > newSave) {
-      setNewSave(time + 1000);
+    if (time + savedTime > newSave) {
+      setNewSave(time + savedTime + 1000);
       save();
-    }
-
-    //Cycles through scenery every 10 seconds
-    if (time > newScenery) {
-      setNewScenery(time + 10000);
-
-      if (time % 60000 > 50000) {
-        setScenery(dawn);
-      } else if (time % 60000 > 40000) {
-        setScenery(full_moon);
-      } else if (time % 60000 > 30000) {
-        setScenery(crescent);
-      } else if (time % 60000 > 20000) {
-        setScenery(evening);
-      } else if (time % 60000 > 10000) {
-        setScenery(noon);
-      } else {
-        setScenery(morning);
-      }
-    }
-
-    //Moves the months forward
-    if (time > newMonth) {
-      setNewMonth(time + 60000); //Every minute...
-
-      if (currentMonth > 10) { //...if it's december...
-        setCurrentMonth(0); //...move to January...
-        setCurrentYear(currentYear + 1); //...and move to the next year...
-      } else { //...but if it's any other month...
-        setCurrentMonth(currentMonth + 1); //...move to the next month
-      }
-      setSolarCurveModifier(solarCurve(currentMonth + 1));
-      setWindCurveModifier(windCurve(currentMonth + 1));
-      setHydroCurveModifier(hydroCurve(currentMonth + 1));
     }
 
     //Updates generator production
@@ -362,55 +325,55 @@ function App() {
        ============== */
 
     //If the odds are right, start a storm (odds are about 2.8 times a year)
-    if (randomNumber < stormCurve(time % 720000, 16.7)) {
+    if (randomNumber < stormCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": currentMonth + ", " + currentYear, "length": 30000}
         ]
       );
     }
 
     //If the odds are right, start a snow storm (About 37.39% chance per year)
-    if (randomNumber < snowStormCurve(time % 720000, 16.7)) {
+    if (randomNumber < snowStormCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": currentMonth + ", " + currentYear, "length": 30000}
         ]
       );
     }
 
     //If the odds are right, start a heat wave (odds are about 1.13 times a year)
-    if (randomNumber < heatWaveCurve(time % 720000, 16.7)) {
+    if (randomNumber < heatWaveCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": months[currentMonth] + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": currentMonth + ", " + currentYear, "length": 30000}
         ]
       );
     }
 
     //If the odds are right, start a tornado (About 60% chance per year)
-    if (randomNumber < tornadoCurve(time % 720000, 16.7)) {
+    if (randomNumber < tornadoCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": months[currentMonth] + ", " + currentYear, "length": 20000}
+          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": currentMonth + ", " + currentYear, "length": 20000}
         ]
       );
     }
 
     //If the odds are right, start a hurricane
-    if (randomNumber < hurricaneCurve(time % 720000, 16.7)) {
+    if (randomNumber < hurricaneCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
+          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
         ]
       );
     }
 
     //If the odds are right, start a blizzard
-    if (randomNumber < blizzardCurve(time % 720000, 16.7)) {
+    if (randomNumber < blizzardCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 60000}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
         ]
       );
     }
@@ -419,18 +382,30 @@ function App() {
     if (randomNumber < 1/((15*720000)/16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": months[currentMonth] + ", " + currentYear, "length": 10000}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 10000}
         ]
       );
     }
 
-    setTime(time);
+    setTime(savedTime + time);
     setDeltaTime(deltaTime);
     setRandomNumber(Math.random());
     //setFrameNumber(frameNumber + 1);
     //setSumDeltaTime(sumDeltaTime + deltaTime);
     //setAverageDeltaTime(sumDeltaTime/frameNumber);
-    //console.log(deltaTime);
+
+    //Updates month and reliant curveModifiers
+    // Month = (elapsed time % span of a year in milliseconds) / one month in milliseconds 
+    setCurrentMonth(months[Math.floor(((savedTime + time)%720000)/60000)]);
+    setSolarCurveModifier(solarCurve(Math.floor(((savedTime + time)%720000)/60000) + 1));
+    setWindCurveModifier(windCurve(Math.floor(((savedTime + time)%720000)/60000) + 1));
+    setHydroCurveModifier(hydroCurve(Math.floor(((savedTime + time)%720000)/60000) + 1));
+
+    //Updates year
+    setCurrentYear(Math.floor((savedTime + time)/720000) + 1);
+
+    //Updates scenery
+    setScenery(sceneryCycle[Math.floor(((savedTime + time)%60000)/10000)]);
 
     //Updating CSV numbers:
     setRandomNumbers([...randomNumbers, randomNumber]);
@@ -693,7 +668,7 @@ function App() {
 
   function save(): void {
     //Saves the time
-    localStorage.setItem('time', JSON.stringify(time));
+    localStorage.setItem('savedTime', JSON.stringify(time));
 
     //Saves name
     localStorage.setItem('name', JSON.stringify(name));
@@ -701,11 +676,6 @@ function App() {
     //Saves # of watts
     localStorage.setItem('watts', JSON.stringify(watts));
     localStorage.setItem('total-watts', JSON.stringify(totalWatts));
-
-    //Saves the date and scenery
-    localStorage.setItem('currentMonth', JSON.stringify(currentMonth));
-    localStorage.setItem('currentYear', JSON.stringify(currentYear));
-    localStorage.setItem('scenery', JSON.stringify(scenery));
 
     //Saves ids of purchased upgrades 
     localStorage.setItem('upgrades', JSON.stringify(upgrades.filter((upgrade: Upgrade): boolean => upgrade.purchased).map((upgrade: Upgrade): number => upgrade.id)));
@@ -762,10 +732,19 @@ function App() {
      ========= */
 
   function load(): void {
-    //Loads time
-    const localTime = localStorage.getItem('time');
-    if (localTime) {
-      setTime(JSON.parse(localTime));
+    //Loads time, scenery, and date (and reliant modifiers)
+    const localSavedTime = localStorage.getItem('savedTime');
+    if (localSavedTime) {
+      setSavedTime(JSON.parse(localSavedTime));
+      setNewSave((5000 - savedTime%5000) + savedTime);
+
+      setScenery(sceneryCycle[Math.floor((savedTime%60000)/10000)]);
+      setCurrentMonth(months[Math.floor((savedTime%720000)/60000)]);
+      setCurrentYear(Math.floor(savedTime/720000) + 1);
+
+      setSolarCurveModifier(solarCurve(Math.floor((savedTime%720000)/60000)));
+      setWindCurveModifier(windCurve(Math.floor((savedTime%720000)/60000)));
+      setHydroCurveModifier(hydroCurve(Math.floor((savedTime%720000)/60000)));
     }
 
     //Loads name
@@ -795,23 +774,6 @@ function App() {
     if (localLocationIndex) {
       setLocationIndex(JSON.parse(localLocationIndex));
       setCurrentLocation(sortedLocations[JSON.parse(localLocationIndex)]);
-    }
-
-    //Loads date and scenery
-    const localCurrentMonth = localStorage.getItem('currentMonth');
-    if (localCurrentMonth) {
-      setCurrentMonth(JSON.parse(localCurrentMonth));
-      setSolarCurveModifier(solarCurve(JSON.parse(localCurrentMonth)));
-      setWindCurveModifier(windCurve(JSON.parse(localCurrentMonth)));
-      setHydroCurveModifier(hydroCurve(JSON.parse(localCurrentMonth)));
-    }
-    const localCurrentYear = localStorage.getItem('currentYear');
-    if (localCurrentYear) {
-      setCurrentYear(JSON.parse(localCurrentYear));
-    }
-    const localScenery = localStorage.getItem('scenery');
-    if (localScenery) {
-      setScenery(JSON.parse(localScenery));
     }
 
     //Loads upgrades
@@ -965,11 +927,10 @@ function App() {
      ========== */
   
   function eraseGame(): void {
+    localStorage.clear();
     setTime(0);
     setDeltaTime(0);
-    //setSumDeltaTime(0);
-    //setAverageDeltaTime(16.7);
-    //setFrameNumber(1);
+    setSavedTime(0);
 
     setWatts(0);
     setTotalWatts(0);
@@ -978,10 +939,14 @@ function App() {
     setCurrentLocation(sortedLocations[0]);
     setLocationIndex(0);
 
-
     setScenery(morning);
-    setCurrentMonth(0);
+    setCurrentMonth(months[0]);
     setCurrentYear(1);
+
+    setSolarCurveModifier(solarCurve(0));
+    setWindCurveModifier(windCurve(0));
+    setHydroCurveModifier(hydroCurve(0));
+
     setUpgrades(UPGRADES);
     setAdvents([]);
 
@@ -1006,10 +971,6 @@ function App() {
     setHydroProductionBonus(1);
     setNuclearProductionBonus(1);
 
-    setSolarCurveModifier(solarCurve(0));
-    setWindCurveModifier(windCurve(0));
-    setHydroCurveModifier(hydroCurve(0))
-
     setBatteries(0);
     setMeters(0);
     setPhonePoles(0);
@@ -1025,6 +986,8 @@ function App() {
     setUndergroundCableTransportationBonus(1);
     setPowerTowerTransportationBonus(1);
     setSubstationTransportationBonus(1);
+
+    window.location.reload();
   }
 
   /* ===========

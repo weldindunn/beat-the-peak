@@ -9,13 +9,11 @@ export function ViewEvents({
     scenery,
     advents
 } : {
-    currentMonth: number;
+    currentMonth: string;
     currentYear: number;
     scenery: string;
     advents: Advent[];
 }): JSX.Element {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
     return (
         <>
             <div className="events-header">
@@ -23,7 +21,7 @@ export function ViewEvents({
             </div>
 
             <div className="date">
-                <span>{"Date: "}{months[currentMonth]}{", Year "}{currentYear}</span>
+                <span>{"Date: "}{currentMonth}{", '"}{currentYear < 10 ? ("0" + currentYear) : (currentYear)}</span>
             </div>
 
             <div className="scene">
