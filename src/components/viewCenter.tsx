@@ -91,7 +91,8 @@ export function ViewCenter ({
                         Info
                     </button>
                 </div>
-                <Modal show={isEditing} animation={true}>
+
+                <Modal show={isEditing} animation={true} >
                     <Modal.Header>
                         <Modal.Title>Change Name</Modal.Title>
                     </Modal.Header>
