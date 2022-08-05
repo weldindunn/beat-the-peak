@@ -18,9 +18,27 @@
 }
 
 .events-header {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: 36px;
+}
+
+.events-header span {
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.info-button {
+  background: url("../../img/info_symbol.png");
+  height: 36px;
+  width: 36px;
+}
+
+.info-button:hover {
+  opacity: 0.8;
 }
 
 .date {

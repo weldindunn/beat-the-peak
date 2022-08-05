@@ -24,6 +24,7 @@ import evening from "./img/Day_Night_Cycle_Evening.png";
 import crescent from "./img/Day_Night_Cycle_Night_Crescent.png";
 import full_moon from "./img/Day_Night_Cycle_Night_Full_Moon.png";
 import dawn from "./img/Day_Night_Cycle_Night_Dawn.png";
+import { timeConverter } from './components/utilities/timeConverter';
 
 const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
@@ -237,8 +238,7 @@ function App() {
   const [advents, setAdvents] = useState<Advent[]>([]);
 
   //Array of months
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const [currentMonth, setCurrentMonth] = useState<string>(months[0]);
+  const [currentMonth, setCurrentMonth] = useState<string>("January");
   const [currentYear, setCurrentYear] = useState<number>(1);
 
   /* ==========
@@ -250,10 +250,12 @@ function App() {
   const [randomNumber, setRandomNumber] = useState(Math.random()); //Random number between 0 and 1 used for random events like weather
 
   //Curve values to be exported to CSV:
+  /*
   const [randomNumbers, setRandomNumbers] = useState<number[]>([]);
   const [stormNumbers, setStormNumbers] = useState<number[]>([]);
   const [tornadoNumbers, setTornadoNumbers] = useState<number[]>([]);
   const [heatWaveNumbers, setHeatWaveNumbers] = useState<number[]>([]);
+  */
 
   const [newSave, setNewSave] = useState(5000);
 
@@ -323,12 +325,14 @@ function App() {
     /* ==============
        Weather Events
        ============== */
+    //Note that the current odds are incorrect, as the curves overlap. Thus, less likely events take priority over more likely ones.
+    //On top of that, only one event can happen on a given frame because the last setAdvents will overwrite the others called in that frame.
 
     //If the odds are right, start a storm (odds are about 2.8 times a year)
     if (randomNumber < stormCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startTime": savedTime + time, "length": 30000, "isOver": false}
         ]
       );
     }
@@ -337,7 +341,7 @@ function App() {
     if (randomNumber < snowStormCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startTime": savedTime + time, "length": 30000, "isOver": false}
         ]
       );
     }
@@ -346,7 +350,7 @@ function App() {
     if (randomNumber < heatWaveCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startDate": currentMonth + ", " + currentYear, "length": 30000}
+          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startTime": savedTime + time, "length": 30000, "isOver": false}
         ]
       );
     }
@@ -355,7 +359,7 @@ function App() {
     if (randomNumber < tornadoCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startDate": currentMonth + ", " + currentYear, "length": 20000}
+          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startTime": savedTime + time, "length": 20000, "isOver": false}
         ]
       );
     }
@@ -364,7 +368,7 @@ function App() {
     if (randomNumber < hurricaneCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
+          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startTime": savedTime + time, "length": 60000, "isOver": false}
         ]
       );
     }
@@ -373,7 +377,7 @@ function App() {
     if (randomNumber < blizzardCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 60000}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startTime": savedTime + time, "length": 60000, "isOver": false}
         ]
       );
     }
@@ -382,7 +386,7 @@ function App() {
     if (randomNumber < 1/((15*720000)/16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startDate": currentMonth + ", " + currentYear, "length": 10000}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startTime": savedTime + time, "length": 10000, "isOver": false}
         ]
       );
     }
@@ -390,28 +394,25 @@ function App() {
     setTime(savedTime + time);
     setDeltaTime(deltaTime);
     setRandomNumber(Math.random());
-    //setFrameNumber(frameNumber + 1);
-    //setSumDeltaTime(sumDeltaTime + deltaTime);
-    //setAverageDeltaTime(sumDeltaTime/frameNumber);
 
-    //Updates month and reliant curveModifiers
+    //Updates date and reliant curveModifiers
     // Month = (elapsed time % span of a year in milliseconds) / one month in milliseconds 
-    setCurrentMonth(months[Math.floor(((savedTime + time)%720000)/60000)]);
-    setSolarCurveModifier(solarCurve(Math.floor(((savedTime + time)%720000)/60000) + 1));
-    setWindCurveModifier(windCurve(Math.floor(((savedTime + time)%720000)/60000) + 1));
-    setHydroCurveModifier(hydroCurve(Math.floor(((savedTime + time)%720000)/60000) + 1));
-
-    //Updates year
-    setCurrentYear(Math.floor((savedTime + time)/720000) + 1);
+    setCurrentMonth(timeConverter(savedTime + time, "month"));
+    setCurrentYear(parseInt(timeConverter(savedTime + time, "year")));
+    setSolarCurveModifier(solarCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
+    setWindCurveModifier(windCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
+    setHydroCurveModifier(hydroCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
 
     //Updates scenery
     setScenery(sceneryCycle[Math.floor(((savedTime + time)%60000)/10000)]);
 
     //Updating CSV numbers:
+    /*
     setRandomNumbers([...randomNumbers, randomNumber]);
     setStormNumbers([...stormNumbers, stormCurve(time % 720000, 16.7)]);
     setTornadoNumbers([...tornadoNumbers, tornadoCurve(time % 720000, 16.7)]);
     setHeatWaveNumbers([...heatWaveNumbers, heatWaveCurve(time % 720000, 16.7)]);
+    */
   });
 
   //Updates netWattsPerSec, which is dependent on a fluid generation state
@@ -739,12 +740,12 @@ function App() {
       setNewSave((5000 - savedTime%5000) + savedTime);
 
       setScenery(sceneryCycle[Math.floor((savedTime%60000)/10000)]);
-      setCurrentMonth(months[Math.floor((savedTime%720000)/60000)]);
-      setCurrentYear(Math.floor(savedTime/720000) + 1);
+      setCurrentMonth(timeConverter(savedTime, "month"));
+      setCurrentYear(parseInt(timeConverter(savedTime, "year")));
 
-      setSolarCurveModifier(solarCurve(Math.floor((savedTime%720000)/60000)));
-      setWindCurveModifier(windCurve(Math.floor((savedTime%720000)/60000)));
-      setHydroCurveModifier(hydroCurve(Math.floor((savedTime%720000)/60000)));
+      setSolarCurveModifier(solarCurve(parseInt(timeConverter(savedTime, "")) + 1));
+      setWindCurveModifier(windCurve(parseInt(timeConverter(savedTime, "")) + 1));
+      setHydroCurveModifier(hydroCurve(parseInt(timeConverter(savedTime, "")) + 1));
     }
 
     //Loads name
@@ -940,7 +941,7 @@ function App() {
     setLocationIndex(0);
 
     setScenery(morning);
-    setCurrentMonth(months[0]);
+    setCurrentMonth("January");
     setCurrentYear(1);
 
     setSolarCurveModifier(solarCurve(0));
@@ -996,7 +997,7 @@ function App() {
   return (
     <div className="App">
       <ViewHub
-        randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
+        //randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
         time={time}
         name={name}
         setName={setName}
@@ -1072,6 +1073,7 @@ function App() {
         upgrades={upgrades}
         setUpgrades={setUpgrades}
         advents={advents}
+        setAdvents={setAdvents}
 
         clickBolt={clickBolt}
         buySellGenerator={buySellGenerator}

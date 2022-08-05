@@ -81,7 +81,7 @@ export function ViewUpgrades({
     return (
         <>
             <div className="upgrades-header">
-                <span className="upgrade-title">Upgrades</span>
+                <span>Upgrades</span>
                 <button className="info-button" onClick={() => setViewing(!isViewing)}></button>
             </div>
 

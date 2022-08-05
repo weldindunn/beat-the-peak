@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Advent } from "../interfaces/advent";
+import { timeConverter } from "./utilities/timeConverter";
 
 export function AdventBox({
-    advent
+    time,
+    advent,
+    advents,
+    setAdvents
 } : {
+    time: number;
     advent: Advent;
+    advents: Advent[];
+    setAdvents: (advents: Advent[]) => void;
 }): JSX.Element {
-    const [elapsedTime, setElapsedTime] = useState<number>(0);
-
     return (
         <div className="advent">
             {/*
@@ -23,7 +28,22 @@ export function AdventBox({
                     }
                 </div>
                 <span className="advent-description">
-                    {" Ending: "}{Math.round((advent.length - elapsedTime)/1000)}
+                    {
+                        advent.isOver ? (
+                            <>
+                                {" Ended: "}{timeConverter(advent.startTime + advent.length, "date")}
+                            </>
+                        ) : (
+                            <>
+                                {" Ending: " + Math.ceil((advent.length - (time - advent.startTime))/1000)}
+                                {
+                                    Math.ceil((advent.length - (time - advent.startTime))/1000) < 1 ?
+                                        setAdvents(advents.map((currentAdvent: Advent): Advent => advent.id === currentAdvent.id ? {...currentAdvent, isOver: true} : {...currentAdvent})) : 
+                                        <></>
+                                }
+                            </>
+                        )
+                    }
                 </span>
             </div>
         </div>

@@ -11,10 +11,12 @@ import { ViewStructures } from "./viewStructures";
 import { Location } from "../interfaces/location";
 
 export function ViewHub({
+    /*
     randomNumbers,
     stormNumbers,
     tornadoNumbers,
     heatWaveNumbers,
+    */
 
     time,
     name, 
@@ -91,6 +93,7 @@ export function ViewHub({
     upgrades,
     setUpgrades,
     advents,
+    setAdvents,
 
     clickBolt,
     buySellGenerator,
@@ -99,10 +102,12 @@ export function ViewHub({
 
     eraseGame
 } : {
+    /*
     randomNumbers: number[];
     stormNumbers: number[];
     tornadoNumbers: number[];
     heatWaveNumbers: number[];
+    */
 
     time: number;
     name: string;
@@ -179,6 +184,7 @@ export function ViewHub({
     upgrades: Upgrade[];
     setUpgrades: (upgrades: Upgrade[]) => void;
     advents: Advent[];
+    setAdvents: (advents: Advent[]) => void;
 
     clickBolt: () => void;
     buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
@@ -197,10 +203,12 @@ export function ViewHub({
                         <div className="events-column">
                             <div className="events">
                                 <ViewEvents
+                                    time={time}
                                     scenery={scenery}
                                     currentMonth={currentMonth}
                                     currentYear={currentYear}
                                     advents={advents}
+                                    setAdvents={setAdvents}
                                 ></ViewEvents>
                             </div>
                         </div>
@@ -267,6 +275,7 @@ export function ViewHub({
                 {/* Center */}
                 <div className="center-column">
                     <ViewCenter
+                        //randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
                         time={time}
                         name={name}
                         setName={setName}
@@ -278,7 +287,6 @@ export function ViewHub({
                         netWattsPerSec={netWattsPerSec}
                         members={members}
                         clickBolt={clickBolt}
-                        randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers}
                         setWatts={setWatts}
                         setTotalWatts={setTotalWatts}
                     ></ViewCenter>

@@ -3,8 +3,9 @@ export interface Advent {
     "name": string,
     "type": string,
     "description": string,
-    "startDate": string,
-    "length": number
+    "startTime": number,
+    "length": number,
+    "isOver": boolean
 }
 
 /* Decoder
@@ -13,7 +14,7 @@ export interface Advent {
     "name": string, //What the advent is (Hurricane, Cyber-Attack, etc.)
     "type": string, //What kind of advent it is (weather based, PR based, etc.)
     "description": string, //Describes what the advent is
-    "startDate": string, //When the advent began (month, year)
+    "startTime": number, //When the advent began (milliseconds)
     "length": number //How long the advent lasts (milliseconds)
 }
 */

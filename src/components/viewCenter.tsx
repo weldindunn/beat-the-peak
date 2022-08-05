@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { numberConvertor } from "./utilities/numberConvertor";
-import { ExportCSV } from './utilities/exportCSV';
+//import { ExportCSV } from './utilities/exportCSV';
 import { Location } from "../interfaces/location";
 import "./style/center.css";
 import bolt from "../img/bolt.png";
 
 export function ViewCenter ({
+    /*
     randomNumbers,
     stormNumbers,
     tornadoNumbers,
     heatWaveNumbers,
+    */
 
     time,
     name,
@@ -26,10 +28,12 @@ export function ViewCenter ({
     setTotalWatts,
     clickBolt
 } : {
+    /*
     randomNumbers: number[];
     stormNumbers: number[];
     tornadoNumbers: number[];
     heatWaveNumbers: number[];
+    */
 
     time: number;
     name: string;
@@ -115,10 +119,9 @@ export function ViewCenter ({
                     </Modal.Header>
 
                     <Modal.Body>
-                        <p>You have played this game for {Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.</p>
-                        <ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />
-                        <br/><br/>
-                        <p>You have generated a total of {numberConvertor(totalWatts, true)}!</p>
+                        <p>You have played this game for <strong>{Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.</strong></p>
+                        {/*<ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />*/}
+                        <p>You have generated a total of <strong>{numberConvertor(totalWatts, true)}</strong>!</p>
                         {
                             powerStatus === "nothing" ? (
                                 <p>Those are rookie numbers, gotta pump those up.</p>
@@ -129,7 +132,7 @@ export function ViewCenter ({
                         <br/>
                         <Form>
                             <Form.Group>
-                                <Form.Label>Cheat:</Form.Label>
+                                <Form.Label>Cheat (gain watts):</Form.Label>
                                 <Form.Control 
                                     value={tempWatts}
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTempWatts(event.target.value)}
