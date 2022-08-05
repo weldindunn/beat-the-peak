@@ -3,6 +3,9 @@ import { Transporter } from "./transporter";
 import { BulkBar } from "./bulkBar";
 import "./style/transporters.css";
 
+//Icons
+import transmission_tower from "../img/Transmission_Tower_Icon.png";
+
 //Tooltip Icons
 import placeholder_icon from "../img/Icon_Placeholder.png";
 
@@ -88,6 +91,7 @@ export function ViewTransporters({
             />
             <Transporter
                 name="Battery"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -107,6 +111,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Meter"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -126,6 +131,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Utility Pole"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -145,6 +151,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Transformer"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -164,6 +171,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Underground Cable"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -183,6 +191,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Transmission Tower"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -202,6 +211,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Substation"
+                icon={transmission_tower}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}

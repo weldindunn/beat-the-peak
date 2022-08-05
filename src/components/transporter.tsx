@@ -5,6 +5,7 @@ import { sellingCost } from "./utilities/sellingCost";
 
 export function Transporter({
     name,
+    icon,
     tooltip_icon,
     watts, 
     wattsPerSec,
@@ -23,6 +24,7 @@ export function Transporter({
     buySellTransporter
 } : {
     name: string;
+    icon: string;
     tooltip_icon: string;
     watts: number; 
     wattsPerSec: number;
@@ -91,7 +93,7 @@ export function Transporter({
                     disabled={((watts < Math.round(transporterCost) || (((netWattsPerSec - (transporterTransportation/transporters)) < 0) && (transporterTransportation/transporters !== 0))) && isBuying) || ((transporters < tradeQuantity) && !isBuying)}
                 >
                     <div className="transporter-icon">
-                        {/*<img src={icon} alt={name.charAt(0)}></img>*/}
+                        <img src={icon} alt={name.charAt(0)}></img>
                     </div>
                     <div className="transporter-content">
                         <div className="transporter-title">

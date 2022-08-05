@@ -332,7 +332,7 @@ function App() {
     if (randomNumber < stormCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startTime": savedTime + time, "length": 30000, "isOver": false}
+          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startTime": savedTime + time, "length": 45000, "isOver": false}
         ]
       );
     }
@@ -341,7 +341,7 @@ function App() {
     if (randomNumber < snowStormCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startTime": savedTime + time, "length": 30000, "isOver": false}
+          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startTime": savedTime + time, "length": 45000, "isOver": false}
         ]
       );
     }
@@ -368,7 +368,7 @@ function App() {
     if (randomNumber < hurricaneCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startTime": savedTime + time, "length": 60000, "isOver": false}
+          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startTime": savedTime + time, "length": 30000, "isOver": false}
         ]
       );
     }
@@ -377,7 +377,7 @@ function App() {
     if (randomNumber < blizzardCurve((savedTime + time) % 720000, 16.7)) {
       setAdvents(
         [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startTime": savedTime + time, "length": 60000, "isOver": false}
+          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startTime": savedTime + time, "length": 30000, "isOver": false}
         ]
       );
     }
