@@ -153,23 +153,24 @@
 
 .transporter-tooltip-top {
   position: relative;
-  display: inline;
-  float: left;
+  display: block;
   width: 100%;
   margin-bottom: 10px;
 }
 
 .purchased-transporter-tooltip img {
   position: relative;
+  display: inline-block;
   width: 36px;
   height: 36px;
 }
 
 .transporter-tooltip-name {
   position: relative;
+  display: inline-block;
+  margin-top: 3px;
+  margin-left: 8px;
   font-size: 28px;
-  margin-top: 5px;
-  margin-left: 5px;
 }
 
 .transporter-tooltip-cost {

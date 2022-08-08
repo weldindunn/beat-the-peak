@@ -153,23 +153,24 @@
 
 .generator-tooltip-top {
   position: relative;
-  display: inline;
-  float: left;
+  display: block;
   width: 100%;
   margin-bottom: 10px;
 }
 
 .generator-tooltip img {
   position: relative;
+  display: inline-block;
   width: 36px;
   height: 36px;
 }
 
 .generator-tooltip-name {
   position: relative;
+  display: inline-block;
   font-size: 28px;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin-top: 3px;
+  margin-left: 8px;
 }
 
 .generator-tooltip-cost {
