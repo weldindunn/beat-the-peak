@@ -3,7 +3,7 @@
   color: #dadada;
   text-shadow: 1.2px 1.2px 1px rgba(0, 0, 0, 0.5);
   text-align: center;
-  height: 48vh;
+  height: 47vh;
   width: 100%;
   overflow-y: auto;
 }
@@ -52,11 +52,11 @@
 }
 
 .advent {
+  position: relative;
   width: 100%;
   height: 64px;
   cursor: pointer;
   background: url(../../img/Advent_Background_Long.png);
-  position: relative;
   border: none;
   text-align: left;
 }

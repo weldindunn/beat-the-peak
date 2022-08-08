@@ -1,9 +1,8 @@
 .App {
   width: 100vw;
   height: 100vh;
-  overflow-y: hidden;
-  overflow-x: auto;
   background: #5f0606;
+  overflow: hidden;
 }
 
 /* Hides scrollbar for chrome/safari/opera/edge */
@@ -40,14 +39,16 @@ body {
 .menuBar {
   position: relative;
   width: 100%;
-  background: #5e0606;
+  height: 4vh;
+  background: #000000;
   display: inline-block;
 }
 
 .menuBarItem {
   display: inline-block;
+  height: 3vh;
   color: #FFFFFF;
-  background: #4b0505;
+  background: #240404;
   border-style: solid;
   border-width: 0.25vh;
   border-color: rgb(120, 63, 63);
@@ -68,7 +69,7 @@ body {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: 98vh;
+  height: 96vh;
 
   font-size: 2.25vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -81,7 +82,7 @@ body {
 
 .left-column {
   position: relative;
-  height: 100%;
+  height: 47vh;
   width: 44%;
 }
 
@@ -109,7 +110,7 @@ body {
 
 .right-column {
   position: relative;
-  overflow-x:visible;
+  overflow-x: visible;
   overflow-y: hidden;
   height: 100%;
   width: 29%;
@@ -126,7 +127,7 @@ body {
   position: relative;
   display: inline;
   float: left;
-  height: 48vh;
+  height: 100%;
   width: 100%
 }
 
@@ -135,6 +136,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 59.5%;
+  height: 100%;
 }
 
 .left-barrier {
@@ -149,6 +151,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 38%;
+  height: 100%;
 }
 
 .left-center-barrier {
@@ -163,4 +166,5 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 100%;
+  height: 47vh;
 }
