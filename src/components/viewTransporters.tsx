@@ -5,6 +5,7 @@ import "./style/transporters.css";
 
 //Icons
 import transmission_tower from "../img/Transmission_Tower_Icon.png";
+import substation from "../img/Substation_Icon.png";
 
 //Tooltip Icons
 import placeholder_icon from "../img/Icon_Placeholder.png";
@@ -92,7 +93,7 @@ export function ViewTransporters({
             />
             <Transporter
                 name="Battery"
-                icon={transmission_tower}
+                icon={substation}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -112,7 +113,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Meter"
-                icon={transmission_tower}
+                icon={substation}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -152,7 +153,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Transformer"
-                icon={transmission_tower}
+                icon={substation}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
@@ -212,7 +213,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Substation"
-                icon={transmission_tower}
+                icon={substation}
                 tooltip_icon={ACDC}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
