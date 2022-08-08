@@ -8,6 +8,7 @@ import transmission_tower from "../img/Transmission_Tower_Icon.png";
 
 //Tooltip Icons
 import placeholder_icon from "../img/Icon_Placeholder.png";
+import ACDC from "../img/ACDC.png";
 
 export function ViewTransporters({
     watts,
@@ -212,7 +213,7 @@ export function ViewTransporters({
             <Transporter
                 name="Substation"
                 icon={transmission_tower}
-                tooltip_icon={placeholder_icon}
+                tooltip_icon={ACDC}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
