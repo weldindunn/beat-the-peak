@@ -60,7 +60,8 @@ export function ViewGenerators({
     hydroCost,
     nuclearCost,
 
-    buySellGenerator
+    buySellGenerator,
+    setViewingGenerators
 } : {
     watts: number; 
     totalWatts: number;
@@ -97,6 +98,7 @@ export function ViewGenerators({
     nuclearCost: number;
 
     buySellGenerator: (generator: string, tradeQuantity: number, generatorCost: number, isBuying: boolean) => void;
+    setViewingGenerators: (isViewingGenerators: boolean) => void;
 }): JSX.Element {
 
     const [isBuying, setBuying] = useState<boolean>(true);
@@ -107,6 +109,7 @@ export function ViewGenerators({
         <div className="generators">
             <div className="generators-header">
                 <span>Generators</span>
+                <button className="info-button" onClick={() => setViewingGenerators(false)}></button>
             </div>
             <BulkBar
                 isBuying={isBuying}
