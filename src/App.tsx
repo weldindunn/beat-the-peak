@@ -231,7 +231,6 @@ function App() {
 
   //Array of advents
   const [advents, setAdvents] = useState<Advent[]>([]);
-  const [weatherQueue, setWeatherQueue] = useState<Advent[]>([]);
 
   //Array of months
   const [currentMonth, setCurrentMonth] = useState<string>("January");
@@ -276,10 +275,6 @@ function App() {
     //Updates the number of members
     setMembers(totalTransportation/wattsPerMember);
 
-    /* ===============
-       Location Update
-       =============== */
-
     //Updates the Power Status based on whether or not the Total Watts are high enough to make it to the next level
     if (totalWatts < (sortedLocations[0].power*1000000000/360)/30) { //If total watts won't even power Barbados for a day
       setPowerStatus("nothing");
@@ -323,9 +318,7 @@ function App() {
       time + savedTime,
       randomNumber,
       advents,
-      setAdvents,
-      weatherQueue,
-      setWeatherQueue
+      setAdvents
     );
 
     if (time + savedTime > newSave) {

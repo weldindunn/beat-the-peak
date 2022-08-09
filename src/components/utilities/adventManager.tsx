@@ -10,9 +10,7 @@ export function adventManager(
     time: number,
     randomNumber: number,
     advents: Advent[],
-    setAdvents: (advents: Advent[]) => void,
-    weatherQueue: Advent[],
-    setWeatherQueue: (advents: Advent[]) => void
+    setAdvents: (advents: Advent[]) => void
 ): void {
 
     /* ==============
