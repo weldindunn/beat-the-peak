@@ -6,12 +6,6 @@ import { useFrameLoop } from './components/utilities/frameLoop';
 import { solarCurve } from './components/utilities/solarCurve';
 import { windCurve } from './components/utilities/windCurve';
 import { hydroCurve } from './components/utilities/hydroCurve';
-import { hurricaneCurve } from './components/utilities/hurricaneCurve';
-import { blizzardCurve } from './components/utilities/blizzardCurve';
-import { stormCurve } from './components/utilities/stormCurve';
-import { snowStormCurve } from './components/utilities/snowStormCurve';
-import { tornadoCurve } from './components/utilities/tornadoCurve';
-import { heatWaveCurve } from './components/utilities/heatWaveCurve';
 import { Upgrade } from "./interfaces/upgrade";
 import { Advent } from "./interfaces/advent";
 import { Location } from "./interfaces/location";
@@ -25,6 +19,7 @@ import crescent from "./img/Day_Night_Cycle_Night_Crescent.png";
 import full_moon from "./img/Day_Night_Cycle_Night_Full_Moon.png";
 import dawn from "./img/Day_Night_Cycle_Night_Dawn.png";
 import { timeConverter } from './components/utilities/timeConverter';
+import { adventManager } from './components/utilities/adventManager';
 
 const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
@@ -236,6 +231,7 @@ function App() {
 
   //Array of advents
   const [advents, setAdvents] = useState<Advent[]>([]);
+  const [weatherQueue, setWeatherQueue] = useState<Advent[]>([]);
 
   //Array of months
   const [currentMonth, setCurrentMonth] = useState<string>("January");
@@ -322,74 +318,15 @@ function App() {
       }
     }
 
-    /* ==============
-       Weather Events
-       ============== */
-    //Note that the current odds are incorrect, as the curves overlap. Thus, less likely events take priority over more likely ones.
-    //On top of that, only one event can happen on a given frame because the last setAdvents will overwrite the others called in that frame.
-
-    //If the odds are right, start a storm (odds are about 2.8 times a year)
-    if (randomNumber < stormCurve((savedTime + time) % 720000, 16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Storm", "type": "Weather", "description": "Every time it rains, it rains pennies from heaven", "startTime": savedTime + time, "length": 45000, "isOver": false}
-        ]
-      );
-    }
-
-    //If the odds are right, start a snow storm (About 37.39% chance per year)
-    if (randomNumber < snowStormCurve((savedTime + time) % 720000, 16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Snow Storm", "type": "Weather", "description": "Drops of rain frozen into ice crystals?", "startTime": savedTime + time, "length": 45000, "isOver": false}
-        ]
-      );
-    }
-
-    //If the odds are right, start a heat wave (odds are about 1.13 times a year)
-    if (randomNumber < heatWaveCurve((savedTime + time) % 720000, 16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Heat Wave", "type": "Weather", "description": "When it's uber-hot", "startTime": savedTime + time, "length": 30000, "isOver": false}
-        ]
-      );
-    }
-
-    //If the odds are right, start a tornado (About 60% chance per year)
-    if (randomNumber < tornadoCurve((savedTime + time) % 720000, 16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Tornado", "type": "Weather", "description": "A violent vortex of rotating wind", "startTime": savedTime + time, "length": 20000, "isOver": false}
-        ]
-      );
-    }
-
-    //If the odds are right, start a hurricane
-    if (randomNumber < hurricaneCurve((savedTime + time) % 720000, 16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Hurricane", "type": "Weather", "description": "A really big storm", "startTime": savedTime + time, "length": 30000, "isOver": false}
-        ]
-      );
-    }
-
-    //If the odds are right, start a blizzard
-    if (randomNumber < blizzardCurve((savedTime + time) % 720000, 16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startTime": savedTime + time, "length": 30000, "isOver": false}
-        ]
-      );
-    }
-
-    //If the odds are right, start an earthquake (odds are once in 15 years)
-    if (randomNumber < 1/((15*720000)/16.7)) {
-      setAdvents(
-        [...advents, 
-          {"id": advents.length + 1, "name": "Blizzard", "type": "Weather", "description": "A really big snow storm", "startTime": savedTime + time, "length": 10000, "isOver": false}
-        ]
-      );
-    }
+    //Takes care of advents
+    adventManager(
+      time + savedTime,
+      randomNumber,
+      advents,
+      setAdvents,
+      weatherQueue,
+      setWeatherQueue
+    );
 
     setTime(savedTime + time);
     setDeltaTime(deltaTime);
