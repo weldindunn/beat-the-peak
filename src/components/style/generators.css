@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  height: 47vh;
+  height: 96vh;
   width: 100%;
   overflow-y: auto;
 }
@@ -17,10 +17,28 @@
 }
 
 .generators-header {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
   margin-top: 5px;
   margin-bottom: 8px;
   font-size: 36px;
   text-shadow: 1px 1px 1px rgba(57, 57, 57, 0.5);
+}
+
+.generators-header span {
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.info-button {
+  background: url("../../img/info_symbol.png");
+  height: 36px;
+  width: 36px;
+}
+
+.info-button:hover {
+  opacity: 0.85;
 }
 
 .generator {

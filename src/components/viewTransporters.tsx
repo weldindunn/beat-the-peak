@@ -23,6 +23,7 @@ export function ViewTransporters({
     netWattsPerSec,
     totalTransportation,
     buySellTransporter,
+    setViewingGenerators,
 
     batteries,
     meters,
@@ -54,6 +55,7 @@ export function ViewTransporters({
     netWattsPerSec: number;
     totalTransportation: number;
     buySellTransporter: (transporter: string, tradeQuantity: number, transporterCost: number, isBuying: boolean) => void;
+    setViewingGenerators: (isViewingGenerators: boolean) => void;
 
     batteries: number;
     meters: number;
@@ -88,6 +90,7 @@ export function ViewTransporters({
         <div className="transporters">
             <div className="transporters-header">
                 <span>Transporters</span>
+                <button className="info-button" onClick={() => setViewingGenerators(true)}></button>
             </div>
             <BulkBar
                 isBuying={isBuying}
