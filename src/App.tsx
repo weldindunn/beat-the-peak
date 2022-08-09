@@ -328,6 +328,11 @@ function App() {
       setWeatherQueue
     );
 
+    if (time + savedTime > newSave) {
+      setNewSave(time + savedTime + 1000);
+      save();
+    }
+
     setTime(savedTime + time);
     setDeltaTime(deltaTime);
     setRandomNumber(Math.random());
