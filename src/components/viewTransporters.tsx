@@ -8,6 +8,7 @@ import battery from "../img/Battery_Icon.png";
 import meter from "../img/Meter_Icon.png";
 import utility_pole from "../img/Utility_Pole_Icon.png";
 import transformer from "../img/Transformer_Icon.png";
+import underground_cable from "../img/Underground_Cable_Icon.png";
 import transmission_tower from "../img/Transmission_Tower_Icon.png";
 import substation from "../img/Substation_Icon.png";
 
@@ -177,7 +178,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Underground Cable"
-                icon={transmission_tower}
+                icon={underground_cable}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
