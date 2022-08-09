@@ -40,17 +40,6 @@
   padding-bottom: 2vh;
 }
 
-.members-text-box {
-  position: absolute;
-  bottom: 50px;
-  left: 0px;
-  background-color: black;
-  opacity: 0.55;
-  line-height: 3vh;
-  padding-top: 1.5vh;
-  padding-bottom: 2vh;
-}
-
 .coop-name {
   font-size: 3.5vh;
   padding-top: 1vh;
@@ -79,8 +68,23 @@
   font-size: 2.8vh;
 }
 
+.members-text-box {
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
+  background-color: black;
+  opacity: 0.55;
+  line-height: 3vh;
+  padding-top: 1.5vh;
+  padding-bottom: 2vh;
+}
+
 .num-members {
-  font-size: 3.2vh;
+  font-size: 3.8vh;
+}
+
+.num-wpm {
+  font-size: 2.6vh;
 }
 
 /* Style of bolt button */

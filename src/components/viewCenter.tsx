@@ -24,6 +24,7 @@ export function ViewCenter ({
     wattsPerSec,
     netWattsPerSec,
     members,
+    wattsPerMember,
     setWatts,
     setTotalWatts,
     clickBolt
@@ -45,6 +46,7 @@ export function ViewCenter ({
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
+    wattsPerMember: number;
     setWatts: (watts: number) => void;
     setTotalWatts: (totalWatts: number) => void;
     clickBolt: () => void;
@@ -173,6 +175,10 @@ export function ViewCenter ({
                 <span className="num-members">
                     {numberConvertor(members, false)}{" member"}
                     { members !== 1 ? ("s") : ("")}
+                </span>
+                <br/>
+                <span className="num-wpm">
+                    {"watts per member: "}{numberConvertor(wattsPerMember, false)}
                 </span>
             </div>
         </div>

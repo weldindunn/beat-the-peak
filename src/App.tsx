@@ -20,6 +20,7 @@ import full_moon from "./img/Day_Night_Cycle_Night_Full_Moon.png";
 import dawn from "./img/Day_Night_Cycle_Night_Dawn.png";
 import { timeConverter } from './components/utilities/timeConverter';
 import { adventManager } from './components/utilities/adventManager';
+import { memberUsageCurve } from './components/utilities/memberUsageCurve';
 
 const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 
@@ -337,6 +338,7 @@ function App() {
     setSolarCurveModifier(solarCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
     setWindCurveModifier(windCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
     setHydroCurveModifier(hydroCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
+    setWattsPerMember(memberUsageCurve(parseInt(timeConverter(savedTime + time, ""))));
 
     //Updates scenery
     setScenery(sceneryCycle[Math.floor(((savedTime + time)%60000)/10000)]);
@@ -943,6 +945,7 @@ function App() {
         wattsPerSec={wattsPerSec}
         netWattsPerSec={netWattsPerSec}
         members={members}
+        wattsPerMember={wattsPerMember}
         setWatts={setWatts}
         setTotalWatts={setTotalWatts}
 

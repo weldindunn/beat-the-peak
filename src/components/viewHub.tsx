@@ -28,6 +28,7 @@ export function ViewHub({
     wattsPerSec,
     netWattsPerSec,
     members,
+    wattsPerMember,
     setWatts,
     setTotalWatts,
 
@@ -119,6 +120,7 @@ export function ViewHub({
     wattsPerSec: number;
     netWattsPerSec: number;
     members: number;
+    wattsPerMember: number;
     setWatts: (watts: number) => void;
     setTotalWatts: (totalWatts: number) => void;
     
@@ -289,6 +291,7 @@ export function ViewHub({
                         wattsPerSec={wattsPerSec}
                         netWattsPerSec={netWattsPerSec}
                         members={members}
+                        wattsPerMember={wattsPerMember}
                         clickBolt={clickBolt}
                         setWatts={setWatts}
                         setTotalWatts={setTotalWatts}
