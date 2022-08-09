@@ -5,6 +5,7 @@ import "./style/transporters.css";
 
 //Icons
 import battery from "../img/Battery_Icon.png";
+import meter from "../img/Meter_Icon.png";
 import utility_pole from "../img/Utility_Pole_Icon.png";
 import transformer from "../img/Transformer_Icon.png";
 import transmission_tower from "../img/Transmission_Tower_Icon.png";
@@ -116,7 +117,7 @@ export function ViewTransporters({
             ></Transporter>
             <Transporter
                 name="Meter"
-                icon={substation}
+                icon={meter}
                 tooltip_icon={placeholder_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
