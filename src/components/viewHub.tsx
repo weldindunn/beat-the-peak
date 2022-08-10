@@ -37,6 +37,7 @@ export function ViewHub({
     currentYear,
     totalTransportation,
 
+    clicks,
     linemen,
     coalPlants,
     gasPlants,
@@ -129,6 +130,7 @@ export function ViewHub({
     currentYear: number;
     totalTransportation: number;
 
+    clicks: number;
     linemen: number;
     coalPlants: number;
     gasPlants: number;
@@ -228,6 +230,7 @@ export function ViewHub({
                                     watts={watts}
                                     wattsPerSec={wattsPerSec}
 
+                                    clicks={clicks}
                                     linemen={linemen}
                                     coalPlants={coalPlants}
                                     gasPlants={gasPlants}
@@ -257,6 +260,30 @@ export function ViewHub({
                                     biomassCost={biomassCost}
                                     hydroCost={hydroCost}
                                     nuclearCost={nuclearCost}
+
+                                    batteries={batteries}
+                                    meters={meters}
+                                    phonePoles={phonePoles}
+                                    transformers={transformers}
+                                    undergroundCables={undergroundCables}
+                                    powerTowers={powerTowers}
+                                    substations={substations}
+
+                                    batteryTransportation={batteryTransportation}
+                                    meterTransportation={meterTransportation}
+                                    phonePoleTransportation={phonePoleTransportation}
+                                    transformerTransportation={transformerTransportation}
+                                    undergroundCableTransportation={undergroundCableTransportation}
+                                    powerTowerTransportation={powerTowerTransportation}
+                                    substationTransportation={substationTransportation}
+
+                                    batteryCost={batteryCost}
+                                    meterCost={meterCost}
+                                    phonePoleCost={phonePoleCost}
+                                    transformerCost={transformerCost}
+                                    undergroundCableCost={undergroundCableCost}
+                                    powerTowerCost={powerTowerCost}
+                                    substationCost={substationCost}
 
                                     upgrades={upgrades}
                                     buyUpgrade={buyUpgrade}

@@ -30,28 +30,28 @@ export function UpgradeSquare({
                     <div className="upgrade-tooltip">
                         <div>
                             { //Image
-                                upgrade.generator === "Click" ? (
-                                    <img src={cursor} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Lineworker" ? (
-                                    <img src={hard_hat} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Coal Plant" ? (
-                                    <img src={coal_lump} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Gas Plant" ? (
-                                    <img src={gas_symbol} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Solar Farm" ? (
-                                    <img src={sun} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Oil Well" ? (
-                                    <img src={oil_drop} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Wind Turbine" ? (
-                                    <img src={wind_symbol} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Biomass Gasifier" ? (
-                                    <img src={wood_chips} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Hydro Plant" ? (
-                                    <img src={water_wheel} alt={upgrade.generator}/>
-                                ) : upgrade.generator === "Nuclear Plant" ? (
-                                    <img src={atom} alt={upgrade.generator}/>
+                                upgrade.element === "Click" ? (
+                                    <img src={cursor} alt={upgrade.element}/>
+                                ) : upgrade.element === "Lineworker" ? (
+                                    <img src={hard_hat} alt={upgrade.element}/>
+                                ) : upgrade.element === "Coal Plant" ? (
+                                    <img src={coal_lump} alt={upgrade.element}/>
+                                ) : upgrade.element === "Gas Plant" ? (
+                                    <img src={gas_symbol} alt={upgrade.element}/>
+                                ) : upgrade.element === "Solar Farm" ? (
+                                    <img src={sun} alt={upgrade.element}/>
+                                ) : upgrade.element === "Oil Well" ? (
+                                    <img src={oil_drop} alt={upgrade.element}/>
+                                ) : upgrade.element === "Wind Turbine" ? (
+                                    <img src={wind_symbol} alt={upgrade.element}/>
+                                ) : upgrade.element === "Biomass Gasifier" ? (
+                                    <img src={wood_chips} alt={upgrade.element}/>
+                                ) : upgrade.element === "Hydro Plant" ? (
+                                    <img src={water_wheel} alt={upgrade.element}/>
+                                ) : upgrade.element === "Nuclear Plant" ? (
+                                    <img src={atom} alt={upgrade.element}/>
                                 ) : (
-                                    <span>{upgrade.generator.charAt(0)}</span>
+                                    <span>{upgrade.element.charAt(0)}</span>
                                 )
                             }
                             <span className="name">{upgrade.name}</span>
@@ -63,28 +63,28 @@ export function UpgradeSquare({
             >
                 <button className="upgrade" onClick={() => buyUpgrade(upgrade)} disabled={watts < Math.round(upgrade.cost) || upgrade.purchased}>
                     {
-                        upgrade.generator === "Click" ? (
-                            <img src={cursor} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Lineworker" ? (
-                            <img src={hard_hat} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Coal Plant" ? (
-                            <img src={coal_lump} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Gas Plant" ? (
-                            <img src={gas_symbol} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Solar Farm" ? (
-                            <img src={sun} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Oil Well" ? (
-                            <img src={oil_drop} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Wind Turbine" ? (
-                            <img src={wind_symbol} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Biomass Gasifier" ? (
-                            <img src={wood_chips} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Hydro Plant" ? (
-                            <img src={water_wheel} alt={upgrade.generator}/>
-                        ) : upgrade.generator === "Nuclear Plant" ? (
-                            <img src={atom} alt={upgrade.generator}/>
+                        upgrade.element === "Click" ? (
+                            <img src={cursor} alt={upgrade.element}/>
+                        ) : upgrade.element === "Lineworker" ? (
+                            <img src={hard_hat} alt={upgrade.element}/>
+                        ) : upgrade.element === "Coal Plant" ? (
+                            <img src={coal_lump} alt={upgrade.element}/>
+                        ) : upgrade.element === "Gas Plant" ? (
+                            <img src={gas_symbol} alt={upgrade.element}/>
+                        ) : upgrade.element === "Solar Farm" ? (
+                            <img src={sun} alt={upgrade.element}/>
+                        ) : upgrade.element === "Oil Well" ? (
+                            <img src={oil_drop} alt={upgrade.element}/>
+                        ) : upgrade.element === "Wind Turbine" ? (
+                            <img src={wind_symbol} alt={upgrade.element}/>
+                        ) : upgrade.element === "Biomass Gasifier" ? (
+                            <img src={wood_chips} alt={upgrade.element}/>
+                        ) : upgrade.element === "Hydro Plant" ? (
+                            <img src={water_wheel} alt={upgrade.element}/>
+                        ) : upgrade.element === "Nuclear Plant" ? (
+                            <img src={atom} alt={upgrade.element}/>
                         ) : (
-                            <span>{upgrade.generator.charAt(0)}</span>
+                            <span>{upgrade.element.charAt(0)}</span>
                         )
                     }
                 </button>

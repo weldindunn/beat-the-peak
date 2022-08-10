@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Upgrade } from "../interfaces/upgrade";
 import { UpgradeSquare } from "./upgradeSquare";
+import { upgradeScreener } from "./utilities/upgradeScreener";
 import "./style/upgrades.css";
 
 export function ViewUpgrades({
     watts,
     wattsPerSec,
 
+    clicks,
     linemen,
     coalPlants,
     gasPlants,
@@ -37,12 +39,37 @@ export function ViewUpgrades({
     hydroCost,
     nuclearCost,
 
+    batteries,
+    meters,
+    phonePoles,
+    transformers,
+    undergroundCables,
+    powerTowers,
+    substations,
+
+    batteryTransportation,
+    meterTransportation,
+    phonePoleTransportation,
+    transformerTransportation,
+    undergroundCableTransportation,
+    powerTowerTransportation,
+    substationTransportation,
+
+    batteryCost,
+    meterCost,
+    phonePoleCost,
+    transformerCost,
+    undergroundCableCost,
+    powerTowerCost,
+    substationCost,
+
     upgrades,
     buyUpgrade
 } : {
     watts: number; 
     wattsPerSec: number;
 
+    clicks: number;
     linemen: number;
     coalPlants: number;
     gasPlants: number;
@@ -72,6 +99,30 @@ export function ViewUpgrades({
     biomassCost: number;
     hydroCost: number;
     nuclearCost: number;
+
+    batteries: number;
+    meters: number;
+    phonePoles: number;
+    transformers: number;
+    undergroundCables: number;
+    powerTowers: number;
+    substations: number;
+
+    batteryTransportation: number;
+    meterTransportation: number;
+    phonePoleTransportation: number;
+    transformerTransportation: number;
+    undergroundCableTransportation: number;
+    powerTowerTransportation: number;
+    substationTransportation: number;
+
+    batteryCost: number;
+    meterCost: number;
+    phonePoleCost: number;
+    transformerCost: number;
+    undergroundCableCost: number;
+    powerTowerCost: number;
+    substationCost: number;
 
     upgrades: Upgrade[];
     buyUpgrade: (upgrade: Upgrade) => void;
@@ -107,16 +158,17 @@ export function ViewUpgrades({
                         <div className="subtitle">Available Upgrades</div>
                         {
                             upgrades.map((upgrade: Upgrade) => (
-                                upgrade.unlocked && !upgrade.purchased ? (
+                                upgradeScreener(upgrade, clicks, linemen, coalPlants, gasPlants, solarFarms, oilWells, windTurbines, biomassGasifiers, hydroPlants, nuclearPlants, batteries, meters, phonePoles, transformers, undergroundCables, powerTowers, substations) && !upgrade.purchased ? (
                                     <UpgradeSquare
                                         key={upgrade.id}
                                         watts={watts}
                                         upgrade={upgrade}
                                         buyUpgrade={buyUpgrade}
                                     />
-                                ) : (<div key={upgrade.id}/>)
+                                ) : (
+                                    <div key={upgrade.id}/>
+                                )
                             ))
-
                         }
                     </div>
                 )

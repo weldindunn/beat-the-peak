@@ -56,6 +56,7 @@ function App() {
   const [powerStatus, setPowerStatus] = useState<string>("nothing"); //GWh on the scale of days, months, years, or NOTHING
 
   //The number of each type of generator
+  const [clicks, setClicks] = useState<number>(0);
   const [linemen, setLinemen] = useState<number>(0); 
   const [coalPlants, setCoalPlants] = useState<number>(0);
   const [gasPlants, setGasPlants] = useState<number>(0);
@@ -361,6 +362,7 @@ function App() {
   function clickBolt(): void {
     setWatts(watts + clickPower);
     setTotalWatts(totalWatts + clickPower);
+    setClicks(clicks + 1);
   }
 
   /* ==================
@@ -484,7 +486,7 @@ function App() {
 
     //Add effect
     if (purchasedUpgrade.type === "multiplier") {
-        multiply(purchasedUpgrade.generator);
+        multiply(purchasedUpgrade.element);
     }
   }
 
@@ -575,28 +577,30 @@ function App() {
     }
   }
 
-  //Helper function, multiplies production of a generator
-  function multiply(generator: string): void {
-    if (generator === "Click") {
+  //Helper function, multiplies production of a generator/transmission of a transporter
+  function multiply(element: string): void {
+    if (element === "Click") {
       setClickProductionBonus(clickProductionBonus * 2);
-    } else if (generator === "Lineworker") {
+    } else if (element === "Lineworker") {
       setLinemenProductionBonus(linemenProductionBonus * 2);
-    } else if (generator === "Coal Plant") {
+    } else if (element === "Coal Plant") {
       setCoalProductionBonus(coalProductionBonus * 2);
-    } else if (generator === "Gas Plant") {
+    } else if (element === "Gas Plant") {
       setGasProductionBonus(gasProductionBonus * 2);
-    } else if (generator === "Solar Farm") {
+    } else if (element === "Solar Farm") {
       setSolarProductionBonus(solarProductionBonus * 2);
-    } else if (generator === "Oil Well") {
+    } else if (element === "Oil Well") {
       setOilProductionBonus(oilProductionBonus * 2);
-    } else if (generator === "Wind Turbine") {
+    } else if (element === "Wind Turbine") {
       setWindProductionBonus(windProductionBonus * 2);
-    } else if (generator === "Biomass Gasifier") {
+    } else if (element === "Biomass Gasifier") {
       setBiomassProductionBonus(biomassProductionBonus * 2);
-    } else if (generator === "Hydro Plant") {
+    } else if (element === "Hydro Plant") {
       setHydroProductionBonus(hydroProductionBonus * 2);
-    } else if (generator === "Nuclear Plant") {
+    } else if (element === "Nuclear Plant") {
       setNuclearProductionBonus(nuclearProductionBonus * 2);
+    } else if (element === "Battery") {
+      setNuclearProductionBonus(batteryTransportationBonus * 2);
     }
   }
 
@@ -625,6 +629,7 @@ function App() {
     localStorage.setItem('locationIndex', JSON.stringify(locationIndex));
 
     //Saves generators
+    localStorage.setitem('clicks', JSON.stringify(clicks));
     localStorage.setItem('linemen', JSON.stringify(linemen));
     localStorage.setItem('coalPlants', JSON.stringify(coalPlants));
     localStorage.setItem('gasPlants', JSON.stringify(gasPlants));
@@ -722,6 +727,10 @@ function App() {
     }
 
     //Loads generators
+    const localClicks = localStorage.getItem('clicks');
+    if (localClicks) {
+      setClicks(JSON.parse(localClicks));
+    }
     const localLinemen = localStorage.getItem('linemen');
     if (localLinemen) {
       setLinemen(JSON.parse(localLinemen));
@@ -888,6 +897,7 @@ function App() {
     setUpgrades(UPGRADES);
     setAdvents([]);
 
+    setClicks(0);
     setLinemen(0);
     setCoalPlants(0);
     setGasPlants(0);
@@ -954,6 +964,7 @@ function App() {
         currentYear={currentYear}
         totalTransportation={totalTransportation}
 
+        clicks={clicks}
         linemen={linemen}
         coalPlants={coalPlants}
         gasPlants={gasPlants}
