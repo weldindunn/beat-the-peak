@@ -67,6 +67,15 @@ function App() {
   const [hydroPlants, setHydroPlants] = useState<number>(0);
   const [nuclearPlants, setNuclearPlants] = useState<number>(0);
 
+  //The number of each type of transporter
+  const [batteries, setBatteries] = useState<number>(0); 
+  const [meters, setMeters] = useState<number>(0);
+  const [phonePoles, setPhonePoles] = useState<number>(0);
+  const [transformers, setTransformers] = useState<number>(0);
+  const [undergroundCables, setUndergroundCables] = useState<number>(0);
+  const [powerTowers, setPowerTowers] = useState<number>(0);
+  const [substations, setSubstations] = useState<number>(0);
+
   /* ============================
      Production of each generator
      ============================ */
@@ -152,16 +161,6 @@ function App() {
   const nuclearBaseCost = 12000000000;
   const nuclearCostBonus = 1;
   const [nuclearCost, setNuclearCost] = useState<number>((nuclearBaseCost * Math.pow(1.15, nuclearPlants)) * nuclearCostBonus);
-
-
-  //The number of each type of transporter
-  const [batteries, setBatteries] = useState<number>(0); 
-  const [meters, setMeters] = useState<number>(0);
-  const [phonePoles, setPhonePoles] = useState<number>(0);
-  const [transformers, setTransformers] = useState<number>(0);
-  const [undergroundCables, setUndergroundCables] = useState<number>(0);
-  const [powerTowers, setPowerTowers] = useState<number>(0);
-  const [substations, setSubstations] = useState<number>(0);
 
   /* =========================================
      Transportation capacity of each generator

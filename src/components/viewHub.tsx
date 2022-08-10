@@ -319,6 +319,7 @@ export function ViewHub({
                         netWattsPerSec={netWattsPerSec}
                         members={members}
                         wattsPerMember={wattsPerMember}
+                        clicks={clicks}
                         clickBolt={clickBolt}
                         setWatts={setWatts}
                         setTotalWatts={setTotalWatts}

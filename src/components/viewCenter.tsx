@@ -25,6 +25,7 @@ export function ViewCenter ({
     netWattsPerSec,
     members,
     wattsPerMember,
+    clicks,
     setWatts,
     setTotalWatts,
     clickBolt
@@ -47,6 +48,7 @@ export function ViewCenter ({
     netWattsPerSec: number;
     members: number;
     wattsPerMember: number;
+    clicks: number;
     setWatts: (watts: number) => void;
     setTotalWatts: (totalWatts: number) => void;
     clickBolt: () => void;
@@ -123,6 +125,7 @@ export function ViewCenter ({
 
                     <Modal.Body>
                         <p>You have played this game for <strong>{Math.floor(time/3600000)} hours, {Math.floor((time%360000)/60000)} minutes, and {Math.floor((time%60000)/1000)} seconds.</strong></p>
+                        <p>You have clicked the bolt <strong>{clicks} times!</strong></p>
                         {/*<ExportCSV randomNumbers={randomNumbers} stormNumbers={stormNumbers} tornadoNumbers={tornadoNumbers} heatWaveNumbers={heatWaveNumbers} />*/}
                         <p>You have generated a total of <strong>{numberConvertor(totalWatts, true)}</strong>!</p>
                         {
