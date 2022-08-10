@@ -178,7 +178,7 @@ export function ViewCenter ({
                 </span>
                 <br/>
                 <span className="num-wpm">
-                    {"watts per member: "}{numberConvertor(wattsPerMember, false)}
+                    {"watts per member: "}{wattsPerMember.toFixed(2)}
                 </span>
             </div>
         </div>
