@@ -330,6 +330,7 @@ function App() {
     setTime(savedTime + time);
     setDeltaTime(deltaTime);
     setRandomNumber(Math.random());
+    //console.log(1000/deltaTime); //Displays frames per second
 
     //Updates date and reliant curveModifiers
     // Month = (elapsed time % span of a year in milliseconds) / one month in milliseconds 
@@ -628,7 +629,7 @@ function App() {
     localStorage.setItem('locationIndex', JSON.stringify(locationIndex));
 
     //Saves generators
-    localStorage.setitem('clicks', JSON.stringify(clicks));
+    localStorage.setItem('clicks', JSON.stringify(clicks));
     localStorage.setItem('linemen', JSON.stringify(linemen));
     localStorage.setItem('coalPlants', JSON.stringify(coalPlants));
     localStorage.setItem('gasPlants', JSON.stringify(gasPlants));

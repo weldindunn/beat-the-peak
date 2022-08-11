@@ -174,16 +174,20 @@ export function ViewCenter ({
             </div>
 
             {/* # of Members */}
-            <div className="members-text-box">
-                <span className="num-members">
-                    {numberConvertor(members, false)}{" member"}
-                    { members !== 1 ? ("s") : ("")}
-                </span>
-                <br/>
-                <span className="num-wpm">
-                    {"watts per member: "}{wattsPerMember.toFixed(2)}
-                </span>
-            </div>
+            {members > 0 ? (
+                <div className="members-text-box">
+                    <span className="num-members">
+                        {numberConvertor(members, false)}{" member"}
+                        { members !== 1 ? ("s") : ("")}
+                    </span>
+                    <br/>
+                    <span className="num-wpm">
+                        {"watts per member: "}{wattsPerMember.toFixed(2)}
+                    </span>
+                </div>
+            ) : (
+                <></>
+            )}
         </div>
     )
 }
