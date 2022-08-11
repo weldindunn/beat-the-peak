@@ -10,14 +10,10 @@
   display: none;
 }
 
-div {
-  line-height: 1;
-  display: inline-block;
-}
-
 body {
   user-select: none;
   font-size: 13px;
+  text-align: center;
 }
 
 * {
@@ -73,6 +69,11 @@ body {
 
   font-size: 2.25vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.hub div {
+  line-height: 1;
+  display: inline-block;
 }
 
 /* Hides scrollbar for chrome/safari/opera/edge */
