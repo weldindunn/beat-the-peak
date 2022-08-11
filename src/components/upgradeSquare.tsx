@@ -2,6 +2,7 @@ import React from "react";
 import { OverlayTrigger } from "react-bootstrap";
 import { Upgrade } from "../interfaces/upgrade";
 import { numberConvertor } from "./utilities/numberConvertor";
+
 import cursor from "../img/cursor.png";
 import hard_hat from "../img/Hard_Hat.png";
 import coal_lump from "../img/coal_lump_alt.png";
@@ -12,6 +13,9 @@ import wind_symbol from "../img/Wind_Symbol.png";
 import wood_chips from "../img/Wood_Chips.png";
 import water_wheel from "../img/Water_Wheel.png";
 import atom from "../img/Atom.png";
+
+import battery_logo from "../img/Battery_Logo.png";
+import ACDC from "../img/ACDC.png";
 
 export function UpgradeSquare({
     watts, 
@@ -50,6 +54,8 @@ export function UpgradeSquare({
                                     <img src={water_wheel} alt={upgrade.element}/>
                                 ) : upgrade.element === "Nuclear Plant" ? (
                                     <img src={atom} alt={upgrade.element}/>
+                                ) : upgrade.element === "Battery" ? (
+                                    <img src={battery_logo} alt={upgrade.element}/>
                                 ) : (
                                     <span>{upgrade.element.charAt(0)}</span>
                                 )
@@ -83,6 +89,8 @@ export function UpgradeSquare({
                             <img src={water_wheel} alt={upgrade.element}/>
                         ) : upgrade.element === "Nuclear Plant" ? (
                             <img src={atom} alt={upgrade.element}/>
+                        ) : upgrade.element === "Battery" ? (
+                            <img src={battery_logo} alt={upgrade.element}/>
                         ) : (
                             <span>{upgrade.element.charAt(0)}</span>
                         )
