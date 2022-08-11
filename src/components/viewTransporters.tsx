@@ -16,6 +16,7 @@ import substation from "../img/Substation_Icon.png";
 import placeholder_icon from "../img/Icon_Placeholder.png";
 import battery_logo from "../img/Battery_Logo.png";
 import meter_icon from "../img/Meter_Tooltip_Icon.png";
+import utility_pole_icon from "../img/Utility_Pole_Tooltip_Icon.png";
 import transformer_logo from "../img/Transformer_Logo.png";
 import ACDC from "../img/ACDC.png";
 
@@ -145,7 +146,7 @@ export function ViewTransporters({
             <Transporter
                 name="Utility Pole"
                 icon={utility_pole}
-                tooltip_icon={placeholder_icon}
+                tooltip_icon={utility_pole_icon}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
