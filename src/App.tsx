@@ -600,7 +600,19 @@ function App() {
     } else if (element === "Nuclear Plant") {
       setNuclearProductionBonus(nuclearProductionBonus * 2);
     } else if (element === "Battery") {
-      setNuclearProductionBonus(batteryTransportationBonus * 2);
+      setBatteryTransportationBonus(batteryTransportationBonus * 2);
+    } else if (element === "Meter") {
+      setMeterTransportationBonus(meterTransportationBonus * 2);
+    } else if (element === "Utility Pole") {
+      setPhonePoleTransportationBonus(phonePoleTransportationBonus * 2);
+    } else if (element === "Transformer") {
+      setTransformerTransportationBonus(transformerTransportationBonus * 2);
+    } else if (element === "Underground Cable") {
+      setUndergroundCableTransportationBonus(undergroundCableTransportationBonus * 2);
+    } else if (element === "Transmission Tower") {
+      setPowerTowerTransportationBonus(powerTowerTransportationBonus * 2);
+    } else if (element === "Substation") {
+      setSubstationTransportationBonus(substationTransportationBonus * 2);
     }
   }
 
