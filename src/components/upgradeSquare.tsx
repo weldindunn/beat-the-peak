@@ -19,6 +19,7 @@ import meter_icon from "../img/Meter_Tooltip_Icon.png";
 import utility_pole_icon from "../img/Utility_Pole_Tooltip_Icon.png";
 import transformer_logo from "../img/Transformer_Logo.png";
 import cable_spool from "../img/Underground_Cable_Tooltip_Icon.png";
+import transmission_tower_logo from "../img/Transmission_Tower_Logo.png";
 import ACDC from "../img/ACDC.png";
 
 export function UpgradeSquare({
@@ -68,6 +69,8 @@ export function UpgradeSquare({
                                     <img src={transformer_logo} alt={upgrade.element}/>
                                 ) : upgrade.element === "Underground Cable" ? (
                                     <img src={cable_spool} alt={upgrade.element}/>
+                                ) : upgrade.element === "Transmission Tower" ? (
+                                    <img src={transmission_tower_logo} alt={upgrade.element}/>
                                 ) : upgrade.element === "Substation" ? (
                                     <img src={ACDC} alt={upgrade.element}/>
                                 ) : (
@@ -113,6 +116,8 @@ export function UpgradeSquare({
                             <img src={transformer_logo} alt={upgrade.element}/>
                         ) : upgrade.element === "Underground Cable" ? (
                             <img src={cable_spool} alt={upgrade.element}/>
+                        ) : upgrade.element === "Transmission Tower" ? (
+                            <img src={transmission_tower_logo} alt={upgrade.element}/>
                         ) : upgrade.element === "Substation" ? (
                             <img src={ACDC} alt={upgrade.element}/>
                         ) : (

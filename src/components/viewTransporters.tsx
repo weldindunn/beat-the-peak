@@ -13,12 +13,12 @@ import transmission_tower from "../img/Transmission_Tower_Icon.png";
 import substation from "../img/Substation_Icon.png";
 
 //Tooltip Icons
-import placeholder_icon from "../img/Icon_Placeholder.png";
 import battery_logo from "../img/Battery_Logo.png";
 import meter_icon from "../img/Meter_Tooltip_Icon.png";
 import utility_pole_icon from "../img/Utility_Pole_Tooltip_Icon.png";
 import transformer_logo from "../img/Transformer_Logo.png";
 import cable_spool from "../img/Underground_Cable_Tooltip_Icon.png";
+import transmission_tower_logo from "../img/Transmission_Tower_Logo.png";
 import ACDC from "../img/ACDC.png";
 
 export function ViewTransporters({
@@ -207,7 +207,7 @@ export function ViewTransporters({
             <Transporter
                 name="Transmission Tower"
                 icon={transmission_tower}
-                tooltip_icon={placeholder_icon}
+                tooltip_icon={transmission_tower_logo}
                 watts={watts}
                 wattsPerSec={wattsPerSec}
                 netWattsPerSec={netWattsPerSec}
