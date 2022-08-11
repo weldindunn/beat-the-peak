@@ -15,6 +15,8 @@ import water_wheel from "../img/Water_Wheel.png";
 import atom from "../img/Atom.png";
 
 import battery_logo from "../img/Battery_Logo.png";
+import meter_icon from "../img/Meter_Tooltip_Icon.png";
+import transformer_logo from "../img/Transformer_Logo.png";
 import ACDC from "../img/ACDC.png";
 
 export function UpgradeSquare({
@@ -56,6 +58,12 @@ export function UpgradeSquare({
                                     <img src={atom} alt={upgrade.element}/>
                                 ) : upgrade.element === "Battery" ? (
                                     <img src={battery_logo} alt={upgrade.element}/>
+                                ) : upgrade.element === "Meter" ? (
+                                    <img src={meter_icon} alt={upgrade.element}/>
+                                ) : upgrade.element === "Transformer" ? (
+                                    <img src={transformer_logo} alt={upgrade.element}/>
+                                ) : upgrade.element === "Substation" ? (
+                                    <img src={ACDC} alt={upgrade.element}/>
                                 ) : (
                                     <span>{upgrade.element.charAt(0)}</span>
                                 )
@@ -91,6 +99,12 @@ export function UpgradeSquare({
                             <img src={atom} alt={upgrade.element}/>
                         ) : upgrade.element === "Battery" ? (
                             <img src={battery_logo} alt={upgrade.element}/>
+                        ) : upgrade.element === "Meter" ? (
+                            <img src={meter_icon} alt={upgrade.element}/>
+                        ) : upgrade.element === "Transformer" ? (
+                            <img src={transformer_logo} alt={upgrade.element}/>
+                        ) : upgrade.element === "Substation" ? (
+                            <img src={ACDC} alt={upgrade.element}/>
                         ) : (
                             <span>{upgrade.element.charAt(0)}</span>
                         )
