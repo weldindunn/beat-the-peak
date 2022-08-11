@@ -228,7 +228,7 @@ function App() {
 
 
   //Array of upgrades
-  const [upgrades, setUpgrades] = useState<Upgrade[]>(UPGRADES);
+  const [upgrades, setUpgrades] = useState<Upgrade[]>(UPGRADES.sort((a, b) => a.cost - b.cost));
 
   //Array of advents
   const [advents, setAdvents] = useState<Advent[]>([]);
