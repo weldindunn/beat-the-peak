@@ -27,6 +27,7 @@ const UPGRADES = upgrades.map((upgrade): Upgrade => ({...upgrade}));
 function App() {  
 
   //Loads up local storage when page is loaded
+  const [isLoaded, setLoaded] = useState<boolean>(false);
   window.onload = function() {
     load();
   }
@@ -253,104 +254,105 @@ function App() {
   const [heatWaveNumbers, setHeatWaveNumbers] = useState<number[]>([]);
   */
 
-  const [newSave, setNewSave] = useState(5000);
+  const [newSave, setNewSave] = useState(50);
 
   useFrameLoop((time: number, deltaTime: number) => {
-    
-    //Autosaves every second
-    if (time + savedTime > newSave) {
-      setNewSave(time + savedTime + 1000);
-      save();
-    }
-
-    //Updates generator production
-    setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
-
-    //Updates transporter transportation capacity
-    setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
-
-    //Adds a frame worth of watts to the watts sum
-    setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
-    setTotalWatts(totalWatts + (netWattsPerSec)/(1000/deltaTime))
-
-    //Updates the number of members
-    setMembers(totalTransportation/wattsPerMember);
-
-    //Updates the Power Status based on whether or not the Total Watts are high enough to make it to the next level
-    if (totalWatts < (sortedLocations[0].power*1000000000/360)/30) { //If total watts won't even power Barbados for a day
-      setPowerStatus("nothing");
-    } else if (totalWatts < (sortedLocations[0].power*1000000000/360)) { //If total watts won't power Barbados for a month
-      setPowerStatus("day");
-    } else if (totalWatts < (sortedLocations[0].power*1000000000/360)*12) { //If total watts won't power Barbados for a month
-      setPowerStatus("month");
-    } else {
-      setPowerStatus("year");
-    }
-
-    //Updates the current location if total watts are high enough
-    if (powerStatus === "day") {
-      if (totalWatts < (sortedLocations[1].power*1000000000)/360/30) { //If it's the first time getting to the day level
-        setCurrentLocation(sortedLocations[0]);
-        setLocationIndex(0);
-      } else if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360/30) { //If the total kWh is more than the next lowest value in the list
-        setLocationIndex(locationIndex + 1);
-        setCurrentLocation(sortedLocations[locationIndex + 1]);
+    if (isLoaded) {
+      //Autosaves every second
+      if (time + savedTime > newSave) {
+        setNewSave(time + savedTime + 500);
+        save();
       }
-    } else if (powerStatus === "month") {
-      if (totalWatts < (sortedLocations[1].power*1000000000)/360) { //If it's the first time getting to the month level
-        setCurrentLocation(sortedLocations[0]);
-        setLocationIndex(0);
-      } else if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360) { //If the total kWh is more than the next lowest value in the list
-        setLocationIndex(locationIndex + 1);
-        setCurrentLocation(sortedLocations[locationIndex + 1]);
+
+      //Updates generator production
+      setWattsPerSec(linemenProduction + coalProduction + gasProduction + solarProduction + oilProduction + windProduction + biomassProduction + hydroProduction + nuclearProduction);
+
+      //Updates transporter transportation capacity
+      setTotalTransportation(batteryTransportation + meterTransportation + phonePoleTransportation + transformerTransportation + undergroundCableTransportation + powerTowerTransportation + substationTransportation);
+
+      //Adds a frame worth of watts to the watts sum
+      setWatts(watts + (netWattsPerSec)/(1000/deltaTime));
+      setTotalWatts(totalWatts + (netWattsPerSec)/(1000/deltaTime))
+
+      //Updates the number of members
+      setMembers(totalTransportation/wattsPerMember);
+
+      //Updates the Power Status based on whether or not the Total Watts are high enough to make it to the next level
+      if (totalWatts < (sortedLocations[0].power*1000000000/360)/30) { //If total watts won't even power Barbados for a day
+        setPowerStatus("nothing");
+      } else if (totalWatts < (sortedLocations[0].power*1000000000/360)) { //If total watts won't power Barbados for a month
+        setPowerStatus("day");
+      } else if (totalWatts < (sortedLocations[0].power*1000000000/360)*12) { //If total watts won't power Barbados for a month
+        setPowerStatus("month");
+      } else {
+        setPowerStatus("year");
       }
-    } else if (powerStatus === "year") {
-      if (totalWatts < ((sortedLocations[1].power*1000000000)/360)*12) { //If it's the first time getting to the year level
-        setCurrentLocation(sortedLocations[0]);
-        setLocationIndex(0);
-      } else if (totalWatts > ((sortedLocations[locationIndex + 1].power*1000000000)/360)*12) { //If the total kWh is more than the next lowest value in the list
-        setLocationIndex(locationIndex + 1);
-        setCurrentLocation(sortedLocations[locationIndex + 1]);
+
+      //Updates the current location if total watts are high enough
+      if (powerStatus === "day") {
+        if (totalWatts < (sortedLocations[1].power*1000000000)/360/30) { //If it's the first time getting to the day level
+          setCurrentLocation(sortedLocations[0]);
+          setLocationIndex(0);
+        } else if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360/30) { //If the total kWh is more than the next lowest value in the list
+          setLocationIndex(locationIndex + 1);
+          setCurrentLocation(sortedLocations[locationIndex + 1]);
+        }
+      } else if (powerStatus === "month") {
+        if (totalWatts < (sortedLocations[1].power*1000000000)/360) { //If it's the first time getting to the month level
+          setCurrentLocation(sortedLocations[0]);
+          setLocationIndex(0);
+        } else if (totalWatts > (sortedLocations[locationIndex + 1].power*1000000000)/360) { //If the total kWh is more than the next lowest value in the list
+          setLocationIndex(locationIndex + 1);
+          setCurrentLocation(sortedLocations[locationIndex + 1]);
+        }
+      } else if (powerStatus === "year") {
+        if (totalWatts < ((sortedLocations[1].power*1000000000)/360)*12) { //If it's the first time getting to the year level
+          setCurrentLocation(sortedLocations[0]);
+          setLocationIndex(0);
+        } else if (totalWatts > ((sortedLocations[locationIndex + 1].power*1000000000)/360)*12) { //If the total kWh is more than the next lowest value in the list
+          setLocationIndex(locationIndex + 1);
+          setCurrentLocation(sortedLocations[locationIndex + 1]);
+        }
       }
+
+      //Takes care of advents
+      adventManager(
+        time + savedTime,
+        randomNumber,
+        advents,
+        setAdvents
+      );
+
+      if (time + savedTime > newSave) {
+        setNewSave(time + savedTime + 1000);
+        save();
+      }
+
+      setTime(savedTime + time);
+      setDeltaTime(deltaTime);
+      setRandomNumber(Math.random());
+      //console.log(1000/deltaTime); //Displays frames per second
+
+      //Updates date and reliant curveModifiers
+      // Month = (elapsed time % span of a year in milliseconds) / one month in milliseconds 
+      setCurrentMonth(timeConverter(savedTime + time, "month"));
+      setCurrentYear(parseInt(timeConverter(savedTime + time, "year")));
+      setSolarCurveModifier(solarCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
+      setWindCurveModifier(windCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
+      setHydroCurveModifier(hydroCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
+      setWattsPerMember(memberUsageCurve(parseInt(timeConverter(savedTime + time, ""))));
+
+      //Updates scenery
+      setScenery(sceneryCycle[Math.floor(((savedTime + time)%60000)/10000)]);
+
+      //Updating CSV numbers:
+      /*
+      setRandomNumbers([...randomNumbers, randomNumber]);
+      setStormNumbers([...stormNumbers, stormCurve(time % 720000, 16.7)]);
+      setTornadoNumbers([...tornadoNumbers, tornadoCurve(time % 720000, 16.7)]);
+      setHeatWaveNumbers([...heatWaveNumbers, heatWaveCurve(time % 720000, 16.7)]);
+      */
     }
-
-    //Takes care of advents
-    adventManager(
-      time + savedTime,
-      randomNumber,
-      advents,
-      setAdvents
-    );
-
-    if (time + savedTime > newSave) {
-      setNewSave(time + savedTime + 1000);
-      save();
-    }
-
-    setTime(savedTime + time);
-    setDeltaTime(deltaTime);
-    setRandomNumber(Math.random());
-    //console.log(1000/deltaTime); //Displays frames per second
-
-    //Updates date and reliant curveModifiers
-    // Month = (elapsed time % span of a year in milliseconds) / one month in milliseconds 
-    setCurrentMonth(timeConverter(savedTime + time, "month"));
-    setCurrentYear(parseInt(timeConverter(savedTime + time, "year")));
-    setSolarCurveModifier(solarCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
-    setWindCurveModifier(windCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
-    setHydroCurveModifier(hydroCurve(parseInt(timeConverter(savedTime + time, "")) + 1));
-    setWattsPerMember(memberUsageCurve(parseInt(timeConverter(savedTime + time, ""))));
-
-    //Updates scenery
-    setScenery(sceneryCycle[Math.floor(((savedTime + time)%60000)/10000)]);
-
-    //Updating CSV numbers:
-    /*
-    setRandomNumbers([...randomNumbers, randomNumber]);
-    setStormNumbers([...stormNumbers, stormCurve(time % 720000, 16.7)]);
-    setTornadoNumbers([...tornadoNumbers, tornadoCurve(time % 720000, 16.7)]);
-    setHeatWaveNumbers([...heatWaveNumbers, heatWaveCurve(time % 720000, 16.7)]);
-    */
   });
 
   //Updates netWattsPerSec, which is dependent on a fluid generation state
@@ -687,6 +689,10 @@ function App() {
      ========= */
 
   function load(): void {
+    window.onbeforeunload = function() {
+      return "Hey, don't refresh so quickly!";
+    }
+
     //Loads time, scenery, and date (and reliant modifiers)
     const localSavedTime = localStorage.getItem('savedTime');
     if (localSavedTime) {
@@ -879,6 +885,7 @@ function App() {
     }
 
     console.log("Loaded");
+    setLoaded(true);
   }
 
   /* ==========
