@@ -133,7 +133,7 @@ export function ViewUpgrades({
         <>
             <div className="upgrades-header">
                 <span>Upgrades</span>
-                <button className="info-button" onClick={() => setViewing(!isViewing)}></button>
+                <button className={isViewing ? ("switch-button-top") : ("switch-button-bottom")} onClick={() => setViewing(!isViewing)}></button>
             </div>
 
             {

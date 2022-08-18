@@ -95,7 +95,7 @@ export function ViewTransporters({
         <div className="transporters">
             <div className="transporters-header">
                 <span>Transporters</span>
-                <button className="info-button" onClick={() => setViewingGenerators(true)}></button>
+                <button className="switch-button-top" onClick={() => setViewingGenerators(true)}></button>
             </div>
             <BulkBar
                 isBuying={isBuying}

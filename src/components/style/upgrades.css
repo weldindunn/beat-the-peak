@@ -31,13 +31,26 @@
   margin-right: 5px;
 }
 
-.info-button {
-  background: url("../../img/info_symbol.png");
-  height: 36px;
-  width: 36px;
+.switch-button-top {
+  background: url("../../img/Switch_Symbol_Top.png");
+  height: 24px;
+  width: 24px;
+  margin: 7px 0px 5px;
 }
 
-.info-button:hover {
+.switch-button-top:hover {
+  opacity: 0.85;
+}
+
+
+.switch-button-bottom {
+  background: url("../../img/Switch_Symbol_Bottom.png");
+  height: 24px;
+  width: 24px;
+  margin: 7px 0px 5px;
+}
+
+.switch-button-bottom:hover {
   opacity: 0.85;
 }
 

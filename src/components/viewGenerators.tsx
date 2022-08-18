@@ -109,7 +109,7 @@ export function ViewGenerators({
         <div className="generators">
             <div className="generators-header">
                 <span>Generators</span>
-                <button className="info-button" onClick={() => setViewingGenerators(false)}></button>
+                <button className="switch-button-bottom" onClick={() => setViewingGenerators(false)}></button>
             </div>
             <BulkBar
                 isBuying={isBuying}
