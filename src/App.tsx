@@ -689,10 +689,6 @@ function App() {
      ========= */
 
   function load(): void {
-    window.onbeforeunload = function() {
-      return "Hey, don't refresh so quickly!";
-    }
-
     //Loads time, scenery, and date (and reliant modifiers)
     const localSavedTime = localStorage.getItem('savedTime');
     if (localSavedTime) {

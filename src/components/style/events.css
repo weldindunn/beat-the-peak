@@ -51,6 +51,11 @@
   background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(130,13,13,1) 66%, rgba(101,37,37,1) 100%);
 }
 
+.events-label {
+  font-size: 24px;
+  margin: 5px 0px;
+}
+
 .advent {
   position: relative;
   width: 100%;

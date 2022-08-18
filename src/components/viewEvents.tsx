@@ -40,7 +40,7 @@ export function ViewEvents({
             {
                 isViewing ? (
                     <>
-                        <div className="date">
+                        <div className="events-label">
                             <span>Past Events:</span>
                         </div>
                         {
@@ -55,7 +55,7 @@ export function ViewEvents({
                     </>
                 ) : (
                     <>
-                        <div className="date">
+                        <div className="events-label">
                             <span>Current Events:</span>
                         </div>
                         {
