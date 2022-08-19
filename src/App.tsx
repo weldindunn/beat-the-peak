@@ -257,7 +257,7 @@ function App() {
   const [newSave, setNewSave] = useState(50);
 
   useFrameLoop((time: number, deltaTime: number) => {
-    if (isLoaded) {
+    //if (isLoaded) {
       //Autosaves every second
       if (time + savedTime > newSave) {
         setNewSave(time + savedTime + 500);
@@ -352,7 +352,7 @@ function App() {
       setTornadoNumbers([...tornadoNumbers, tornadoCurve(time % 720000, 16.7)]);
       setHeatWaveNumbers([...heatWaveNumbers, heatWaveCurve(time % 720000, 16.7)]);
       */
-    }
+    //}
   });
 
   //Updates netWattsPerSec, which is dependent on a fluid generation state
